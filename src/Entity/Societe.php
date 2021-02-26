@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SocieteRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -46,6 +48,16 @@ class Societe
      * @ORM\Column(type="string", length=255)
      */
     private $status_juridique;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Freelancer::class, mappedBy="societe")
+     */
+    private $freelancers;
+
+    public function __construct()
+    {
+        $this->freelancers = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -120,6 +132,33 @@ class Societe
     public function setStatusJuridique(string $status_juridique): self
     {
         $this->status_juridique = $status_juridique;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Freelancer[]
+     */
+    public function getFreelancers(): Collection
+    {
+        return $this->freelancers;
+    }
+
+    public function addFreelancer(Freelancer $freelancer): self
+    {
+        if (!$this->freelancers->contains($freelancer)) {
+            $this->freelancers[] = $freelancer;
+            $freelancer->addSociete($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFreelancer(Freelancer $freelancer): self
+    {
+        if ($this->freelancers->removeElement($freelancer)) {
+            $freelancer->removeSociete($this);
+        }
 
         return $this;
     }

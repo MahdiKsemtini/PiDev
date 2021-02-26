@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\FreelancerRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -66,6 +68,16 @@ class Freelancer
      * @ORM\Column(type="string", length=255)
      */
     private $comptes_reseaux_sociaux;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Societe::class, inversedBy="freelancers")
+     */
+    private $societe;
+
+    public function __construct()
+    {
+        $this->societe = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -188,6 +200,30 @@ class Freelancer
     public function setComptesReseauxSociaux(string $comptes_reseaux_sociaux): self
     {
         $this->comptes_reseaux_sociaux = $comptes_reseaux_sociaux;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Societe[]
+     */
+    public function getSociete(): Collection
+    {
+        return $this->societe;
+    }
+
+    public function addSociete(Societe $societe): self
+    {
+        if (!$this->societe->contains($societe)) {
+            $this->societe[] = $societe;
+        }
+
+        return $this;
+    }
+
+    public function removeSociete(Societe $societe): self
+    {
+        $this->societe->removeElement($societe);
 
         return $this;
     }
