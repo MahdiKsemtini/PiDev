@@ -21,8 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8536dbc3-61f5-4edd-a3f8-2ef114c64d86" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Freelancer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Freelancer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Societe.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Societe.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/publications/forum.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/publications/forum.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,8 +148,9 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/offre_stage" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -179,6 +179,8 @@
       <workItem from="1614347682114" duration="3226000" />
       <workItem from="1614362389290" duration="6881000" />
       <workItem from="1614372126520" duration="490000" />
+      <workItem from="1614414389060" duration="2000" />
+      <workItem from="1614414401935" duration="1592000" />
     </task>
     <servers />
   </component>
@@ -195,6 +197,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="549" y="187" key="FileChooserDialogImpl" timestamp="1614362490104">
