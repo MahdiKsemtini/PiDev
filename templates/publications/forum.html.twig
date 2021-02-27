@@ -15,21 +15,21 @@
 
     <!-- Stylesheets -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet'>
-    <link href='vendor/unicons-2.0.1/css/unicons.css' rel='stylesheet'>
-    <link href="css/vertical-responsive-menu.min.css" rel="stylesheet">
-    <link href="css/instructor-dashboard.css" rel="stylesheet">
-    <link href="css/instructor-responsive.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/responsive.css" rel="stylesheet">
-    <link href="css/night-mode.css" rel="stylesheet">
-    <link href="css/jquery-steps.css" rel="stylesheet">
+    <link href='http://127.0.0.1/pidev/public/vendor/unicons-2.0.1/css/unicons.css' rel='stylesheet'>
+    <link href="http://127.0.0.1/pidev/public/css/vertical-responsive-menu.min.css" rel="stylesheet">
+    <link href="http://127.0.0.1/pidev/public/css/instructor-dashboard.css" rel="stylesheet">
+    <link href="http://127.0.0.1/pidev/public/css/instructor-responsive.css" rel="stylesheet">
+    <link href="http://127.0.0.1/pidev/public/css/style.css" rel="stylesheet">
+    <link href="http://127.0.0.1/pidev/public/css/responsive.css" rel="stylesheet">
+    <link href="http://127.0.0.1/pidev/public/css/night-mode.css" rel="stylesheet">
+    <link href="http://127.0.0.1/pidev/public/css/jquery-steps.css" rel="stylesheet">
 
     <!-- Vendor Stylesheets -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link href="vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
-    <link href="vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet">
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="vendor/semantic/semantic.min.css">
+    <link href="http://127.0.0.1/pidev/public/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="http://127.0.0.1/pidev/public/vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
+    <link href="http://127.0.0.1/pidev/public/vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet">
+    <link href="http://127.0.0.1/pidev/public/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://127.0.0.1/pidev/public/vendor/semantic/semantic.min.css">
 
 
 {% endblock %}
@@ -72,7 +72,7 @@
                                 <div class="user_dt_left">
                                     <div class="live_user_dt">
                                         <div class="user_img5">
-                                            <img src="images/left-imgs/img-15.jpg" alt="">
+                                            <img src="http://127.0.0.1/pidev/public/images/left-imgs/img-15.jpg" alt="">
                                         </div>
                                         <div class="user_cntnt">
                                             <h4>Mahdi Ksemtini</h4>
@@ -83,8 +83,9 @@
                             <div class="eps_dots more_dropdown" style="margin-right: 30px; margin-top: 10px" >
                                 <a href="#"><i class='uil uil-ellipsis-v'></i></a>
                                 <div class="dropdown-content">
-                                    <span><i class='uil uil-trash-alt'></i>Supprimer</span>
-                                    <span><i class="uil uil-windsock"></i>Signaler</span>
+                                    <a href="http://127.0.0.1/pidev/templates/publications/forumedit.html.twig"> <span><i class='uil-edit'  ></i>Modifier</span> </a>
+                                    <a href="#"> <span><i class='uil uil-trash-alt'></i>Supprimer</span> </a>
+                                    <a href="#"> <span><i class="uil uil-windsock"></i>Signaler</span> </a>
                                 </div>
                             </div>
 
@@ -92,7 +93,7 @@
 
                                 <a class="crse-cate">Description | Question Description | Question Description | Question Description | Question Description | Question Description | Question Description | Question Description | Question Description | Question Description | Question</a>
                                 <div align="center">
-                                    <img src="images/courses/img-2.jpg" class="fcrse_img"  alt="">
+                                    <img src="http://127.0.0.1/pidev/public/images/courses/img-2.jpg" class="fcrse_img"  alt="">
                                 </div>
                                 <div class="fcrse_content">
                                     <span class="vdt14">26-02-2021 19:45</span>
@@ -104,9 +105,17 @@
                                 </div>
                                 <div class="live_chat">
                                     <div class="chat1">
-                                        <p><a href="#">John Doe</a>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet molestie leo ac pellentesque</p>
-                                        <p><a href="#">Poonam</a>Class aptent taciti sociosqu ad litora torquent per conubia nostra</p>
-                                        <p><a href="#">Jass</a>Nulla sollicitudin nec nisi at pellentesque. Cras fringilla est et sem tempor</p>
+                                        <p>
+                                        <div class="eps_dots more_dropdown" style="margin-right: 30px; margin-top: 10px" >
+                                            <a href="#"><i class='uil uil-ellipsis-v'></i></a>
+                                            <div class="dropdown-content">
+                                                <span><i class='uil-edit'></i>Modifier</span>
+                                                <span><i class='uil uil-trash-alt'></i>Supprimer</span>
+                                            </div>
+                                        </div>
+                                        <a href="#">John Doe</a>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet molestie leo ac pellentesque
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="live_comment">
@@ -212,11 +221,11 @@
 {% endblock %}
 
 {% block js %}
-    <script src="js/vertical-responsive-menu.min.js"></script>
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/OwlCarousel/owl.carousel.js"></script>
-    <script src="vendor/semantic/semantic.min.js"></script>
-    <script src="js/custom.js"></script>
-    <script src="js/night-mode.js"></script>
+    <script src="http://127.0.0.1/pidev/public/js/vertical-responsive-menu.min.js"></script>
+    <script src="http://127.0.0.1/pidev/public/js/jquery-3.3.1.min.js"></script>
+    <script src="http://127.0.0.1/pidev/public/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="http://127.0.0.1/pidev/public/vendor/OwlCarousel/owl.carousel.js"></script>
+    <script src="http://127.0.0.1/pidev/public/vendor/semantic/semantic.min.js"></script>
+    <script src="http://127.0.0.1/pidev/public/js/custom.js"></script>
+    <script src="http://127.0.0.1/pidev/public/js/night-mode.js"></script>
 {% endblock %}
