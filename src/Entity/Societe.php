@@ -144,6 +144,7 @@ class Societe
         return $this->freelancers;
     }
 
+
     public function addFreelancer(Freelancer $freelancer): self
     {
         if (!$this->freelancers->contains($freelancer)) {

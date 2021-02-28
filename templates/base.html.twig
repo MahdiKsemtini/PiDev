@@ -4,7 +4,7 @@
 
 <!-- Mirrored from gambolthemes.net/html-items/cursus_demo_f12/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 20 Jun 2020 12:49:44 GMT -->
 <head>
-    <title>{% block title %}Cursus - Index{% endblock %}</title>
+    <title>{% block title %}RightJob{% endblock %}</title>
     {% block css %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -79,7 +79,7 @@
                                 <span>gambol943@gmail.com</span>
                             </div>
                         </div>
-                        <a href="my_instructor_profile_view.html" class="dp_link_12">View Profile</a>
+                        <a href="{{ path('ProfileFreelancer') }}" class="dp_link_12">View Profile</a>
                     </div>
                     <div class="night_mode_switch__btn">
                         <a href="#" id="night-mode" class="btn-night-mode">
@@ -91,7 +91,7 @@
                     </div>
                     <a href="setting.html" class="item channel_item">Setting</a>
                     <!-- <a href="help.html" class="item channel_item">Help</a> -->
-                    <a href="sign_in.html" class="item channel_item">Sign Out</a>
+                    <a href="{{ path('Deconnect') }}" class="item channel_item">Sign Out</a>
                 </div>
             </li>
         </ul>
