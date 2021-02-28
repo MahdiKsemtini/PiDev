@@ -19,12 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8536dbc3-61f5-4edd-a3f8-2ef114c64d86" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PublicationsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PublicationsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/publications/forum.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/publications/forum.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/publications/forumedit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/publications/forumedit.html.twig" afterDir="false" />
-    </list>
+    <list default="true" id="15af684e-6c45-4779-8c76-e6372bcafffc" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
