@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Publications;
+use App\Form\PublicationsType;
+use phpDocumentor\Reflection\Type;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
