@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PublicationsRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PublicationsRepository::class)
@@ -24,6 +25,7 @@ class Publications
 
     /**
      * @ORM\Column(type="string", length=1000)
+     * @Assert\NotBlank(message="la description est obligatoire")
      */
     private $description;
 
@@ -66,12 +68,12 @@ class Publications
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getImage()
     {
         return $this->image;
     }
 
-    public function setImage(?string $image): self
+    public function setImage( $image)
     {
         $this->image = $image;
 
@@ -85,7 +87,7 @@ class Publications
 
     public function setDatePublication(\DateTimeInterface $date_publication): self
     {
-        $this->date_publication = $date_publication;
+        $this->date_publication = new \DateTime('now');
 
         return $this;
     }

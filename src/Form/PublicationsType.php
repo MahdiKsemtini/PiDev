@@ -6,6 +6,8 @@ use App\Entity\Publications;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 
 class PublicationsType extends AbstractType
 {
@@ -14,8 +16,8 @@ class PublicationsType extends AbstractType
         $builder
             ->add('id_utilisateur')
             ->add('description')
-            ->add('image')
-            ->add('date_publication')
+            ->add('image', FileType::class, array('label'=>'choisir une image'))
+
         ;
     }
 

@@ -21,7 +21,10 @@
   <component name="ChangeListManager">
     <list default="true" id="8536dbc3-61f5-4edd-a3f8-2ef114c64d86" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/PublicationsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PublicationsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Publications.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Publications.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/PublicationsType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PublicationsType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/publications/forum.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/publications/forum.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/publications/forumedit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/publications/forumedit.html.twig" afterDir="false" />
     </list>
@@ -197,6 +200,9 @@
       <workItem from="1614437571397" duration="156000" />
       <workItem from="1614442658181" duration="981000" />
       <workItem from="1614447317320" duration="6622000" />
+      <workItem from="1614526706869" duration="2023000" />
+      <workItem from="1614533294460" duration="18175000" />
+      <workItem from="1614601578681" duration="7309000" />
     </task>
     <servers />
   </component>
