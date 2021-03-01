@@ -18,7 +18,7 @@ class PublicationsType extends AbstractType
             ->add('id_utilisateur')
             ->add('description')
             ->add('image', FileType::class)
-            ->add('Ajouter', SubmitType::class);
+            ->add('Publier', SubmitType::class);
 
         ;
     }

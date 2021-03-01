@@ -21,9 +21,8 @@ class PublicationsController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('publications/forum.html.twig', [
-            'controller_name' => 'PublicationsController',
-        ]);
+        $publications = $this->getDoctrine()->getRepository(Publications::class)->findAll();
+        return $this->render('publications/forum.html.twig', array('publications'=>$publications));
     }
     /**
      * @Route("/forumedit", name="forumedit")
@@ -62,5 +61,7 @@ class PublicationsController extends AbstractController
         return $this->render('publications/forum.html.twig', array('f' => $form->createView()));
 
     }
+
+
 
 }
