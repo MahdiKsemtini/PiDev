@@ -45,7 +45,7 @@ class PublicationsController extends AbstractController
         $publication->setDatePublication(new \DateTime('now'));
 
         $form = $this->createForm(PublicationsType::class, $publication);
-        $form->add('Ajouter', SubmitType::class);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() and $form->isValid()) {
