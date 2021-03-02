@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Commentaires;
 use App\Entity\Publications;
+use App\Form\CommentairesType;
 use App\Form\PublicationsType;
 use phpDocumentor\Reflection\Type;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -110,5 +112,31 @@ class PublicationsController extends AbstractController
 
     }
 
+    /**
+     * @Route("/addcom{id}",name="ajoutercom")
+     */
+    public function ajouterCommentaire(Request $request, $id)
+    {
+        $publications = $this->getDoctrine()->getRepository(Publications::class)->find($id);
+        $commentaire = new Commentaires();
+        $commentaire->setIdPub($id);
+        $commentaire->setDateCom(new \DateTime('now'));
+
+
+        $form = $this->createForm(CommentairesType::class, $commentaire);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() and $form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($commentaire);
+            $em->flush();
+
+
+            return $this->redirect('forum');
+        }
+        return $this->render('publications/addcom.html.twig', array('form' => $form->createView()));
+
+    }
 
 }

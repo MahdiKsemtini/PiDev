@@ -63,7 +63,7 @@
                                             <img src="images/left-imgs/img-15.jpg" alt="">
                                         </div>
                                         <div class="user_cntnt">
-                                            <h4>Mahdi Ksemtini</h4>
+                                            <h4>{{ i.idUtilisateur }}</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -108,8 +108,9 @@
                                     </div>
                                 </div>
                                 <div class="live_comment">
-                                    <input class="live_input" type="text" placeholder="Ajouter un commentaire..." />
-                                    <button class="btn_live"><i class='uil uil-message'></i></button>
+                                    <div align="center" >
+                                        <a href={{ path('ajoutercom',{'id': i.id }) }} class="upload_btn">Ajouter commentaire</a>
+                                    </div>
                                 </div>
 
                             </div>
