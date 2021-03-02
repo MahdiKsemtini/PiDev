@@ -23,6 +23,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/PublicationsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PublicationsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/publications/forum.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/publications/forum.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/publications/forumedit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/publications/forumedit.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,7 +212,8 @@
       <workItem from="1614533294460" duration="18175000" />
       <workItem from="1614601578681" duration="14756000" />
       <workItem from="1614619495953" duration="3417000" />
-      <workItem from="1614622925528" duration="13860000" />
+      <workItem from="1614622925528" duration="14401000" />
+      <workItem from="1614675182622" duration="2772000" />
     </task>
     <servers />
   </component>

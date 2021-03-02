@@ -71,7 +71,7 @@
                             <div class="eps_dots more_dropdown" style="margin-right: 30px; margin-top: 10px" >
                                 <a href="#"><i class='uil uil-ellipsis-v'></i></a>
                                 <div class="dropdown-content">
-                                    <a > <span onclick="document.location='forumedit'"  ><i class='uil-edit' ></i>Modifier</span> </a>
+                                    <a href={{ path('modifierpublication',{'id': i.id }) }}> <span   ><i class='uil-edit' ></i>Modifier</span> </a>
                                     <a href={{ path('supprimerPublication',{'id': i.id }) }}> <span><i class='uil uil-trash-alt'></i>Supprimer</span> </a>
                                     <a href="#"> <span><i class="uil uil-windsock"></i>Signaler</span> </a>
                                 </div>

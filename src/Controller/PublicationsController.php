@@ -29,7 +29,7 @@ class PublicationsController extends AbstractController
         return $this->render('publications/forum.html.twig', array('publications'=>$publications));
     }
     /**
-     * @Route("/forumedit")
+     * @Route("/forumedit",name="forumedit")
      */
     public function modifier_publication(): Response
     {
@@ -51,7 +51,6 @@ class PublicationsController extends AbstractController
         $publication->setDatePublication(new \DateTime('now'));
 
         $form = $this->createForm(PublicationsType::class, $publication);
-        dump($form);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() and $form->isValid()) {
@@ -81,6 +80,33 @@ class PublicationsController extends AbstractController
         $em->remove($publications);
         $em->flush();
         return $this->redirectToRoute('forum');
+
+    }
+
+    /**
+     * @Route("/forumedit{id}",name="modifierpublication")
+     */
+    public function modifierPublication(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $publications = $this->getDoctrine()->getRepository(Publications::class)->find($id);
+        $publications->setImage(null);
+
+        $form = $this->createForm(PublicationsType::class, $publications);
+
+        $form = $form->handleRequest($request);
+        if ($form->isSubmitted()) {
+            $file = $publications->getImage();
+            $filename = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move($this->getParameter('upload_directory'),$filename);
+            $publications->setImage($filename);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($publications);
+            $em->flush();
+            return $this->redirectToRoute('forum');
+        }
+        return $this->render('publications/addpost.html.twig', array('f' => $form->createView()));
 
     }
 
