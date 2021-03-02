@@ -22,7 +22,7 @@
     <list default="true" id="8536dbc3-61f5-4edd-a3f8-2ef114c64d86" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/PublicationsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PublicationsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/CommentairesType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/CommentairesType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Commentaires.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Commentaires.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/publications/forum.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/publications/forum.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -214,6 +214,8 @@
       <workItem from="1614619495953" duration="3417000" />
       <workItem from="1614622925528" duration="14401000" />
       <workItem from="1614675182622" duration="6223000" />
+      <workItem from="1614682713514" duration="6265000" />
+      <workItem from="1614694218114" duration="6370000" />
     </task>
     <servers />
   </component>

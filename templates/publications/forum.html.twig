@@ -91,24 +91,12 @@
                             <div class="fcrse_3">
                                 <div class="cater_ttle">
                                     <h4>Commentaires</h4>
-                                </div>
-                                <div class="live_chat">
-                                    <div class="chat1">
-                                        <p>
-                                        <div class="eps_dots more_dropdown" style="margin-right: 30px; margin-top: 10px" >
-                                            <a href="#"><i class='uil uil-ellipsis-v'></i></a>
-                                            <div class="dropdown-content">
-                                                <span><i class='uil-edit'></i>Modifier</span>
-                                                <span><i class='uil uil-trash-alt'></i>Supprimer</span>
-                                            </div>
-                                        </div>
-                                        <a href="#">John Doe</a>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet molestie leo ac pellentesque
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="live_comment">
+
+
+
                                     <div align="center" >
+                                        <a href={{ path('commentaires',{'id_pub': i.id }) }} class="upload_btn">Afficher commentaire</a>
+
                                         <a href={{ path('ajoutercom',{'id': i.id }) }} class="upload_btn">Ajouter commentaire</a>
                                     </div>
                                 </div>

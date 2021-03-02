@@ -54,6 +54,18 @@ class Commentaires
         return $this;
     }
 
+    public function getId_Util(): ?int
+    {
+        return $this->id_util;
+    }
+
+    public function setId_Util(int $id_util): self
+    {
+        $this->id_util = $id_util;
+
+        return $this;
+    }
+
     public function getIdUtil(): ?int
     {
         return $this->id_util;
