@@ -3,7 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Freelancer;
+use App\Entity\Societe;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -46,7 +49,10 @@ class FreelancerProfileType extends AbstractType
                     'maxlength'=>'64',
                 ]
             ])
-            ->add('photo_de_profile', FileType::class,array('data_class' => null))
+            ->add('photo_de_profile', FileType::class,[
+                'mapped' => false,
+            ])
+
             ->add('prenom', TextType::class,[
                 'attr'=>[
 
@@ -57,13 +63,14 @@ class FreelancerProfileType extends AbstractType
                     'maxlength'=>'64',
                 ]
             ])
-            ->add('sexe', TextType::class,[
+            ->add('sexe', ChoiceType::class,[
+                'choices'=>[
+                    'Choisir votre sexe'=>'Add Sexe ',
+                    'Homme'=>'Homme ',
+                    'Femme'=>'Femme ',
+                ],
                 'attr'=>[
-                    'placeholder'=>'Sexe',
-                    'class'=>'prompt srch_explore',
-                    'name'=>'Sexe',
-                    'id'=>'id_Sexe',
-                    'maxlength'=>'64',
+                    'class'=>" dropdown cntry152 prompt srch_explore"
                 ]
             ])
             ->add('competences', TextType::class,[
@@ -93,7 +100,6 @@ class FreelancerProfileType extends AbstractType
                     'maxlength'=>'64',
                 ]
             ])
-
 
             ->add('Save', SubmitType::class,[
                 'attr' => ['class' => 'login-btn'],

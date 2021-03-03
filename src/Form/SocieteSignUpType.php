@@ -60,15 +60,7 @@ class SocieteSignUpType extends AbstractType
                     'maxlength'=>'64',
                 ]
             ])
-            ->add('photo_de_profile', FileType::class,[
-                'attr'=>[
-                    'value'=>' ',
-                    'placeholder'=>'Photo_de_profile',
-                    'class'=>'prompt srch_explore',
-                    'name'=>'Photo_de_profile',
-                    'id'=>'id_photo_de_profile',
-                ]
-            ])
+            ->add('photo_de_profile', FileType::class,array('data_class' => null))
             ->add('status_juridique', TextType::class,[
                 'attr'=>[
                     'value'=>' ',

@@ -2,10 +2,8 @@
 
 namespace App\Form;
 
-use App\Entity\Freelancer;
-use phpDocumentor\Reflection\Type;
+use App\Entity\Societe;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -13,9 +11,8 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Validator\Constraints\File;
 
-class FreelancerSignUpType extends AbstractType
+class SocieteProfileType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -26,52 +23,49 @@ class FreelancerSignUpType extends AbstractType
                     'placeholder'=>'Nom',
                     'class'=>'prompt srch_explore',
                     'name'=>'Nom',
-//                    'id'=>'id_Nom',
+                    'id'=>'id_Nom',
                     'maxlength'=>'64',
                 ]
             ])
-
+            ->add('adresse', TextType::class,[
+                'attr'=>[
+                    'placeholder'=>'Adresse',
+                    'class'=>'prompt srch_explore',
+                    'name'=>'Adresse',
+                    'id'=>'id_Adresse',
+                    'maxlength'=>'64',
+                ]
+            ])
             ->add('email', EmailType::class,[
                 'attr'=>[
 
                     'placeholder'=>'Email',
                     'class'=>'prompt srch_explore',
                     'name'=>'Email',
-//                    'id'=>'id_Email',
+                    'id'=>'id_Email',
                     'maxlength'=>'64',
                 ]
             ])
-            ->add('mot_de_passe', PasswordType::class,[
+            ->add('photo_de_profile', FileType::class,array('data_class' => null))
+            ->add('status_juridique', TextType::class,[
                 'attr'=>[
-
-                    'placeholder'=>'Mot de pass',
+                    'placeholder'=>'Sexe',
                     'class'=>'prompt srch_explore',
-                    'name'=>'Mot de pass',
-//                    'id'=>'id_Mot_de_pass',
+                    'name'=>'Sexe',
+                    'id'=>'id_Sexe',
                     'maxlength'=>'64',
                 ]
             ])
-
-            ->add('prenom', TextType::class,[
-                'attr'=>[
-
-                    'placeholder'=>'Prenom',
-                    'class'=>'prompt srch_explore',
-                    'name'=>'Prenom',
-//                    'id'=>'id_Prenom',
-                    'maxlength'=>'64',
-                ]
-            ])
-
-            ->add('SignUp', SubmitType::class,[
+            ->add('Save', SubmitType::class,[
                 'attr' => ['class' => 'login-btn'],
             ]);
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Freelancer::class,
+            'data_class' => Societe::class,
         ]);
     }
 }

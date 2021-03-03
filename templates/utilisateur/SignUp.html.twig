@@ -47,10 +47,15 @@
                         <h2>Welcome to RightJob</h2>
                         <p>Sign Up and Start Learning!</p>
                         {% if type =="Freelancer" %}
-                            <form {{ form_start(form) }}>
+                            <form {{ form_start(form,{'attr':{novalidate:'novalidate'}}) }}>
                                 <div class="ui search focus">
                                     <div class="ui left icon input swdh11 swdh19">
                                         {{ form_widget(form.nom) }}
+                                    </div>
+                                </div>
+                                <div class="ui search focus">
+                                    <div class="ui left icon input swdh11 swdh19">
+                                        {{ form_errors(form.nom) }}
                                     </div>
                                 </div>
                                 <div class="ui search focus mt-15">
@@ -58,9 +63,19 @@
                                         {{ form_widget(form.prenom) }}
                                     </div>
                                 </div>
+                                <div class="ui search focus">
+                                    <div class="ui left icon input swdh11 swdh19">
+                                        {{ form_errors(form.prenom) }}
+                                    </div>
+                                </div>
                                 <div class="ui search focus mt-15">
                                     <div class="ui left icon input swdh11 swdh19">
                                         {{ form_widget(form.email) }}
+                                    </div>
+                                </div>
+                                <div class="ui search focus">
+                                    <div class="ui left icon input swdh11 swdh19">
+                                        {{ form_errors(form.email) }}
                                     </div>
                                 </div>
                                 <div class="ui search focus mt-15">
@@ -68,16 +83,13 @@
                                         {{ form_widget(form.mot_de_passe) }}
                                     </div>
                                 </div>
-                                <div class="ui form mt-30 checkbox_sign">
-                                    <div class="inline field">
-                                        <div class="ui checkbox mncheck">
-                                            <input type="checkbox" tabindex="0" class="hidden">
-                                            <label>I’m in for emails with exciting discounts and personalized recommendations</label>
-                                        </div>
+                                <div class="ui search focus">
+                                    <div class="ui left icon input swdh11 swdh19">
+                                        {{ form_errors(form.mot_de_passe) }}
                                     </div>
                                 </div>
                                 {{ form_widget(form.SignUp) }}
-                            </form>
+                            </form {{ form_end(form) }}>
                         {%else%}
                             <form {{ form_start(form) }}>
                                 <div class="ui search focus">

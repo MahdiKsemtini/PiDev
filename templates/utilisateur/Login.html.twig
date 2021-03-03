@@ -49,7 +49,7 @@
                         <button class="social_lnk_btn color_btn_fb"><i class="uil uil-facebook-f"></i>Continue with Facebook</button>
                         <button class="social_lnk_btn mt-15 color_btn_tw"><i class="uil uil-twitter"></i>Continue with Twitter</button>
                         <button class="social_lnk_btn mt-15 color_btn_go"><i class="uil uil-google"></i>Continue with Google</button>
-                        <form {{ form_start(form) }}>
+                        <form {{ form_start(form,{'attr':{novalidate:'novalidate'}}) }}>
                             <div class="ui search focus mt-15">
                                 <div class="ui left icon input swdh95">
                                     {{ form_widget(form.email) }}
@@ -58,18 +58,23 @@
                             </div>
                             <div class="ui search focus mt-15">
                                 <div class="ui left icon input swdh95">
+                                    {{ form_errors(form.email) }}
+
+                                </div>
+                            </div>
+                            <div class="ui search focus mt-15">
+                                <div class="ui left icon input swdh95">
                                     {{ form_widget(form.mot_de_passe) }}
                                     <i class="uil uil-key-skeleton-alt icon icon2"></i>
                                 </div>
                             </div>
-                            <div class="ui form mt-30 checkbox_sign">
-                                <div class="inline field">
-                                    <div class="ui checkbox mncheck">
-                                        <input type="checkbox" tabindex="0" class="hidden">
-                                        <label>Remember Me</label>
-                                    </div>
+                            <div class="ui search focus mt-15">
+                                <div class="ui left icon input swdh95">
+                                    {{ form_errors(form.mot_de_passe) }}
+
                                 </div>
                             </div>
+
                             {{ form_widget(form.SignIn) }}
                         </form>
                         <p class="sgntrm145">Or <a href="{{ path('ForgetPassword') }}">Forgot Password</a>.</p>

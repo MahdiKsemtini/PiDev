@@ -6,6 +6,8 @@ use App\Repository\FreelancerRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
 
 /**
  * @ORM\Entity(repositoryClass=FreelancerRepository::class)
@@ -226,5 +228,52 @@ class Freelancer
         $this->societe->removeElement($societe);
 
         return $this;
+    }
+
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata->addPropertyConstraint('nom', new Assert\NotBlank([
+            'message' => 'Le champ de votre Nom est vide',
+        ]));
+        $metadata->addPropertyConstraint('nom', new Assert\Length([
+            'min' => 3,
+            'max'=>15,
+            'minMessage' => 'Votre Nom doit comporter au moins {{limit}} caractères',
+            'maxMessage' => 'Votre Nom ne peut pas comporter plus de {{limit}} caractères',
+        ]));
+
+        $metadata->addPropertyConstraint('prenom', new Assert\NotBlank([
+            'message' => 'Le champ de votre Prenom est vide',
+        ]));
+        $metadata->addPropertyConstraint('prenom', new Assert\Length([
+            'min' => 3,
+            'max'=>15,
+            'minMessage' => 'Votre Prenom doit comporter au moins {{limit}} caractères',
+            'maxMessage' => 'Votre Prénom ne peut pas comporter plus de {{limit}} caractères',
+        ]));
+
+        $metadata->addPropertyConstraint('email', new Assert\NotBlank([
+            'message' => 'Le champ de votre Email est vide',
+        ]));
+        $metadata->addPropertyConstraint('email', new Assert\Length([
+            'min' => 4,
+            'max'=> 40,
+            'minMessage' => 'Votre Email doit comporter au moins {{limit}} caractères',
+            'maxMessage' => 'Votre Email ne peut pas comporter plus de "{{limit}}" caractères',
+        ]));
+        $metadata->addPropertyConstraint('email', new Assert\Email([
+            'message' => 'The Email "{{ value }}" is not a valid email.',
+        ]));
+
+        $metadata->addPropertyConstraint('mot_de_passe', new Assert\NotBlank([
+            'message' => 'Le champ de votre Mot De Pass est vide',
+        ]));
+        $metadata->addPropertyConstraint('mot_de_passe', new Assert\Length([
+            'min' => 4,
+            'max'=> 20,
+            'minMessage' => 'Votre Mot De Pass doit comporter au moins {{limit}} caractères',
+            'maxMessage' => 'Votre Mot De Pass ne peut pas comporter plus de {{limit}} caractères',
+        ]));
+
     }
 }
