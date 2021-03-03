@@ -4,7 +4,7 @@
 
 <!-- Mirrored from gambolthemes.net/html-items/cursus_demo_f12/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 20 Jun 2020 12:49:44 GMT -->
 <head>
-    <title>{% block title %}Cursus - Index{% endblock %}</title>
+    <title>{% block title %}Right Job{% endblock %}</title>
     {% block css %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,10 +44,10 @@
         <i class="uil uil-bars collapse_menu--icon "></i>
         <span class="collapse_menu--label"></span>
     </button>
-    <div class="main_logo" id="logo">
+<div class="main_logo" id="logo"> 
         <a href="{{ path('index') }}"><img src="{{ asset('images/logo.svg') }}" alt="" width="120" height="70"></a>
         <a href="{{ path('index') }}"><img class="logo-inverse" src="{{ asset('images/logo.svg') }}" alt="" width="120" height="70"></a>
-    </div>
+    </div> 
     <div class="search120">
         <div class="ui search">
             <div class="ui left icon input swdh10">
@@ -59,7 +59,8 @@
     <div class="header_right">
         <ul>
             <li>
-                <a href="create_new_course.html" class="upload_btn">Create New Course</a>
+                <a href="/addEmploi" class="upload_btn">Créer un offre d'emploi</a>
+                <a href="/addStage" class="upload_btn">Créer un offre de stage</a>
             </li>
             <li class="ui dropdown">
                 <a href="#" class="opts_account">
@@ -118,60 +119,66 @@
                 <li class="menu--item">
                     <a href="explore.html" class="menu--link" title="Explore">
                         <i class='uil uil-search menu--icon'></i>
-                        <span class="menu--label">Offre</span>
+                        <span class="menu--label">Réclamation</span>
                     </a>
                 </li>
                 <li class="menu--item">
                     <a href="categories.html" class="menu--link" title="Categories">
                         <i class='uil uil-layers menu--icon'></i>
-                        <span class="menu--label">Déposer demande</span>
+                        <span class="menu--label">Evénement</span>
                     </a>
+                     <ul class="sub_menu">
+                        <li class="sub_menu--item">
+                            <a href="/showStage" class="sub_menu--link">Liste des offres</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/addEmploi" class="sub_menu--link">Créer un stage</a>
+                        </li>
+                       
+                    </ul>
                 </li>
                 <li class="menu--item  menu--item__has_sub_menu">
                     <label class="menu--link" title="Tests">
                         <i class='uil uil-clipboard-alt menu--icon'></i>
-                        <span class="menu--label">Réclamation</span>
+                        <span class="menu--label">offres des stage</span>
                     </label>
+                    <ul class="sub_menu">
+                        <li class="sub_menu--item">
+                            <a href="/showEmploi" class="sub_menu--link">Liste des offres</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/addEmploi" class="sub_menu--link">Créer un emploi</a>
+                        </li>
+                       </ul>
 
+               
+
+                  
+                    
+
+
+
+                <li class="menu--item  menu--item__has_sub_menu">
+                    <label class="menu--link" title="Pages">
+                        <i class='uil uil-file menu--icon'></i>
+                        <span class="menu--label">Offres des emplois</span>
+                    </label>
+                    <ul class="sub_menu">
+                        <li class="sub_menu--item">
+                            <a href="/showEmploi" class="sub_menu--link">Liste des offres</a>
+                        </li>
+                        <li class="sub_menu--item">
+                            <a href="/addEmploi" class="sub_menu--link">Créer un emploi</a>
+                        </li>
+                       
+                    </ul>
                 </li>
+                 </li>
                 <li class="menu--item">
                     <a href="saved_courses.html" class="menu--link" title="Saved Courses">
                         <i class="uil uil-heart-alt menu--icon"></i>
                         <span class="menu--label">Saved Courses</span>
                     </a>
-                </li>
-                <li class="menu--item  menu--item__has_sub_menu">
-                    <label class="menu--link" title="Pages">
-                        <i class='uil uil-file menu--icon'></i>
-                        <span class="menu--label">Pages</span>
-                    </label>
-                    <ul class="sub_menu">
-                        <li class="sub_menu--item">
-                            <a href="about_us.html" class="sub_menu--link">About</a>
-                        </li>
-                        <li class="sub_menu--item">
-                            <a href="sign_in.html" class="sub_menu--link">Sign In</a>
-                        </li>
-                        <li class="sub_menu--item">
-                            <a href="sign_up.html" class="sub_menu--link">Sign Up</a>
-                        </li>
-
-
-                        <li class="sub_menu--item">
-                            <a href="course_detail_view.html" class="sub_menu--link">Course Detail View</a>
-                        </li>
-                        <li class="sub_menu--item">
-                            <a href="checkout_membership.html" class="sub_menu--link">Checkout</a>
-                        </li>
-
-                        <li class="sub_menu--item">
-                            <a href="career.html" class="sub_menu--link">Career</a>
-                        </li>
-                        <li class="sub_menu--item">
-                            <a href="apply_job.html" class="sub_menu--link">Job Apply</a>
-                        </li>
-
-                    </ul>
                 </li>
             </ul>
         </div>
@@ -478,7 +485,7 @@
                                                 <span class="vdt14">109k views</span>
                                                 <span class="vdt14">15 days ago</span>
                                             </div>
-                                            <a href="course_detail_view.html" class="crse14s">WordPress for Beginners: Create a Website Step by Step</a>
+                                            <a href="/addEmploi" class="crse14s">WordPress for Beginners: Create a Website Step by Step</a>
                                             <a href="#" class="crse-cate">Design | Wordpress</a>
                                             <div class="auth1lnkprce">
                                                 <p class="cr1fot">By <a href="#">Sabnam SIngh</a></p>

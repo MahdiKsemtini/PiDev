@@ -16,13 +16,13 @@
     <!-- Stylesheets -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet'>
     <link href='vendor/unicons-2.0.1/css/unicons.css' rel='stylesheet'>
-    <link href="css/vertical-responsive-menu.min.css" rel="stylesheet">
-    <link href="css/instructor-dashboard.css" rel="stylesheet">
-    <link href="css/instructor-responsive.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/responsive.css" rel="stylesheet">
-    <link href="css/night-mode.css" rel="stylesheet">
-    <link href="css/jquery-steps.css" rel="stylesheet">
+    <link href="{{ asset('css/vertical-responsive-menu.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/instructor-dashboard.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/instructor-responsive.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/night-mode.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/jquery-steps.css') }}" rel="stylesheet">
 
     <!-- Vendor Stylesheets -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
@@ -83,9 +83,8 @@
                             <div class="eps_dots more_dropdown" style="margin-right: 30px; margin-top: 10px" >
                                 <a href="#"><i class='uil uil-ellipsis-v'></i></a>
                                 <div class="dropdown-content">
-                                    <a href="forumedit"> <span><i class='uil-edit'  ></i>Modifier</span> </a>
-                                    <a href="#"> <span><i class='uil uil-trash-alt'></i>Supprimer</span> </a>
-                                    <a href="#"> <span><i class="uil uil-windsock"></i>Signaler</span> </a>
+                                    <span><i class='uil uil-trash-alt'></i>Supprimer</span>
+                                    <span><i class="uil uil-windsock"></i>Signaler</span>
                                 </div>
                             </div>
 
@@ -105,17 +104,9 @@
                                 </div>
                                 <div class="live_chat">
                                     <div class="chat1">
-                                        <p>
-                                        <div class="eps_dots more_dropdown" style="margin-right: 30px; margin-top: 10px" >
-                                            <a href="#"><i class='uil uil-ellipsis-v'></i></a>
-                                            <div class="dropdown-content">
-                                                <span><i class='uil-edit'></i>Modifier</span>
-                                                <span><i class='uil uil-trash-alt'></i>Supprimer</span>
-                                            </div>
-                                        </div>
-                                        <a href="#">John Doe</a>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet molestie leo ac pellentesque
-                                        </p>
+                                        <p><a href="#">John Doe</a>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet molestie leo ac pellentesque</p>
+                                        <p><a href="#">Poonam</a>Class aptent taciti sociosqu ad litora torquent per conubia nostra</p>
+                                        <p><a href="#">Jass</a>Nulla sollicitudin nec nisi at pellentesque. Cras fringilla est et sem tempor</p>
                                     </div>
                                 </div>
                                 <div class="live_comment">

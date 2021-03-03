@@ -17,14 +17,4 @@ class PublicationsController extends AbstractController
             'controller_name' => 'PublicationsController',
         ]);
     }
-    /**
-     * @Route("/forumedit", name="forumedit")
-     */
-    public function modifier_publication(): Response
-    {
-        return $this->render('publications/forumedit.html.twig', [
-            'controller_name' => 'PublicationsController',
-        ]);
-    }
-
 }
