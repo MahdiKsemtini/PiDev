@@ -19,12 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8536dbc3-61f5-4edd-a3f8-2ef114c64d86" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PublicationsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PublicationsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/publications/forum.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/publications/forum.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/publications/forumedit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/publications/forumedit.html.twig" afterDir="false" />
-    </list>
+    <list default="true" id="8536dbc3-61f5-4edd-a3f8-2ef114c64d86" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -33,13 +28,6 @@
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="HTML File" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -149,6 +137,9 @@
       <path value="$PROJECT_DIR$/vendor/symfony/web-server-bundle" />
     </include_path>
   </component>
+  <component name="ProblemsViewState">
+    <option name="showPreview" value="true" />
+  </component>
   <component name="ProjectId" id="1p1AutDvOGgv87KHVPDV78SVv6J" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -156,18 +147,14 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/avis" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\PiDev\templates\offre_stage" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\PiDev\templates\offre_emploi" />
       <recent name="C:\wamp64\www\PiDev\templates\demande" />
@@ -175,6 +162,21 @@
       <recent name="C:\wamp64\www\PiDev\public\images" />
       <recent name="C:\wamp64\www\PiDev\public" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\PiDev\templates\avis" />
+      <recent name="C:\wamp64\www\PiDev\templates\offre_stage" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Form" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner directory="$PROJECT_DIR$/src/Form" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHPUnit.Form" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -190,13 +192,15 @@
       <workItem from="1614362389290" duration="6881000" />
       <workItem from="1614372126520" duration="490000" />
       <workItem from="1614414389060" duration="2000" />
-      <workItem from="1614414401935" duration="2843000" />
-      <workItem from="1614427656807" duration="3041000" />
-      <workItem from="1614436679311" duration="35000" />
-      <workItem from="1614436715613" duration="278000" />
-      <workItem from="1614437571397" duration="156000" />
-      <workItem from="1614442658181" duration="981000" />
-      <workItem from="1614447317320" duration="6622000" />
+      <workItem from="1614414401935" duration="1592000" />
+      <workItem from="1614421832249" duration="1462000" />
+      <workItem from="1614546757220" duration="12961000" />
+      <workItem from="1614587683418" duration="21239000" />
+      <workItem from="1614680434018" duration="341000" />
+      <workItem from="1614767055404" duration="595000" />
+      <workItem from="1614767694740" duration="5931000" />
+      <workItem from="1614776149733" duration="616000" />
+      <workItem from="1614777532594" duration="137000" />
     </task>
     <servers />
   </component>
@@ -214,5 +218,35 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="275" y="4" key="#Plugins" timestamp="1614546767667">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="275" y="4" key="#Plugins/0.0.1366.768@0.0.1366.768" timestamp="1614546767667" />
+    <state x="414" y="185" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1614628800442">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="414" y="185" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.768@0.0.1366.768" timestamp="1614628800442" />
+    <state x="363" y="99" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1614423048401">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="363" y="99" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1366.768@0.0.1366.768" timestamp="1614423048401" />
+    <state x="413" y="138" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1614630231336">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="413" y="138" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.768@0.0.1366.768" timestamp="1614630231336" />
+    <state x="549" y="187" key="FileChooserDialogImpl" timestamp="1614362490104">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="549" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1614362490104" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1614558071762">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1366.768@0.0.1366.768" timestamp="1614558071762" />
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1614770757374">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1614770757374" />
   </component>
 </project>
