@@ -28,14 +28,28 @@ class PublicationsController extends AbstractController
         $p=$this->getDoctrine()->getRepository(Publications::class);
         $publications=$p->findAll();
 
-        return $this->render('publications/forum.html.twig', array('publications'=>$publications));
+        return $this->render('Front/publications/forum.html.twig', array('publications'=>$publications));
     }
+
+    /**
+     * @Route("/publicationsBack",name="publicationsBack")
+     */
+    public function list_publications(): Response
+    {
+        $p=$this->getDoctrine()->getRepository(Publications::class);
+        $publications=$p->findAll();
+
+        return $this->render('Back/publications/publicationsBack.html.twig', array('publications'=>$publications));
+    }
+
+
+
     /**
      * @Route("/forumedit",name="forumedit")
      */
     public function modifier_publication(): Response
     {
-        return $this->render('publications/forumedit.html.twig', [
+        return $this->render('Front/publications/forumedit.html.twig', [
             'controller_name' => 'PublicationsController',
         ]);
     }
@@ -68,7 +82,7 @@ class PublicationsController extends AbstractController
 
             return $this->redirect('forum');
         }
-        return $this->render('publications/addpost.html.twig', array('f' => $form->createView()));
+        return $this->render('Front/publications/addpost.html.twig', array('f' => $form->createView()));
 
     }
 
@@ -79,11 +93,29 @@ class PublicationsController extends AbstractController
     public function supprimerPublication($id){
         $em=$this->getDoctrine()->getManager();
         $publications=$em->getRepository(Publications::class)->find($id);
+
+
         $em->remove($publications);
         $em->flush();
         return $this->redirectToRoute('forum');
 
     }
+
+    /**
+     * @Route("/deletePublication/{id}",name="deletePublication")
+     */
+    public function deletePublication($id){
+        $em=$this->getDoctrine()->getManager();
+        $publications=$em->getRepository(Publications::class)->find($id);
+
+
+        $em->remove($publications);
+        $em->flush();
+        return $this->redirectToRoute('publicationsBack');
+
+    }
+
+
 
     /**
      * @Route("/forumedit{id}",name="modifierpublication")
@@ -108,81 +140,16 @@ class PublicationsController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('forum');
         }
-        return $this->render('publications/addpost.html.twig', array('f' => $form->createView()));
+        return $this->render('Front/publications/addpost.html.twig', array('f' => $form->createView()));
 
     }
 
-    /**
-     * @Route("/addcom{id}",name="ajoutercom")
-     */
-    public function ajouterCommentaire(Request $request, $id)
-    {
-        $publications = $this->getDoctrine()->getRepository(Publications::class)->find($id);
-        $commentaire = new Commentaires();
-        $commentaire->setIdPub($id);
-        $commentaire->setDateCom(new \DateTime('now'));
 
 
-        $form = $this->createForm(CommentairesType::class, $commentaire);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() and $form->isValid()) {
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($commentaire);
-            $em->flush();
 
 
-            return $this->redirect('forum');
-        }
-        return $this->render('publications/addcom.html.twig', array('form' => $form->createView()));
 
-    }
 
-    /**
-     * @Route("/commentaires{id_pub}",name="commentaires")
-     */
-    public function affichercommentaires($id_pub): Response
-    {
-        $em=$this->getDoctrine()->getManager();
-        $commentaires=$em->getRepository(Commentaires::class)->findBy(['id_pub'=> $id_pub]);
 
-        return $this->render('publications/commentaires.html.twig', array('commentaires'=>$commentaires));
-    }
-
-    /**
-     * @Route("/supprimerCommentaire/{id}",name="supprimerCommentaire")
-     */
-    public function supprimerCommentaire($id){
-        $em=$this->getDoctrine()->getManager();
-        $commentaires=$em->getRepository(Commentaires::class)->find($id);
-        $id_pub=$commentaires->getIdPub();
-        $em->remove($commentaires);
-        $em->flush();
-        return $this->redirectToRoute('commentaires', ['id_pub' => $id_pub]);
-
-    }
-
-    /**
-     * @Route("/editcom{id}",name="modifiercommentaire")
-     */
-    public function modifierCommentaire(Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $commentaires = $this->getDoctrine()->getRepository(Commentaires::class)->find($id);
-        $id_pub=$commentaires->getIdPub();
-        $form = $this->createForm(CommentairesType::class, $commentaires);
-
-        $form = $form->handleRequest($request);
-        if ($form->isSubmitted()) {
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($commentaires);
-            $em->flush();
-            return $this->redirectToRoute('commentaires', ['id_pub' => $id_pub]);
-        }
-        return $this->render('publications/editcom.html.twig', array('form' => $form->createView()));
-
-    }
 
 }

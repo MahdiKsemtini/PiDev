@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CommentairesRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CommentairesRepository::class)
@@ -29,6 +30,7 @@ class Commentaires
 
     /**
      * @ORM\Column(type="string", length=1000)
+     * @Assert\NotBlank(message="la description est obligatoire")
      */
     private $description;
 
