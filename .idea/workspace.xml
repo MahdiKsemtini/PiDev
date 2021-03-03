@@ -20,8 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8536dbc3-61f5-4edd-a3f8-2ef114c64d86" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/templates/formation/AjouterFormation.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/publications/forum.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/publications/forum.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/responsive.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/responsive.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/jquery-steps.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/jquery-steps.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,12 +154,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Revision" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\PiDev\templates\event_loisir" />
+      <recent name="C:\wamp64\www\PiDev\templates\formation" />
       <recent name="C:\wamp64\www\PiDev\templates\offre_stage" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -181,6 +187,12 @@
       <workItem from="1614372126520" duration="490000" />
       <workItem from="1614414389060" duration="2000" />
       <workItem from="1614414401935" duration="1592000" />
+      <workItem from="1614420486792" duration="1893000" />
+      <workItem from="1614522003771" duration="26450000" />
+      <workItem from="1614592337395" duration="14635000" />
+      <workItem from="1614629383973" duration="4301000" />
+      <workItem from="1614702678921" duration="583000" />
+      <workItem from="1614717627646" duration="6289000" />
     </task>
     <servers />
   </component>
@@ -200,9 +212,22 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="549" y="187" key="FileChooserDialogImpl" timestamp="1614362490104">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state x="384" y="34" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1614540345615">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="384" y="34" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1614540345615" />
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1614595374097">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1614595374097" />
+    <state x="488" y="158" key="FileChooserDialogImpl" timestamp="1614720034193">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="488" y="158" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1614720034193" />
     <state x="549" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1614362490104" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1614565819063">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1614565819063" />
   </component>
 </project>

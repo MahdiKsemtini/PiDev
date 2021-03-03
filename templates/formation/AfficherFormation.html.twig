@@ -1,0 +1,817 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RightJob{% endblock %}
+
+{% block css %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=9">
+    <meta name="description" content="Gambolthemes">
+    <meta name="author" content="Gambolthemes">
+    <title>Cursus - Create New Course</title>
+
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/png" href="images/fav.png">
+
+    <!-- Stylesheets -->
+    <link href={{asset('http://fonts.googleapis.com/css?family=Roboto:400,700,500')}} rel='stylesheet'>
+    <link href={{asset('vendor/unicons-2.0.1/css/unicons.css')}} rel='stylesheet'>
+    <link href={{asset("css/vertical-responsive-menu1.min.css")}} rel="stylesheet">
+    <link href={{asset("css/instructor-dashboard.css")}} rel="stylesheet">
+    <link href={{asset("css/instructor-responsive.css")}} rel="stylesheet">
+    <link href={{asset("css/night-mode.css")}} rel="stylesheet">
+    <link href={{asset("css/jquery-steps.css")}} rel="stylesheet">
+
+    <!-- Vendor Stylesheets -->
+    <link href={{asset("vendor/fontawesome-free/css/all.min.css")}} rel="stylesheet">
+    <link href={{asset("vendor/OwlCarousel/assets/owl.carousel.css")}} rel="stylesheet">
+    <link href={{asset("vendor/OwlCarousel/assets/owl.theme.default.min.css")}} rel="stylesheet">
+    <link href={{asset("vendor/bootstrap/css/bootstrap.min.css")}} rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href={{asset("vendor/semantic/semantic.min.css")}}>
+
+
+{% endblock %}
+{% block body %}
+    <!DOCTYPE html>
+    <html lang="en">
+
+
+    <!-- Mirrored from gambolthemes.net/html-items/cursus_demo_f12/instructor_profile_view.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 20 Jun 2020 12:57:20 GMT -->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, shrink-to-fit=9">
+        <meta name="description" content="Gambolthemes">
+        <meta name="author" content="Gambolthemes">
+        <title>Cursus - Instructor Profile View</title>
+
+        <!-- Favicon Icon -->
+        <link rel="icon" type="image/png" href="images/fav.png">
+
+        <!-- Stylesheets -->
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet'>
+        <link href='vendor/unicons-2.0.1/css/unicons.css' rel='stylesheet'>
+        <link href="css/vertical-responsive-menu.min.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/responsive.css" rel="stylesheet">
+        <link href="css/night-mode.css" rel="stylesheet">
+
+        <!-- Vendor Stylesheets -->
+        <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+        <link href="vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
+        <link href="vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet">
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="vendor/semantic/semantic.min.css">
+
+    </head>
+
+    <body>
+    <!-- Header Start -->
+    <!-- Header End -->
+    <!-- Left Sidebar Start -->
+    <nav class="vertical_nav">
+        <div class="left_section menu_left" id="js-menu" >
+            <div class="left_section">
+                <ul>
+                    <li class="menu--item">
+                        <a href="index.html" class="menu--link" title="Home">
+                            <i class='uil uil-home-alt menu--icon'></i>
+                            <span class="menu--label">Home</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="live_streams.html" class="menu--link" title="Live Streams">
+                            <i class='uil uil-kayak menu--icon'></i>
+                            <span class="menu--label">Live Streams</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="explore.html" class="menu--link" title="Explore">
+                            <i class='uil uil-search menu--icon'></i>
+                            <span class="menu--label">Explore</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="http://www.gambolthemes.net/html-items/cursus_demo_f12/liked_courses.html" class="menu--link" title="Liked Courses">
+                            <i class='uil uil-thumbs-up menu--icon'></i>
+                            <span class="menu--label">Liked Courses</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="categories.html" class="menu--link" title="Categories">
+                            <i class='uil uil-layers menu--icon'></i>
+                            <span class="menu--label">Categories</span>
+                        </a>
+                    </li>
+                    <li class="menu--item  menu--item__has_sub_menu">
+                        <label class="menu--link" title="Tests">
+                            <i class='uil uil-clipboard-alt menu--icon'></i>
+                            <span class="menu--label">Tests</span>
+                        </label>
+                        <ul class="sub_menu">
+                            <li class="sub_menu--item">
+                                <a href="certification_center.html" class="sub_menu--link">Certification Center</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="certification_start_form.html" class="sub_menu--link">Certification Fill Form</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="certification_test_view.html" class="sub_menu--link">Test View</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="certification_test__result.html" class="sub_menu--link">Test Result</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="http://www.gambolthemes.net/html-items/edututs+/Instructor_Dashboard/my_certificates.html" class="sub_menu--link">My Certification</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu--item">
+                        <a href="http://www.gambolthemes.net/html-items/cursus_demo_f12/history.html" class="menu--link" title="History">
+                            <i class='uil uil-history menu--icon'></i>
+                            <span class="menu--label">History</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="http://www.gambolthemes.net/html-items/cursus_demo_f12/watch_later.html" class="menu--link" title="Watch Later">
+                            <i class='uil uil-clock-three menu--icon'></i>
+                            <span class="menu--label">Watch Later</span>
+                        </a>
+                    </li>
+                    <li class="menu--item  menu--item__has_sub_menu">
+                        <label class="menu--link" title="Pages">
+                            <i class='uil uil-file menu--icon'></i>
+                            <span class="menu--label">Pages</span>
+                        </label>
+                        <ul class="sub_menu">
+                            <li class="sub_menu--item">
+                                <a href="about_us.html" class="sub_menu--link">About</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="sign_in.html" class="sub_menu--link">Sign In</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="sign_up.html" class="sub_menu--link">Sign Up</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="sign_up_steps.html" class="sub_menu--link">Sign Up Steps</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="membership.html" class="sub_menu--link">Paid Membership</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="course_detail_view.html" class="sub_menu--link">Course Detail View</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="checkout_membership.html" class="sub_menu--link">Checkout</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="invoice.html" class="sub_menu--link">Invoice</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="career.html" class="sub_menu--link">Career</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="apply_job.html" class="sub_menu--link">Job Apply</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="our_blog.html" class="sub_menu--link">Our Blog</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="blog_single_view.html" class="sub_menu--link">Blog Detail View</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="company_details.html" class="sub_menu--link">Company Details</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="press.html" class="sub_menu--link">Press</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="live_output.html" class="sub_menu--link">Live Stream View</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="add_streaming.html" class="sub_menu--link">Add live Stream</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="search_result.html" class="sub_menu--link">Search Result</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="thank_you.html" class="sub_menu--link">Thank You</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="coming_soon.html" class="sub_menu--link">Coming Soon</a>
+                            </li>
+                            <li class="sub_menu--item">
+                                <a href="error_404.html" class="sub_menu--link">Error 404</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="left_section">
+                <h6 class="left_title">SUBSCRIPTIONS</h6>
+                <ul>
+                    <li class="menu--item">
+                        <a href="instructor_profile_view.html" class="menu--link user_img">
+                            <img src="images/left-imgs/img-1.jpg" alt="">
+                            Rock Smith
+                            <div class="alrt_dot"></div>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="instructor_profile_view.html" class="menu--link user_img">
+                            <img src="images/left-imgs/img-2.jpg" alt="">
+                            Jassica William
+                        </a>
+                        <div class="alrt_dot"></div>
+                    </li>
+                    <li class="menu--item">
+                        <a href="all_instructor.html" class="menu--link" title="Browse Instructors">
+                            <i class='uil uil-plus-circle menu--icon'></i>
+                            <span class="menu--label">Browse Instructors</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="left_section pt-2">
+                <ul>
+                    <li class="menu--item">
+                        <a href="setting.html" class="menu--link" title="Setting">
+                            <i class='uil uil-cog menu--icon'></i>
+                            <span class="menu--label">Setting</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="help.html" class="menu--link" title="Help">
+                            <i class='uil uil-question-circle menu--icon'></i>
+                            <span class="menu--label">Help</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="report_history.html" class="menu--link" title="Report History">
+                            <i class='uil uil-windsock menu--icon'></i>
+                            <span class="menu--label">Report History</span>
+                        </a>
+                    </li>
+                    <li class="menu--item">
+                        <a href="feedback.html" class="menu--link" title="Send Feedback">
+                            <i class='uil uil-comment-alt-exclamation menu--icon'></i>
+                            <span class="menu--label">Send Feedback</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="left_footer">
+                <ul>
+                    <li><a href="about_us.html">About</a></li>
+                    <li><a href="press.html">Press</a></li>
+                    <li><a href="contact_us.html">Contact Us</a></li>
+                    <li><a href="coming_soon.html">Advertise</a></li>
+                    <li><a href="coming_soon.html">Developers</a></li>
+                    <li><a href="terms_of_use.html">Copyright</a></li>
+                    <li><a href="terms_of_use.html">Privacy Policy</a></li>
+                    <li><a href="terms_of_use.html">Terms</a></li>
+                </ul>
+                <div class="left_footer_content">
+                    <p>© 2020 <strong>Cursus</strong>. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Left Sidebar End -->
+    <!-- Body Start -->
+    <div class="wrapper _bg4586">
+        <div class="_216b01">
+
+        </div>
+
+        <div class="_215b17">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="course_tab_content">
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-about" role="tabpanel">
+                                    <div class="_htg451">
+                                        <div class="_htg452">
+                                            <br class="col-lg-12 col-md-12">
+                                                <div class="table-responsive mt-50 mb-0">
+                                                    <table class="table ucp-table">
+                                                        <thead class="thead-s">
+                                                        <tr>
+
+                                                            <th class="text-center" scope="col">Labelle</th>
+                                                            <th class="text-center" scope="col">Description</th>
+                                                            <th class="text-center" scope="col">DateDebut</th>
+                                                            <th class="text-center" scope="col">Datefin</th>
+                                                            <th class="text-center" scope="col">Lieu</th>
+                                                            <th class="text-center" scope="col">Domaine</th>
+                                                            <th class="text-center" scope="col">montant</th>
+
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        {% for f in formations %}
+                                                            <tr>
+
+
+                                                                <td class="text-center">{{f.Labelle}} </td>
+                                                                <td class="text-center">{{f.Description}}</td>
+                                                                <td class="text-center">{{f.DateDebut|date('Y-m-d')}}</td>
+                                                                <td class="text-center">{{f.DateFin|date('Y-m-d')}}</td>
+                                                                <td class="text-center">{{f.Lieu}}</td>
+                                                                <td class="text-center">{{f.Domaine}}</a></td>
+                                                                <td class="text-center">{{f.Montant}}</a></td>
+                                                                <td class="text-center">
+                                                                    <a href="{{ path("ModifierFormation",{'id':f.idF}) }}"  title="Edit" class="gray-s"><i class="uil uil-edit-alt"></i></a>
+                                                                    <a href="{{ path("deleteFormation",{'id':f.idF}) }}"  title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a>
+                                                                </td>
+
+                                                            </tr>
+                                                        {% else %}
+                                                            <tr> <td colspan="7" class="text-center">Pas de formations </td></tr>
+                                                        {% endfor %}
+
+                                                        </tbody>
+                                                    </table>
+
+                                            </div>
+                                            </br></br>
+
+                                                <form action="{{ path('addFormation') }}">
+                                                    <button class="btn btn-default steps_btn">Ajouter</button>
+                                                </form>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-about" role="tabpanel">
+                                    <div class="_htg451">
+                                        <div class="_htg452">
+                                            <br class="col-lg-12 col-md-12">
+                                            <div class="table-responsive mt-50 mb-0">
+                                                <table class="table ucp-table">
+                                                    <thead class="thead-s">
+                                                    <tr>
+
+                                                        <th class="text-center" scope="col">Labelle</th>
+                                                        <th class="text-center" scope="col">Description</th>
+                                                        <th class="text-center" scope="col">DateDebut</th>
+                                                        <th class="text-center" scope="col">Datefin</th>
+                                                        <th class="text-center" scope="col">Lieu</th>
+                                                        <th class="text-center" scope="col">Domaine</th>
+                                                        <th class="text-center" scope="col">montant</th>
+
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    {% for fo in forms %}
+                                                        <tr>
+
+
+                                                            <td class="text-center">{{fo.Labelle}} </td>
+                                                            <td class="text-center">{{fo.Description}}</td>
+                                                            <td class="text-center">{{fo.DateDebut|date('Y-m-d')}}</td>
+                                                            <td class="text-center">{{fo.DateFin|date('Y-m-d')}}</td>
+                                                            <td class="text-center">{{fo.Lieu}}</td>
+                                                            <td class="text-center">{{fo.Domaine}}</a></td>
+                                                            <td class="text-center">{{fo.Montant}}</a></td>
+
+
+                                                        </tr>
+                                                    {% else %}
+                                                        <tr> <td colspan="7" class="text-center">Pas de formations </td></tr>
+                                                    {% endfor %}
+
+
+                                                    </tbody>
+                                                </table>
+
+                                            </div>
+                                            </br></br>
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="tab-pane fade" id="nav-courses" role="tabpanel">
+                                    <div class="crse_content">
+                                        <h3>My courses (8)</h3>
+                                        <div class="_14d25">
+                                            <div class="row">
+                                                <div class="col-lg-3 col-md-4">
+                                                    <div class="fcrse_1 mt-30">
+                                                        <a href="course_detail_view.html" class="fcrse_img">
+                                                            <img src="images/courses/img-1.jpg" alt="">
+                                                            <div class="course-overlay">
+                                                                <div class="badge_seller">Bestseller</div>
+                                                                <div class="crse_reviews">
+                                                                    <i class="uil uil-star"></i>4.5
+                                                                </div>
+                                                                <span class="play_btn1"><i class="uil uil-play"></i></span>
+                                                                <div class="crse_timer">
+                                                                    25 hours
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                        <div class="fcrse_content">
+                                                            <div class="eps_dots more_dropdown">
+                                                                <a href="#"><i class="uil uil-ellipsis-v"></i></a>
+                                                                <div class="dropdown-content">
+                                                                    <span><i class="uil uil-share-alt"></i>Share</span>
+                                                                    <span><i class="uil uil-clock-three"></i>Save</span>
+                                                                    <span><i class="uil uil-ban"></i>Not Interested</span>
+                                                                    <span><i class="uil uil-windsock"></i>Report</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="vdtodt">
+                                                                <span class="vdt14">109k views</span>
+                                                                <span class="vdt14">15 days ago</span>
+                                                            </div>
+                                                            <a href="course_detail_view.html" class="crse14s">Complete Python Bootcamp: Go from zero to hero in Python 3</a>
+                                                            <a href="#" class="crse-cate">Web Development | Python</a>
+                                                            <div class="auth1lnkprce">
+                                                                <p class="cr1fot">By <a href="#">John Doe</a></p>
+                                                                <div class="prce142">$10</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4">
+                                                    <div class="fcrse_1 mt-30">
+                                                        <a href="course_detail_view.html" class="fcrse_img">
+                                                            <img src="images/courses/img-2.jpg" alt="">
+                                                            <div class="course-overlay">
+                                                                <div class="badge_seller">Bestseller</div>
+                                                                <div class="crse_reviews">
+                                                                    <i class="uil uil-star"></i>4.5
+                                                                </div>
+                                                                <span class="play_btn1"><i class="uil uil-play"></i></span>
+                                                                <div class="crse_timer">
+                                                                    28 hours
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                        <div class="fcrse_content">
+                                                            <div class="eps_dots more_dropdown">
+                                                                <a href="#"><i class="uil uil-ellipsis-v"></i></a>
+                                                                <div class="dropdown-content">
+                                                                    <span><i class="uil uil-share-alt"></i>Share</span>
+                                                                    <span><i class="uil uil-clock-three"></i>Save</span>
+                                                                    <span><i class="uil uil-ban"></i>Not Interested</span>
+                                                                    <span><i class="uil uil-windsock"></i>Report</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="vdtodt">
+                                                                <span class="vdt14">5M views</span>
+                                                                <span class="vdt14">15 days ago</span>
+                                                            </div>
+                                                            <a href="course_detail_view.html" class="crse14s">The Complete JavaScript Course 2020: Build Real Projects!</a>
+                                                            <a href="#" class="crse-cate">Development | JavaScript</a>
+                                                            <div class="auth1lnkprce">
+                                                                <p class="cr1fot">By <a href="#">John Doe</a></p>
+                                                                <div class="prce142">$5</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4">
+                                                    <div class="fcrse_1 mt-30">
+                                                        <a href="course_detail_view.html" class="fcrse_img">
+                                                            <img src="images/courses/img-20.jpg" alt="">
+                                                            <div class="course-overlay">
+                                                                <div class="crse_reviews">
+                                                                    <i class="uil uil-star"></i>5.0
+                                                                </div>
+                                                                <span class="play_btn1"><i class="uil uil-play"></i></span>
+                                                                <div class="crse_timer">
+                                                                    21 hours
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                        <div class="fcrse_content">
+                                                            <div class="eps_dots more_dropdown">
+                                                                <a href="#"><i class="uil uil-ellipsis-v"></i></a>
+                                                                <div class="dropdown-content">
+                                                                    <span><i class="uil uil-share-alt"></i>Share</span>
+                                                                    <span><i class="uil uil-clock-three"></i>Save</span>
+                                                                    <span><i class="uil uil-ban"></i>Not Interested</span>
+                                                                    <span><i class="uil uil-windsock"></i>Report</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="vdtodt">
+                                                                <span class="vdt14">200 Views</span>
+                                                                <span class="vdt14">4 days ago</span>
+                                                            </div>
+                                                            <a href="course_detail_view.html" class="crse14s">WordPress Development - Themes, Plugins &amp; Gutenberg</a>
+                                                            <a href="#" class="crse-cate">Design | Wordpress</a>
+                                                            <div class="auth1lnkprce">
+                                                                <p class="cr1fot">By <a href="#">John Doe</a></p>
+                                                                <div class="prce142">$14</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4">
+                                                    <div class="fcrse_1 mt-30">
+                                                        <a href="course_detail_view.html" class="fcrse_img">
+                                                            <img src="images/courses/img-4.jpg" alt="">
+                                                            <div class="course-overlay">
+                                                                <div class="badge_seller">Bestseller</div>
+                                                                <div class="crse_reviews">
+                                                                    <i class="uil uil-star"></i>5.0
+                                                                </div>
+                                                                <span class="play_btn1"><i class="uil uil-play"></i></span>
+                                                                <div class="crse_timer">
+                                                                    1 hour
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                        <div class="fcrse_content">
+                                                            <div class="eps_dots more_dropdown">
+                                                                <a href="#"><i class="uil uil-ellipsis-v"></i></a>
+                                                                <div class="dropdown-content">
+                                                                    <span><i class="uil uil-share-alt"></i>Share</span>
+                                                                    <span><i class="uil uil-clock-three"></i>Save</span>
+                                                                    <span><i class="uil uil-ban"></i>Not Interested</span>
+                                                                    <span><i class="uil uil-windsock"></i>Report</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="vdtodt">
+                                                                <span class="vdt14">153k views</span>
+                                                                <span class="vdt14">3 months ago</span>
+                                                            </div>
+                                                            <a href="course_detail_view.html" class="crse14s">The Complete Digital Marketing Course - 12 Courses in 1</a>
+                                                            <a href="#" class="crse-cate">Digital Marketing | Marketing</a>
+                                                            <div class="auth1lnkprce">
+                                                                <p class="cr1fot">By <a href="#">John Doe</a></p>
+                                                                <div class="prce142">$12</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4">
+                                                    <div class="fcrse_1 mt-30">
+                                                        <a href="course_detail_view.html" class="fcrse_img">
+                                                            <img src="images/courses/img-13.jpg" alt="">
+                                                            <div class="course-overlay">
+                                                                <span class="play_btn1"><i class="uil uil-play"></i></span>
+                                                                <div class="crse_timer">
+                                                                    30 hours
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                        <div class="fcrse_content">
+                                                            <div class="eps_dots more_dropdown">
+                                                                <a href="#"><i class="uil uil-ellipsis-v"></i></a>
+                                                                <div class="dropdown-content">
+                                                                    <span><i class="uil uil-share-alt"></i>Share</span>
+                                                                    <span><i class="uil uil-clock-three"></i>Save</span>
+                                                                    <span><i class="uil uil-ban"></i>Not Interested</span>
+                                                                    <span><i class="uil uil-windsock"></i>Report</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="vdtodt">
+                                                                <span class="vdt14">20 Views</span>
+                                                                <span class="vdt14">1 day ago</span>
+                                                            </div>
+                                                            <a href="course_detail_view.html" class="crse14s">The Complete Node.js Developer Course (3rd Edition)</a>
+                                                            <a href="#" class="crse-cate">Development | Node.js</a>
+                                                            <div class="auth1lnkprce">
+                                                                <p class="cr1fot">By <a href="#">John Doe</a></p>
+                                                                <div class="prce142">$3</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4">
+                                                    <div class="fcrse_1 mt-30">
+                                                        <a href="course_detail_view.html" class="fcrse_img">
+                                                            <img src="images/courses/img-7.jpg" alt="">
+                                                            <div class="course-overlay">
+                                                                <div class="badge_seller">Bestseller</div>
+                                                                <div class="crse_reviews">
+                                                                    <i class="uil uil-star"></i>5.0
+                                                                </div>
+                                                                <span class="play_btn1"><i class="uil uil-play"></i></span>
+                                                                <div class="crse_timer">
+                                                                    5.4 hours
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                        <div class="fcrse_content">
+                                                            <div class="eps_dots more_dropdown">
+                                                                <a href="#"><i class="uil uil-ellipsis-v"></i></a>
+                                                                <div class="dropdown-content">
+                                                                    <span><i class="uil uil-share-alt"></i>Share</span>
+                                                                    <span><i class="uil uil-clock-three"></i>Save</span>
+                                                                    <span><i class="uil uil-ban"></i>Not Interested</span>
+                                                                    <span><i class="uil uil-windsock"></i>Report</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="vdtodt">
+                                                                <span class="vdt14">109k views</span>
+                                                                <span class="vdt14">15 days ago</span>
+                                                            </div>
+                                                            <a href="course_detail_view.html" class="crse14s">WordPress for Beginners: Create a Website Step by Step</a>
+                                                            <a href="#" class="crse-cate">Design | Wordpress</a>
+                                                            <div class="auth1lnkprce">
+                                                                <p class="cr1fot">By <a href="#">John Doe</a></p>
+                                                                <div class="prce142">$18</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4">
+                                                    <div class="fcrse_1 mt-30">
+                                                        <a href="course_detail_view.html" class="fcrse_img">
+                                                            <img src="images/courses/img-8.jpg" alt="">
+                                                            <div class="course-overlay">
+                                                                <div class="badge_seller">Bestseller</div>
+                                                                <div class="crse_reviews">
+                                                                    <i class="uil uil-star"></i>4.0
+                                                                </div>
+                                                                <span class="play_btn1"><i class="uil uil-play"></i></span>
+                                                                <div class="crse_timer">
+                                                                    23 hours
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                        <div class="fcrse_content">
+                                                            <div class="eps_dots more_dropdown">
+                                                                <a href="#"><i class="uil uil-ellipsis-v"></i></a>
+                                                                <div class="dropdown-content">
+                                                                    <span><i class="uil uil-share-alt"></i>Share</span>
+                                                                    <span><i class="uil uil-clock-three"></i>Save</span>
+                                                                    <span><i class="uil uil-ban"></i>Not Interested</span>
+                                                                    <span><i class="uil uil-windsock"></i>Report</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="vdtodt">
+                                                                <span class="vdt14">196k views</span>
+                                                                <span class="vdt14">1 month ago</span>
+                                                            </div>
+                                                            <a href="course_detail_view.html" class="crse14s">CSS - The Complete Guide 2020 (incl. Flexbox, Grid &amp; Sass)</a>
+                                                            <a href="#" class="crse-cate">Design | CSS</a>
+                                                            <div class="auth1lnkprce">
+                                                                <p class="cr1fot">By <a href="#">John Doe</a></p>
+                                                                <div class="prce142">$10</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3 col-md-4">
+                                                    <div class="fcrse_1 mt-30">
+                                                        <a href="course_detail_view.html" class="fcrse_img">
+                                                            <img src="images/courses/img-16.jpg" alt="">
+                                                            <div class="course-overlay">
+                                                                <span class="play_btn1"><i class="uil uil-play"></i></span>
+                                                                <div class="crse_timer">
+                                                                    22 hours
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                        <div class="fcrse_content">
+                                                            <div class="eps_dots more_dropdown">
+                                                                <a href="#"><i class="uil uil-ellipsis-v"></i></a>
+                                                                <div class="dropdown-content">
+                                                                    <span><i class="uil uil-share-alt"></i>Share</span>
+                                                                    <span><i class="uil uil-clock-three"></i>Save</span>
+                                                                    <span><i class="uil uil-ban"></i>Not Interested</span>
+                                                                    <span><i class="uil uil-windsock"></i>Report</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="vdtodt">
+                                                                <span class="vdt14">11 Views</span>
+                                                                <span class="vdt14">5 Days ago</span>
+                                                            </div>
+                                                            <a href="course_detail_view.html" class="crse14s">Vue JS 2 - The Complete Guide (incl. Vue Router &amp; Vuex)</a>
+                                                            <a href="#" class="crse-cate">Development | Vue JS</a>
+                                                            <div class="auth1lnkprce">
+                                                                <p class="cr1fot">By <a href="#">John Doe</a></p>
+                                                                <div class="prce142">$10</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="nav-reviews" role="tabpanel">
+                                    <div class="student_reviews">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="review_right">
+                                                    <div class="review_right_heading">
+                                                        <h3>Discussions</h3>
+                                                    </div>
+                                                </div>
+                                                <div class="cmmnt_1526">
+                                                    <div class="cmnt_group">
+                                                        <div class="img160">
+                                                            <img src="images/left-imgs/img-1.jpg" alt="">
+                                                        </div>
+                                                        <textarea class="_cmnt001" placeholder="Add a public comment"></textarea>
+                                                    </div>
+                                                    <button class="cmnt-btn" type="submit">Comment</button>
+                                                </div>
+                                                <div class="review_all120">
+                                                    <div class="review_item">
+                                                        <div class="review_usr_dt">
+                                                            <img src="images/left-imgs/img-1.jpg" alt="">
+                                                            <div class="rv1458">
+                                                                <h4 class="tutor_name1">John Doe</h4>
+                                                                <span class="time_145">2 hour ago</span>
+                                                            </div>
+                                                            <div class="eps_dots more_dropdown">
+                                                                <a href="#"><i class="uil uil-ellipsis-v"></i></a>
+                                                                <div class="dropdown-content">
+                                                                    <span><i class='uil uil-comment-alt-edit'></i>Edit</span>
+                                                                    <span><i class='uil uil-trash-alt'></i>Delete</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <p class="rvds10">Nam gravida elit a velit rutrum, eget dapibus ex elementum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce lacinia, nunc sit amet tincidunt venenatis.</p>
+                                                        <div class="rpt101">
+                                                            <a href="#" class="report155"><i class='uil uil-thumbs-up'></i> 10</a>
+                                                            <a href="#" class="report155"><i class='uil uil-thumbs-down'></i> 1</a>
+                                                            <a href="#" class="report155"><i class='uil uil-heart'></i></a>
+                                                            <a href="#" class="report155 ml-3">Reply</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="review_reply">
+                                                        <div class="review_item">
+                                                            <div class="review_usr_dt">
+                                                                <img src="images/left-imgs/img-3.jpg" alt="">
+                                                                <div class="rv1458">
+                                                                    <h4 class="tutor_name1">Rock Doe</h4>
+                                                                    <span class="time_145">1 hour ago</span>
+                                                                </div>
+                                                                <div class="eps_dots more_dropdown">
+                                                                    <a href="#"><i class="uil uil-ellipsis-v"></i></a>
+                                                                    <div class="dropdown-content">
+                                                                        <span><i class='uil uil-trash-alt'></i>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <p class="rvds10">Fusce lacinia, nunc sit amet tincidunt venenatis.</p>
+                                                            <div class="rpt101">
+                                                                <a href="#" class="report155"><i class='uil uil-thumbs-up'></i> 4</a>
+                                                                <a href="#" class="report155"><i class='uil uil-thumbs-down'></i> 2</a>
+                                                                <a href="#" class="report155"><i class='uil uil-heart'></i></a>
+                                                                <a href="#" class="report155 ml-3">Reply</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Body End -->
+
+    <script src="js/vertical-responsive-menu.min.js"></script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/OwlCarousel/owl.carousel.js"></script>
+    <script src="vendor/semantic/semantic.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/night-mode.js"></script>
+
+    </body>
+
+    <!-- Mirrored from gambolthemes.net/html-items/cursus_demo_f12/instructor_profile_view.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 20 Jun 2020 12:57:24 GMT -->
+    </html>
+{% endblock %}
+
+{% block js %}
+    <script src="{{asset('js/vertical-responsive-menu.min.js')}}"></script>
+    <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
+    <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('vendor/OwlCarousel/owl.carousel.js')}}"></script>
+    <script src="{{asset('vendor/semantic/semantic.min.js')}}"></script>
+    <script src="{{asset('js/custom.js')}}"></script>
+    <script src="{{asset('js/night-mode.js')}}"></script>
+    <script src="{{asset('js/jquery-steps.min.js')}}"></script>
+    <script>
+        $('#add-course-tab').steps({
+            onFinish: function () {
+                alert('Wizard Completed');
+            }
+        });
+
+    </script>
+{% endblock %}
