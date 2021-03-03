@@ -21,15 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8536dbc3-61f5-4edd-a3f8-2ef114c64d86" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CommentairesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CommentairesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/PublicationsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PublicationsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Commentaires.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Commentaires.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/publications/addcom.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Front/publications/addcom.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/publications/addpost.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Front/publications/addpost.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/publications/commentaires.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Front/publications/commentaires.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/publications/editcom.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Front/publications/editcom.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/publications/forum.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Front/publications/forum.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/publications/forumedit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Front/publications/forumedit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/publications/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Front/publications/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,7 +216,7 @@
       <workItem from="1614682713514" duration="6265000" />
       <workItem from="1614694218114" duration="7414000" />
       <workItem from="1614748996764" duration="2587000" />
-      <workItem from="1614780495674" duration="10852000" />
+      <workItem from="1614780495674" duration="12538000" />
     </task>
     <servers />
   </component>

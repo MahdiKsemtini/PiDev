@@ -108,7 +108,7 @@ class CommentairesController extends AbstractController
         $form = $this->createForm(CommentairesType::class, $commentaires);
 
         $form = $form->handleRequest($request);
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() and $form->isValid()) {
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($commentaires);

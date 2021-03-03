@@ -129,7 +129,7 @@ class PublicationsController extends AbstractController
         $form = $this->createForm(PublicationsType::class, $publications);
 
         $form = $form->handleRequest($request);
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() and $form->isValid()) {
             $file = $publications->getImage();
             $filename = md5(uniqid()).'.'.$file->guessExtension();
             $file->move($this->getParameter('upload_directory'),$filename);
