@@ -55,7 +55,7 @@
     <div class="header_right">
         <ul>
             <li>
-                <a href="create_new_course.html" class="upload_btn">Create New Admin</a>
+                <a href="{{ path('CreateAdmin') }}" class="upload_btn">Create New Admin</a>
             </li>
             <li>
                 <a href="index.html" class="option_links"><i class='uil uil-home-alt'></i><span class="noti_count">9+</span></a>
@@ -146,7 +146,7 @@
                     </a>
                 </li>
                 <li class="menu--item">
-                    <a href="explore.html" class="menu--link" title="Explore">
+                    <a href="{{ path('super_admin') }}" class="menu--link" title="Explore">
                         <i class='uil uil-search menu--icon'></i>
                         <span class="menu--label">Explore</span>
                     </a>
@@ -235,7 +235,7 @@
                             <div class="step-content">
                                 <div class="step-tab-panel step-tab-info active" id="tab_step1">
                                     <div class="tab-from-content">
-                                        {{ form_start(form) }}
+                                        {{ form_start(form,{'attr':{novalidate:'novalidate'}}) }}
                                         <div class="title-icon">
                                             <h3 class="title"><i class="uil uil-info-circle"></i>General Information</h3>
                                         </div>
@@ -248,7 +248,10 @@
                                                             <label>First Name*</label>
                                                             <div class="ui left icon input swdh19">
                                                                 {{ form_widget(form.nom) }}
-                                                                <div class="badge_num">60</div>
+                                                            </div>
+                                                            <div class="ui left icon input swdh19">
+                                                                {{ form_errors(form.nom) }}
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -257,7 +260,9 @@
                                                             <label>Last Name*</label>
                                                             <div class="ui left icon input swdh19">
                                                                 {{ form_widget(form.prenom) }}
-                                                                <div class="badge_num2">120</div>
+                                                            </div>
+                                                            <div class="ui left icon input swdh19">
+                                                                {{ form_errors(form.prenom) }}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -265,7 +270,10 @@
                                                         <div class="ui search focus mt-30 lbel25">
                                                             <label>Login*</label>
                                                             <div class="ui left icon input swdh19">
-                                                                {{ form_widget(form.login)}}                                                                <div class="badge_num">60</div>
+                                                                {{ form_widget(form.login)}}
+                                                            </div>
+                                                            <div class="ui left icon input swdh19">
+                                                                {{ form_errors(form.login) }}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -274,7 +282,9 @@
                                                             <label>Password*</label>
                                                             <div class="ui left icon input swdh19">
                                                                 {{ form_widget(form.password)}}
-                                                                <div class="badge_num2">120</div>
+                                                            </div>
+                                                            <div class="ui left icon input swdh19">
+                                                                {{ form_errors(form.password) }}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -286,11 +296,17 @@
                                                         </div>
                                                         {{ form_widget(form.type) }}
                                                     </div>
+                                                    <div class="ui left icon input swdh19">
+                                                        {{ form_errors(form.type) }}
+                                                    </div>
                                                     <div class="col-lg-4 col-md-6">
                                                         <div class="mt-30 lbel25">
                                                             <label>Account  validation*</label>
                                                         </div>
                                                         {{ form_widget(form.etat) }}
+                                                    </div>
+                                                    <div class="ui left icon input swdh19">
+                                                        {{ form_errors(form.etat) }}
                                                     </div>
 
                                                 </div>

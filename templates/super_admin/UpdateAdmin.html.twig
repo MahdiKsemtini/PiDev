@@ -148,7 +148,7 @@
                     <li class="menu--item">
                         <a href="{{ path('super_admin') }}" class="menu--link" title="Explore">
                             <i class='uil uil-search menu--icon'></i>
-                            <span>Explore</span>
+                            <span class="menu--label">Explore</span>
                         </a>
                     </li>
                     <li class="menu--item">
@@ -221,100 +221,122 @@
     <!-- Body Start -->
     <div class="wrapper">
         <div class="sa4d25">
-            <div class="container-fluid">
+            <div class="container">
                 <div class="row">
-                    <div class="col-xl-12 col-lg-8">
-                        <div class="section3125">
-                            <div class="explore_search">
-                                <div class="ui search focus">
-                                    <div class="ui left icon input swdh11">
-                                        <input class="prompt srch_explore" type="text" placeholder="Search Tutors...">
-                                        <i class="uil uil-search-alt icon icon2"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col-lg-12">
+                        <h2 class="st_title"><i class="uil uil-analysis" style="text-align: center"></i> Create New Admin</h2>
                     </div>
-                    <div class="col-md-12">
-                        <div class="_14d25">
-                            <div class="row">
-                                {% if list is empty %}
-                                <h2 style="color: #bd2130"> No Admin available..Do you want to </h2><a href="{{ path('CreateAdmin') }}" class="upload_btn">Create New Admin</a>
-                                {% else %}
-                                {% for l in list %}
-                                <div class="col-xl-3 col-lg-4 col-md-6">
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="course_tabs_1">
+                            <div id="add-course-tab" class="step-app">
 
-                                    <div class="fcrse_1 mt-30">
-                                        <div class="tutor_img">
-                                            <a href="{{ path('ViewAdminProfile', {'id': l.id}) }}"><img src="{{ asset ('images/left-imgs/img-1.jpg')}}" alt=""></a>
-                                        </div>
-                                        <div class="tutor_content_dt">
-                                            <div class="tutor150">
-                                                <a href="{{ path ('ViewAdminProfile', {'id': l.id}) }}" class="tutor_name">{{ l.nom }} {{ l.prenom }}</a>
-                                                <div class="mef78" title="Verify">
-                                                    <i class="uil uil-check-circle"></i>
+                                <div class="step-content">
+                                    <div class="step-tab-panel step-tab-info active" id="tab_step1">
+                                        <div class="tab-from-content">
+                                            {{ form_start(form,{'attr':{novalidate:'novalidate'}}) }}
+                                            <div class="title-icon">
+                                                <h3 class="title"><i class="uil uil-info-circle"></i>General Information</h3>
+                                            </div>
+                                            <div class="course__form">
+                                                <div class="general_info10">
+                                                    <div class="row">
+
+                                                        <div class="col-lg-6 col-md-6">
+                                                            <div class="ui search focus mt-30 lbel25">
+                                                                <label>First Name*</label>
+                                                                <div class="ui left icon input swdh19">
+                                                                    {{ form_widget(form.nom) }}
+                                                                </div>
+                                                                <div class="ui left icon input swdh19">
+                                                                    {{ form_errors(form.nom) }}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6">
+                                                            <div class="ui search focus mt-30 lbel25">
+                                                                <label>Last Name*</label>
+                                                                <div class="ui left icon input swdh19">
+                                                                    {{ form_widget(form.prenom) }}
+                                                                    <div class="ui left icon input swdh19">
+                                                                {{ form_errors(form.prenom) }}
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6">
+                                                            <div class="ui search focus mt-30 lbel25">
+                                                                <label>Login*</label>
+                                                                <div class="ui left icon input swdh19">
+                                                                    {{ form_widget(form.login)}}
+                                                                    </div>
+                                                                <div class="ui left icon input swdh19">
+                                                                {{ form_errors(form.login) }}
+                                                            </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6 col-md-6">
+                                                            <div class="ui search focus mt-30 lbel25">
+                                                                <label>Password*</label>
+                                                                <div class="ui left icon input swdh19">
+                                                                    {{ form_widget(form.password)}}
+                                                                    </div>
+                                                                     <div class="ui left icon input swdh19">
+                                                                {{ form_errors(form.password) }}
+                                                            </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                        <div class="col-lg-4 col-md-6">
+                                                            <div class="mt-30 lbel25">
+                                                                <label>Account type*</label>
+                                                            </div>
+                                                            {{ form_widget(form.type) }}
+                                                        </div>
+                                                         <div class="ui left icon input swdh19">
+                                                        {{ form_errors(form.type) }}
+                                                    </div>
+                                                        <div class="col-lg-4 col-md-6">
+                                                            <div class="mt-30 lbel25">
+                                                                <label>Account  validation*</label>
+                                                            </div>
+                                                            {{ form_widget(form.etat) }}
+                                                        </div>
+                                                        <div class="ui left icon input swdh19">
+                                                        {{ form_errors(form.etat) }}
+                                                    </div>
+
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="tutor_cate">{{l.type}}</div>
-                                            <ul class="tutor_social_links">
-                                                <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
-                                                <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
-                                                <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
-                                                <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
-                                            </ul>
-                                            <div class="tut1250">
-                                                <span class="vdt15">0 Approved</span>
-                                                <span class="vdt15">0 Not Approved</span>
+                                            <br>
+                                            <div class="step-footer step-tab-pager">
+                                                <input type="submit" value="Submit" name="submit" class ='upload_btn'>
                                             </div>
+                                            {{ form_end(form) }}
                                         </div>
                                     </div>
 
+
                                 </div>
 
-                                {% endfor %}
-                                {% endif %}
-
-                                <div class="col-md-12">
-                                    <div class="main-loader mt-50">
-                                        <div class="spinner">
-                                            <div class="bounce1"></div>
-                                            <div class="bounce2"></div>
-                                            <div class="bounce3"></div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <footer class="footer mt-30">
-            <div class="container">
+        <footer class="footer mt-40">
+            <div class="container-fluid">
                 <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-6">
-                        <div class="item_f1">
-                            <a href="about_us.html">About</a>
-                            <a href="our_blog.html">Blog</a>
-                            <a href="career.html">Careers</a>
-
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6">
-                        <div class="item_f1">
-                            <a href="coming_soon.html">Advertise</a>
-                            <a href="coming_soon.html">Developers</a>
-                            <a href="contact_us.html">Contact Us</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="col-lg-12">
                         <div class="item_f1">
                             <a href="terms_of_use.html">Copyright Policy</a>
                             <a href="terms_of_use.html">Terms</a>
                             <a href="terms_of_use.html">Privacy Policy</a>
                         </div>
                     </div>
-
                     <div class="col-lg-12">
                         <div class="footer_bottm">
                             <div class="row">
@@ -328,7 +350,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <p>© 2020 <strong>Cursus</strong>. All Rights Reserved.</p>
+                                            <p>© 2020 <strong>PowerDev</strong>. All Rights Reserved.</p>
                                         </li>
                                     </ul>
                                 </div>

@@ -64,15 +64,16 @@ class AdminFormType extends AbstractType
                 ]
             ])
             ->add('etat', ChoiceType::class, [
+                'attr' => [
+                    'class'=>'ui hj145 dropdown cntry152 prompt srch_explore'
+                ],
                 'choices'  => [
                     'Account  validation' => null,
                     'Active' => 'Active',
                     'Inactive' => 'Inactive',
 
-                ],
-                'attr' => [
-                    'class'=>'ui hj145 dropdown cntry152 prompt srch_explore'
                 ]
+
             ])
         ;
     }

@@ -4,6 +4,9 @@ namespace App\Entity;
 
 use App\Repository\AdminRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Mapping\ClassMetadata;
+
 
 /**
  * @ORM\Entity(repositoryClass=AdminRepository::class)
@@ -122,5 +125,54 @@ class Admin
         $this->etat = $etat;
 
         return $this;
+    }
+
+
+
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+        $metadata->addPropertyConstraint('nom', new Assert\NotBlank([
+            'message' => 'Le champ de votre Nom est vide',
+        ]));
+        $metadata->addPropertyConstraint('nom', new Assert\Length([
+            'min' => 3,
+            'max'=>15,
+            'minMessage' => 'Votre Nom doit comporter au moins "{{limit}}" caractères',
+            'maxMessage' => 'Votre Nom ne peut pas comporter plus de "{{limit}}" caractères',
+        ]));
+
+        $metadata->addPropertyConstraint('prenom', new Assert\NotBlank([
+            'message' => 'Le champ de votre Prenom est vide',
+        ]));
+        $metadata->addPropertyConstraint('prenom', new Assert\Length([
+            'min' => 3,
+            'max'=>15,
+            'minMessage' => 'Votre Prenom doit comporter au moins "{{limit}}" caractères',
+            'maxMessage' => 'Votre Prénom ne peut pas comporter plus de "{{limit}}" caractères',
+        ]));
+
+        $metadata->addPropertyConstraint('login', new Assert\NotBlank([
+            'message' => 'Le champ de login est vide',
+        ]));
+        $metadata->addPropertyConstraint('login', new Assert\Length([
+            'min' => 4,
+            'max'=> 40,
+            'minMessage' => 'Votre login doit comporter au moins "{{limit}}" caractères',
+            'maxMessage' => 'Votre login ne peut pas comporter plus de "{{limit}}" caractères',
+        ]));
+        $metadata->addPropertyConstraint('login', new Assert\Email([
+            'message' => 'The login "{{ value }}" is not a valid email.',
+        ]));
+
+        $metadata->addPropertyConstraint('password', new Assert\NotBlank([
+            'message' => 'Le champ de votre Mot De Pass est vide',
+        ]));
+        $metadata->addPropertyConstraint('password', new Assert\Length([
+            'min' => 4,
+            'max'=> 20,
+            'minMessage' => 'Votre Mot De Pass doit comporter au moins "{{limit}}" caractères',
+            'maxMessage' => 'Votre Mot De Pass ne peut pas comporter plus de "{{limit}}" caractères',
+        ]));
+
     }
 }
