@@ -21,11 +21,6 @@ class Commentaires
     /**
      * @ORM\Column(type="integer")
      */
-    private $id_pub;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
     private $id_util;
 
     /**
@@ -39,22 +34,18 @@ class Commentaires
      */
     private $date_com;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Publications::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $id_pub;
+
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getIdPub(): ?int
-    {
-        return $this->id_pub;
-    }
-
-    public function setIdPub(int $id_pub): self
-    {
-        $this->id_pub = $id_pub;
-
-        return $this;
-    }
 
     public function getId_Util(): ?int
     {
@@ -103,4 +94,17 @@ class Commentaires
 
         return $this;
     }
+
+    public function getIdPub(): ?Publications
+    {
+        return $this->id_pub;
+    }
+
+    public function setIdPub( $id_pub): self
+    {
+        $this->id_pub = $id_pub;
+
+        return $this;
+    }
+
 }

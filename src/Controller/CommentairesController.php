@@ -57,11 +57,12 @@ class CommentairesController extends AbstractController
     /**
      * @Route("/addcom{id}",name="ajoutercom")
      */
-    public function ajouterCommentaire(Request $request, $id)
+    public function ajouterCommentaire(Request $request,int $id)
     {
-        $publications = $this->getDoctrine()->getRepository(Publications::class)->find($id);
+        $em=$this->getDoctrine()->getManager();
+        $publications=$em->getRepository(Publications::class)->find($id);
         $commentaire = new Commentaires();
-        $commentaire->setIdPub($id);
+        $commentaire->setIdPub($publications);
         $commentaire->setDateCom(new \DateTime('now'));
 
 
@@ -93,16 +94,16 @@ class CommentairesController extends AbstractController
         $id_pub=$commentaires->getIdPub();
         $em->remove($commentaires);
         $em->flush();
-        return $this->redirectToRoute('commentaires', ['id_pub' => $id_pub]);
+        return $this->redirectToRoute('forum');
 
     }
 
     /**
      * @Route("/editcom{id}",name="modifiercommentaire")
      */
-    public function modifierCommentaire(Request $request, $id)
+    public function modifierCommentaire(Request $request,int $id)
     {
-        $em = $this->getDoctrine()->getManager();
+
         $commentaires = $this->getDoctrine()->getRepository(Commentaires::class)->find($id);
         $id_pub=$commentaires->getIdPub();
         $form = $this->createForm(CommentairesType::class, $commentaires);
@@ -113,7 +114,7 @@ class CommentairesController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($commentaires);
             $em->flush();
-            return $this->redirectToRoute('commentaires', ['id_pub' => $id_pub]);
+            return $this->redirectToRoute('forum');
         }
         return $this->render('Front/publications/editcom.html.twig', array('form' => $form->createView()));
 
