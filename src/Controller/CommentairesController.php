@@ -15,29 +15,50 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\HttpFoundation\HttpFoundationRequestHandler;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Knp\Component\Pager\PaginatorInterface;
 
 class CommentairesController extends AbstractController
 {
     /**
      * @Route("/commentaires{id_pub}",name="commentaires")
      */
-    public function afficherCommentaires($id_pub): Response
+    public function afficherCommentaires(Request $request, $id_pub): Response
     {
         $em=$this->getDoctrine()->getManager();
-        $commentaires=$em->getRepository(Commentaires::class)->findBy(['id_pub'=> $id_pub]);
+        $com=$em->getRepository(Commentaires::class)->findBy(['id_pub'=> $id_pub]);
+        $id=$id_pub;
+        $publications=$em->getRepository(Publications::class)->find($id);
+        $commentaire = new Commentaires();
+        $commentaire->setIdPub($publications);
+        $commentaire->setDateCom(new \DateTime('now'));
 
-        return $this->render('Front/publications/commentaires.html.twig', array('commentaires'=>$commentaires));
+
+        $form1 = $this->createForm(CommentairesType::class, $commentaire);
+        $form1->handleRequest($request);
+
+        if ($form1->isSubmitted() and $form1->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($commentaire);
+            $em->flush();
+
+
+            return $this->redirect('forum');
+        }
+
+        return $this->render('Front/publications/commentaires.html.twig', array('commentaires'=>$com,'form' => $form1->createView()));
     }
 
     /**
      * @Route("/backCommentaires",name="backCommentaires")
      */
-    public function list_commentaires(): Response
+    public function list_commentaires(Request $request, PaginatorInterface $paginator): Response
     {
         $p=$this->getDoctrine()->getRepository(Commentaires::class);
         $commentaires=$p->findAll();
+        $coms = $paginator->paginate($commentaires, $request->query->getInt('page', 1), 3);
 
-        return $this->render('Back/publications/backCommentaires.html.twig', array('commentaires'=>$commentaires));
+        return $this->render('Back/publications/backCommentaires.html.twig', array('commentaires'=>$coms));
     }
 
     /**
@@ -54,33 +75,7 @@ class CommentairesController extends AbstractController
 
     }
 
-    /**
-     * @Route("/addcom{id}",name="ajoutercom")
-     */
-    public function ajouterCommentaire(Request $request,int $id)
-    {
-        $em=$this->getDoctrine()->getManager();
-        $publications=$em->getRepository(Publications::class)->find($id);
-        $commentaire = new Commentaires();
-        $commentaire->setIdPub($publications);
-        $commentaire->setDateCom(new \DateTime('now'));
 
-
-        $form = $this->createForm(CommentairesType::class, $commentaire);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() and $form->isValid()) {
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($commentaire);
-            $em->flush();
-
-
-            return $this->redirect('forum');
-        }
-        return $this->render('Front/publications/addcom.html.twig', array('form' => $form->createView()));
-
-    }
 
 
 

@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\HttpFoundation\HttpFoundationRequestHandler;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Knp\Component\Pager\PaginatorInterface;
 
 
 
@@ -23,45 +24,17 @@ class PublicationsController extends AbstractController
     /**
      * @Route("/forum",name="forum")
      */
-    public function index(): Response
+    public function index(Request $request, PaginatorInterface $paginator): Response
     {
         $p=$this->getDoctrine()->getRepository(Publications::class);
-        $publications=$p->findAll();
+        $pub=$p->findAll();
+        if ($request->isMethod("POST"))
+        {
+            $id_util = $request->get("id_util");
+            $pub=$p->findBy(array("id_utilisateur"=>$id_util));
+        }
 
-        return $this->render('Front/publications/forum.html.twig', array('publications'=>$publications));
-    }
-
-    /**
-     * @Route("/publicationsBack",name="publicationsBack")
-     */
-    public function list_publications(): Response
-    {
-        $p=$this->getDoctrine()->getRepository(Publications::class);
-        $publications=$p->findAll();
-
-        return $this->render('Back/publications/publicationsBack.html.twig', array('publications'=>$publications));
-    }
-
-
-
-    /**
-     * @Route("/forumedit",name="forumedit")
-     */
-    public function modifier_publication(): Response
-    {
-        return $this->render('Front/publications/forumedit.html.twig', [
-            'controller_name' => 'PublicationsController',
-        ]);
-    }
-
-
-
-
-    /**
-     * @Route("/addpost")
-     */
-    public function ajouterPublication(Request $request)
-    {
+        $pubs = $paginator->paginate($pub, $request->query->getInt('page', 1), 2);
 
         $publication = new Publications();
         $publication->setDatePublication(new \DateTime('now'));
@@ -82,9 +55,28 @@ class PublicationsController extends AbstractController
 
             return $this->redirect('forum');
         }
-        return $this->render('Front/publications/addpost.html.twig', array('f' => $form->createView()));
 
+        return $this->render('Front/publications/forum.html.twig', array('publications'=>$pubs,'f' => $form->createView()));
     }
+
+    /**
+     * @Route("/publicationsBack",name="publicationsBack")
+     */
+    public function list_publications(Request $request, PaginatorInterface $paginator): Response
+    {
+        $p=$this->getDoctrine()->getRepository(Publications::class);
+        $publications=$p->findAll();
+
+        if ($request->isMethod("POST"))
+        {
+            $id_util = $request->get("id_util");
+            $publications=$p->findBy(array("id_utilisateur"=>$id_util));
+        }
+        $pubs = $paginator->paginate($publications, $request->query->getInt('page', 1), 2);
+        return $this->render('Back/publications/publicationsBack.html.twig', array('publications'=>$pubs));
+    }
+
+
 
 
     /**

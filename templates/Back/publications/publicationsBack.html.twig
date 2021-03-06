@@ -60,8 +60,10 @@
                                         <div class="review_right_heading">
                                             <h3>Les Publications :</h3>
                                             <div class="review_search">
-                                                <input class="rv_srch" type="text" placeholder="Search ...">
-                                                <button class="rvsrch_btn"><i class="uil uil-search"></i></button>
+                                                <form method="POST">
+                                                    <input class="rv_srch" type="text" name="id_util" placeholder="Search ...">
+                                                    <button type="submit" value="recherche" class="rvsrch_btn"><i class="uil uil-search"></i></button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -91,8 +93,12 @@
                                                 </tr>
                                             {% endfor %}
                                             </tbody>
+
                                         </table>
                                     </div>
+                                </div>
+                                <div class="live_text" style="float: right" >
+                                    <h4 >{{ knp_pagination_render(publications) }}</h4>
                                 </div>
                             </div>
                     </div>

@@ -81,7 +81,7 @@
                                         {% for i in commentaires %}
                                             <tr>
                                                 <td class="text-center">{{ i.id }}</td>
-                                                <td class="text-center">{{ i.idPub }}</td>
+                                                <td class="text-center">{{ i.idPub}}</td>
                                                 <td class="text-center">{{ i.id_Util }}</td>
                                                 <td class="text-center">{{ i.description }}</td>
                                                 <td class="text-center">{{ i.dateCom | date }}</td>
@@ -93,6 +93,9 @@
                                         </tbody>
                                     </table>
                                 </div>
+                            </div>
+                            <div class="live_text" style="float: right"  >
+                                <h4 >{{ knp_pagination_render(commentaires) }}</h4>
                             </div>
                         </div>
 

@@ -100,6 +100,7 @@ class Commentaires
         return $this->id_pub;
     }
 
+
     public function setIdPub( $id_pub): self
     {
         $this->id_pub = $id_pub;

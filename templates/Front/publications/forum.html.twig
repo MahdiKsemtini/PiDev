@@ -45,14 +45,32 @@
                         <div class="fcrse_1"  style="margin-bottom: 20px;"  >
                             <div class="col-lg-12 col-md-12">
                                 <div class="course_des_textarea mt-30 lbel25">
-                                    <h4 align="center" >Créer une publication</h4>
-                                    <div align="center">
-                                        <button class="Get_btn" onclick="document.location='addpost'" >Créer une publication</button>
+                                    <h4>Créer une publication</h4>
+                                    {{ form_start(f) }}
+                                    <div class="form-group">
+                                        <label for="exampleInputName1">{{ form_label(f.id_utilisateur) }}</label>
+                                        {{ form_widget(f.id_utilisateur,{'attr':{'class':'form-control'}}) }}
                                     </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputName1">{{ form_label(f.description) }}</label>
+                                        {{ form_widget(f.description,{'attr':{'class':'form-control'}}) }}
+
+                                    </div>
+
+                                    {{ form_widget(f.image) }}
+
+                                    <div style="margin-top: 10px; float:right">
+
+                                        <a class="btn btn-light"  onclick="document.location='forum'" >Cancel</a>
+                                        {{ form_widget(f.Publier, {'attr':{'class':'btn btn-primary mr-2'}} ) }}
+
+                                    </div>
+                                    {{ form_end(f) }}
 
                                 </div>
                             </div>
                         </div>
+
 
                         {% for i in publications %}
                         <div class="fcrse_1" style="margin-bottom: 20px;" >
@@ -97,7 +115,7 @@
                                     <div align="center" >
                                         <a href={{ path('commentaires',{'id_pub': i.id }) }} class="upload_btn">Afficher commentaire</a>
 
-                                        <a href={{ path('ajoutercom',{'id': i.id }) }} class="upload_btn">Ajouter commentaire</a>
+
                                     </div>
                                 </div>
 
@@ -105,20 +123,23 @@
                         </div>
                         {% endfor %}
 
+                        <div class="live_text" >
+                            <h4 >{{ knp_pagination_render(publications) }}</h4>
+                        </div>
+
+
                     </div>
+
 
                     <div class="col-xl-3 col-lg-4">
                         <div class="right_side">
-
+                            <form method="POST">
+                                <input class="rv_srch" type="text" name="id_util" placeholder="Search ...">
+                                <button type="submit" value="recherche" class="rvsrch_btn"><i class="uil uil-search"></i></button>
+                            </form>
                             <div class="fcrse_3">
                                 <div class="cater_ttle">
                                     <h4>Trier par :</h4>
-                                </div>
-                                <div class="ui search" align="center" >
-                                    <div class="ui left icon input swdh10" >
-                                        <input class="prompt srch10" type="text" placeholder="Search by user, content and more..">
-                                        <i class='uil uil-search-alt icon icon1'></i>
-                                    </div>
                                 </div>
                                 <ul class="allcate15"  >
                                     <li><a href="#" class="ct_item"><i class='uil-comment-upload'></i>Most comments</a></li>

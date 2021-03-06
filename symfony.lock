@@ -84,6 +84,12 @@
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.3"
     },
+    "knplabs/knp-components": {
+        "version": "v3.0.1"
+    },
+    "knplabs/knp-paginator-bundle": {
+        "version": "v5.4.2"
+    },
     "laminas/laminas-code": {
         "version": "3.4.1"
     },
@@ -134,6 +140,9 @@
         "files": [
             "./config/packages/sensio_framework_extra.yaml"
         ]
+    },
+    "snilius/twig-sort-by-field": {
+        "version": "v0.1.5"
     },
     "symfony/asset": {
         "version": "v4.4.19"
