@@ -41,6 +41,7 @@
                 <div class="cater_ttle" >
                     <div align="center" >
                         <a href={{ path('publicationsBack') }} class="upload_btn">Gestion des publications</a>
+                        <a href={{ path('backCommentaires') }} class="upload_btn">Gestion des commentaires</a>
                     </div>
                 </div>
                 <div class="row">
@@ -60,7 +61,7 @@
 
                                     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
                                     <script type="text/javascript">
-                                        {{ gc_draw(piechart, 'div_chart') }}
+                                        {{ gc_draw(barchart, 'div_chart') }}
                                     </script>
 
                                 </div>

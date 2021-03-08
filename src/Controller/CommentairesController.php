@@ -61,7 +61,7 @@ class CommentairesController extends AbstractController
 
 
 
-        $coms = $paginator->paginate($commentaires, $request->query->getInt('page', 1), 3);
+        $coms = $paginator->paginate($commentaires, $request->query->getInt('page', 1), 4);
 
         return $this->render('Back/publications/backCommentaires.html.twig', array('commentaires'=>$coms));
     }
@@ -120,23 +120,21 @@ class CommentairesController extends AbstractController
      */
     public function statistiques(): Response
     {
-
-
-        $bar = new BarChart();
-
-        $bar->getData()->setArrayToDataTable( array(
-            ['publication', 'nombre de commentaires'],
-            ['10',     3],
-            ['9',      1],
-        ));
-
+        $p=$this->getDoctrine()->getRepository(Commentaires::class);
+        $nbs = $p->getNb();
+        $data = [['Publication', 'Nombre de commentaires']];
+        foreach($nbs as $nb)
+        {
+            $data[] = array($nb['pub'], $nb['com']);
+        }
+        $bar = new barchart();
+        $bar->getData()->setArrayToDataTable(
+            $data
+        );
         $bar->getOptions()->setTitle('Nombre de commentaires par publications');
-        $bar->getOptions()->setHeight(400);
-        $bar->getOptions()->setWidth(1500);
         $bar->getOptions()->getTitleTextStyle()->setColor('#07600');
         $bar->getOptions()->getTitleTextStyle()->setFontSize(25);
+        return $this->render('Back/publications/statistiques.html.twig', array('barchart' => $bar,'nbs' => $nbs));
 
-
-        return $this->render('Back/publications/statistiques.html.twig', array('piechart' => $bar));
     }
 }
