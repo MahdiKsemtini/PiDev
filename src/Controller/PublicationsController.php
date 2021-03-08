@@ -34,7 +34,7 @@ class PublicationsController extends AbstractController
             $pub=$p->findBy(array("id_utilisateur"=>$id_util));
         }
 
-        $pubs = $paginator->paginate($pub, $request->query->getInt('page', 1), 2);
+        $pubs = $paginator->paginate($pub, $request->query->getInt('page', 1), 3);
 
         $publication = new Publications();
         $publication->setDatePublication(new \DateTime('now'));
@@ -67,12 +67,14 @@ class PublicationsController extends AbstractController
         $p=$this->getDoctrine()->getRepository(Publications::class);
         $publications=$p->findAll();
 
+
+
         if ($request->isMethod("POST"))
         {
             $id_util = $request->get("id_util");
             $publications=$p->findBy(array("id_utilisateur"=>$id_util));
         }
-        $pubs = $paginator->paginate($publications, $request->query->getInt('page', 1), 2);
+        $pubs = $paginator->paginate($publications, $request->query->getInt('page', 1), 3);
         return $this->render('Back/publications/publicationsBack.html.twig', array('publications'=>$pubs));
     }
 
@@ -132,7 +134,7 @@ class PublicationsController extends AbstractController
             $em->flush();
             return $this->redirectToRoute('forum');
         }
-        return $this->render('Front/publications/addpost.html.twig', array('f' => $form->createView()));
+        return $this->render('Front/publications/forumedit.html.twig', array('f' => $form->createView()));
 
     }
 

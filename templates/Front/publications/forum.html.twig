@@ -62,7 +62,7 @@
                                     <div style="margin-top: 10px; float:right">
 
                                         <a class="btn btn-light"  onclick="document.location='forum'" >Cancel</a>
-                                        {{ form_widget(f.Publier, {'attr':{'class':'btn btn-primary mr-2'}} ) }}
+                                        {{ form_widget(f.Publier, {'attr':{'class':'Get_btn'}} ) }}
 
                                     </div>
                                     {{ form_end(f) }}
@@ -105,7 +105,8 @@
                                     {{ i.datePublication |date}}
                                 </div>
                             </div>
-
+                            <button type="button" class="btn btn-light"><i class="uil-thumbs-up"></i> <span>Like</span> </button>
+                            <button type="button" class="btn btn-light"><i class="uil-thumbs-down"></i> <span>Dislike</span> </button>
                             <div class="fcrse_3">
                                 <div class="cater_ttle">
                                     <h4>Commentaires</h4>
