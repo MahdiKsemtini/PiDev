@@ -16,6 +16,8 @@ use Symfony\Component\Form\Extension\HttpFoundation\HttpFoundationRequestHandler
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Knp\Component\Pager\PaginatorInterface;
+use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
+use CMEN\GoogleChartsBundle\GoogleCharts\Charts\BarChart;
 
 class CommentairesController extends AbstractController
 {
@@ -56,6 +58,9 @@ class CommentairesController extends AbstractController
     {
         $p=$this->getDoctrine()->getRepository(Commentaires::class);
         $commentaires=$p->findAll();
+
+
+
         $coms = $paginator->paginate($commentaires, $request->query->getInt('page', 1), 3);
 
         return $this->render('Back/publications/backCommentaires.html.twig', array('commentaires'=>$coms));
@@ -108,5 +113,30 @@ class CommentairesController extends AbstractController
         }
         return $this->render('Front/publications/editcom.html.twig', array('form' => $form->createView()));
 
+    }
+
+    /**
+     * @Route("/statistiques",name="statistiques")
+     */
+    public function statistiques(): Response
+    {
+
+
+        $bar = new BarChart();
+
+        $bar->getData()->setArrayToDataTable( array(
+            ['publication', 'nombre de commentaires'],
+            ['10',     3],
+            ['9',      1],
+        ));
+
+        $bar->getOptions()->setTitle('Nombre de commentaires par publications');
+        $bar->getOptions()->setHeight(400);
+        $bar->getOptions()->setWidth(1500);
+        $bar->getOptions()->getTitleTextStyle()->setColor('#07600');
+        $bar->getOptions()->getTitleTextStyle()->setFontSize(25);
+
+
+        return $this->render('Back/publications/statistiques.html.twig', array('piechart' => $bar));
     }
 }

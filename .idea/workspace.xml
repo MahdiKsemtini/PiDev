@@ -20,15 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8536dbc3-61f5-4edd-a3f8-2ef114c64d86" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/PiDev.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PiDev.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/knp_paginator.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/knp_paginator.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/CommentairesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CommentairesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PublicationsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PublicationsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Commentaires.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Commentaires.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Front/publications/addcom.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Front/publications/addpost.html.twig" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Front/publications/commentaires.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Front/publications/commentaires.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Front/publications/forum.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Front/publications/forum.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Back/publications/backCommentaires.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Back/publications/backCommentaires.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,6 +156,7 @@
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
       <path value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle" />
       <path value="$PROJECT_DIR$/vendor/snilius/twig-sort-by-field" />
+      <path value="$PROJECT_DIR$/vendor/cmen/google-charts-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1p1AutDvOGgv87KHVPDV78SVv6J" />
@@ -233,7 +235,7 @@
       <workItem from="1615033448071" duration="4814000" />
       <workItem from="1615057448847" duration="6585000" />
       <workItem from="1615097388083" duration="6376000" />
-      <workItem from="1615160586917" duration="2522000" />
+      <workItem from="1615160586917" duration="5493000" />
     </task>
     <servers />
   </component>
