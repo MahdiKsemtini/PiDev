@@ -2,36 +2,10 @@
 
  {% block title %}RightJob{% endblock %}
 
- {% block css %}
-     <meta charset="utf-8">
-     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-     <meta name="viewport" content="width=device-width, shrink-to-fit=9">
-     <meta name="description" content="Gambolthemes">
-     <meta name="author" content="Gambolthemes">
-     <title>Cursus - All Admins</title>
-
-     <!-- Favicon Icon -->
-     <link rel="icon" type="image/png" href="{{ asset('images/fav.png') }}">
-
-     <!-- Stylesheets -->
-     <link href='{{ asset('http://fonts.googleapis.com/css?family=Roboto:400,700,500') }}' rel='stylesheet'>
-     <link href='{{ asset('vendor/unicons-2.0.1/css/unicons.css') }}' rel='stylesheet'>
-     <link href="{{ asset('css/vertical-responsive-menu.min.css') }}" rel="stylesheet">
-     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-     <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
-     <link href="{{ asset('css/night-mode.css') }}" rel="stylesheet">
-
-     <!-- Vendor Stylesheets -->
-     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
-     <link href="{{ asset('vendor/OwlCarousel/assets/owl.carousel.css') }}" rel="stylesheet">
-     <link href="{{ asset('vendor/OwlCarousel/assets/owl.theme.default.min.css') }}" rel="stylesheet">
-     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-     <link rel="stylesheet" type="text/css" href="{{ asset('vendor/semantic/semantic.min.css') }}">
-
- {% endblock %}
 
 
 {% block body %}
+
     <!-- Body Start -->
     <div class="wrapper">
         <div class="sa4d25">
@@ -43,23 +17,30 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-{#                        <a href="#" class="setting_noti">Notification Setting</a>#}
-                        <div class="all_msg_bg">
-                            <div class="channel_my item all__noti5">
-                                <div class="profile_link">
-                                    <img src="images/left-imgs/img-1.jpg" alt="">
-                                    <div class="pd_content">
-                                        <h6>{{ l.nomUtilisateur }}</h6>
-                                        <p class="noti__text5">{{ l.texteReclamation }}</strong>.</p>
-                                        <span class="nm_time">{{ l.dateReclamation }}</span>
+                        {% for l in listeReclamation %}
+                            {% if l.etat == 0 %}
+                                {#                        <a href="#" class="setting_noti">Notification Setting</a>#}
+                                <div class="all_msg_bg">
+                                    <div class="channel_my item all__noti5">
+                                        <div class="profile_link">
+                                            <img src="{{ asset('images/left-imgs/img-1.jpg') }}" alt="">
+                                            <div class="pd_content">
+                                                <h6>Type : {{ l.type }}</h6>
+                                                <p class="noti__text5">Texte : {{ l.texteReclamation }}</strong>.</p>
+                                                <span class="nm_time">Date : {{ l.dateReclamation }}</span>
+                                                <br>
+                                                <br>
+                                                <a href="{{ path('activateReclamation', {'id' : l.id}) }}" class="upload_btn">Approuver</a>
+                                                <a href="{{ path('deactivateReclamation', {'id': l.id}) }}" class="upload_btn">Supprimer</a>
+
+                                            </div>
+                                        </div>
                                     </div>
-                                    <a href="#" class="setting_noti">Approuver</a>
-                                    <a href="#" class="setting_noti">Supprimer</a>
+
+
                                 </div>
-                            </div>
-
-
-                        </div>
+                            {% endif %}
+                        {% endfor %}
                     </div>
                 </div>
             </div>

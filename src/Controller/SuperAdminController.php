@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Admin;
 use App\Form\AdminFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,9 +16,10 @@ class SuperAdminController extends AbstractController
      */
     public function index(): Response
     {
+        $random = random_int(1, 10);
         $em=$this->getDoctrine()->getRepository(Admin::class);
         $list= $em->findAll();
-        return $this->render('super_admin/index.html.twig', [ 'list'=>$list ]);
+        return $this->render('super_admin/index.html.twig', [ 'list'=>$list , 'random'=>$random]);
     }
 
    /**
@@ -32,6 +32,14 @@ class SuperAdminController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()){
             $em = $this->getDoctrine()->getManager();
+            if ($form->getData()->getEtat() == 'Active')
+            {
+                $admin->setEtat(1);
+            }
+            if ($form->getData()->getEtat() == 'Inactive')
+            {
+                $admin->setEtat(0);
+            }
             $em->persist($admin);
             $em->flush();
 
@@ -66,6 +74,14 @@ class SuperAdminController extends AbstractController
         $form = $this->createForm(AdminFormType::class, $admin);
         $form->handleRequest($request);
         if ($form->isSubmitted()&& $form->isValid()){
+            if ($form->getData()->getEtat() == 'Active')
+            {
+                $admin->setEtat(1);
+            }
+            if ($form->getData()->getEtat() == 'Inactive')
+            {
+                $admin->setEtat(0);
+            }
             $em->flush();
             return $this->redirectToRoute("ViewAdminProfile", array('id'=>$id));
         }

@@ -137,8 +137,8 @@ class Admin
         $metadata->addPropertyConstraint('nom', new Assert\Length([
             'min' => 3,
             'max'=>15,
-            'minMessage' => 'Votre Nom doit comporter au moins "{{limit}}" caractères',
-            'maxMessage' => 'Votre Nom ne peut pas comporter plus de "{{limit}}" caractères',
+            'minMessage' => 'Votre Nom doit comporter au moins "{{ limit }}" caractères',
+            'maxMessage' => 'Votre Nom ne peut pas comporter plus de "{{ limit }}" caractères',
         ]));
 
         $metadata->addPropertyConstraint('prenom', new Assert\NotBlank([
@@ -147,8 +147,8 @@ class Admin
         $metadata->addPropertyConstraint('prenom', new Assert\Length([
             'min' => 3,
             'max'=>15,
-            'minMessage' => 'Votre Prenom doit comporter au moins "{{limit}}" caractères',
-            'maxMessage' => 'Votre Prénom ne peut pas comporter plus de "{{limit}}" caractères',
+            'minMessage' => 'Votre Prenom doit comporter au moins {{ limit }} caractères',
+            'maxMessage' => 'Votre Prénom ne peut pas comporter plus de {{ limit }} caractères',
         ]));
 
         $metadata->addPropertyConstraint('login', new Assert\NotBlank([
@@ -157,11 +157,11 @@ class Admin
         $metadata->addPropertyConstraint('login', new Assert\Length([
             'min' => 4,
             'max'=> 40,
-            'minMessage' => 'Votre login doit comporter au moins "{{limit}}" caractères',
-            'maxMessage' => 'Votre login ne peut pas comporter plus de "{{limit}}" caractères',
+            'minMessage' => 'Votre login doit comporter au moins "{{ limit }}" caractères',
+            'maxMessage' => 'Votre login ne peut pas comporter plus de "{{ limit }}" caractères',
         ]));
         $metadata->addPropertyConstraint('login', new Assert\Email([
-            'message' => 'The login "{{ value }}" is not a valid email.',
+            'message' => 'The login {{ value }} is not a valid email.',
         ]));
 
         $metadata->addPropertyConstraint('password', new Assert\NotBlank([
@@ -170,8 +170,8 @@ class Admin
         $metadata->addPropertyConstraint('password', new Assert\Length([
             'min' => 4,
             'max'=> 20,
-            'minMessage' => 'Votre Mot De Pass doit comporter au moins "{{limit}}" caractères',
-            'maxMessage' => 'Votre Mot De Pass ne peut pas comporter plus de "{{limit}}" caractères',
+            'minMessage' => 'Votre Mot De Passe doit comporter au moins "{{ limit }}" caractères',
+            'maxMessage' => 'Votre Mot De Passe ne peut pas comporter plus de "{{ limit }}" caractères',
         ]));
 
     }

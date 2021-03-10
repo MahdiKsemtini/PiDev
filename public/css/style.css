@@ -494,11 +494,30 @@ i.icon1 {
     font-size: 16px;
     margin-right:3px;
 }
-
 .upload_btn:hover {
     color: #fff !important;
     background: #333;
 }
+.AdminDelete_btn {
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    background: Black;
+    padding: 9px 15px;
+    border-radius: 25px;
+    margin-right: 10px;
+}
+
+.AdminDelete_btn i {
+    font-size: 16px;
+    margin-right:3px;
+}
+.AdminDelete_btn:hover {
+    color: #fff !important;
+    background: #ed2a26;
+}
+
 
 .left_title {
     padding: 20px 17px 10px;
@@ -1382,6 +1401,22 @@ i.icon1 {
     color: #333 !important;
     text-align: center;
 	position: relative;
+}
+.tutor_nameLocked {
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    color: #ed2a26 !important;
+    text-align: center;
+    position: relative;
+}
+.tutor_nameLocked {
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    color: #ed2a26 !important;
+    text-align: center;
+    position: relative;
 }
 
 .tutor150 {
@@ -4073,7 +4108,7 @@ a.rmv-btn i {
 }
 
 .ui.label.lb12 {
-    background-color: #dedfe !important;
+    background-color: #dedfe0 !important;
     padding: .9999em 1.2em !important;
     color: #686f7a !important;
     border-top-left-radius: 500rem !important;
@@ -4882,7 +4917,7 @@ a.rmv-btn i {
     line-height: 26px;
     padding-top: 27px;
 }
-}
+
 
 .story125 {
     text-align: center;
