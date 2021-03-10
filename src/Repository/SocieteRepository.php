@@ -47,4 +47,12 @@ class SocieteRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function search($nom) {
+        return $this->createQueryBuilder('Societe')
+            ->andWhere('Societe.nom LIKE :nom')
+            ->setParameter('nom', '%'.$nom.'%')
+            ->getQuery()
+            ->getResult();
+    }
 }

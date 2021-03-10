@@ -1,0 +1,170 @@
+{% extends 'base_back.html.twig' %}
+
+ {% block title %}RightJob{% endblock %}
+
+
+
+{% block body %}
+
+    <!-- Body Start -->
+    <div class="wrapper">
+        <div class="sa4d25">
+            <div class="container-fluid">
+
+                <div class="row">
+
+                    {{ form_start(search) }}
+                    <div class="col-xl-12 col-lg-8">
+                        <div class="section3125">
+                            <div class="explore_search">
+                                <div class="ui search focus">
+                                    <div class="ui left icon input swdh11">
+                                        {{ form_widget(search.nom) }}
+                                        <i class="uil uil-search-alt icon icon2"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{ form_widget(search.Recherche) }}
+                    {{ form_end(search) }}
+                    <div class="col-md-12">
+                        <div>
+                            <a href="{{ path('pdflist',{'type':type}) }}"><button class="Desactivate-btn" style="width: 250px">pdf</button></a>
+                        </div>
+                        <div class="_14d25">
+                            <div class="row">
+
+                                    {% for l in list %}
+                                        {%if (type=='Freelancer') %}
+                                        <div class="col-xl-3 col-lg-4 col-md-6">
+
+                                            <div class="fcrse_1 mt-30">
+                                                <div class="tutor_img">
+                                                    <a href="{{ path('ViewFreelancerProfile', {'id': l.id}) }}"><img src="{{ asset('picture/' ~ l.PhotoDeProfile) }}" alt=""></a>
+                                                </div>
+                                                <div class="tutor_content_dt">
+                                                    <div class="tutor150">
+                                                        <a href="{{ path ('ViewFreelancerProfile', {'id': l.id}) }}" class="tutor_name">{{ l.nom }} {{ l.prenom }}</a>
+                                                        <div class="mef78" title="Verify">
+                                                            <i class="uil uil-check-circle"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tutor_cate">{{l.email}}</div>
+                                                    <ul class="tutor_social_links">
+                                                        {% if l.CompteFacebook =="Add Compte Facebook" %}
+                                                            <li><a href="#" class="fb"><i class="fab fa-facebook"></i></a></li>
+                                                        {% else %}
+                                                            <li><a href="{{ l.CompteFacebook }}" target="_blank" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+                                                        {% endif %}
+                                                        {% if l.CompteLinkedin =="Add Compte Twitter" %}
+                                                            <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
+                                                        {% else %}
+                                                            <li><a href="{{ l.CompteLinkedin }}" target="_blank" class="tw"><i class="fab fa-twitter"></i></a></li>
+                                                        {% endif %}
+                                                        {% if l.CompteTwitter =="Add Compte LinkedIn" %}
+                                                            <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                                                        {% else %}
+                                                            <li><a href="{{ l.CompteTwitter }}" target="_blank" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                                                        {% endif %}
+                                                    </ul>
+                                                    {% if l.etat==0 %}
+                                                        <a href="{{ path('deactivateFreelancer',{'id':l.id}) }}"><button class="Desactivate-btn">Activated</button></a>
+                                                    {% else %}
+                                                        <a href="{{ path('activateFreelancer',{'id':l.id}) }}"><button class="Activate-btn">Deactivated</button></a>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                            {% else %}
+                                                <div class="col-xl-3 col-lg-4 col-md-6">
+
+                                                    <div class="fcrse_1 mt-30">
+                                                        <div class="tutor_img">
+                                                            <a href="{{ path('ViewSocieteProfile', {'id': l.id}) }}"><img src="{{ asset('picture/' ~ l.PhotoDeProfile) }}" alt=""></a>
+                                                        </div>
+                                                        <div class="tutor_content_dt">
+                                                            <div class="tutor150">
+                                                                <a href="{{ path ('ViewSocieteProfile', {'id': l.id}) }}" class="tutor_name">{{ l.nom }}</a>
+                                                                <div class="mef78" title="Verify">
+                                                                    <i class="uil uil-check-circle"></i>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tutor_cate">{{l.email}}</div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                    {% endif %}
+                                    {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer mt-30">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="item_f1">
+                            <a href="about_us.html">About</a>
+                            <a href="our_blog.html">Blog</a>
+                            <a href="career.html">Careers</a>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="item_f1">
+                            <a href="coming_soon.html">Advertise</a>
+                            <a href="coming_soon.html">Developers</a>
+                            <a href="contact_us.html">Contact Us</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="item_f1">
+                            <a href="terms_of_use.html">Copyright Policy</a>
+                            <a href="terms_of_use.html">Terms</a>
+                            <a href="terms_of_use.html">Privacy Policy</a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <div class="footer_bottm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul class="fotb_left">
+                                        <li>
+                                            <a href="index.html">
+                                                <div class="footer_logo">
+                                                    <img src="images/logo1.svg" alt="">
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <p>© 2020 <strong>Cursus</strong>. All Rights Reserved.</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="edu_social_links">
+                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                        <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="#"><i class="fab fa-instagram"></i></a>
+                                        <a href="#"><i class="fab fa-youtube"></i></a>
+                                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- Body End -->
+{% endblock %}

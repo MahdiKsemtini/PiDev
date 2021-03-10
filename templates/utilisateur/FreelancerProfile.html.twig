@@ -2,37 +2,7 @@
 
 {% block title %}RightJob{% endblock %}
 
-{% block css %}
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, shrink-to-fit=9">
-    <meta name="description" content="Gambolthemes">
-    <meta name="author" content="Gambolthemes">
-    <title>RightJOB - FORUM</title>
 
-    <!-- Favicon Icon -->
-    <link rel="icon" type="image/png" href="{{ asset('images/fav.png') }}">
-
-    <!-- Stylesheets -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet'>
-    <link href='vendor/unicons-2.0.1/css/unicons.css' rel='stylesheet'>
-    <link href="css/vertical-responsive-menu.min.css" rel="stylesheet">
-    <link href="css/instructor-dashboard.css" rel="stylesheet">
-    <link href="css/instructor-responsive.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/responsive.css" rel="stylesheet">
-    <link href="css/night-mode.css" rel="stylesheet">
-    <link href="css/jquery-steps.css" rel="stylesheet">
-
-    <!-- Vendor Stylesheets -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link href="vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
-    <link href="vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet">
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="vendor/semantic/semantic.min.css">
-
-
-{% endblock %}
 
 {% block body %}
     <!-- Body Start -->
@@ -52,7 +22,7 @@
                                             <img src="{{ asset('picture/' ~ app.session.get('photo_de_profile')) }}" alt="">
                                         </div>
                                         <div class="prfledt1">
-                                            <h2>{{ app.session.get('nom') }}</h2>
+                                            <h2>{{ app.session.get('nom') }} {{ app.session.get('prenom') }}</h2>
                                             <span>{{ app.session.get('email') }}</span>
                                         </div>
                                     </div>
@@ -72,7 +42,7 @@
                                         <li>
                                             <div class="_ttl121">
                                                 <div class="_ttl122">Langues</div>
-                                                <div class="_ttl123">{{ app.session.get('competences') }}</div>
+                                                <div class="_ttl123">{{ app.session.get('langues') }}</div>
                                             </div>
                                         </li>
                                         <li>
@@ -81,7 +51,19 @@
                                                 <div class="_ttl123">{{ app.session.get('sexe') }}</div>
                                             </div>
                                         </li>
+                                        <li>
+                                            <div class="_ttl121">
+                                                <div class="_ttl122">CV</div>
+                                                <a class="btn btn-success" href="{{ path('CV') }}">pdf</a>                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="_ttl121">
+                                                <div class="_ttl122">Vues</div>
+                                                <div class="_ttl123">{{ app.session.get('viewsNb') }}</div>
+                                            </div>
+                                        </li>
                                     </ul>
+
                                 </div>
 
                                 <div class="col-lg-5">
@@ -90,11 +72,34 @@
                                     </a>
                                     <div class="rgt-145">
                                         <ul class="tutor_social_links">
-                                            <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
-                                            <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
-                                            <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
-                                            <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
+                                            {% if app.session.get('compte_facebook') =="Add Compte Facebook" %}
+                                                <li><a href="#" class="fb"><i class="fab fa-facebook"></i></a></li>
+                                            {% else %}
+                                                <li><a href="{{ app.session.get('compte_facebook') }}" target="_blank" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+                                            {% endif %}
+                                            {% if app.session.get('compte_twitter') =="Add Compte Twitter" %}
+                                                <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
+                                            {% else %}
+                                                <li><a href="{{ app.session.get('compte_twitter') }}" target="_blank" class="tw"><i class="fab fa-twitter"></i></a></li>
+                                            {% endif %}
+                                            {% if app.session.get('compte_linkedin') =="Add Compte LinkedIn" %}
+                                                <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                                            {% else %}
+                                                <li><a href="{{ app.session.get('compte_linkedin') }}" target="_blank" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                                            {% endif %}
                                         </ul>
+                                        <br>
+                                        <div><span style="color: white">Reviews:</span></div>
+                                        <div class="rating rating2">
+                                            {% for i in range(1, app.session.get('NumbReviews')) %}
+                                            <a style="color: orange" >★</a>
+                                            {% endfor %}
+                                            {% if app.session.get('NumbReviews')!=5 %}
+                                                {% for i in range(1,5- app.session.get('NumbReviews')) %}
+                                                    <a style="color: gray" >★</a>
+                                                {% endfor %}
+                                            {% endif %}
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -104,7 +109,7 @@
             </div>
         </div>
         <div class="_215b17">
-            <div class="container-fluid">
+            <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="course_tab_content">
@@ -112,7 +117,7 @@
                                 <div class="tab-pane fade show active" id="nav-about" role="tabpanel">
                                     <div class="_htg451">
                                         <div class="_htg452">
-                                            <form {{ form_start(form) }}>
+                                            <form {{ form_start(form) }}
                                                 <div class="basic_ptitle">
                                                     <h4>Nom de Freelancer</h4>
                                                     <p>Changer votre Nom</p>
@@ -159,7 +164,27 @@
                                                 </div>
                                                 <div class="ui search focus mt-15">
                                                     <div class="ui left icon input swdh11 swdh19">
-                                                        {{ form_widget(form.comptes_reseaux_sociaux) }}
+                                                        {{ form_widget(form.compte_linkedin) }}
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="basic_ptitle">
+                                                    <h4>Compte Facebook de Freelancer</h4>
+                                                    <p>Changer votre compte Facebook</p>
+                                                </div>
+                                                <div class="ui search focus mt-15">
+                                                    <div class="ui left icon input swdh11 swdh19">
+                                                        {{ form_widget(form.compte_facebook) }}
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="basic_ptitle">
+                                                    <h4>Compte Twitter de Freelancer</h4>
+                                                    <p>Changer votre compte Twitter</p>
+                                                </div>
+                                                <div class="ui search focus mt-15">
+                                                    <div class="ui left icon input swdh11 swdh19">
+                                                        {{ form_widget(form.compte_twitter) }}
                                                     </div>
                                                 </div>
                                                 <br>
@@ -199,7 +224,7 @@
                                                 </div>
                                                 <div class="ui search focus mt-15">
                                                     <div class="ui left icon input swdh11 swdh19">
-                                                        {{ form_widget(form.photo_de_profile) }}
+                                                        {{ form_widget(form.photo_de_profile,{'attr':{'value': app.session.get('photo_de_profile')}}) }}
                                                     </div>
                                                 </div>
                                                 <br>
@@ -209,6 +234,7 @@
                                         </div>
                                     </div>
                                 </div>
+
 
                             </div>
                         </div>
@@ -279,6 +305,7 @@
             </div>
         </footer>
     </div>
+
     <!-- Body End -->
 {% endblock %}
 
@@ -290,4 +317,18 @@
     <script src="vendor/semantic/semantic.min.js"></script>
     <script src="js/custom.js"></script>
     <script src="js/night-mode.js"></script>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/60491e851c1c2a130d672b29/1f0epueqi';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+
 {% endblock %}

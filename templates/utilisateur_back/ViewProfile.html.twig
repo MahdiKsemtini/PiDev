@@ -1,0 +1,203 @@
+{% extends 'base_back.html.twig' %}
+
+ {% block title %}RightJob{% endblock %}
+
+
+
+{% block body %}
+<!-- Body Start -->
+<!-- Body Start -->
+<div class="wrapper _bg4586">
+    <div class="_216b01">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-md-10">
+                    <div class="section3125 rpt145">
+                        {% if type=='Freelancer' %}
+                        <div class="row">
+                            <div class="col-lg-7">
+
+                                <div class="dp_dt150">
+                                    <div class="img148">
+                                        <img src="{{ asset('picture/' ~ profile.PhotoDeProfile) }}" alt="">
+                                    </div>
+                                    <div class="prfledt1">
+                                        <h2>{{ profile.nom }} {{ profile.prenom }}</h2>
+                                        <span style="color: #1da1f2">{{ profile.email }}</span>
+                                    </div>
+                                </div>
+                                <ul class="_ttl120">
+                                    <li>
+                                        <div class="_ttl121">
+                                            <div class="_ttl122">Adresse</div>
+                                            <div class="_ttl123">{{ profile.adresse }}</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="_ttl121">
+                                            <div class="_ttl122">Competences</div>
+                                            <div class="_ttl123">{{ profile.competences }}</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="_ttl121">
+                                            <div class="_ttl122">Langues</div>
+                                            <div class="_ttl123">{{ profile.langues }}</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="_ttl121">
+                                            <div class="_ttl122">Sexe</div>
+                                            <div class="_ttl123">{{ profile.sexe }}</div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-5">
+                                <a href="#" class="_216b12">
+                                    Comptes Resaux Sociaux :
+                                </a>
+                                <div class="rgt-145">
+                                    <ul class="tutor_social_links">
+                                        {% if profile.CompteFacebook =="Add Compte Facebook" %}
+                                            <li><a href="#" class="fb"><i class="fab fa-facebook"></i></a></li>
+                                        {% else %}
+                                            <li><a href="{{ profile.CompteFacebook }}" target="_blank" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+                                        {% endif %}
+                                        {% if profile.CompteLinkedin =="Add Compte Twitter" %}
+                                            <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
+                                        {% else %}
+                                            <li><a href="{{ profile.CompteLinkedin }}" target="_blank" class="tw"><i class="fab fa-twitter"></i></a></li>
+                                        {% endif %}
+                                        {% if profile.CompteTwitter =="Add Compte LinkedIn" %}
+                                            <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                                        {% else %}
+                                            <li><a href="{{ profile.CompteTwitter }}" target="_blank" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                                        {% endif %}
+                                    </ul>
+                                    <br>
+                                    <div><span style="color: white">Reviews:</span></div>
+                                    <div class="rating rating2">
+                                        <div class="rating rating2"><!--
+		                                    --><a href="{{ path('ratingFreelancer',{'numb':5 , 'idTaker':profile.id, 'id':profile.id}) }}" title="Give 5 stars">★</a><!--
+                                            --><a href="{{ path('ratingFreelancer',{'numb':4 , 'idTaker':profile.id, 'id':profile.id}) }}" title="Give 4 stars">★</a><!--
+                                            --><a href="{{ path('ratingFreelancer',{'numb':3 , 'idTaker':profile.id, 'id':profile.id}) }}" title="Give 3 stars">★</a><!--
+                                            --><a href="{{ path('ratingFreelancer',{'numb':2 , 'idTaker':profile.id, 'id':profile.id}) }}" title="Give 2 stars">★</a><!--
+                                            --><a href="{{ path('ratingFreelancer',{'numb':1 , 'idTaker':profile.id, 'id':profile.id}) }}" title="Give 1 star">★</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="row">
+                            <div class="col-lg-7">
+
+                                <div class="dp_dt150">
+                                    <div class="img148">
+                                        <img src="{{ asset('picture/' ~ profile.PhotoDeProfile) }}" alt="">
+                                    </div>
+                                    <div class="prfledt1">
+                                        <h2>{{ profile.nom }}</h2>
+                                        <span style="color: #1da1f2">{{ profile.email }}</span>
+                                        <div><span>Reviews: </span></div>
+                                        <div class="rating rating2"><!--
+		                                    --><a href="{{ path('ratingSocite',{'numb':5 , 'idTaker':1, 'id':profile.id}) }}" title="Give 5 stars">★</a><!--
+                                            --><a href="{{ path('ratingSocite',{'numb':4 , 'idTaker':1, 'id':profile.id}) }}" title="Give 4 stars">★</a><!--
+                                            --><a href="{{ path('ratingSocite',{'numb':3 , 'idTaker':1, 'id':profile.id}) }}" title="Give 3 stars">★</a><!--
+                                            --><a href="{{ path('ratingSocite',{'numb':2 , 'idTaker':1, 'id':profile.id}) }}" title="Give 2 stars">★</a><!--
+                                            --><a href="{{ path('ratingSocite',{'numb':1 , 'idTaker':1, 'id':profile.id}) }}" title="Give 1 star">★</a>
+                                        </div>
+                                        <br>
+                                        <br>
+                                    </div>
+                                </div>
+                                <ul class="_ttl120">
+                                    <li>
+                                        <div class="_ttl121">
+                                            <div class="_ttl122">Adresse</div>
+                                            <div class="_ttl123">{{ profile.adresse }}</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="_ttl121">
+                                            <div class="_ttl122">Status Juridique</div>
+                                            <div class="_ttl123">{{ profile.StatusJuridique }}</div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer mt-30">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="item_f1">
+                        <a href="about_us.html">About</a>
+                        <a href="our_blog.html">Blog</a>
+                        <a href="career.html">Careers</a>
+                        <a href="press.html">Press</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="item_f1">
+                        <a href="help.html">Help</a>
+                        <a href="coming_soon.html">Advertise</a>
+                        <a href="coming_soon.html">Developers</a>
+                        <a href="contact_us.html">Contact Us</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="item_f1">
+                        <a href="terms_of_use.html">Copyright Policy</a>
+                        <a href="terms_of_use.html">Terms</a>
+                        <a href="terms_of_use.html">Privacy Policy</a>
+                        <a href="#">Sitemap</a>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="footer_bottm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul class="fotb_left">
+                                    <li>
+                                        <a href="index.html">
+                                            <div class="footer_logo">
+                                                <img src="images/logo1.svg" alt="">
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <p>© 2020 <strong>PowerDev</strong>. All Rights Reserved.</p>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="edu_social_links">
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                    <a href="#"><i class="fab fa-youtube"></i></a>
+                                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+<!-- Body End -->
+{% endblock %}

@@ -39,6 +39,15 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
+.empty-star-1:hover  {
+    color: #f2b01e;
+    content: "\f005";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    left: 0;
+}
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
@@ -3192,6 +3201,77 @@ i.icon2 {
 	font-family: "Font Awesome 5 Free";
 	font-weight: 900;
 }
+
+.empty-star1:before {
+    content: "\f005";
+    position: absolute;
+    left: 0;
+    overflow: hidden;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+.empty-star2:before {
+    content: "\f005";
+    position: absolute;
+    left: 0;
+    overflow: hidden;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+.empty-star3:before {
+    content: "\f005";
+    position: absolute;
+    left: 0;
+    overflow: hidden;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+.empty-star4:before {
+    content: "\f005";
+    position: absolute;
+    left: 0;
+    overflow: hidden;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+.empty-star5:before {
+    content: "\f005";
+    position: absolute;
+    left: 0;
+    overflow: hidden;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+.empty-star1:hover {
+    color: #f2b01e;
+    content: "\f005";
+}
+
+.empty-star2:hover ~ .empty-star1:before {
+    color: #f2b01e;
+    content: "\f005";
+}
+
+.empty-star3:hover + .empty-star1 + .empty-star2 {
+    color: #f2b01e;
+    content: "\f005";
+}
+
+.empty-star4:hover +.empty-star1 +.empty-star2 +.empty-star3{
+    color: #f2b01e;
+    content: "\f005";
+}
+
+.empty-star5:hover + .empty-star1 + .empty-star2 + .empty-star3 + .empty-star4{
+    color: #f2b01e;
+    content: "\f005";
+}
+
 
 .half-star:before {
 	color: #f2b01e;
@@ -7873,4 +7953,91 @@ a.rmv-btn i {
     top: 35%;
     right: 13px;
     position: absolute;
+}
+
+/*-----------------------------------*/
+
+
+/*
+ * Rating styles
+ */
+.rating {
+    width: 226px;
+    margin: 0 auto 1em;
+    font-size: 20px;
+    overflow:hidden;
+}
+.rating input {
+    float: right;
+    opacity: 0;
+    position: absolute;
+}
+.rating a,
+.rating label {
+    float:right;
+    color: gray;
+    text-decoration: none;
+    -webkit-transition: color .4s;
+    -moz-transition: color .4s;
+    -o-transition: color .4s;
+    transition: color .4s;
+}
+.rating label:hover ~ label,
+.rating input:focus ~ label,
+.rating label:hover,
+.rating a:hover,
+.rating a:hover ~ a,
+.rating a:focus,
+.rating a:focus ~ a		{
+    color: orange;
+    cursor: pointer;
+}
+.rating2 {
+    direction: rtl;
+    color: gray;
+}
+.rating2 a {
+    float:none
+}
+
+.rating2 p {
+    font-size: 20px;
+}
+
+.Desactivate-btn {
+    font-size: 14px;
+    margin-top: 30px;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    background: green;
+    border-radius: 20px;
+    text-align: center;
+    border: 0;
+    width: 100%;
+    height: 40px;
+}
+
+.Desactivate-btn:hover {
+    color: #fff;
+    background: #333;
+}
+
+.Activate-btn {
+    font-size: 14px;
+    margin-top: 30px;
+    font-weight: 400;
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    background: #ed2a26;
+    border-radius: 20px;
+    text-align: center;
+    border: 0;
+    width: 100%;
+    height: 40px;
+}
+
+.Activate-btn:hover {
+    color: #fff;
+    background: #333;
 }

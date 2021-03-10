@@ -97,13 +97,30 @@ class FreelancerSignInType extends AbstractType
                     'maxlength'=>'64',
                 ]
             ])
-            ->add('comptes_reseaux_sociaux', TextType::class,[
+            ->add('compte_facebook', TextType::class,[
                 'attr'=>[
-                    'value'=>' ',
-                    'placeholder'=>'Comptes_reseaux_sociaux',
+                    'placeholder'=>'Comptes Facebook',
                     'class'=>'prompt srch_explore',
-                    'name'=>'Comptes_reseaux_sociaux',
-                    'id'=>'id_Comptes_reseaux_sociaux',
+                    'name'=>'comptes_facebook',
+                    'id'=>'id_comptes_facebook',
+                    'maxlength'=>'64',
+                ]
+            ])
+            ->add('compte_linkedin', TextType::class,[
+                'attr'=>[
+                    'placeholder'=>'Comptes Linkedin',
+                    'class'=>'prompt srch_explore',
+                    'name'=>'comptes_linkedin',
+                    'id'=>'idcomptes_linkedin',
+                    'maxlength'=>'64',
+                ]
+            ])
+            ->add('compte_twitter', TextType::class,[
+                'attr'=>[
+                    'placeholder'=>'Comptes Twitter',
+                    'class'=>'prompt srch_explore',
+                    'name'=>'comptes_twitter',
+                    'id'=>'id_comptes_twitter',
                     'maxlength'=>'64',
                 ]
             ])

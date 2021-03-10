@@ -58,6 +58,11 @@ class Societe
      */
     private $freelancers;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $viewsNb;
+
     public function __construct()
     {
         $this->idfreelancers = new ArrayCollection();
@@ -176,8 +181,8 @@ class Societe
         $metadata->addPropertyConstraint('nom', new Assert\Length([
             'min' => 3,
             'max'=>15,
-            'minMessage' => 'Votre Nom doit comporter au moins {{limit}} caractères',
-            'maxMessage' => 'Votre Nom ne peut pas comporter plus de {{limit}} caractères',
+            'minMessage' => 'Votre Nom doit comporter au moins "{{limit}}" caractères',
+            'maxMessage' => 'Votre Nom ne peut pas comporter plus de "{{limit}}" caractères',
         ]));
 
         $metadata->addPropertyConstraint('adresse', new Assert\NotBlank([
@@ -186,8 +191,8 @@ class Societe
         $metadata->addPropertyConstraint('adresse', new Assert\Length([
             'min' => 4,
             'max'=> 15,
-            'minMessage' => 'Votre Adresse doit comporter au moins {{limit}} caractères',
-            'maxMessage' => 'Votre Adresse ne peut pas comporter plus de {{limit}} caractères',
+            'minMessage' => 'Votre Adresse doit comporter au moins "{{limit}}" caractères',
+            'maxMessage' => 'Votre Adresse ne peut pas comporter plus de "{{limit}}" caractères',
         ]));
 
         $metadata->addPropertyConstraint('email', new Assert\NotBlank([
@@ -196,8 +201,8 @@ class Societe
         $metadata->addPropertyConstraint('email', new Assert\Length([
             'min' => 4,
             'max'=> 20,
-            'minMessage' => 'Votre Email doit comporter au moins {{limit}} caractères',
-            'maxMessage' => 'Votre Email ne peut pas comporter plus de {{limit}} caractères',
+            'minMessage' => 'Votre Email doit comporter au moins "{{limit}}" caractères',
+            'maxMessage' => 'Votre Email ne peut pas comporter plus de "{{limit}}" caractères',
         ]));
         $metadata->addPropertyConstraint('email', new Assert\Email([
             'message' => 'The Email "{{ value }}" is not a valid email.',
@@ -209,8 +214,8 @@ class Societe
         $metadata->addPropertyConstraint('mot_de_pass', new Assert\Length([
             'min' => 4,
             'max'=> 20,
-            'minMessage' => 'Votre Mot De Pass doit comporter au moins {{limit}} caractères',
-            'maxMessage' => 'Votre Mot De Pass ne peut pas comporter plus de {{limit}} caractères',
+            'minMessage' => 'Votre Mot De Pass doit comporter au moins "{{limit}}" caractères',
+            'maxMessage' => 'Votre Mot De Pass ne peut pas comporter plus de "{{limit}}" caractères',
         ]));
 
         $metadata->addPropertyConstraint('photo_de_profile', new Assert\NotBlank([
@@ -223,9 +228,21 @@ class Societe
         $metadata->addPropertyConstraint('status_juridique', new Assert\Length([
             'min' => 2,
             'max'=> 20,
-            'minMessage' => 'Votre Status Juridique doit comporter au moins {{limit}} caractères',
-            'maxMessage' => 'Votre Status Juridique ne peut pas comporter plus de {{limit}} caractères',
+            'minMessage' => 'Votre Status Juridique doit comporter au moins "{{limit}}" caractères',
+            'maxMessage' => 'Votre Status Juridique ne peut pas comporter plus de "{{limit}}" caractères',
         ]));
 
+    }
+
+    public function getViewsNb(): ?int
+    {
+        return $this->viewsNb;
+    }
+
+    public function setViewsNb(int $viewsNb): self
+    {
+        $this->viewsNb = $viewsNb;
+
+        return $this;
     }
 }

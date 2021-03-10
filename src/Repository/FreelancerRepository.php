@@ -47,4 +47,11 @@ class FreelancerRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function search($nom) {
+        return $this->createQueryBuilder('Freelancer')
+            ->andWhere('Freelancer.nom LIKE :nom')
+            ->setParameter('nom', '%'.$nom.'%')
+            ->getQuery()
+            ->getResult();
+    }
 }

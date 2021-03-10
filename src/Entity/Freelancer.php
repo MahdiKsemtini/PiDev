@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=FreelancerRepository::class)
@@ -69,12 +70,33 @@ class Freelancer
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $comptes_reseaux_sociaux;
+    private $compte_facebook;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $compte_linkedin;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $compte_twitter;
 
     /**
      * @ORM\ManyToMany(targetEntity=Societe::class, inversedBy="freelancers")
      */
     private $societe;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $viewsNb;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $etat;
+
 
     public function __construct()
     {
@@ -194,17 +216,7 @@ class Freelancer
         return $this;
     }
 
-    public function getComptesReseauxSociaux(): ?string
-    {
-        return $this->comptes_reseaux_sociaux;
-    }
 
-    public function setComptesReseauxSociaux(string $comptes_reseaux_sociaux): self
-    {
-        $this->comptes_reseaux_sociaux = $comptes_reseaux_sociaux;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Societe[]
@@ -230,6 +242,44 @@ class Freelancer
         return $this;
     }
 
+
+
+    public function getCompteFacebook(): ?string
+    {
+        return $this->compte_facebook;
+    }
+
+    public function setCompteFacebook(string $compte_facebook): self
+    {
+        $this->compte_facebook = $compte_facebook;
+
+        return $this;
+    }
+
+    public function getCompteLinkedin(): ?string
+    {
+        return $this->compte_linkedin;
+    }
+
+    public function setCompteLinkedin(string $compte_linkedin): self
+    {
+        $this->compte_linkedin = $compte_linkedin;
+
+        return $this;
+    }
+
+    public function getCompteTwitter(): ?string
+    {
+        return $this->compte_twitter;
+    }
+
+    public function setCompteTwitter(string $compte_twitter): self
+    {
+        $this->compte_twitter = $compte_twitter;
+
+        return $this;
+    }
+
     public static function loadValidatorMetadata(ClassMetadata $metadata)
     {
         $metadata->addPropertyConstraint('nom', new Assert\NotBlank([
@@ -238,8 +288,8 @@ class Freelancer
         $metadata->addPropertyConstraint('nom', new Assert\Length([
             'min' => 3,
             'max'=>15,
-            'minMessage' => 'Votre Nom doit comporter au moins {{limit}} caractères',
-            'maxMessage' => 'Votre Nom ne peut pas comporter plus de {{limit}} caractères',
+            'minMessage' => 'Votre Nom doit comporter au moins "{{ limit }}" caractères',
+            'maxMessage' => 'Votre Nom ne peut pas comporter plus de "{{ limit }}" caractères',
         ]));
 
         $metadata->addPropertyConstraint('prenom', new Assert\NotBlank([
@@ -248,8 +298,8 @@ class Freelancer
         $metadata->addPropertyConstraint('prenom', new Assert\Length([
             'min' => 3,
             'max'=>15,
-            'minMessage' => 'Votre Prenom doit comporter au moins {{limit}} caractères',
-            'maxMessage' => 'Votre Prénom ne peut pas comporter plus de {{limit}} caractères',
+            'minMessage' => 'Votre Prenom doit comporter au moins "{{ limit }}" caractères',
+            'maxMessage' => 'Votre Prénom ne peut pas comporter plus de "{{ limit }}" caractères',
         ]));
 
         $metadata->addPropertyConstraint('email', new Assert\NotBlank([
@@ -258,8 +308,8 @@ class Freelancer
         $metadata->addPropertyConstraint('email', new Assert\Length([
             'min' => 4,
             'max'=> 40,
-            'minMessage' => 'Votre Email doit comporter au moins {{limit}} caractères',
-            'maxMessage' => 'Votre Email ne peut pas comporter plus de "{{limit}}" caractères',
+            'minMessage' => 'Votre Email doit comporter au moins "{{ limit }}" caractères',
+            'maxMessage' => 'Votre Email ne peut pas comporter plus de "{{ limit }}" caractères',
         ]));
         $metadata->addPropertyConstraint('email', new Assert\Email([
             'message' => 'The Email "{{ value }}" is not a valid email.',
@@ -271,9 +321,43 @@ class Freelancer
         $metadata->addPropertyConstraint('mot_de_passe', new Assert\Length([
             'min' => 4,
             'max'=> 20,
-            'minMessage' => 'Votre Mot De Pass doit comporter au moins {{limit}} caractères',
-            'maxMessage' => 'Votre Mot De Pass ne peut pas comporter plus de {{limit}} caractères',
+            'minMessage' => 'Votre Mot De Pass doit comporter au moins "{{ limit }}" caractères',
+            'maxMessage' => 'Votre Mot De Pass ne peut pas comporter plus de "{{ limit }}" caractères',
+        ]));
+        $metadata->addPropertyConstraint('compte_facebook', new Assert\NotBlank([
+            'message' => 'Le champ de votre Compte Facebook est vide',
+        ]));
+        $metadata->addPropertyConstraint('compte_twitter', new Assert\NotBlank([
+            'message' => 'Le champ de votre compte Twitter est vide',
+        ]));
+        $metadata->addPropertyConstraint('compte_linkedin', new Assert\NotBlank([
+            'message' => 'Le champ de votre Compte linkedin est vide',
         ]));
 
     }
+
+    public function getViewsNb(): ?int
+    {
+        return $this->viewsNb;
+    }
+
+    public function setViewsNb(int $viewsNb): self
+    {
+        $this->viewsNb = $viewsNb;
+
+        return $this;
+    }
+
+    public function getEtat(): ?int
+    {
+        return $this->etat;
+    }
+
+    public function setEtat(int $etat): self
+    {
+        $this->etat = $etat;
+
+        return $this;
+    }
+
 }
