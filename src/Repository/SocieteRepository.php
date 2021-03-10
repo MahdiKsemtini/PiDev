@@ -36,7 +36,7 @@ class SocieteRepository extends ServiceEntityRepository
     }
     */
 
-    /*
+
     public function findOneBySomeField($value): ?Societe
     {
         return $this->createQueryBuilder('s')
@@ -46,5 +46,5 @@ class SocieteRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-    */
+
 }

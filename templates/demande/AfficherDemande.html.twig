@@ -1,0 +1,443 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RightJob_P_demande{% endblock %}
+{% block css %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=9">
+    <meta name="description" content="Gambolthemes">
+    <meta name="author" content="Gambolthemes">
+    <title>Cursus - My Instructor Profile View</title>
+
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/png" href='{{ asset("images/fav.png") }}'>
+
+    <!-- Stylesheets -->
+    <link href='{{ asset('http://fonts.googleapis.com/css?family=Roboto:400,700,500') }}' rel='stylesheet'>
+    <link href='{{ asset('vendor/unicons-2.0.1/css/unicons.css') }}' rel='stylesheet'>
+    <link href='{{ asset("css/vertical-responsive-menu.min.css") }}' rel="stylesheet">
+    <link href='{{ asset("css/style.css") }}' rel="stylesheet">
+    <link href='{{ asset("css/responsive.css") }}' rel="stylesheet">
+    <link href='{{ asset("css/night-mode.css") }}' rel="stylesheet">
+
+    <!-- Vendor Stylesheets -->
+    <link href='{{ asset("vendor/fontawesome-free/css/all.min.css") }}' rel="stylesheet">
+    <link href='{{ asset("vendor/OwlCarousel/assets/owl.carousel.css") }}' rel="stylesheet">
+    <link href='{{ asset("vendor/OwlCarousel/assets/owl.theme.default.min.css") }}' rel="stylesheet">
+    <link href='{{ asset("vendor/bootstrap/css/bootstrap.min.css") }}' rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href='{{ asset("vendor/semantic/semantic.min.css") }}'>
+
+{% endblock %}
+
+{% block body %}
+    <div class="wrapper _bg4586">
+        <div class="_216b01">
+            <div class="container-fluid">
+                <div class="row justify-content-md-center">
+                    <div class="col-md-10">
+                        <div class="section3125 rpt145">
+                            <div class="row">
+                                <div class="col-lg-7">
+                                    <a href="#" class="_216b22">
+                                        <span><i class="uil uil-cog"></i></span>Setting
+                                    </a>
+                                    <div class="dp_dt150">
+                                        <div class="img148">
+                                            <img src="images/hd_dp.jpg" alt="">
+                                        </div>
+                                        <div class="prfledt1">
+                                            <h2>Joginder Singh</h2>
+                                            <span>UI / UX Designer and Web Developer</span>
+                                        </div>
+                                    </div>
+                                    <ul class="_ttl120">
+                                        <li>
+                                            <div class="_ttl121">
+                                                <div class="_ttl122">Enroll Students</div>
+                                                <div class="_ttl123">612K</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="_ttl121">
+                                                <div class="_ttl122">Courses</div>
+                                                <div class="_ttl123">8</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="_ttl121">
+                                                <div class="_ttl122">Reviews</div>
+                                                <div class="_ttl123">11K</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="_ttl121">
+                                                <div class="_ttl122">Subscriptions</div>
+                                                <div class="_ttl123">452K</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-5">
+                                    <a href="#" class="_216b12">
+                                        <span><i class="uil uil-cog"></i></span>Setting
+                                    </a>
+                                    <div class="rgt-145">
+                                        <ul class="tutor_social_links">
+                                            <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                                            <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <ul class="_bty149">
+                                        <li><button class="studio-link-btn btn500" onclick="window.location.href = '#';">Edututs Studio</button></li>
+                                        <li><button class="msg125 btn500" onclick="window.location.href = '#';">Edit</button></li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="_215b15">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="course_tabs">
+                            <nav>
+                                <div class="nav nav-tabs tab_crse" id="nav-tab" role="tablist">
+                                    <a class="nav-item nav-link active" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-selected="true">About</a>
+                                    <a class="nav-item nav-link" id="nav-courses-tab" data-toggle="tab" href="#nav-courses" role="tab" aria-selected="false">Demande de Stage</a>
+                                    <a class="nav-item nav-link" id="nav-purchased-tab" data-toggle="tab" href="#nav-purchased" role="tab" aria-selected="false">Demande d'emploi</a>
+
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="_215b17">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="course_tab_content">
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-about" role="tabpanel">
+                                    <div class="_htg451">
+                                        <div class="_htg452">
+                                            <h3>About Me</h3>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum scelerisque nibh sed ligula blandit, quis faucibus lorem pellentesque. Suspendisse pulvinar dictum pellentesque. Vestibulum at sagittis lectus, sit amet aliquam turpis. In quis elit tempus, semper justo vitae, lacinia massa. Etiam sagittis quam quis fermentum lacinia. Curabitur blandit sapien et risus congue viverra. Mauris auctor risus sit amet cursus sollicitudin. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla feugiat sodales massa, in viverra dolor condimentum ut. In imperdiet, justo nec volutpat blandit, tellus justo tempor quam, sed pretium nibh nunc nec mauris. Mauris vel malesuada magna. Quisque iaculis molestie purus, non luctus mauris porta id. Maecenas imperdiet tincidunt mauris vestibulum vulputate. Aenean sollicitudin pretium nibh, et sagittis risus tincidunt ac. Phasellus scelerisque rhoncus massa, ac euismod massa pharetra non. Phasellus dignissim, urna in iaculis varius, turpis libero mollis velit, sit amet euismod arcu mi ac nibh. Praesent tincidunt eros at ligula pellentesque elementum. Fusce condimentum enim a tellus egestas, sit amet rutrum elit gravida. Pellentesque in porta sapien. Fusce tristique maximus ipsum et mollis. Sed at massa ac est dapibus vulputate at eu nibh.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="nav-courses" role="tabpanel">
+                                    <div class="_htg451">
+                                        <div class="_htg452">
+                                            <h3>Les Demandes de stage evnvoyer!</h3>
+                                            {% for D in ds %}
+                                            <div class="row">
+                                                <div class="col-md-9">
+                                                    <div class="fcrse_1 mt-20">
+
+
+                                                            <div class="course-overlay">
+                                                                <div class="badge_seller">Votre demande</div>
+                                                                <div class="crse_reviews">
+
+                                                                </div>
+                                                                <span class="play_btn1"><i class="uil uil-play"></i></span>
+                                                                <div class="crse_timer">
+                                                                  {{ D.type }}
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                        <div class="hs_content">
+                                                            <div class="eps_dots eps_dots10 more_dropdown">
+                                                                <a href="#"><i class="uil uil-ellipsis-v"></i></a>
+                                                                <div class="dropdown-content">
+                                                                    <span><i class="uil uil-download-alt"></i><a href="{{ path('updateS',{'id':D.id}) }}">Update</a></span>
+                                                                    <span><i class="uil uil-trash-alt"></i> <a href="{{ path('deleteDStage',{'id':D.id}) }}">Delete</a></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="vdtodt">
+                                                                <span class="vdt14">109k views</span>
+                                                                <span class="vdt14">{{ D.dateCreation }}</span>
+                                                            </div>
+                                                            <a class="crse14s title900">{{ D.description }}</a>
+                                                            <a href="#" class="crse-cate">{{ D.domaine }}</a>
+                                                            <div class="purchased_badge">{{ D.nomsociete}}</div>
+                                                            <div class="auth1lnkprce">
+                                                                <p class="cr1fot">By <a href="#">John Doe</a></p>
+                                                                <div class="prce142">{{ D.etude }}</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade show" id="nav-purchased" role="tabpanel">
+                                    <h3>Les Demande D'emploi evnvoyer!</h3>
+                                    {% for D in DemandeEmplois %}
+                                    <div class="_htg451">
+                                        <div class="_htg452">
+
+
+                                            <div class="row">
+
+
+                                                <div class="col-md-9">
+
+                                                    <div class="fcrse_1 mt-20">
+
+
+                                                            <div class="course-overlay">
+                                                                <div class="badge_seller">Votre Demande</div>
+                                                                <div class="crse_reviews">
+
+                                                                </div>
+
+                                                                <div class="crse_timer">
+                                                                <p> cv file </p>    {{ D.cv }}
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                        <div class="hs_content">
+                                                            <div class="eps_dots eps_dots10 more_dropdown">
+                                                                <a href="#"><i class="uil uil-ellipsis-v"></i></a>
+                                                                <div class="dropdown-content">
+                                                                    <span><i class="uil uil-download-alt"></i> <a href="{{ path('updateE',{'id':D.id}) }}">Update</a></span>
+                                                                    <span><i class="uil uil-trash-alt"></i> <a href='{{ path('deleteDEmploi',{'id':D.id}) }}'>Delete</a></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="vdtodt">
+
+                                                                <span class="vdt14"></span>
+                                                            </div>
+                                                            <a href="course_detail_view.html" class="crse14s title900">{{ D.description }}</a>
+                                                            <a href="#" class="crse-cate">{{ D.domaine }}</a>
+                                                            <div class="purchased_badge">{{ D.nomsociete}} </div>
+
+                                                            <div class="auth1lnkprce">
+                                                                <p class="cr1fot">diplome: <a href="#">{{ D.diplome }}</a></p>
+                                                                <div class="prce142">{{ D.salaire }}</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                </div>
+
+
+                                            </div >
+
+
+                                        </div>
+
+                                    </div>
+                                    {% endfor %}
+
+                                </div>
+
+                                {{ knp_pagination_render(pagination) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer mt-30">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="item_f1">
+                            <a href="about_us.html">About</a>
+                            <a href="our_blog.html">Blog</a>
+                            <a href="career.html">Careers</a>
+                            <a href="press.html">Press</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="item_f1">
+                            <a href="help.html">Help</a>
+                            <a href="coming_soon.html">Advertise</a>
+                            <a href="coming_soon.html">Developers</a>
+                            <a href="contact_us.html">Contact Us</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="item_f1">
+                            <a href="terms_of_use.html">Copyright Policy</a>
+                            <a href="terms_of_use.html">Terms</a>
+                            <a href="terms_of_use.html">Privacy Policy</a>
+                            <a href="#">Sitemap</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-6">
+                        <div class="item_f3">
+                            <a href="#" class="btn1542">Teach on Cursus</a>
+                            <div class="lng_btn">
+                                <div class="ui language bottom right pointing dropdown floating" id="languages" data-content="Select Language">
+                                    <a href="#"><i class='uil uil-globe lft'></i>Language<i class='uil uil-angle-down rgt'></i></a>
+                                    <div class="menu">
+                                        <div class="scrolling menu">
+                                            <div class="item" data-percent="100" data-value="en" data-english="English">
+                                                <span class="description">English</span>
+                                                English
+                                            </div>
+                                            <div class="item" data-percent="94" data-value="da" data-english="Danish">
+                                                <span class="description">dansk</span>
+                                                Danish
+                                            </div>
+                                            <div class="item" data-percent="94" data-value="es" data-english="Spanish">
+                                                <span class="description">Español</span>
+                                                Spanish
+                                            </div>
+                                            <div class="item" data-percent="34" data-value="zh" data-english="Chinese">
+                                                <span class="description">简体中文</span>
+                                                Chinese
+                                            </div>
+                                            <div class="item" data-percent="54" data-value="zh_TW" data-english="Chinese (Taiwan)">
+                                                <span class="description">中文 (臺灣)</span>
+                                                Chinese (Taiwan)
+                                            </div>
+                                            <div class="item" data-percent="79" data-value="fa" data-english="Persian">
+                                                <span class="description">پارسی</span>
+                                                Persian
+                                            </div>
+                                            <div class="item" data-percent="41" data-value="fr" data-english="French">
+                                                <span class="description">Français</span>
+                                                French
+                                            </div>
+                                            <div class="item" data-percent="37" data-value="el" data-english="Greek">
+                                                <span class="description">ελληνικά</span>
+                                                Greek
+                                            </div>
+                                            <div class="item" data-percent="37" data-value="ru" data-english="Russian">
+                                                <span class="description">Русский</span>
+                                                Russian
+                                            </div>
+                                            <div class="item" data-percent="36" data-value="de" data-english="German">
+                                                <span class="description">Deutsch</span>
+                                                German
+                                            </div>
+                                            <div class="item" data-percent="23" data-value="it" data-english="Italian">
+                                                <span class="description">Italiano</span>
+                                                Italian
+                                            </div>
+                                            <div class="item" data-percent="21" data-value="nl" data-english="Dutch">
+                                                <span class="description">Nederlands</span>
+                                                Dutch
+                                            </div>
+                                            <div class="item" data-percent="19" data-value="pt_BR" data-english="Portuguese">
+                                                <span class="description">Português(BR)</span>
+                                                Portuguese
+                                            </div>
+                                            <div class="item" data-percent="17" data-value="id" data-english="Indonesian">
+                                                <span class="description">Indonesian</span>
+                                                Indonesian
+                                            </div>
+                                            <div class="item" data-percent="12" data-value="lt" data-english="Lithuanian">
+                                                <span class="description">Lietuvių</span>
+                                                Lithuanian
+                                            </div>
+                                            <div class="item" data-percent="11" data-value="tr" data-english="Turkish">
+                                                <span class="description">Türkçe</span>
+                                                Turkish
+                                            </div>
+                                            <div class="item" data-percent="10" data-value="kr" data-english="Korean">
+                                                <span class="description">한국어</span>
+                                                Korean
+                                            </div>
+                                            <div class="item" data-percent="7" data-value="ar" data-english="Arabic">
+                                                <span class="description">العربية</span>
+                                                Arabic
+                                            </div>
+                                            <div class="item" data-percent="6" data-value="hu" data-english="Hungarian">
+                                                <span class="description">Magyar</span>
+                                                Hungarian
+                                            </div>
+                                            <div class="item" data-percent="6" data-value="vi" data-english="Vietnamese">
+                                                <span class="description">tiếng Việt</span>
+                                                Vietnamese
+                                            </div>
+                                            <div class="item" data-percent="5" data-value="sv" data-english="Swedish">
+                                                <span class="description">svenska</span>
+                                                Swedish
+                                            </div>
+                                            <div class="item" data-precent="4" data-value="pl" data-english="Polish">
+                                                <span class="description">polski</span>
+                                                Polish
+                                            </div>
+                                            <div class="item" data-percent="6" data-value="ja" data-english="Japanese">
+                                                <span class="description">日本語</span>
+                                                Japanese
+                                            </div>
+                                            <div class="item" data-percent="0" data-value="ro" data-english="Romanian">
+                                                <span class="description">românește</span>
+                                                Romanian
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="footer_bottm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul class="fotb_left">
+                                        <li>
+                                            <a href="index.html">
+                                                <div class="footer_logo">
+                                                    <img src="images/logo1.svg" alt="">
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <p>© 2020 <strong>Cursus</strong>. All Rights Reserved.</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="edu_social_links">
+                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                        <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="#"><i class="fab fa-instagram"></i></a>
+                                        <a href="#"><i class="fab fa-youtube"></i></a>
+                                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <!-- Body End -->
+{% endblock %}
+
+{% block js %}
+<script src='{{ asset("js/vertical-responsive-menu.min.js") }}'></script>
+<script src='{{ asset("js/jquery-3.3.1.min.js") }}'></script>
+<script src='{{ asset("vendor/bootstrap/js/bootstrap.bundle.min.js") }}'></script>
+<script src='{{ asset("vendor/OwlCarousel/owl.carousel.js") }}'></script>
+<script src='{{ asset("vendor/semantic/semantic.min.js") }}'></script>
+<script src='{{ asset("js/custom.js") }}'></script>
+<script src='{{ asset("js/night-mode.js") }}'></script>
+{% endblock %}
+
+

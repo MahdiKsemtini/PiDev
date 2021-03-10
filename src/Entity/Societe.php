@@ -6,6 +6,7 @@ use App\Repository\SocieteRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Integer;
 
 /**
  * @ORM\Entity(repositoryClass=SocieteRepository::class)
@@ -54,14 +55,23 @@ class Societe
      */
     private $freelancers;
 
+
+
     public function __construct()
     {
         $this->freelancers = new ArrayCollection();
+        $this->demandes = new ArrayCollection();
     }
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+    public function setId(int $id): self
+    {
+        $this->$id = $id;
+
+        return $this;
     }
 
     public function getNom(): ?string
@@ -144,6 +154,7 @@ class Societe
         return $this->freelancers;
     }
 
+
     public function addFreelancer(Freelancer $freelancer): self
     {
         if (!$this->freelancers->contains($freelancer)) {
@@ -158,6 +169,36 @@ class Societe
     {
         if ($this->freelancers->removeElement($freelancer)) {
             $freelancer->removeSociete($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Demande[]
+     */
+    public function getDemandes(): Collection
+    {
+        return $this->demandes;
+    }
+
+    public function addDemande(Demande $demande): self
+    {
+        if (!$this->demandes->contains($demande)) {
+            $this->demandes[] = $demande;
+            $demande->setIdSociete($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDemande(Demande $demande): self
+    {
+        if ($this->demandes->removeElement($demande)) {
+            // set the owning side to null (unless already changed)
+            if ($demande->getIdSociete() === $this) {
+                $demande->setIdSociete(null);
+            }
         }
 
         return $this;
