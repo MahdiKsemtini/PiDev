@@ -1,0 +1,47 @@
+{% extends 'base_back.html.twig' %}
+{% block title %}Cursus - Index{% endblock %}
+{% block body %}
+    <div class="container text-center">
+
+
+        <h1>Product index</h1>
+        <a href="{{ path('demande') }}" class="btn btn-success" style="width: 90%">Create new</a>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Type</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for d in demandes %}
+                <tr>
+                    <td>{{ d.cv }}</td>
+                    <td>{{ d.nomsociete }}</td>
+                    <td>{{ d.domaine }}</td>
+                    <td>{{ d.description }}</td>
+
+                    <td>{{ d.diplome }}</td>
+                    <td>{{ d.salaire }}</td>
+
+                    <td>
+
+                        <a class="btn btn-danger" href="{{ path("deleteDEmploi",{"id":d.id}) }}">delete</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+    </div>
+{% endblock %}

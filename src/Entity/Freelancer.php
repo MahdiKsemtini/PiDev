@@ -6,6 +6,7 @@ use App\Repository\FreelancerRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Integer;
 
 /**
  * @ORM\Entity(repositoryClass=FreelancerRepository::class)
@@ -74,14 +75,23 @@ class Freelancer
      */
     private $societe;
 
+
+
     public function __construct()
     {
         $this->societe = new ArrayCollection();
+        $this->demandes = new ArrayCollection();
     }
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+    public function setId(int $id): self
+    {
+        $this->$id = $id;
+
+        return $this;
     }
 
     public function getNom(): ?string
@@ -224,6 +234,36 @@ class Freelancer
     public function removeSociete(Societe $societe): self
     {
         $this->societe->removeElement($societe);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Demande[]
+     */
+    public function getDemandes(): Collection
+    {
+        return $this->demandes;
+    }
+
+    public function addDemande(Demande $demande): self
+    {
+        if (!$this->demandes->contains($demande)) {
+            $this->demandes[] = $demande;
+            $demande->setIdUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDemande(Demande $demande): self
+    {
+        if ($this->demandes->removeElement($demande)) {
+            // set the owning side to null (unless already changed)
+            if ($demande->getIdUser() === $this) {
+                $demande->setIdUser(null);
+            }
+        }
 
         return $this;
     }
