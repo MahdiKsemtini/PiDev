@@ -30,9 +30,11 @@ class PublicationsController extends AbstractController
         $pub=$p->findAll();
         if ($request->isMethod("POST"))
         {
-            $id_util = $request->get("id_util");
-            $pub=$p->findBy(array("id_utilisateur"=>$id_util));
+            $keyword = $request->get("keyword");
+            $pub=$p->findByKey($keyword);
         }
+
+
 
         $pubs = $paginator->paginate($pub, $request->query->getInt('page', 1), 3);
 
@@ -71,11 +73,10 @@ class PublicationsController extends AbstractController
 
         if ($request->isMethod("POST"))
         {
-            $id_util = $request->get("id_util");
-            $publications=$p->findBy(array("id_utilisateur"=>$id_util));
+            $publications=$p->trierdatep();
         }
-        $pubs = $paginator->paginate($publications, $request->query->getInt('page', 1), 3);
-        return $this->render('Back/publications/publicationsBack.html.twig', array('publications'=>$pubs));
+
+        return $this->render('Back/publications/publicationsBack.html.twig', array('publications'=>$publications));
     }
 
 

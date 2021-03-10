@@ -59,11 +59,14 @@ class CommentairesController extends AbstractController
         $p=$this->getDoctrine()->getRepository(Commentaires::class);
         $commentaires=$p->findAll();
 
+        if ($request->isMethod("POST"))
+        {
+            $commentaires=$p->trierdatec();
+        }
 
 
-        $coms = $paginator->paginate($commentaires, $request->query->getInt('page', 1), 4);
 
-        return $this->render('Back/publications/backCommentaires.html.twig', array('commentaires'=>$coms));
+        return $this->render('Back/publications/backCommentaires.html.twig', array('commentaires'=>$commentaires));
     }
 
     /**

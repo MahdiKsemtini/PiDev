@@ -19,32 +19,35 @@ class PublicationsRepository extends ServiceEntityRepository
         parent::__construct($registry, Publications::class);
     }
 
-    // /**
-    //  * @return Publications[] Returns an array of Publications objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
 
-    /*
-    public function findOneBySomeField($value): ?Publications
+
+    public function trierdatep()
     {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $qb = $this->createQueryBuilder('p')
+            ->orderBy('p.date_publication', 'DESC');
+
+        return $qb->getQuery()->getResult();
     }
-    */
+
+    public function getNbPub()
+    {
+
+        $qb = $this->createQueryBuilder('p')
+            ->select('COUNT(p.id) AS pub,MONTH(p.date_publication) AS mdate, DAY(p.date_publication) AS jdate')
+            ->groupBy('mdate')
+            ->addGroupBy('jdate');
+
+
+        return $qb->getQuery()
+            ->getResult();
+    }
+
+    public function findByKey($keyword){
+        $query = $this->createQueryBuilder('p')
+            ->where('p.description LIKE :key')->orWhere('p.id_utilisateur LIKE :key')
+            ->setParameter('key' , '%'.$keyword.'%')->getQuery();
+
+        return $query->getResult();
+    }
+
 }

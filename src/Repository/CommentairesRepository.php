@@ -32,4 +32,12 @@ class CommentairesRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function trierdatec()
+    {
+        $qb = $this->createQueryBuilder('c')
+            ->orderBy('c.date_com', 'DESC');
+
+        return $qb->getQuery()->getResult();
+    }
+
 }

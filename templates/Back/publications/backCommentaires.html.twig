@@ -49,7 +49,7 @@
                         <div class="cater_ttle" >
                             <div align="center" >
                                 <a href={{ path('publicationsBack') }} class="upload_btn">Gestion des publications</a>
-                                <a href={{ path('statistiques') }} class="upload_btn">Staisqtiques</a>
+                                <a href={{ path('statistiques') }} class="upload_btn">Statistiques</a>
                             </div>
                         </div>
 
@@ -61,8 +61,9 @@
                                     <div class="review_right_heading">
                                         <h3>Les Commentaires :</h3>
                                         <div class="review_search">
-                                            <input class="rv_srch" type="text" placeholder="Search ...">
-                                            <button class="rvsrch_btn"><i class="uil uil-search"></i></button>
+                                            <form method="POST">
+                                                <button type="submit" class="upload_btn" ><i class="uil-arrows-v-alt">DATE</i></button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -93,9 +94,7 @@
                                         {% endfor %}
                                         </tbody>
                                     </table>
-                                    <div class="live_text" style="float: right"  >
-                                        <h4 >{{ knp_pagination_render(commentaires) }}</h4>
-                                    </div>
+
                                 </div>
                             </div>
 

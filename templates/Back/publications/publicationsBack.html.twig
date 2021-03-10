@@ -49,7 +49,7 @@
                         <div class="cater_ttle" >
                             <div align="center" >
                                 <a href={{ path('backCommentaires') }} class="upload_btn">Gestion des commentaires</a>
-                                <a href={{ path('statistiques') }} class="upload_btn">Staisqtiques</a>
+                                <a href={{ path('statistiques') }} class="upload_btn">Statistiques</a>
                             </div>
                         </div>
 
@@ -62,8 +62,7 @@
                                             <h3>Les Publications :</h3>
                                             <div class="review_search">
                                                 <form method="POST">
-                                                    <input class="rv_srch" type="text" name="id_util" placeholder="Search ...">
-                                                    <button type="submit" value="recherche" class="rvsrch_btn"><i class="uil uil-search"></i></button>
+                                                    <button type="submit" class="upload_btn" ><i class="uil-arrows-v-alt">DATE</i></button>
                                                 </form>
                                             </div>
                                         </div>
@@ -71,14 +70,16 @@
                                     <div class="table-responsive mt-30">
                                         <table class="table ucp-table">
                                             <thead class="thead-s">
+
                                             <tr>
                                                 <th class="text-center" scope="col">id publication</th>
                                                 <th class="text-center" scope="col">id utilisateur</th>
                                                 <th class="text-center" scope="col">Description</th>
                                                 <th class="text-center" scope="col">image</th>
-                                                <th class="text-center" scope="col">date publication</th>
+                                                <th class="text-center" scope="col"><i type="submit" class="uil uil-search"></i>date publication</th>
                                                 <th class="text-center" scope="col">Action</th>
                                             </tr>
+
                                             </thead>
                                             <tbody>
                                             {% for i in publications %}
@@ -98,9 +99,7 @@
                                         </table>
                                     </div>
                                 </div>
-                                <div class="live_text" style="float: right" >
-                                    <h4 >{{ knp_pagination_render(publications) }}</h4>
-                                </div>
+
                             </div>
                     </div>
                 </div>
