@@ -1,0 +1,48 @@
+{% block content %}
+    <div class="content">
+    <div class="container-fluid">
+    <div class="row">
+    <div class="col-md-12">
+    <div class="card">
+    <div class="card-header card-header-primary">
+        <h1 align="center">CV</h1>
+        <br>
+        <h2 align="center"> {{ app.session.get('nom') }} {{ app.session.get('prenom') }} </h2>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="card-body">
+    <div class="table-responsive">
+    <div class="_ttl121">
+        <div class="_ttl122"><h3><b>Email:</b> {{ app.session.get('email') }}</h3> </div>
+    </div>
+    <br>
+    <div class="_ttl121">
+        <div class="_ttl122"><h3><b>Adresse:</b> {{ app.session.get('adresse') }}</h3></div>
+    </div>
+    <br>
+    <div class="_ttl121">
+        <div class="_ttl122"><h3><b>Competences:</b> {{ app.session.get('competences') }}</h3></div>
+    </div>
+    <br>
+    <div class="_ttl121">
+        <div class="_ttl122"><h3><b>Langues:</b> {{ app.session.get('langues') }}</h3></div>
+    </div>
+    <br>
+    <div class="_ttl121">
+        <div class="_ttl122"><h3><b>Sexe:</b> {{ app.session.get('sexe') }}</h3></div>
+    </div>
+    <br>
+    <div class="_ttl121">
+        <div class="_ttl122"><h3><b>Compte Facebbok:</b> {{ app.session.get('compte_facebook') }}</h3></div>
+    </div>
+    <br>
+    <div class="_ttl121">
+        <div class="_ttl122"><h3><b>Compte LinkedIn:</b> {{ app.session.get('compte_linkedin') }}</h3></div>
+    </div>
+    <br>
+    <div class="_ttl121">
+        <div class="_ttl122"><h3><b>Compte Twitter:</b> {{ app.session.get('compte_twitter') }}</h3></div>
+    </div>
+{% endblock %}

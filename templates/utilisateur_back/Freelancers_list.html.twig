@@ -1,0 +1,60 @@
+{% block content %}
+    <div class="content">
+    <div class="container-fluid">
+    <div class="row">
+    <div class="col-md-12">
+    <div class="card">
+    <div class="card-header card-header-primary">
+        <h1 align="center">Offre</h1>
+        <h4 align="center"> List of Offre </h4>
+    </div>
+    <div class="card-body">
+    <div class="table-responsive">
+    {% if type=="Freelancer" %}
+    <table class="table" border="2">
+        <thead class=" text-primary">
+        <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Email</th>
+            <th>Adresse</th>
+            <th>Sexe</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for l in list %}
+            <tr>
+                <td>{{ l.id }}</td>
+                <td>{{ l.nom }}</td>
+                <td>{{ l.prenom }}</td>
+                <td>{{ l.email }}</td>
+                <td>{{ l.adresse }}</td>
+                <td>{{ l.sexe }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <table class="table" border="2">
+            <thead class=" text-primary">
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Adresse</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for l in list %}
+                <tr>
+                    <td>{{ l.id }}</td>
+                    <td>{{ l.nom }}</td>
+                    <td>{{ l.email }}</td>
+                    <td>{{ l.adresse }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}
