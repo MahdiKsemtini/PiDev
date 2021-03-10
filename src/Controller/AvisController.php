@@ -24,7 +24,7 @@ class AvisController extends AbstractController
         $freelancer = $repository->findOneBy(['email' =>"fffffff@fffffff"]);
         $form= $this->createForm(AvisType::class,$avis);
         $form->handleRequest($request);
-        if ($form->isSubmitted()){
+        if ($form->isSubmitted() and $form->isValid()){
             $avis->setEmailUtilisateur($freelancer->getEmail());
             $avis->setNomUtilisateur($freelancer->getNom());
             $em=$this->getDoctrine()->getManager();

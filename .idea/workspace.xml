@@ -156,11 +156,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\PiDev\templates" />
       <recent name="C:\wamp64\www\PiDev\templates\offre_emploi" />
       <recent name="C:\wamp64\www\PiDev\templates\demande" />
       <recent name="C:\wamp64\www\PiDev\templates\reclamation" />
       <recent name="C:\wamp64\www\PiDev\public\images" />
-      <recent name="C:\wamp64\www\PiDev\public" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\PiDev\templates\avis" />
@@ -201,6 +201,14 @@
       <workItem from="1614767694740" duration="5931000" />
       <workItem from="1614776149733" duration="616000" />
       <workItem from="1614777532594" duration="137000" />
+      <workItem from="1614777888850" duration="176000" />
+      <workItem from="1614805028597" duration="10753000" />
+      <workItem from="1614845058309" duration="1776000" />
+      <workItem from="1614964366988" duration="6754000" />
+      <workItem from="1615059774963" duration="3219000" />
+      <workItem from="1615141199515" duration="2045000" />
+      <workItem from="1615143569176" duration="2473000" />
+      <workItem from="1615395814676" duration="17237000" />
     </task>
     <servers />
   </component>
@@ -244,9 +252,13 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1366.768@0.0.1366.768" timestamp="1614558071762" />
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1614770757374">
+    <state x="339" y="172" key="run.anything.popup" timestamp="1615141984885">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1614770757374" />
+    <state x="339" y="172" key="run.anything.popup/0.0.1366.768@0.0.1366.768" timestamp="1615141984885" />
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1614964881239">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1614964881239" />
   </component>
 </project>

@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ReclamationRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ReclamationRepository::class)
@@ -19,11 +20,13 @@ class Reclamation
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Votre type est vide")
      */
     private $type;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Votre texte de reclamation est vide")
      */
     private $texteReclamation;
 
@@ -41,6 +44,11 @@ class Reclamation
      * @ORM\Column(type="string", length=255)
      */
     private $nom_utilisateur;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $etat;
 
     public function getId(): ?int
     {
@@ -103,6 +111,18 @@ class Reclamation
     public function setNomUtilisateur(string $nom_utilisateur): self
     {
         $this->nom_utilisateur = $nom_utilisateur;
+
+        return $this;
+    }
+
+    public function getEtat(): ?bool
+    {
+        return $this->etat;
+    }
+
+    public function setEtat(bool $etat): self
+    {
+        $this->etat = $etat;
 
         return $this;
     }

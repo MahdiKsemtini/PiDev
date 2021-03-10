@@ -6,6 +6,8 @@ use App\Entity\Avis;
 use App\Entity\Reclamation;
 use App\Form\AvisType;
 use App\Form\ReclamationType;
+use App\Repository\AdminReclamationRepository;
+use App\Repository\AdminRepository;
 use App\Repository\FreelancerRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,15 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class ReclamationController extends AbstractController
 {
-    /**
-     * @Route("/reclamation", name="reclamation")
-     */
-    public function index(): Response
-    {
-        return $this->render('reclamation/createreclamation.html.twig', [
-            'controller_name' => 'ReclamationController',
-        ]);
-    }
+
 
     /**
      * @Route("/showReclamation", name="showReclamation")
@@ -41,7 +35,7 @@ class ReclamationController extends AbstractController
      * @param Request $request
      */
 
-    public function addReclamation(\Symfony\Component\HttpFoundation\Request $request,FreelancerRepository $repository)
+    public function addReclamation(\Symfony\Component\HttpFoundation\Request $request,AdminRepository $adminRepository,AdminReclamationController $adminReclamationController,FreelancerRepository $repository)
     {
         $reclamation = new Reclamation();
         $freelancer = $repository->findOneBy(['email' =>"fffffff@fffffff"]);
@@ -52,9 +46,11 @@ class ReclamationController extends AbstractController
             $reclamation->setNomUtilisateur($freelancer->getNom());
             $newDate= new \DateTime('now');
             $reclamation->setDateReclamation($newDate->format('Y-m-d H:i:s'));
+            $reclamation->setEtat(0);
             $em = $this->getDoctrine()->getManager();
             $em->persist($reclamation);
             $em->flush();
+            $adminReclamationController->ReclamationToAdmin($adminRepository,$reclamation->getId());
             return $this->redirectToRoute("showReclamation");
         }
         return $this->render("reclamation/AjouterReclamation.html.twig", [
