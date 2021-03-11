@@ -5,17 +5,18 @@
 
 
         <h1>Product index</h1>
-        <a href="{{ path('demande') }}" class="btn btn-success" style="width: 90%">Create new</a>
+
+
         <table class="table">
             <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Quantity</th>
+                <th>Cv_file</th>
+                <th>Nom de la scociete</th>
+                <th>Domaine</th>
                 <th>Description</th>
-                <th>Image</th>
-                <th>Type</th>
-                <th>actions</th>
+                <th>Diplome</th>
+                <th>Salaire</th>
+
             </tr>
             </thead>
             <tbody>
@@ -31,13 +32,11 @@
 
                     <td>
 
-                        <a class="btn btn-danger" href="{{ path("deleteDEmploi",{"id":d.id}) }}">delete</a>
+                        <a class="btn btn-danger" href="{{ path("deleteDEmploib",{"id":d.id}) }}">delete</a>
+                        <a class="btn btn-success" href="{{ path('listD') }}">Create pdf</a>
                     </td>
                 </tr>
-            {% else %}
-                <tr>
-                    <td colspan="7">no records found</td>
-                </tr>
+
             {% endfor %}
             </tbody>
         </table>

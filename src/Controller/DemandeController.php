@@ -21,6 +21,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Knp\Component\Pager\PaginatorInterface;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class DemandeController extends AbstractController
 {
@@ -92,13 +94,13 @@ class DemandeController extends AbstractController
         $DemandeStages=$repo->findAll();
         $pagination = $paginator->paginate( $DemandeEmplois,
             // Define the page parameter
-            $request->query->getInt('page', 1), 5);
+            $request->query->getInt('page', 1), 2);
 
         return $this->render('demande/AfficherDemande.html.twig', [
-              'DemandeEmplois'=>$DemandeEmplois,
+
             'ds'=>$DemandeStages,
             'controller_name' => 'DemandeController',
-            'd'=>$DemandeEmplois,
+
             'pagination'=>$pagination,
         ]);
     }
@@ -114,6 +116,17 @@ class DemandeController extends AbstractController
         $em->remove($Demande);
         $em->flush();
         return $this->redirectToRoute("AfficherDemande");
+    }
+    /**
+     * @Route("/deleteDEmploiB/{id}", name="deleteDEmploib")
+     */
+    public function deleteDEmploiB($id)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $Demande=$em->getRepository(DemandeEmploi::class)->find($id);
+        $em->remove($Demande);
+        $em->flush();
+        return $this->redirectToRoute("back");
     }
     /**
      * @Route("/deleteDStage/{id}", name="deleteDStage")
@@ -173,6 +186,37 @@ class DemandeController extends AbstractController
     {
         return $this->render('demande/AfficherBack.html.twig', [
             'demandes' => $Repository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/listD", name="listD", methods={"GET"})
+     */
+    public function listD(DemandeEmploiRepository $hotelRepository): Response
+    {
+        // Configure Dompdf according to your needs
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+
+        // Instantiate Dompdf with our options
+        $dompdf = new Dompdf($pdfOptions);
+        // Retrieve the HTML generated in our twig file
+        $html = $this->renderView('demande/AfficherBack.html.twig', [
+            'demandes' => $hotelRepository->findAll(),
+        ]);
+
+        // Load HTML to Dompdf
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser (inline view)
+        $dompdf->stream("mypdf.pdf", [
+            "Attachment" => false
         ]);
     }
 

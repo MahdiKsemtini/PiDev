@@ -19,6 +19,21 @@ class DemandeEmploiRepository extends ServiceEntityRepository
         parent::__construct($registry, DemandeEmploi::class);
     }
 
+
+    public function OrderBynameQb()
+    {
+return $this->createQueryBuilder('d')
+    ->orderBy('d.salaire','ASC')
+    ->getQuery()->getResult();
+
+    }
+    public  function SearchNomSociete($data){
+        return $this->createQueryBuilder('d')
+            ->where('d.nomsociete LIKE :data')
+            ->setParameter('data','%'.$data.'%')
+            ->getQuery()->getResult();
+
+    }
     // /**
     //  * @return DemandeEmploi[] Returns an array of DemandeEmploi objects
     //  */
