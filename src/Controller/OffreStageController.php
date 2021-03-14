@@ -43,7 +43,7 @@ class OffreStageController extends AbstractController
         $form = $this->createForm(StageType::class, $stage);
        // $form->add('Ajouter', SubmitType::class);
         $form->handleRequest($request);
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted()&& $form->isValid()) {
           //  dd();
             $em = $this->getDoctrine()->getManager();
             $em->persist($stage);

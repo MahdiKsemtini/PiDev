@@ -132,7 +132,7 @@
                             <a href="/showStage" class="sub_menu--link">Liste des offres</a>
                         </li>
                         <li class="sub_menu--item">
-                            <a href="/addEmploi" class="sub_menu--link">Créer un stage</a>
+                            <a href="/addStage" class="sub_menu--link">Créer un stage</a>
                         </li>
                        
                     </ul>
@@ -144,10 +144,10 @@
                     </label>
                     <ul class="sub_menu">
                         <li class="sub_menu--item">
-                            <a href="/showEmploi" class="sub_menu--link">Liste des offres</a>
+                            <a href="/showStage" class="sub_menu--link">Liste des offres</a>
                         </li>
                         <li class="sub_menu--item">
-                            <a href="/addEmploi" class="sub_menu--link">Créer un emploi</a>
+                            <a href="/addStage" class="sub_menu--link">Créer un Stage</a>
                         </li>
                        </ul>
 
@@ -856,6 +856,7 @@
             </div>
         </div>
     </div>
+    {% block footer %}
     <footer class="footer mt-30">
         <div class="container">
             <div class="row">
@@ -1027,6 +1028,7 @@
             </div>
         </div>
     </footer>
+    {%endblock%}
 </div>
 {% endblock %}<!-- Body endblock -->
 <!-- Body End -->

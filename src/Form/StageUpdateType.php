@@ -46,6 +46,7 @@ class StageUpdateType extends AbstractType
             'attr'=>[
               //  'placeholder'=>'Insérer votre description du projet',
               //  'class'=>'ui hj145 dropdown cntry152 prompt srch_explore',
+              'class'=>'ui hj145 dropdown',
                 'name'=>'domaine',
                 'id'=>'id_domaine',
               //  'maxlength'=>'64',
@@ -81,6 +82,7 @@ class StageUpdateType extends AbstractType
             'attr'=>[
               //  'placeholder'=>'Insérer votre description du projet',
               //  'class'=>'ui hj145 dropdown cntry152 prompt srch_explore',
+              'class'=>'ui hj145 dropdown',
                 'name'=>'domaine',
                 'id'=>'id_domaine',
               //  'maxlength'=>'64',

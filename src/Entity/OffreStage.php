@@ -44,6 +44,7 @@ class OffreStage
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="inserer un fichier PDF")
      */
     private $fichier;
 

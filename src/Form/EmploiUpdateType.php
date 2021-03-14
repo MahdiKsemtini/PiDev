@@ -49,7 +49,7 @@ class EmploiUpdateType extends AbstractType
          ->add('domaine', ChoiceType::class,[
             'attr'=>[
               //  'placeholder'=>'Insérer votre description du projet',
-                'class'=>'ui hj145 dropdown cntry152 prompt srch_explore',
+                'class'=>'ui hj145 dropdown',
                 'name'=>'domaine',
                 'id'=>'id_domaine',
               //  'maxlength'=>'64',

@@ -87,10 +87,11 @@
                                                     <div class="row">
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="ui search focus mt-30 lbel25">
-                                                          {{ form_start(f) }}
+                                                          {{ form_start(f,{'attr':{'novalidate':'novalidate'}}) }}
                                                                 <label>Nom de projet*</label>
                                                                 <div class="ui left icon input swdh19">
                                                                     {{ form_widget(f.nomProjet) }}
+                                                                     {{ form_errors(f.nomProjet) }}
                                                                    
                                                                 </div>
                                                             </div>
@@ -100,6 +101,8 @@
                                                                 <label>Compétences prérequis*</label>
                                                                 <div class="ui left icon input swdh19">
                                                                     {{ form_widget(f.competences) }}
+                                                                     {{ form_errors(f.competences) }}
+                                                                    
                                                                    
                                                                 </div>
                                                             </div>
@@ -188,6 +191,7 @@
                                                                         <div class="input-group">
                                                                             <div class="custom-file">
                                                                                 {{ form_widget(f.fichier) }}
+                                                                                {{ form_errors(f.fichier) }}
                                                                             </div>
                                                                         </div>
                                                                     </div>

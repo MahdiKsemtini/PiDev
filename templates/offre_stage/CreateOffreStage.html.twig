@@ -38,7 +38,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h2 class="st_title"><i class="uil uil-analysis"></i> Créer un offre d'emploi</h2>
+                        <h2 class="st_title"><i class="uil uil-analysis"></i> Créer un offre de stage</h2>
                     </div>
                 </div>
                 <div class="row">
@@ -61,7 +61,7 @@
                                     <li>
                                         <a href="#tab_step3">
                                             <span class="number"></span>
-                                            <span class="step-name">Course Content</span>
+                                            <span class="step-name">Détails</span>
                                         </a>
                                     </li>
                                     <li>
@@ -82,10 +82,11 @@
                                                     <div class="row">
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="ui search focus mt-30 lbel25">
-                                                          {{ form_start(f) }}
+                                                          {{ form_start(f,{'attr':{'novalidate':'novalidate'}}) }}
                                                                 <label>Nom de projet*</label>
                                                                 <div class="ui left icon input swdh19">
                                                                     {{ form_widget(f.nomProjet) }}
+                                                                    {{ form_errors(f.nomProjet) }}
                                                                    
                                                                 </div>
                                                             </div>
@@ -95,6 +96,7 @@
                                                                 <label>Compétences prérequis*</label>
                                                                 <div class="ui left icon input swdh19">
                                                                     {{ form_widget(f.competences) }}
+                                                                    {{ form_errors(f.competences) }}
                                                                    
                                                                 </div>
                                                             </div>
@@ -152,6 +154,7 @@
                                                                 <div class="view_img_right">
                                                                     <h4>Choisir un domaine</h4>
                                                                   {{ form_widget(f.domaine) }}
+                                                                  {{ form_errors(f.domaine) }}
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -183,6 +186,7 @@
                                                                         <div class="input-group">
                                                                             <div class="custom-file">
                                                                                 {{ form_widget(f.fichier) }}
+                                                                                {{ form_errors(f.fichier) }}
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -195,6 +199,7 @@
                                                                         <label>Durée de stage*</label>
                                                                         <div class="ui left icon input swdh19 swdh55">
                                                                            {{ form_widget(f.duree) }}
+                                                                           {{ form_errors(f.duree) }}
                                                                             <div class="badge_min">Dinars</div>
                                                                         </div>
                                                                     </div>
@@ -206,6 +211,7 @@
                                                                 <div class="ui search focus mt-30 lbel25" style="margin-left:1.5%">
                                                                         <label>Choisir un type de stage</label>
                                                                   {{ form_widget(f.typeStage) }}
+                                                                  {{ form_errors(f.typeStage) }}
                                                                 </div>
                                                             </div>
                                                             </div>

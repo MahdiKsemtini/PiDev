@@ -19,32 +19,22 @@ class SocieteRepository extends ServiceEntityRepository
         parent::__construct($registry, Societe::class);
     }
 
-    // /**
-    //  * @return Societe[] Returns an array of Societe objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+    
 
-    /*
-    public function findOneBySomeField($value): ?Societe
-    {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
+    public function countNbOffre($id){
+        return $this->createQueryBuilder('e')
+       
+      
+        ->addSelect('COUNT(e.offreEmplois)')
+        
+       
+        ->andWhere('e.offreEmplois= :val')
+        ->setParameter('val', $id)
+      
+        ->getQuery()
+    
+        ->getResult();
+       }
+
+     
 }

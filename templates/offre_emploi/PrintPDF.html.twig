@@ -1,0 +1,24 @@
+
+									
+                                                                    <table>
+																			
+																	{% for i in l %}
+                                                                            <tr>
+																			  
+                                                                                <td class="text-center">{{ i.nomProjet }}</td>
+                                                                                <td class="cell-ta">{{ i.competences }}</td>
+                                                                                <td class="text-center">{{ i.description }}</td>
+                                                                                <td class="text-center">{{ i.domaine }}</td>
+                                                                                <td class="text-center">{{ i.salaire }}</td>
+                                                                                <td class="text-center"><a href="/pdf">{{ i.fichier }}</a></td>
+                                                                                <td class="text-center">
+                                                                                    <a href="{{ path('editEmploi', {'id': i.id}) }}" title="Edit" class="gray-s"><i class="uil uil-edit-alt"></i></a>
+                                                                                    <a href="{{ path('deleteEmploi', {'id': i.id}) }}" title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a>
+                                                                                </td>
+																				
+                                                                            </tr>
+																			{% endfor %}
+                                                                          
+                                                                        </table>
+																		
+                                                                   

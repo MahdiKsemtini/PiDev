@@ -60,6 +60,7 @@ class StageType extends AbstractType
                 'jeux video' => 'jeux video',
                 'Marketing' => 'Marketing',
                 'Journalisme' => 'Journalisme',
+                'diagnostic des automobiles'=>'diagnostic des automobiles',
             ],
 
           ])
@@ -92,9 +93,9 @@ class StageType extends AbstractType
          ->add('typeStage', ChoiceType::class,[
             'attr'=>[
               //  'placeholder'=>'Insérer votre description du projet',
-              //  'class'=>'ui hj145 dropdown cntry152 prompt srch_explore',
-                'name'=>'domaine',
-                'id'=>'id_domaine',
+                'class'=>'dropdown cntry152',
+                'name'=>'type',
+                'id'=>'id_type',
               //  'maxlength'=>'64',
               //  "rows"=>"5",
                 

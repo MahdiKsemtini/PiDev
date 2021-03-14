@@ -50,7 +50,7 @@ class EmploiType extends AbstractType
          ->add('domaine', ChoiceType::class,[
             'attr'=>[
               //  'placeholder'=>'Insérer votre description du projet',
-             'class'=>'dropdown cntry152 prompt srch_explore',
+            // 'class'=>'ui hj145 dropdown',
                 'name'=>'domaine',
                 'id'=>'id_domaine',
               //  'maxlength'=>'64',
@@ -58,13 +58,14 @@ class EmploiType extends AbstractType
                 
             ],
             'choices'  => [
-                'choix' => 'Choisir',
+                
                 'Informatique' => 'Informatique',
                 'Design' => 'Design',
                 'Artisanat' => 'Artisanat',
                 'jeux video' => 'jeux video',
                 'Marketing' => 'Marketing',
                 'Journalisme' => 'Journalisme',
+                'diagnostic des automobiles' => 'diagnostic des automobiles',
             ],
 
           ])

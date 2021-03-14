@@ -52,7 +52,7 @@
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="ui search focus mt-30 lbel25">
                                                           {{ form_start(f) }}
-                                                                <label>Nom de projet*</label>
+                                                                <label>Nom de projet</label>
                                                                 <div class="ui left icon input swdh19">
                                                                     {{ form_widget(f.nomProjet) }}
                                                                    
@@ -61,7 +61,7 @@
                                                         </div>
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="ui search focus mt-30 lbel25">
-                                                                <label>Compétences prérequis*</label>
+                                                                <label>Compétences prérequis</label>
                                                                 <div class="ui left icon input swdh19">
                                                                     {{ form_widget(f.competences) }}
                                                                    
@@ -72,7 +72,7 @@
                                                        
                                                         <div class="col-lg-12 col-md-12">
                                                             <div class="course_des_textarea mt-30 lbel25">
-                                                                <label>Description du projet*</label>
+                                                                <label>Description du projet</label>
                                                                 <div class="course_des_bg">
                                                                     <ul class="course_des_ttle">
                                                                         <li><a href="#"><i class="uil uil-bold"></i></a></li>
@@ -101,17 +101,17 @@
                                                                 <div class="view_all_dt">
                                                                 
                                                                 <div class="ui search focus mt-30 lbel25"  style="margin-left:2%">
-                                                                <label>Choisir un type de stage*</label>
+                                                                <label>Choisir un type de stage</label>
                                                                   {{ form_widget(f.typeStage) }}
                                                                 </div>
                                                             </div>
 
                                                              <div class="col-lg-5 col-md-6">
                                                                     <div class="ui search focus mt-30 lbel25">
-                                                                        <label>Durée de stage*</label>
+                                                                        <label>Durée de stage</label>
                                                                         <div class="ui left icon input swdh19 swdh55">
                                                                            {{ form_widget(f.duree) }}
-                                                                            <div class="badge_min">Dinars</div>
+                                                                            <div class="badge_min">Mois</div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -126,7 +126,7 @@
                                                             <div class="view_all_dt">
                                                                 
                                                                 <div class="ui search focus mt-30 lbel25">
-                                                                <label>Choisir un domaine*</label>
+                                                                <label>Choisir un domaine</label>
                                                                   {{ form_widget(f.domaine) }}
                                                                 </div>
                                                             </div>
@@ -141,7 +141,7 @@
                                         <div class="tab-from-content">
                                               <div class="step-footer step-tab-pager" style="margin-top:2%">
                                     
-                                   <input type="submit" value="Enregistrer" name="submit" class ='btn btn-default steps_btn' data-direction="finish" style="margin-left:85%">
+                                   <input type="submit" value="Modifier" name="submit" class ='btn btn-default steps_btn' data-direction="finish" style="margin-left:85%">
                                    {{ form_rest(f) }}
                                     {{ form_end(f) }}
                                 </div>

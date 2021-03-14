@@ -54,9 +54,15 @@ class Societe
      */
     private $freelancers;
 
+    /**
+     * @ORM\OneToMany(targetEntity=OffreEmploi::class, mappedBy="societe")
+     */
+    private $offreEmplois;
+
     public function __construct()
     {
         $this->freelancers = new ArrayCollection();
+        $this->offreEmplois = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -158,6 +164,36 @@ class Societe
     {
         if ($this->freelancers->removeElement($freelancer)) {
             $freelancer->removeSociete($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|OffreEmploi[]
+     */
+    public function getOffreEmplois(): Collection
+    {
+        return $this->offreEmplois;
+    }
+
+    public function addOffreEmploi(OffreEmploi $offreEmploi): self
+    {
+        if (!$this->offreEmplois->contains($offreEmploi)) {
+            $this->offreEmplois[] = $offreEmploi;
+            $offreEmploi->setSociete($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOffreEmploi(OffreEmploi $offreEmploi): self
+    {
+        if ($this->offreEmplois->removeElement($offreEmploi)) {
+            // set the owning side to null (unless already changed)
+            if ($offreEmploi->getSociete() === $this) {
+                $offreEmploi->setSociete(null);
+            }
         }
 
         return $this;
