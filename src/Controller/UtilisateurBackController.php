@@ -167,7 +167,7 @@ class UtilisateurBackController extends AbstractController
      * @param Request $request
      * @Route("/searchFreelancer/{nom}", name="searchFreelancer", methods={"GET","POST"})
      */
-    public function searchFreelancer(FreelancerRepository $freelancerRepository,$nom,Request $request): Response
+    public function searchFreelancer(FreelancerRepository $freelancerRepository,$nom,Request $request,PaginatorInterface $paginator): Response
     {
         $freelancer = new Freelancer();
         $searchForm = $this->createForm(\App\Form\SearchType::class,$freelancer);
@@ -178,9 +178,17 @@ class UtilisateurBackController extends AbstractController
             return $this->redirectToRoute('searchFreelancer', array('nom' => $nom));
         }
         $free = $freelancerRepository->search($nom);
+        $list = $paginator->paginate(
+        // Doctrine Query, not results
+            $free,
+            // Define the page parameter
+            $request->query->getInt('page', 1),
+            // Items per page
+            4
+        );
         return $this->render('utilisateur_back/index.html.twig', [
             'search' => $searchForm->createView(),
-            'list'=>$free,
+            'list'=>$list,
             'type'=>'Freelancer'
         ]);
     }
