@@ -3,8 +3,11 @@
 namespace App\Entity;
 
 use App\Repository\EventLoisirRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=EventLoisirRepository::class)
@@ -15,75 +18,108 @@ class EventLoisir
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("event:read")
      */
-    private $idEL;
+    private $id;
 
 
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="tt")
-
+     * @Groups("event:read")
      */
     private $Description;
 
     /**
      * @ORM\Column(type="date")
      * @Assert\NotBlank(message="tt")
+     * @Groups("event:read")
      */
     private $DateDebut;
 
     /**
      * @ORM\Column(type="date")
      * @Assert\NotBlank(message="tt")
+     * @Groups("event:read")
      */
     private $DateFin;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="tt")
-
+     * @Groups("event:read")
      */
     private $Lieu;
 
     /**
      * @ORM\Column(type="string", length=255)
      *  @Assert\NotBlank(message="tt")
+     * @Groups("event:read")
      */
     private $Labelle;
 
     /**
      * @ORM\Column(type="integer")
      * @Assert\NotBlank(message="tt")
+     * @Groups("event:read")
      */
     private $NbParticipant;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="tt")
+     * @Groups("event:read")
      */
     private $Domaine;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $idU;
+
 
     /**
      * @ORM\Column(type="boolean")
      */
     private $Etat;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Participant::class, mappedBy="idE")
+     */
+    private $participants;
 
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $lng;
 
-    public function getIdEL(): ?int
+    /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $lat;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Freelancer::class, inversedBy="eventLoisirs")
+     */
+    private $idFr;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Societe::class, inversedBy="eventLoisirs")
+     */
+    private $idSo;
+
+    public function __construct()
     {
-        return $this->idEL;
+        $this->participants = new ArrayCollection();
     }
 
-    public function setIdEL(string $idEL): self
+
+
+    public function getId(): ?int
     {
-        $this->idEL = $idEL;
+        return $this->id;
+    }
+
+    public function setId(int $id): self
+    {
+        $this->id = $id;
 
         return $this;
     }
@@ -172,17 +208,7 @@ class EventLoisir
         return $this;
     }
 
-    public function getIdU(): ?int
-    {
-        return $this->idU;
-    }
 
-    public function setIdU(int $idU): self
-    {
-        $this->idU = $idU;
-
-        return $this;
-    }
 
     public function getEtat(): ?bool
     {
@@ -192,6 +218,84 @@ class EventLoisir
     public function setEtat(bool $Etat): self
     {
         $this->Etat = $Etat;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Participant[]
+     */
+    public function getParticipants(): Collection
+    {
+        return $this->participants;
+    }
+
+    public function addParticipant(Participant $participant): self
+    {
+        if (!$this->participants->contains($participant)) {
+            $this->participants[] = $participant;
+            $participant->setIdE($this);
+        }
+
+        return $this;
+    }
+
+    public function removeParticipant(Participant $participant): self
+    {
+        if ($this->participants->removeElement($participant)) {
+            // set the owning side to null (unless already changed)
+            if ($participant->getIdE() === $this) {
+                $participant->setIdE(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getLng(): ?float
+    {
+        return $this->lng;
+    }
+
+    public function setLng(?float $lng): self
+    {
+        $this->lng = $lng;
+
+        return $this;
+    }
+
+    public function getLat(): ?float
+    {
+        return $this->lat;
+    }
+
+    public function setLat(?float $lat): self
+    {
+        $this->lat = $lat;
+
+        return $this;
+    }
+
+    public function getIdFr(): ?Freelancer
+    {
+        return $this->idFr;
+    }
+
+    public function setIdFr(?Freelancer $idFr): self
+    {
+        $this->idFr = $idFr;
+
+        return $this;
+    }
+
+    public function getIdSo(): ?Societe
+    {
+        return $this->idSo;
+    }
+
+    public function setIdSo(?Societe $idSo): self
+    {
+        $this->idSo = $idSo;
 
         return $this;
     }

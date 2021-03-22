@@ -20,12 +20,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8536dbc3-61f5-4edd-a3f8-2ef114c64d86" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/formation/AjouterFormation.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/PiDev.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PiDev.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/responsive.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/responsive.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/jquery-steps.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/jquery-steps.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210226181126.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210226204919.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210227201725.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210228200025.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210228202048.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210228203410.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210301011034.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/EventLoisirController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EventLoisirController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/FormationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FormationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/EventLoisir.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/EventLoisir.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Formation.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Formation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Freelancer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Freelancer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Societe.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Societe.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/FormationType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/FormationType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/EventLoisirRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/EventLoisirRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/FormationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/FormationRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/event_loisir/AfficherEventLoisir.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/event_loisir/AfficherEventLoisir.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/formation/AfficherFormation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/formation/AfficherFormation.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/formation/AjouterFormation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/formation/AjouterFormation.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,6 +166,22 @@
       <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
       <path value="$PROJECT_DIR$/vendor/sensio/framework-extra-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/web-server-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle" />
+      <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
+      <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
+      <path value="$PROJECT_DIR$/vendor/sabberworm/php-css-parser" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-svg-lib" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
+      <path value="$PROJECT_DIR$/vendor/twig/cssinliner-extra" />
+      <path value="$PROJECT_DIR$/vendor/twig/inky-extra" />
+      <path value="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
+      <path value="$PROJECT_DIR$/vendor/lorenzo/pinky" />
+      <path value="$PROJECT_DIR$/vendor/twig/markdown-extra" />
+      <path value="$PROJECT_DIR$/vendor/erusev/parsedown" />
+      <path value="$PROJECT_DIR$/vendor/symfony/google-mailer" />
+      <path value="$PROJECT_DIR$/vendor/twilio/sdk" />
     </include_path>
   </component>
   <component name="ProjectId" id="1p1AutDvOGgv87KHVPDV78SVv6J" />
@@ -154,14 +194,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Revision" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\PiDev\templates\event_loisir" />
       <recent name="C:\wamp64\www\PiDev\templates\formation" />
+      <recent name="C:\wamp64\www\PiDev\src\Form" />
+      <recent name="C:\wamp64\www\PiDev\templates\event_loisir" />
       <recent name="C:\wamp64\www\PiDev\templates\offre_stage" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -193,6 +234,26 @@
       <workItem from="1614629383973" duration="4301000" />
       <workItem from="1614702678921" duration="583000" />
       <workItem from="1614717627646" duration="6289000" />
+      <workItem from="1614843679644" duration="1195000" />
+      <workItem from="1614845111950" duration="1076000" />
+      <workItem from="1615024739239" duration="16204000" />
+      <workItem from="1615067830542" duration="5621000" />
+      <workItem from="1615114626416" duration="8174000" />
+      <workItem from="1615225092504" duration="26139000" />
+      <workItem from="1615367564026" duration="8773000" />
+      <workItem from="1615392318540" duration="3657000" />
+      <workItem from="1615403142781" duration="14294000" />
+      <workItem from="1615448632035" duration="3587000" />
+      <workItem from="1615807622289" duration="6528000" />
+      <workItem from="1615896651839" duration="10735000" />
+      <workItem from="1615925880607" duration="7164000" />
+      <workItem from="1616065370504" duration="11492000" />
+      <workItem from="1616098764105" duration="2957000" />
+      <workItem from="1616155264487" duration="2809000" />
+      <workItem from="1616241345797" duration="6581000" />
+      <workItem from="1616279471263" duration="3125000" />
+      <workItem from="1616330376274" duration="7741000" />
+      <workItem from="1616355457509" duration="2841000" />
     </task>
     <servers />
   </component>
@@ -216,15 +277,19 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="384" y="34" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1614540345615" />
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1614595374097">
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1616356284247">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1614595374097" />
-    <state x="488" y="158" key="FileChooserDialogImpl" timestamp="1614720034193">
+    <state x="413" y="119" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1616356284247" />
+    <state x="488" y="158" key="FileChooserDialogImpl" timestamp="1615041686427">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="488" y="158" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1614720034193" />
+    <state x="488" y="158" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1615041686427" />
     <state x="549" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1614362490104" />
+    <state x="510" y="87" key="NewPhpClassDialog" timestamp="1616274914520">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="510" y="87" key="NewPhpClassDialog/0.0.1366.728@0.0.1366.728" timestamp="1616274914520" />
     <state x="339" y="162" key="run.anything.popup" timestamp="1614565819063">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

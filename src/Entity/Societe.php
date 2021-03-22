@@ -54,14 +54,38 @@ class Societe
      */
     private $freelancers;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Participant::class, mappedBy="idS")
+     */
+    private $participants;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Formation::class, mappedBy="idSo")
+     */
+    private $formations;
+
+    /**
+     * @ORM\OneToMany(targetEntity=EventLoisir::class, mappedBy="idSo")
+     */
+    private $eventLoisirs;
+
     public function __construct()
     {
         $this->freelancers = new ArrayCollection();
+        $this->participants = new ArrayCollection();
+        $this->formations = new ArrayCollection();
+        $this->eventLoisirs = new ArrayCollection();
     }
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getNom(): ?string
@@ -158,6 +182,96 @@ class Societe
     {
         if ($this->freelancers->removeElement($freelancer)) {
             $freelancer->removeSociete($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Participant[]
+     */
+    public function getTypeU(): Collection
+    {
+        return $this->typeU;
+    }
+
+    public function addparticipants(Participant $typeU): self
+    {
+        if (!$this->participants->contains($typeU)) {
+            $this->participants[] = $typeU;
+            $typeU->setIdS($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTypeU(Participant $typeU): self
+    {
+        if ($this->typeU->removeElement($typeU)) {
+            // set the owning side to null (unless already changed)
+            if ($typeU->getIdS() === $this) {
+                $typeU->setIdS(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Formation[]
+     */
+    public function getFormations(): Collection
+    {
+        return $this->formations;
+    }
+
+    public function addFormation(Formation $formation): self
+    {
+        if (!$this->formations->contains($formation)) {
+            $this->formations[] = $formation;
+            $formation->setIdSo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFormation(Formation $formation): self
+    {
+        if ($this->formations->removeElement($formation)) {
+            // set the owning side to null (unless already changed)
+            if ($formation->getIdSo() === $this) {
+                $formation->setIdSo(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|EventLoisir[]
+     */
+    public function getEventLoisirs(): Collection
+    {
+        return $this->eventLoisirs;
+    }
+
+    public function addEventLoisir(EventLoisir $eventLoisir): self
+    {
+        if (!$this->eventLoisirs->contains($eventLoisir)) {
+            $this->eventLoisirs[] = $eventLoisir;
+            $eventLoisir->setIdSo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEventLoisir(EventLoisir $eventLoisir): self
+    {
+        if ($this->eventLoisirs->removeElement($eventLoisir)) {
+            // set the owning side to null (unless already changed)
+            if ($eventLoisir->getIdSo() === $this) {
+                $eventLoisir->setIdSo(null);
+            }
         }
 
         return $this;

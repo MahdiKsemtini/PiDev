@@ -289,8 +289,8 @@
                         <div class="course_tabs">
                             <nav>
                                 <div class="nav nav-tabs tab_crse" id="nav-tab" role="tablist">
-                                    <a class="nav-item nav-link active" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-selected="true">Mes evenements</a>
-                                    <a class="nav-item nav-link" id="nav-courses-tab" data-toggle="tab" href="#nav-courses" role="tab" aria-selected="false">Les evenements</a>
+                                    <a class="nav-item nav-link " id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-selected="true">Mes evenements</a>
+                                    <a class="nav-item nav-link active" id="nav-courses-tab" data-toggle="tab" href="#nav-courses" role="tab" aria-selected="false">Les evenements</a>
                                     <a class="nav-item nav-link" id="nav-courses-tab" data-toggle="tab" href="#nav-reviews" role="tab" aria-selected="false">Mes Participation</a>
                                 </div>
                             </nav>
@@ -305,7 +305,7 @@
                     <div class="col-lg-12">
                         <div class="course_tab_content">
                             <div class="tab-content" id="nav-tabContent">
-                                <div class="tab-pane fade show active" id="nav-about" role="tabpanel">
+                                <div class="tab-pane fade" id="nav-about" role="tabpanel">
 
                                     <div style="display: flex">
                                         <h3>Mes evenements</h3>
@@ -315,24 +315,7 @@
                                         </div>
                                     </div>
                                     <div class="crse_content">
-                                        {% for message in app.flashes('alert') %}
-                                            <div class="alert alert-warning">
-                                                {{ message }}
-                                            </div>
-                                        {% endfor %}
 
-                                        {% for message in app.flashes('info') %}
-                                            <div class="alert alert-danger">
-
-                                                {{ message|replace({";":"<br/>"})|raw }}
-                                            </div>
-                                        {% endfor %}
-
-                                        {% for message in app.flashes('msg') %}
-                                            <div class="alert alert-success">
-                                                {{ message }}
-                                            </div>
-                                        {% endfor %}
 
 
                                         <form action="{{ path('addEvent') }}">
@@ -349,8 +332,8 @@
 
                                                             <div class="fcrse_content">
                                                                 <div class="eps_dots more_dropdown">
-                                                                    <a href="{{ path("ModifierEvent",{'id':e.id}) }}"    title="Edit" class="gray-s"  style="font-size: 18px"><i class="uil uil-edit-alt" ></i></a>
-                                                                    <a href="{{ path("deleteEvent",{'id':e.id}) }}"  title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a>
+                                                                    <a href="{{ path("ModifierFormation",{'id':e.id}) }}"    title="Edit" class="gray-s"  style="font-size: 18px"><i class="uil uil-edit-alt" ></i></a>
+                                                                    <a href="{{ path("deleteFormation",{'id':e.id}) }}"  title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a>
                                                                 </div>
                                                                 <div class="vdtodt">
                                                                     <span class="vdt14">{{ e.DateDebut|date('Y-m-d') }}</span>
@@ -373,11 +356,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="nav-courses" role="tabpanel">
+                                <div class="tab-pane fade  show active" id="nav-courses" role="tabpanel">
                                     <div style="display: flex">
                                         <h3>evenements</h3>
                                         <div style="margin-left: 20px">
-                                            <a href="{{ path('triEventDateC',{'idu':1,'type':'societe'}) }}"    title="Edit" class="gray-s"  style="font-size: 18px"><i class="uil uil-sort-amount-up" ></i></a>
+                                            <a href="{{ path('triEventDateC') }}"    title="Edit" class="gray-s"  style="font-size: 18px"><i class="uil uil-sort-amount-up" ></i></a>
                                             <a href="{{ path('triEventDateD') }}"  title="Delete" class="gray-s"><i class="uil uil-sort-amount-down"></i></a>
                                         </div>
                                     </div>

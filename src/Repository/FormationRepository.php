@@ -47,4 +47,23 @@ class FormationRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function OrderByDateD(){
+        return $this->createQueryBuilder('f')
+            ->where("f.Etat=1")
+            ->orderBy('f.DateDebut','desc')
+            ->getQuery()->getResult();
+    }
+    public function OrderByDateC(){
+        return $this->createQueryBuilder('f')
+            ->where("f.Etat=1")
+            ->orderBy('f.DateDebut','ASC')
+            ->getQuery()->getResult();
+    }
+    public function search($nom) {
+        return $this->createQueryBuilder('f')
+            ->Where('f.Labelle LIKE :labelle')
+            ->setParameter('labelle', '%'.$nom.'%')
+            ->getQuery()
+            ->getResult();
+    }
 }

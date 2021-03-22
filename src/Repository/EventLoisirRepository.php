@@ -47,4 +47,25 @@ class EventLoisirRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function OrderByDateD(){
+        return $this->createQueryBuilder('e')
+            ->where("e.Etat=1")
+            ->orderBy('e.DateDebut','desc')
+            ->getQuery()->getResult();
+    }
+    public function OrderByDateC(){
+        return $this->createQueryBuilder('e')
+            ->where("e.Etat=1")
+            ->orderBy('e.DateDebut','ASC')
+            ->getQuery()->getResult();
+    }
+
+    public function search($nom) {
+        return $this->createQueryBuilder('e')
+            ->Where('e.Labelle LIKE :labelle')
+            ->setParameter('labelle', '%'.$nom.'%')
+            ->getQuery()
+            ->getResult();
+    }
 }

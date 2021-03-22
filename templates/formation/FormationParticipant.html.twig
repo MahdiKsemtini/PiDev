@@ -289,9 +289,9 @@
                         <div class="course_tabs">
                             <nav>
                                 <div class="nav nav-tabs tab_crse" id="nav-tab" role="tablist">
-                                    <a class="nav-item nav-link active" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-selected="true">Mes evenements</a>
-                                    <a class="nav-item nav-link" id="nav-courses-tab" data-toggle="tab" href="#nav-courses" role="tab" aria-selected="false">Les evenements</a>
-                                    <a class="nav-item nav-link" id="nav-courses-tab" data-toggle="tab" href="#nav-reviews" role="tab" aria-selected="false">Mes Participation</a>
+                                    <a class="nav-item nav-link active" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-selected="true">Participants</a>
+
+
                                 </div>
                             </nav>
                         </div>
@@ -307,149 +307,52 @@
                             <div class="tab-content" id="nav-tabContent">
                                 <div class="tab-pane fade show active" id="nav-about" role="tabpanel">
 
-                                    <div style="display: flex">
-                                        <h3>Mes evenements</h3>
-                                        <div style="margin-left: 20px">
-                                            <a href="{{ path('triEventDateC') }}"    title="Edit" class="gray-s"  style="font-size: 18px"><i class="uil uil-sort-amount-up" ></i></a>
-                                            <a href="{{ path('triEventDateD') }}"  title="Delete" class="gray-s"><i class="uil uil-sort-amount-down"></i></a>
-                                        </div>
-                                    </div>
-                                    <div class="crse_content">
-                                        {% for message in app.flashes('alert') %}
-                                            <div class="alert alert-warning">
-                                                {{ message }}
+                                    <div class="_htg451">
+                                        <div class="_htg452">
+                                            <div class="col-lg-12 col-md-12">
+
+
+
+
+
+                                                <div class="table-responsive mt-50 mb-0">
+                                                    <table class="table ucp-table">
+                                                        <thead class="thead-s">
+                                                        <tr>
+                                                            <th class="text-center" scope="col">Nom</th>
+                                                            <th class="text-center" scope="col">Email</th>
+                                                            <th class="text-center" scope="col">Adresse</th>
+
+                                                        </tr>
+                                                        </thead>
+
+                                                        <tbody>
+                                                        {% for fr in users %}
+                                                            <tr>
+                                                                <td class="text-center">{{ fr.nom }}</td>
+                                                                <td class="text-center">{{ fr.email }}</td>
+                                                                <td class="text-center">{{ fr.adresse }}</td>
+                                                            </tr>
+                                                        {% endfor %}
+                                                        {% for s in societe %}
+                                                            <tr>
+                                                                <td class="text-center">{{ s.nom }}</td>
+                                                                <td class="text-center">{{ s.email }}</td>
+                                                                <td class="text-center">{{ s.adresse }}</td>
+                                                            </tr>
+                                                        {% endfor %}
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
-                                        {% endfor %}
 
-                                        {% for message in app.flashes('info') %}
-                                            <div class="alert alert-danger">
-
-                                                {{ message|replace({";":"<br/>"})|raw }}
-                                            </div>
-                                        {% endfor %}
-
-                                        {% for message in app.flashes('msg') %}
-                                            <div class="alert alert-success">
-                                                {{ message }}
-                                            </div>
-                                        {% endfor %}
-
-
-                                        <form action="{{ path('addEvent') }}">
-                                            <button class="btn btn-default steps_btn" style="margin-left: 0px">Ajouter</button>
-                                        </form>
-                                        </br></br>
-
-                                        <div class="_14d25">
-                                            <div class="row">
-
-                                                {% for e in events %}
-                                                    <div class="col-lg-3 col-md-4">
-                                                        <div class="fcrse_1 mt-30">
-
-                                                            <div class="fcrse_content">
-                                                                <div class="eps_dots more_dropdown">
-                                                                    <a href="{{ path("ModifierEvent",{'id':e.id}) }}"    title="Edit" class="gray-s"  style="font-size: 18px"><i class="uil uil-edit-alt" ></i></a>
-                                                                    <a href="{{ path("deleteEvent",{'id':e.id}) }}"  title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a>
-                                                                </div>
-                                                                <div class="vdtodt">
-                                                                    <span class="vdt14">{{ e.DateDebut|date('Y-m-d') }}</span>
-
-                                                                    <span class="vdt14">{{ e.DateFin|date('Y-m-d') }}</span>
-                                                                </div>
-                                                                <p  class="crse14s" style="color: red">{{ e.Labelle }}</p>
-                                                                <a href="course_detail_view.html" class="crse14s" >{{ e.Description }}</a>
-                                                                <a href="#" class="crse-cate">{{ e.Domaine }}</a>
-                                                                <div class="auth1lnkprce">
-                                                                    <p class="cr1fot">{{ e.Lieu }}</p>
-                                                                    <div class="prce142">{{ e.NbParticipant }}</div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                {% endfor %}
-                                            </div>
 
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="nav-courses" role="tabpanel">
-                                    <div style="display: flex">
-                                        <h3>evenements</h3>
-                                        <div style="margin-left: 20px">
-                                            <a href="{{ path('triEventDateC',{'idu':1,'type':'societe'}) }}"    title="Edit" class="gray-s"  style="font-size: 18px"><i class="uil uil-sort-amount-up" ></i></a>
-                                            <a href="{{ path('triEventDateD') }}"  title="Delete" class="gray-s"><i class="uil uil-sort-amount-down"></i></a>
-                                        </div>
-                                    </div>
 
-                                    <div class="crse_content">
 
-                                        <div class="_14d25">
-                                            <div class="row">
-                                                {% for ev in evenement%}
-                                                    <div class="col-lg-3 col-md-4">
-                                                        <div class="fcrse_1 mt-30">
-
-                                                            <div class="fcrse_content">
-                                                                <div class="eps_dots more_dropdown">
-                                                                    <a href="{{ path("addParticiper",{'typee':'evenement','typeu':'societe','idfo':0,'idev':ev.id,'ids':1,'idf':1}) }}"  title="Delete" class="gray-s" style="font-size: 15px">participer</a>
-                                                                </div>
-                                                                <div class="vdtodt">
-                                                                    <span class="vdt14">{{ ev.DateDebut|date('Y-m-d') }}</span>
-
-                                                                    <span class="vdt14">{{ ev.DateFin|date('Y-m-d') }}</span>
-                                                                </div>
-                                                                <p  class="crse14s" style="color: red">{{ ev.Labelle }}</p>
-                                                                <a href="course_detail_view.html" class="crse14s" >{{ ev.Description }}</a>
-                                                                <a href="#" class="crse-cate">{{ ev.Domaine }}</a>
-                                                                <div class="auth1lnkprce">
-                                                                    <a href="{{ path("mapE",{'id':ev.id}) }}" ><p class="cr1fot">{{ ev.Lieu }}</p></a>
-                                                                    <div class="prce142">{{ ev.NbParticipant }}</div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                {% endfor %}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="nav-reviews" role="tabpanel">
-                                    <h3>Mes participations</h3>
-                                    <div class="crse_content">
-
-                                        <div class="_14d25">
-                                            <div class="row">
-
-                                                {% for fo in participation %}
-                                                    <div class="col-lg-3 col-md-4">
-                                                        <div class="fcrse_1 mt-30">
-
-                                                            <div class="fcrse_content">
-                                                                <div class="eps_dots more_dropdown">
-                                                                    <a href="{{ path("deleteFormationP",{'id':fo.id,'idu':1,'type':"freelancer"}) }}"  title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a>
-                                                                </div>
-                                                                <div class="vdtodt">
-                                                                    <span class="vdt14">{{ fo.DateDebut|date('Y-m-d') }}</span>
-
-                                                                    <span class="vdt14">{{ fo.DateFin|date('Y-m-d') }}</span>
-                                                                </div>
-                                                                <p  class="crse14s" style="color: red">{{ fo.Labelle }}</p>
-                                                                <a href="course_detail_view.html" class="crse14s" >{{ fo.Description }}</a>
-                                                                <p class="crse-cate">{{ fo.Domaine }}</p>
-                                                                <div class="auth1lnkprce">
-                                                                    <a href="{{ path("mapF",{'id':fo.id}) }}" ><p class="cr1fot">{{ fo.Lieu }}</p></a>
-                                                                    <div class="prce142">{{ fo.NbParticipant }}</div>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                {% endfor %}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -645,20 +548,20 @@
 {% endblock %}
 
 {% block js %}
-    <script src={{ asset('js/vertical-responsive-menu.min.js') }}></script>
-    <script src={{ asset('js/jquery-3.3.1.min.js') }}></script>
-    <script src={{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}></script>
-    <script src={{ asset('vendor/OwlCarousel/owl.carousel.js') }}></script>
-    <script src={{ asset('vendor/semantic/semantic.min.js') }}></script>
-    <script src={{ asset('js/custom.js') }}></script>
-    <script src={{ asset('js/night-mode.js') }}></script>
-    <script src={{ asset('js/jquery-steps.min.js') }}></script>
-    <script>
-        $('#add-course-tab').steps({
-            onFinish: function () {
-                alert('Wizard Completed');
-            }
-        });
+<script src={{ asset('js/vertical-responsive-menu.min.js') }}></script>
+<script src={{ asset('js/jquery-3.3.1.min.js') }}></script>
+<script src={{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}></script>
+<script src={{ asset('vendor/OwlCarousel/owl.carousel.js') }}></script>
+<script src={{ asset('vendor/semantic/semantic.min.js') }}></script>
+<script src={{ asset('js/custom.js') }}></script>
+<script src={{ asset('js/night-mode.js') }}></script>
+<script src={{ asset('js/jquery-steps.min.js') }}></script>
+<script>
+    $('#add-course-tab').steps({
+        onFinish: function () {
+            alert('Wizard Completed');
+        }
+    });
 
-    </script>
+</script>
 {% endblock %}

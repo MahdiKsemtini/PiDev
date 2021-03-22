@@ -32,6 +32,9 @@
 
 
 {% endblock %}
+{% block head %}
+
+{% endblock %}
 
 {% block body %}
     <div class="wrapper">
@@ -99,10 +102,12 @@
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="ui search focus mt-30 lbel25">
                                                                 <label>Lieu du formation</label>
-                                                                <div class="ui left icon input swdh19">
+                                                                    {#  <input type="text" id="search_input" placeholder="entrer adresse">#}
                                                                     {{ form_widget(f.Lieu) }}
+                                                                <input type="hidden" id="latitude_input">
+                                                                <input type="hidden" id="longitude_input">
 
-                                                                </div>
+
                                                             </div>
 
                                                         </div>
@@ -328,6 +333,33 @@
             onFinish: function () {
                 alert('Ajout avec succes ');
             }
+        });
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=0MWBNiAVRIke92CSc6vjYjseKJUmQSLy"></script>
+
+    <script>
+        var searchInput='search_input';
+        $(document).ready(function (){
+            var autocomplete;
+            autocomplete = new  google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+                types: ['geocode'],
+            });
+            google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                var near_place = autocomplete.getPlace();
+                document.getElementById('latitude_input').value = near_place.geometry.location.lat();
+                document.getElementById('longitude_input').value = near_place.geometry.location.lng();
+
+                /*document.getElementById('latitude_view').innerHTML = near_place.geometry.location.lat();
+                 document.getElementById('longitude_view').innerHTML = near_place.geometry.location.lng();*/
+            });
+        })
+        $(document).on('change', '#'+searchInput, function () {
+            document.getElementById('latitude_input').value = '';
+            document.getElementById('longitude_input').value = '';
+
+            /*document.getElementById('latitude_view').innerHTML = '';
+            document.getElementById('longitude_view').innerHTML = '';*/
         });
     </script>
 {% endblock %}
