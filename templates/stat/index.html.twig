@@ -1,0 +1,284 @@
+{% extends 'base_back.html.twig' %}
+
+ {% block title %}RightJob{% endblock %}
+
+ {% block css %}
+     <meta charset="utf-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, shrink-to-fit=9">
+     <meta name="description" content="Gambolthemes">
+     <meta name="author" content="Gambolthemes">
+     <title>Cursus - All Admins</title>
+
+     <!-- Favicon Icon -->
+     <link rel="icon" type="image/png" href="{{ asset('images/fav.png') }}">
+
+     <!-- Stylesheets -->
+     <link href='{{ asset('http://fonts.googleapis.com/css?family=Roboto:400,700,500') }}' rel='stylesheet'>
+     <link href='{{ asset('vendor/unicons-2.0.1/css/unicons.css') }}' rel='stylesheet'>
+     <link href="{{ asset('css/vertical-responsive-menu.min.css') }}" rel="stylesheet">
+     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+     <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
+     <link href="{{ asset('css/night-mode.css') }}" rel="stylesheet">
+
+     <!-- Vendor Stylesheets -->
+     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+     <link href="{{ asset('vendor/OwlCarousel/assets/owl.carousel.css') }}" rel="stylesheet">
+     <link href="{{ asset('vendor/OwlCarousel/assets/owl.theme.default.min.css') }}" rel="stylesheet">
+     <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+     <link rel="stylesheet" type="text/css" href="{{ asset('vendor/semantic/semantic.min.css') }}">
+
+ {% endblock %}
+
+
+{% block body %}
+
+    <!-- Body Start -->
+    <div class="wrapper">
+        <div class="sa4d25">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="st_title"><i class="uil uil-analysis"></i> Analyics</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-6 col-sm-6">
+                        <div class="card card-mini analysis_card">
+                            <div class="card-body">
+                                <h2 class="mb-2">839</h2>
+                                <p>Subscribers</p>
+                                <div class="chartjs-wrapper">
+                                    <canvas id="currentUser" class="chartjs"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6 col-sm-6">
+                        <div class="card card-mini analysis_card">
+                            <div class="card-body">
+                                <h2 class="mb-2">{{ nbReclamation }}</h2>
+                                <p>Reclamations par mois</p>
+                                <div class="chartjs-wrapper">
+                                    <canvas id="linechart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-6 col-sm-6">
+                        <div class="card card-mini analysis_card">
+                            <div class="card-body">
+                                <h2 class="mb-1">950</h2>
+                                <p>Weekly Visitors</p>
+                                <div class="chartjs-wrapper">
+                                    <canvas id="dual-line"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-md-6">
+                        <!-- Sales Graph -->
+                        <div class="card card-mini analysis_card" >
+                            <div class="card-body">
+                                <h2 class="mb-1">950</h2>
+                                <p>Weekly Visitors</p>
+                                <div class="chartjs-wrapper">
+                                    <canvas id="activity" class="chartjs"></canvas>
+                                </div>
+                            </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <footer class="footer mt-40">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="item_f1">
+                            <a href="terms_of_use.html">Copyright Policy</a>
+                            <a href="terms_of_use.html">Terms</a>
+                            <a href="terms_of_use.html">Privacy Policy</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="footer_bottm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul class="fotb_left">
+                                        <li>
+                                            <a href="index.html">
+                                                <div class="footer_logo">
+                                                    <img src="images/logo1.svg" alt="">
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <p>© 2020 <strong>Cursus</strong>. All Rights Reserved.</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="edu_social_links">
+                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                        <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="#"><i class="fab fa-instagram"></i></a>
+                                        <a href="#"><i class="fab fa-youtube"></i></a>
+                                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+
+
+
+
+
+
+    <!-- Body End -->
+{% endblock %}
+
+
+{% block js %}
+    <script src="{{ asset('js/vertical-responsive-menu.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('vendor/OwlCarousel/owl.carousel.js') }}"></script>
+    <script src="{{ asset('vendor/semantic/semantic.min.js') }}"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
+    <script src="{{ asset('js/night-mode.js') }}"></script>
+    <script src="{{ asset('./js/chart.js') }}"></script>
+    <script src="{{ asset('./vendor/charts/Chart.min.js') }}"></script>
+
+
+
+    <script>
+        /*======== 3. LINE CHART ========*/
+        var ctx = document.getElementById("linechart");
+        if (ctx !== null) {
+            var chart = new Chart(ctx, {
+                // The type of chart we want to create
+                type: "line",
+
+                // The data for our dataset
+                data: {
+                    labels: [
+                        "Jan",
+                        "Feb",
+                        "Mar",
+                        "Apr",
+                        "May",
+                        "Jun",
+                        "Jul",
+                        "Aug",
+                        "Sep",
+                        "Oct",
+                        "Nov",
+                        "Dec"
+                    ],
+                    datasets: [
+                        {
+                            label: "",
+                            backgroundColor: "transparent",
+                            borderColor: "rgb(237, 42, 38)",
+                            {{ ReclamationData }},
+                            lineTension: 0.3,
+                            pointRadius: 5,
+                            pointBackgroundColor: "rgba(255,255,255,1)",
+                            pointHoverBackgroundColor: "rgba(255,255,255,1)",
+                            pointBorderWidth: 2,
+                            pointHoverRadius: 8,
+                            pointHoverBorderWidth: 1
+                        }
+                    ]
+                },
+
+                // Configuration options go here
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    legend: {
+                        display: false
+                    },
+                    layout: {
+                        padding: {
+                            right: 10
+                        }
+                    },
+                    scales: {
+                        xAxes: [
+                            {
+                                gridLines: {
+                                    display: false
+                                }
+                            }
+                        ],
+                        yAxes: [
+                            {
+                                gridLines: {
+                                    display: true,
+                                    color: "#efefef",
+                                    zeroLineColor: "#efefef",
+                                },
+                                ticks: {
+                                    callback: function(value) {
+                                        var ranges = [
+                                            { divider: 1e6, suffix: "M" },
+                                            { divider: 1e4, suffix: "k" }
+                                        ];
+                                        function formatNumber(n) {
+                                            for (var i = 0; i < ranges.length; i++) {
+                                                if (n >= ranges[i].divider) {
+                                                    return (
+                                                        (n / ranges[i].divider).toString() + ranges[i].suffix
+                                                    );
+                                                }
+                                            }
+                                            return n;
+                                        }
+                                        return formatNumber(value);
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    tooltips: {
+                        callbacks: {
+                            title: function(tooltipItem, data) {
+                                return data["labels"][tooltipItem[0]["index"]];
+                            }
+                        },
+                        responsive: true,
+                        intersect: false,
+                        enabled: true,
+                        titleFontColor: "#333",
+                        bodyFontColor: "#686f7a",
+                        titleFontSize: 12,
+                        bodyFontSize: 14,
+                        backgroundColor: "rgba(256,256,256,0.95)",
+                        xPadding: 20,
+                        yPadding: 10,
+                        displayColors: false,
+                        borderColor: "rgba(220, 220, 220, 0.9)",
+                        borderWidth: 2,
+                        caretSize: 10,
+                        caretPadding: 15
+                    }
+                }
+            });
+        }
+    </script>
+{% endblock %}

@@ -43,7 +43,7 @@ class AdminFormType extends AbstractType
                     'id'=>'id_login',
                     'maxlength'=>'60',
                 ]])
-            ->add('password',PasswordType::class,[
+            ->add('password',TextType::class,[
                 'attr'=>[
 
                     'placeholder'=>'Insert the password to use.',

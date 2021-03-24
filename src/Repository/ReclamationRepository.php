@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Reclamation;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use DoctrineExtensions\Query\mysql;
 
 /**
  * @method Reclamation|null find($id, $lockMode = null, $lockVersion = null)
@@ -17,6 +18,29 @@ class ReclamationRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Reclamation::class);
+    }
+
+    public function countReclamtionNonApprouve()
+    {
+        $query = $this->createQueryBuilder('r')
+            ->select('count(r) as count')
+            ->where('r.etat = 0');
+        return $query->getQuery()->getResult();
+    }
+
+    public function reclamationParMois()
+    {
+        $query = $this->createQueryBuilder('r')
+        ->select(' SUBSTRING(r.dateReclamation,6,2) AS mois , count(r) as count')
+            ->groupBy('mois');
+        return $query->getQuery()->getResult();
+    }
+
+    public function countReclamtion()
+    {
+        $query = $this->createQueryBuilder('r')
+            ->select('count(r) as count');
+        return $query->getQuery()->getResult();
     }
 
     // /**

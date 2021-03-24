@@ -50,6 +50,16 @@ class Admin
      */
     private $etat;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $approuve;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $nonapprouve;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -174,5 +184,29 @@ class Admin
             'maxMessage' => 'Votre Mot De Passe ne peut pas comporter plus de "{{ limit }}" caractères',
         ]));
 
+    }
+
+    public function getApprouve(): ?int
+    {
+        return $this->approuve;
+    }
+
+    public function setApprouve(?int $approuve): self
+    {
+        $this->approuve = $approuve;
+
+        return $this;
+    }
+
+    public function getNonapprouve(): ?int
+    {
+        return $this->nonapprouve;
+    }
+
+    public function setNonapprouve(?int $nonapprouve): self
+    {
+        $this->nonapprouve = $nonapprouve;
+
+        return $this;
     }
 }

@@ -21,19 +21,19 @@
   <component name="ChangeListManager">
     <list default="true" id="8536dbc3-61f5-4edd-a3f8-2ef114c64d86" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210226181126.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210226204919.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210227201725.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/instructor-dashboard.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/instructor-dashboard.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/doctrine.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/chart.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AdminReclamationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminReclamationController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ReclamationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReclamationController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/SuperAdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SuperAdminController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/AdminFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/AdminFormType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/ReclamationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ReclamationRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/super_admin/CreateAdmin.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/super_admin/CreateAdmin.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/super_admin/UpdateAdmin.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/super_admin/UpdateAdmin.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/super_admin/ViewAdminProfile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/super_admin/ViewAdminProfile.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin_reclamation/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin_reclamation/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base_back.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base_back.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/super_admin/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/super_admin/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -179,7 +179,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Form" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -231,7 +231,12 @@
       <workItem from="1614847148392" duration="1426000" />
       <workItem from="1614891659928" duration="634000" />
       <workItem from="1615214896239" duration="14205000" />
-      <workItem from="1615377349699" duration="19879000" />
+      <workItem from="1615377349699" duration="20939000" />
+      <workItem from="1615447717378" duration="4733000" />
+      <workItem from="1616341214529" duration="3493000" />
+      <workItem from="1616509756648" duration="265000" />
+      <workItem from="1616510057099" duration="16301000" />
+      <workItem from="1616578173535" duration="17004000" />
     </task>
     <servers />
   </component>

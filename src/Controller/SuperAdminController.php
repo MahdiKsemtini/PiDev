@@ -3,11 +3,15 @@
 namespace App\Controller;
 
 use App\Entity\Admin;
+use App\Entity\Reclamation;
 use App\Form\AdminFormType;
+use App\Repository\ReclamationRepository;
+use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
 
 class SuperAdminController extends AbstractController
 {
@@ -25,7 +29,7 @@ class SuperAdminController extends AbstractController
    /**
      * @Route("/super/admin/CreateAdmin", name="CreateAdmin")
      */
-    public function ajouterAdmin(Request $request)
+    public function ajouterAdmin(Request $request , ReclamationRepository $reclamationRepository)
     {
         $admin = new Admin();
         $form = $this->createForm(AdminFormType::class, $admin);
@@ -36,10 +40,21 @@ class SuperAdminController extends AbstractController
             {
                 $admin->setEtat(1);
             }
-            if ($form->getData()->getEtat() == 'Inactive')
+            else
             {
                 $admin->setEtat(0);
             }
+
+            if ($form->getData()->getType() == 'Admin des reclamations'){
+                $nb = $reclamationRepository->countReclamtionNonApprouve();
+                foreach ($nb as $count) {
+                    $admin->setNonapprouve((integer)$count['count']);
+                }
+            }
+
+
+            $admin->setApprouve(0);
+
             $em->persist($admin);
             $em->flush();
 
@@ -73,15 +88,17 @@ class SuperAdminController extends AbstractController
         $admin =$em->getRepository(Admin::class)->find($id);
         $form = $this->createForm(AdminFormType::class, $admin);
         $form->handleRequest($request);
-        if ($form->isSubmitted()&& $form->isValid()){
-            if ($form->getData()->getEtat() == 'Active')
+        if ($form->isSubmitted()){
+            $etat = $form->get('etat')->getData();
+            if ($etat == 'Active')
             {
                 $admin->setEtat(1);
             }
-            if ($form->getData()->getEtat() == 'Inactive')
+            else
             {
                 $admin->setEtat(0);
             }
+
             $em->flush();
             return $this->redirectToRoute("ViewAdminProfile", array('id'=>$id));
         }
@@ -104,5 +121,7 @@ class SuperAdminController extends AbstractController
         return $this->redirectToRoute("super_admin");
 
     }
+
+
 
 }

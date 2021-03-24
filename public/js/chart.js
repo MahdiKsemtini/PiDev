@@ -33,7 +33,7 @@
 
 $(document).ready(function() {
   "use strict";
-  
+
   /*======== 1. DUAL LINE CHART ========*/
   var dual = document.getElementById("dual-line");
   if (dual !== null) {
@@ -51,7 +51,7 @@ $(document).ready(function() {
             backgroundColor: "transparent",
             borderWidth: 2,
             borderColor: "#ffc136",
-            data: [0, 4, 3, 5, 3, 7, 0]
+            data: [0, 4, 3, 5, 3, 7, 0 ]
           },
           {
             label: "New",
@@ -196,8 +196,8 @@ $(document).ready(function() {
       }
     });
   }
-  /*======== 3. LINE CHART ========*/
-  var ctx = document.getElementById("linechart");
+  //!*======== 3. LINE CHART ========*!/
+  /*var ctx = document.getElementById("linechart");
   if (ctx !== null) {
     var chart = new Chart(ctx, {
       // The type of chart we want to create
@@ -325,7 +325,7 @@ $(document).ready(function() {
         }
       }
     });
-  }
+  }*/
   /*======== 4. LINE CHART1 ========*/
   var lchart1 = document.getElementById("linechart1");
   if (lchart1 !== null) {
@@ -761,7 +761,7 @@ $(document).ready(function() {
       }
     });
   }
-  /*======== 10. GRADIENT LINE CHART ========*/
+  //!*======== 10. GRADIENT LINE CHART ========*!/
   var line = document.getElementById("line");
   if (line !== null) {
     line = line.getContext("2d");
@@ -1645,8 +1645,7 @@ if (barX !== null) {
       datasets: [
         {
           label: "Subscribe",
-          data: [6, 3, 4, 3, 6, 9, 4, 8, 9, 5, 8, 3, 4],
-          // data: [6, 3, 4, 3, 6, 9, 4, 8, 9, 5, 8, 3, 4],
+           data: [6, 3, 4, 3, 6, 9, 4, 8, 9, 5, 8, 3, 4],
           backgroundColor: "#ed2a26"
         }
       ]
