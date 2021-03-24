@@ -20,7 +20,7 @@ class Reclamation
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Votre type est vide")
+     * @Assert\NotBlank(message="Choisire une type")
      */
     private $type;
 

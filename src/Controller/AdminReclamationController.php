@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\AdminReclamation;
+use App\Entity\Freelancer;
 use App\Entity\Reclamation;
+use App\Notifications\CreationCompteNotification;
 use App\Repository\AdminReclamationRepository;
 use App\Repository\AdminRepository;
 use App\Repository\ReclamationRepository;
@@ -14,6 +16,16 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AdminReclamationController extends AbstractController
 {
+    /**
+     * @var CreationCompteNotification
+     */
+    private $notify_creation;
+
+
+    public function __construct(CreationCompteNotification $notify_creation)
+    {
+        $this->notify_creation = $notify_creation;
+    }
     /**
      * @Route("/admin/reclamation", name="admin_reclamation")
      */
@@ -75,7 +87,7 @@ class AdminReclamationController extends AbstractController
 
     }
 
-    public function ReclamationToAdmin(AdminRepository $adminRepository , $IdReclamtion)
+    public function ReclamationToAdmin(AdminRepository $adminRepository , $IdReclamtion, Freelancer $freelancer)
     {
         $list = $adminRepository->findBy(array('type'=>'Admin des reclamations', 'etat'=>1));
 
@@ -88,6 +100,7 @@ class AdminReclamationController extends AbstractController
             $adminReclamation->setIdReclamation($IdReclamtion);
             $em->persist($adminReclamation);
             $em->flush();
+            $this->notify_creation->notify($freelancer->getEmail(),$l->getLogin());
         }
     }
 }

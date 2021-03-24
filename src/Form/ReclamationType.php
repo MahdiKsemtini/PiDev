@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Reclamation;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\AbstractType;
@@ -15,14 +16,17 @@ class ReclamationType extends AbstractType
     {
         $builder
 
-            ->add('type', TextType::class,[
+            ->add('type', ChoiceType::class,[
+                'choices' => [
+                    'Choisir une type'=>null,
+                    'Administrative'=>'Administrative',
+                    'Technique'=>'Technique',
+                    'Recommendation'=>'Recommendation',
+                    ],
                 'attr'=>[
-                    'required'   => true,
-                    'placeholder'=>'quelle est le type de votre reclamation',
                     'class'=>'prompt srch_explore',
                     'name'=>'type',
                     'id'=>'id_type',
-                    'maxlength'=>'64',
                 ]
             ])
             ->add('texteReclamation', TextType::class,[

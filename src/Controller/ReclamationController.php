@@ -13,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 class ReclamationController extends AbstractController
 {
@@ -21,11 +22,19 @@ class ReclamationController extends AbstractController
     /**
      * @Route("/showReclamation", name="showReclamation")
      */
-    public function ShowReclamation(): Response
+    public function ShowReclamation(PaginatorInterface $paginator, Request $request): Response
     {
 
         $em = $this->getDoctrine()->getRepository(Reclamation::class);
         $list = $em->findAll();
+        $list = $paginator->paginate(
+        // Doctrine Query, not results
+            $list,
+            // Define the page parameter
+            $request->query->getInt('page', 1),
+            // Items per page
+            5
+        );
         return $this->render('reclamation/AfficherReclamation.html.twig', ["l" => $list]);
 
     }
@@ -41,7 +50,7 @@ class ReclamationController extends AbstractController
         $freelancer = $repository->findOneBy(['email' =>"fffffff@fffffff"]);
         $form = $this->createForm(ReclamationType::class, $reclamation);
         $form->handleRequest($request);
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted()&&$form->isValid()) {
             $reclamation->setEmailUtilisateur($freelancer->getEmail());
             $reclamation->setNomUtilisateur($freelancer->getNom());
             $newDate= new \DateTime('now');
@@ -50,7 +59,7 @@ class ReclamationController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($reclamation);
             $em->flush();
-            $adminReclamationController->ReclamationToAdmin($adminRepository,$reclamation->getId());
+            $adminReclamationController->ReclamationToAdmin($adminRepository,$reclamation->getId(),$freelancer);
             return $this->redirectToRoute("showReclamation");
         }
         return $this->render("reclamation/AjouterReclamation.html.twig", [
@@ -87,4 +96,18 @@ class ReclamationController extends AbstractController
         $em->flush();
         return $this->redirectToRoute("showReclamation");
     }
+
+
+  /*  /**
+     * @Route("/ReclamationMail",name="ReclamationMail")
+     */
+   /* public function reclamationMail(\Swift_Mailer $mailer){
+        $message=(new \Swift_Message("reclamation"))
+            ->setFrom('tt1384648@gmail.com')
+            ->setTo('naderbessioud98@gmail.com')
+            ->setBody("test",'text/plain');
+        $mailer->send($message);
+        return($this->render("reclamation/index.html.twig"));
+
+    }*/
 }
