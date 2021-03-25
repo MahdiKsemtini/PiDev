@@ -20,19 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8536dbc3-61f5-4edd-a3f8-2ef114c64d86" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/PiDev.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PiDev.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/doctrine.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/CommentairesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CommentairesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PublicationsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PublicationsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/CommentairesRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/CommentairesRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/PublicationsRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PublicationsRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Back/publications/backCommentaires.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Back/publications/backCommentaires.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Back/publications/publicationsBack.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Back/publications/publicationsBack.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Front/publications/forum.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Front/publications/forum.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/Back/publications/statistiques.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Back/publications/statistiques.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,7 +237,9 @@
       <workItem from="1615210665143" duration="2286000" />
       <workItem from="1615212962812" duration="4983000" />
       <workItem from="1615312344790" duration="8302000" />
-      <workItem from="1615402902197" duration="7954000" />
+      <workItem from="1615402902197" duration="8295000" />
+      <workItem from="1615448724023" duration="2055000" />
+      <workItem from="1616147017889" duration="5101000" />
     </task>
     <servers />
   </component>

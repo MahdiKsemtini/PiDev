@@ -33,9 +33,8 @@ class PublicationsRepository extends ServiceEntityRepository
     {
 
         $qb = $this->createQueryBuilder('p')
-            ->select('COUNT(p.id) AS pub,MONTH(p.date_publication) AS mdate, DAY(p.date_publication) AS jdate')
-            ->groupBy('mdate')
-            ->addGroupBy('jdate');
+            ->select('COUNT(p.id) AS pub,DATE(p.date_publication) AS date')
+            ->groupBy('date');
 
 
         return $qb->getQuery()

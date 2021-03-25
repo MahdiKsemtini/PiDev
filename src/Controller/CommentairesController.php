@@ -18,6 +18,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Knp\Component\Pager\PaginatorInterface;
 use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
 use CMEN\GoogleChartsBundle\GoogleCharts\Charts\BarChart;
+use CMEN\GoogleChartsBundle\GoogleCharts\Charts\ColumnChart;
 
 class CommentairesController extends AbstractController
 {
@@ -123,8 +124,8 @@ class CommentairesController extends AbstractController
      */
     public function statistiques(): Response
     {
-        $p=$this->getDoctrine()->getRepository(Commentaires::class);
-        $nbs = $p->getNb();
+        $c=$this->getDoctrine()->getRepository(Commentaires::class);
+        $nbs = $c->getNb();
         $data = [['Publication', 'Nombre de commentaires']];
         foreach($nbs as $nb)
         {
@@ -137,7 +138,26 @@ class CommentairesController extends AbstractController
         $bar->getOptions()->setTitle('Nombre de commentaires par publications');
         $bar->getOptions()->getTitleTextStyle()->setColor('#07600');
         $bar->getOptions()->getTitleTextStyle()->setFontSize(25);
-        return $this->render('Back/publications/statistiques.html.twig', array('barchart' => $bar,'nbs' => $nbs));
+        $bar->getOptions()->setHeight(370);
+
+        $p=$this->getDoctrine()->getRepository(Publications::class);
+        $pubs = $p->getNbPub();
+        $datap = [['Date', 'Nombre de publications']];
+        foreach($pubs as $pub)
+        {
+            $datap[] = array($pub['date'], $pub['pub']);
+        }
+        $col = new ColumnChart();
+        $col->getData()->setArrayToDataTable(
+            $datap
+        );
+        $col->getOptions()->setTitle('Nombre de publications par date');
+        $col->getOptions()->getTitleTextStyle()->setColor('#07600');
+        $col->getOptions()->getTitleTextStyle()->setFontSize(25);
+        $col->getOptions()->setHeight(370);
+        $col->getOptions()->setColors(['gray']);
+
+        return $this->render('Back/publications/statistiques.html.twig', array('barchart' => $bar,'nbs' => $nbs , 'columnchart' => $col,'pubs' => $pubs));
 
     }
 }

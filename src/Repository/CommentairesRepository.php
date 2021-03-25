@@ -40,4 +40,16 @@ class CommentairesRepository extends ServiceEntityRepository
         return $qb->getQuery()->getResult();
     }
 
+    public function getNbPub()
+    {
+
+        $qb = $this->createQueryBuilder('p')
+            ->select('COUNT(p.id) AS pub,DATE(p.date_publication) AS date')
+            ->groupBy('date');
+
+
+        return $qb->getQuery()
+            ->getResult();
+    }
+
 }
