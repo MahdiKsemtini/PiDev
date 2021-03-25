@@ -6,6 +6,7 @@ use App\Entity\Formation;
 use Cassandra\Map;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -46,12 +47,12 @@ class FormationType extends AbstractType
                     'name'=>'dateFin',
                     'id'=>'id_df',
                     'maxlength'=>'64']])
-            ->add('Lieu',TextType::class,[
+            ->add('Lieu',HiddenType::class,[
                 'attr'=>[
                     'placeholder'=>'lieu',
                     'class'=>'prompt srch_explore',
                     'name'=>'lieu',
-                    'id'=>'id_lieu',
+                    'id'=>'lieu',
                     'maxlength'=>'64']])
             ->add('Domaine',TextType::class,[
                 'attr'=>[
@@ -66,6 +67,20 @@ class FormationType extends AbstractType
                     'class'=>'prompt srch_explore',
                     'name'=>'montant',
                     'id'=>'id_montant',
+                    'maxlength'=>'64']])
+            ->add('lat',HiddenType::class,[
+                'attr'=>[
+                    'placeholder'=>'domaine',
+                    'class'=>'prompt srch_explore',
+                    'name'=>'lat',
+                    'id'=>'lat',
+                    'maxlength'=>'64']])
+            ->add('lng',HiddenType::class,[
+                'attr'=>[
+                    'placeholder'=>'domaine',
+                    'class'=>'prompt srch_explore',
+                    'name'=>'lng',
+                    'id'=>'lng',
                     'maxlength'=>'64']])
 
 

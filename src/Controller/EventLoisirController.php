@@ -6,6 +6,7 @@ use App\Entity\EventLoisir;
 use App\Entity\Formation;
 use App\Entity\Freelancer;
 use App\Entity\Participant;
+use App\Entity\Societe;
 use App\Form\EventLoisirType;
 use App\Form\FormationType;
 use App\Form\SearchType;
@@ -13,9 +14,11 @@ use App\Form\SearchTypeE;
 use App\Repository\EventLoisirRepository;
 use App\Repository\FormationRepository;
 use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Bridge\Twig\Mime\NotificationEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
@@ -75,8 +78,7 @@ class EventLoisirController extends AbstractController
             $em->flush($freelancer);
             $event->setIdFr($freelancer);
             $event->setEtat(1);
-            $event->setLng(10.6405392);
-            $event->setLat(35.8288175);
+
 
             $em->persist($event);
             $em->flush();
@@ -109,7 +111,7 @@ class EventLoisirController extends AbstractController
      */
     public function deleteEvent($id){
         $em=$this->getDoctrine()->getManager();
-        $part=$em->getRepository(Participant::class)->findBy(array('idFO'=>$id));
+        $part=$em->getRepository(Participant::class)->findBy(array('idE'=>$id));
         if($part!=null){
             $this->addFlash('info',"Cet evenement ne peut pas étre supprimé car elle contient deja des participants;Veuillez contacter l'administrateur pour la supprimer");
         }
@@ -181,34 +183,6 @@ class EventLoisirController extends AbstractController
         return $this->render("event_loisir/AfficherEventLoisirTri.html.twig",['events'=>$events,'evenement'=>$eventD,'participation'=>$formparticipation]);
     }
 
-    /**
-     * @Route("/ModifierEventBack/{id}",name="ModifierEventBack")
-     */
-    public function updateEventBack($id,\Symfony\Component\HttpFoundation\Request $request){
-        $em=$this->getDoctrine()->getManager();
-        $event=$em->getRepository(EventLoisir::class)->find($id);
-        $form=$this->createForm(EventLoisirType::class,$event);
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
-
-            $em->flush();
-            return $this->redirectToRoute("Afficherallformationback",array('id'=>0));
-        }
-        return $this->render("event_loisir/AjouterEvent.html.twig",['f'=>$form->createView()]);
-
-
-    }
-
-    /**
-     * @Route("/deleteEventBack/{id}",name="deleteEventBack")
-     */
-    public function deleteEventBack($id){
-        $em=$this->getDoctrine()->getManager();
-        $e=$em->getRepository(EventLoisir::class)->find($id);
-        $em->remove($e);
-        $em->flush();
-        return $this->redirectToRoute("Afficherallformationback",array('id'=>0));
-    }
 
     /**
      * @Route("/mapE/{id}", name="mapE"))
@@ -222,20 +196,128 @@ class EventLoisirController extends AbstractController
         ]);
 
     }
+
     /**
-     * @Route("/searchEvent", name="searchEvent")
+     * @Route("/addParticiperE",options={"expose"=true}, name="addParticiperE")
      */
-    public function searchEvent(Request $request,NormalizerInterface $Normalizer,EventLoisirRepository $repository)
-    {
+    public function participer(\Symfony\Component\HttpFoundation\Request $request,MailerInterface $mailer,\Swift_Mailer $mailer1,\Twilio\Rest\Client $twilio){
+        $typee="evenement";
+        $typeu="societe";
+        $idev=$request->get("idev");
+        $ids=1;
+        $idf=0;
+        $num=$request->get("num");
+        $typeV=$request->get("type");
+        $typeC=$request->get("typeC");
+        $emp=$this->getDoctrine()->getManager();
+        $participant=new Participant();
 
-        $requestString=$request->get('searchValue');
-        $events = $repository->search($requestString);
-        $jsonContent = $Normalizer->normalize($events, 'json',['groups'=>'event:read']);
-        $retour=json_encode($jsonContent);
+        if($typeu=="societe"){
+            $part=$emp->getRepository(Participant::class)->findBy(array('idS' => $ids,'idE'=>$idev));
+            if($part!=null){
+                $this->addFlash('alert',"Vous avez déja participer à cet evenement");
+            }
 
-        return new Response($retour);
 
+        }
+        else{
+            $part=$emp->getRepository(Participant::class)->findBy(array('idF' => $idf,'idE'=>$idev));
+            if($part!=null){
+                $this->addFlash('alert',"Vous avez déja participer à cet evenement");
+                }
+
+        }
+
+        if($part==null){
+            if($typeu=="societe"){
+                $s=$emp->getRepository(Societe::class)->find($ids);
+                $user=$emp->getRepository(Societe::class)->find($ids);
+                $emp->merge($s);
+                $emp->flush($s);
+                $participant->setIdS($s);
+                $e=$emp->getRepository(EventLoisir::class)->find($idev);
+
+                $e->setNbParticipant($e->getNbParticipant()+1);
+                $emp->merge($e);
+                $emp->flush($e);
+                $participant->setIdE($e);
+                if($e->getIdFr() != null){
+                        $prop=$emp->getRepository(Freelancer::class)->find($e->getIdFr());
+                }
+                else{
+                        $prop=$emp->getRepository(Societe::class)->find($e->getIdSo());
+                }
+                $email=(new NotificationEmail())
+                        ->from('nadebessioud20@gmail.com')
+                        ->to($prop->getEmail())
+                        ->subject('Participation')
+                        ->markdown($this->renderView('formation/FormationParticipationMAIL.html.twig',['user'=>$user,'e'=>$e,'typee'=>$typee]))
+                        ->action("Liste participants?","http://127.0.0.1:8000/participantsEventPDF/$idev")
+                        ->importance(NotificationEmail::IMPORTANCE_HIGH);
+                    $mailer->send($email);
+
+                $message = (new \Swift_Message('Hello Email'))
+                    ->setFrom('nadebessioud20@gmail.com')
+                    ->setTo($s->getEmail())
+                    ->setSubject('Confirmation du participation')
+                    ->setBody($this->renderView('formation/FormationMAIL.html.twig',['user'=>$user,'e'=>$e,'typee'=>$typee]), 'text/html');
+                $mailer1->send($message);
+
+
+            }
+            else{
+                $f=$emp->getRepository(Freelancer::class)->find($idf);
+                $user=$emp->getRepository(Freelancer::class)->find($idf);
+                $emp->merge($f);
+                $emp->flush($f);
+                $participant->setIdF($f);
+                $e=$emp->getRepository(EventLoisir::class)->find($idev);
+                $e->setNbParticipant($e->getNbParticipant()+1);
+                $emp->merge($e);
+                $emp->flush($e);
+                $participant->setIdE($e);
+                if($e->getIdFr() != null){
+                        $prop=$emp->getRepository(Freelancer::class)->find($e->getIdFr());
+                }
+                else{
+                        $prop=$emp->getRepository(Societe::class)->find($e->getIdSo());
+                    }
+                $email=(new NotificationEmail())
+                        ->from('nadebessioud20@gmail.com')
+                        ->to($prop->getEmail())
+                        ->subject('Participation')
+                        ->markdown($this->renderView('formation/FormationParticipationMAIL.html.twig',['user'=>$user,'e'=>$e,'typee'=>$typee]))
+                        ->action("Liste participants?","http://127.0.0.1:8000/participantsEventPDF/$idev")
+                        ->importance(NotificationEmail::IMPORTANCE_HIGH);
+                    $mailer->send($email);
+
+                $message = (new \Swift_Message('Hello Email'))
+                    ->setFrom('nadebessioud20@gmail.com')
+                    ->setTo($f->getEmail())
+                    ->setSubject('Confirmation du participation')
+                    ->setBody($this->renderView('formation/FormationMAIL.html.twig',['user'=>$user,'e'=>$e,'typee'=>$typee]), 'text/html');
+            }
+
+                $mailer1->send($message);
+                $participant->setTypeE("$typee");
+                $participant->setTypeU($typeu);
+                $emp->persist($participant);
+                $emp->flush();
+                if($typeV=="call"){
+                $call = $twilio->calls
+                    ->create($num, // to
+                        "+12562902100", // from
+                        [
+                            "twiml" => "<Response><Say>you have participate to the event</Say></Response>"
+                        ]
+                    );
+                }
+                if($typeC=="SMS"){
+                $message=$twilio->messages->create($num,
+                    array('from'=>'+12562902100','body'=>'hello hadha just test '));
+                }
+        }
+        return $this->redirectToRoute("AfficherEvent",array('idu'=>1,'type'=>"freelancer"));
     }
-
 
 }

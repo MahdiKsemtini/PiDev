@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\EventLoisir;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -55,7 +56,7 @@ class EventLoisirType extends AbstractType
                     'placeholder'=>'domaine',
                     'class'=>'prompt srch_explore',
                     'name'=>'domaine',
-                    'id'=>'id_domaine',
+                    'id'=>'domaine',
                     'maxlength'=>'64']])
             ->add('NbParticipant',TextType::class,[
                 'attr'=>[
@@ -63,6 +64,20 @@ class EventLoisirType extends AbstractType
                     'class'=>'prompt srch_explore',
                     'name'=>'NbParticipant',
                     'id'=>'id_NbParticipant',
+                    'maxlength'=>'64']])
+            ->add('lat',HiddenType::class,[
+                'attr'=>[
+                    'placeholder'=>'domaine',
+                    'class'=>'prompt srch_explore',
+                    'name'=>'lat',
+                    'id'=>'lat',
+                    'maxlength'=>'64']])
+            ->add('lng',HiddenType::class,[
+                'attr'=>[
+                    'placeholder'=>'domaine',
+                    'class'=>'prompt srch_explore',
+                    'name'=>'lng',
+                    'id'=>'lng',
                     'maxlength'=>'64']])
         ;
     }

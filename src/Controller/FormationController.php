@@ -86,27 +86,30 @@ class FormationController extends AbstractController
      * @Route("/addFormation",name="addFormation")
      */
     public function addFormation(\Symfony\Component\HttpFoundation\Request $request){
-        $formation=new Formation();
-        $em=$this->getDoctrine()->getManager();
-        $emf=$this->getDoctrine()->getRepository(Freelancer::class);
-        $form=$this->createForm(FormationType::class,$formation);
-        $form->handleRequest($request);
-        if($form->isSubmitted() and $form->isValid()){
-            $freelancer=$emf->find(1);
 
-            $em->merge($freelancer);
-            $em->flush($freelancer);
-            $formation->setIdFr($freelancer);
-            $formation->setEtat(1);
-            $formation->setLng(10.2702503);
-            $formation->setLat(36.7602229);
 
-            $em->persist($formation);
-            $em->flush();
-            $this->addFlash('msg',"Formation ajouté avec succées");
-            return $this->redirectToRoute("Afficherformation",array('idu'=>1,'type'=>"freelancer"));
-        }
-        return $this->render("formation/AjouterFormation.html.twig",['f'=>$form->createView()]);
+            $formation = new Formation();
+            $em = $this->getDoctrine()->getManager();
+            $emf = $this->getDoctrine()->getRepository(Freelancer::class);
+            $form = $this->createForm(FormationType::class, $formation);
+            $form->handleRequest($request);
+            if ($form->isSubmitted() and $form->isValid()) {
+                $freelancer = $emf->find(1);
+
+                $em->merge($freelancer);
+                $em->flush($freelancer);
+                $formation->setIdFr($freelancer);
+                $formation->setEtat(1);
+
+
+
+                $em->persist($formation);
+                $em->flush();
+                $this->addFlash('msg', "Formation ajouté avec succées");
+                return $this->redirectToRoute("Afficherformation", array('idu' => 1, 'type' => "freelancer"));
+            }
+            return $this->render("formation/AjouterFormation.html.twig", ['f' => $form->createView()]);
+
 
     }
 
@@ -230,44 +233,34 @@ class FormationController extends AbstractController
     }
 
     /**
-     * @Route("/addParticiper", name="addParticiper")
+     * @Route("/addParticiper",options={"expose"=true}, name="addParticiper")
      */
-    public function participer(\Symfony\Component\HttpFoundation\Request $request,MailerInterface $mailer,\Swift_Mailer $mailer1){
-        $typee=$request->get("typee");
-        $typeu=$request->get("typeu");
+    public function participer(\Symfony\Component\HttpFoundation\Request $request,MailerInterface $mailer,\Swift_Mailer $mailer1,\Twilio\Rest\Client $twilio){
+        $typee="formation";
+        $typeu="societe";
         $idfo=$request->get("idfo");
-        $idev=$request->get("idev");
-        $ids=$request->get("ids");
-        $idf=$request->get("idf");
+        $idev=0;
+        $ids=1;
+        $idf=0;
+        $num=$request->get("num");
+        $typeV=$request->get("type");
+        $typeC=$request->get("typeC");
         $emp=$this->getDoctrine()->getManager();
         $participant=new Participant();
+
         if($typeu=="societe"){
-        if($typee=="formation"){
+
             $part=$emp->getRepository(Participant::class)->findBy(array('idS' => $ids,'idFO'=>$idfo));
             if($part!=null){
                 $this->addFlash('alert',"Vous avez déja participer à cette formation");
             }
+
         }
         else{
-            $part=$emp->getRepository(Participant::class)->findBy(array('idS' => $ids,'idE'=>$idev));
-            if($part!=null){
-                $this->addFlash('alert',"Vous avez déja participer à cet evenement");
-            }
-        }
-        }
-        else{
-            if($typee=="formation"){
-                $part=$emp->getRepository(Participant::class)->findBy(array('idF' => $idf,'idFO'=>$idfo));
+            $part=$emp->getRepository(Participant::class)->findBy(array('idF' => $idf,'idFO'=>$idfo));
                 if($part!=null){
                     $this->addFlash('alert',"Vous avez déja participer à cette formation");
                 }
-            }
-            else{
-                $part=$emp->getRepository(Participant::class)->findBy(array('idF' => $idf,'idE'=>$idev));
-                if($part!=null){
-                    $this->addFlash('alert',"Vous avez déja participer à cet evenement");
-                }
-            }
         }
 
        if($part==null){
@@ -277,13 +270,12 @@ class FormationController extends AbstractController
             $emp->merge($s);
             $emp->flush($s);
             $participant->setIdS($s);
-            if($typee=="formation"){
-                $fo=$emp->getRepository(Formation::class)->find($idfo);
-                $ev=$emp->getRepository(Formation::class)->find($idfo);
-                $emp->merge($fo);
-                $emp->flush($fo);
-                $participant->setIdFO($fo);
-                if($fo->getIdFr() != null){
+            $fo=$emp->getRepository(Formation::class)->find($idfo);
+            $ev=$emp->getRepository(Formation::class)->find($idfo);
+            $emp->merge($fo);
+            $emp->flush($fo);
+            $participant->setIdFO($fo);
+            if($fo->getIdFr() != null){
                     $prop=$emp->getRepository(Freelancer::class)->find($fo->getIdFr());
                 }
                 else{
@@ -297,31 +289,6 @@ class FormationController extends AbstractController
                     ->action("Liste participants?","http://127.0.0.1:8000/participantsPDF/$idev")
                     ->importance(NotificationEmail::IMPORTANCE_HIGH);
                 $mailer->send($email);
-
-
-            }
-            else{
-                $e=$emp->getRepository(EventLoisir::class)->find($idev);
-                $ev=$emp->getRepository(EventLoisir::class)->find($idev);
-                $e->setNbParticipant($e->getNbParticipant()+1);
-                $emp->merge($e);
-                $emp->flush($e);
-                $participant->setIdE($e);
-                if($e->getIdFr() != null){
-                    $prop=$emp->getRepository(Freelancer::class)->find($e->getIdFr());
-                }
-                else{
-                    $prop=$emp->getRepository(Societe::class)->find($e->getIdSo());
-                }
-                $email=(new NotificationEmail())
-                    ->from('nadebessioud20@gmail.com')
-                    ->to($prop->getEmail())
-                    ->subject('Participation')
-                    ->markdown($this->renderView('formation/FormationParticipationMAIL.html.twig',['user'=>$user,'e'=>$ev,'typee'=>$typee]))
-                    ->action("Liste participants?","http://127.0.0.1:8000/participantsEventPDF/$idev")
-                    ->importance(NotificationEmail::IMPORTANCE_HIGH);
-                $mailer->send($email);
-            }
             $message = (new \Swift_Message('Hello Email'))
                 ->setFrom('nadebessioud20@gmail.com')
                 ->setTo($s->getEmail())
@@ -337,7 +304,7 @@ class FormationController extends AbstractController
             $emp->merge($f);
             $emp->flush($f);
             $participant->setIdF($f);
-            if($typee=="formation"){
+
                 $fo=$emp->getRepository(Formation::class)->find($idfo);
                 $ev=$emp->getRepository(Formation::class)->find($idfo);
                 $emp->merge($fo);
@@ -357,34 +324,8 @@ class FormationController extends AbstractController
                     ->action("Liste participants?","http://127.0.0.1:8000/participantsPDF/$idfo")
                     ->importance(NotificationEmail::IMPORTANCE_HIGH);
                 $mailer->send($email);
-
-
-            }
-            else{
-                $e=$emp->getRepository(EventLoisir::class)->find($idev);
-                $ev=$emp->getRepository(EventLoisir::class)->find($idev);
-                $e->setNbParticipant($e->getNbParticipant()+1);
-                $emp->merge($e);
-                $emp->flush($e);
-                $participant->setIdE($e);
-                if($e->getIdFr() != null){
-                    $prop=$emp->getRepository(Freelancer::class)->find($e->getIdFr());
-                }
-                else{
-                    $prop=$emp->getRepository(Societe::class)->find($e->getIdSo());
-                }
-                $email=(new NotificationEmail())
-                    ->from('nadebessioud20@gmail.com')
-                    ->to($prop->getEmail())
-                    ->subject('Participation')
-                    ->markdown($this->renderView('formation/FormationParticipationMAIL.html.twig',['user'=>$user,'e'=>$ev,'typee'=>$typee]))
-                    ->action("Liste participants?","http://127.0.0.1:8000/participantsEventPDF/$idev")
-                    ->importance(NotificationEmail::IMPORTANCE_HIGH);
-                $mailer->send($email);
-            }
-            $message = (new \Swift_Message('Hello Email'))
-
-                ->setFrom('nadebessioud20@gmail.com')
+                $message = (new \Swift_Message('Hello Email'))
+                    ->setFrom('nadebessioud20@gmail.com')
                 ->setTo($f->getEmail())
                 ->setSubject('Confirmation du participation')
                 ->setBody($this->renderView('formation/FormationMAIL.html.twig',['user'=>$user,'e'=>$ev,'typee'=>$typee]), 'text/html');
@@ -397,146 +338,29 @@ class FormationController extends AbstractController
         $emp->persist($participant);
         $emp->flush();
 
+        if($typeV=="call"){
+            $call = $twilio->calls
+                ->create($num, // to
+                    "+12562902100", // from
+                    [
+                        "twiml" => "<Response><Say>you have participate to an formation</Say></Response>"
+                    ]
+                );
         }
-        if($typee=="formation"){
-            return $this->redirectToRoute("Afficherformation",array('idu'=>1,'type'=>"freelancer"));
-
+        if($typeC=="SMS"){
+            $message=$twilio->messages->create($num,
+                array('from'=>'+12562902100','body'=>'hello hadha just test '));
         }
-        else{
-            return $this->redirectToRoute("AfficherEvent",array('idu'=>1,'type'=>"freelancer"));
-
         }
-
-
+       return $this->redirectToRoute("Afficherformation",array('idu'=>1,'type'=>"freelancer"));
     }
 
-    /**
-     * @Route("/Afficherallformationback", name="Afficherallformationback",methods={"GET","POST"})
-     */
-    public function AfficherAllFormationBack(FormationRepository  $formationRepository,\Symfony\Component\HttpFoundation\Request $request, PaginatorInterface $paginator){
-       /* $em=$this->getDoctrine()->getRepository(Formation::class);
-        $formations1=$em->findBy(array('Etat'=>1));;
-        $eme=$this->getDoctrine()->getRepository(EventLoisir::class);
-        $events=$eme->findBy(array('Etat'=>1));
-        return $this->render("formation/AfficherFormationBack.html.twig",['forms'=>$formations1,'events'=>$events]);
 
 
 
-        return $this->render("event_loisir/AfficherEventLoisir.html.twig",['events'=>$events,'evenement'=>$events1]);
-   */
-
-        $eme=$this->getDoctrine()->getRepository(EventLoisir::class);
-        $event=$eme->findBy(array('Etat'=>1));
-        $formation = new Formation();
-        $searchForm = $this->createForm(SearchType::class,$formation);
-        $searchForm->handleRequest($request);
-        if ($searchForm->isSubmitted()) {
-            $labelle = $searchForm['Labelle']->getData();
-            $donnees = $formationRepository->search($labelle);
-            return $this->redirectToRoute('search', array('labelle' => $labelle));
-        }
-        $donnees = $this->getDoctrine()->getRepository(Formation::class)->findBy([],['id' => 'desc']);
-
-        // Paginate the results of the query
-        $formations = $paginator->paginate(
-        // Doctrine Query, not results
-            $donnees,
-            // Define the page parameter
-            $request->query->getInt('page', 1),
-            // Items per page
-            2
-        );
 
 
 
-        return $this->render('formation/AfficherFormationBack.html.twig', [
-            'forms' => $formations,
-            'events'=>$event,
-            'searchForm' => $searchForm->createView()
-        ]);
-
-    }
-
-    /**
-     * @Route("/ModifierFormationBack/{id}",name="ModifierFormationBack")
-     */
-    public function updateFormationBack($id,\Symfony\Component\HttpFoundation\Request $request){
-        $em=$this->getDoctrine()->getManager();
-        $formation=$em->getRepository(Formation::class)->find($id);
-        $form=$this->createForm(FormationType::class,$formation);
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
-
-            $em->flush();
-            return $this->redirectToRoute("Afficherallformationback",array('idu'=>0,'type'=>"freelancer"));
-        }
-        return $this->render("formation/AjouterFormation.html.twig",['f'=>$form->createView()]);
-
-
-    }
-
-    /**
-     * @Route("/deleteFormationBack/{id}",name="deleteFormationBack")
-     */
-    public function deleteFormationBack($id){
-        $em=$this->getDoctrine()->getManager();
-
-        $f=$em->getRepository(Formation::class)->find($id);
-        $em->remove($f);
-        $em->flush();
-
-        return $this->redirectToRoute("Afficherallformationback",array('id'=>0,'type'=>"freelancer"));
-    }
-
-    /**
-     * @Route("/participantsPDF/{id}", name="participantsPDF", methods={"GET"})
-     */
-    public function listh($id): Response
-    {
-$pr=$this->getDoctrine()->getRepository(Participant::class);
-        $fr=$this->getDoctrine()->getRepository(Freelancer::class);
-        $sr=$this->getDoctrine()->getRepository(Societe::class);
-        $for=$this->getDoctrine()->getRepository(Formation::class);
-        $form=$for->find($id);
-        $participant=$pr->findBy(array('idFO'=>$id));
-        $participant1=$pr->findOneBy(array('idFO'=>$id));
-        $users=array();
-        $societe=array();
-
-       for($i=0;$i<sizeof($participant);$i++){
-
-                if($participant[$i]->getTypeU()=="societe"){
-                    $societe[sizeof($societe)]=$sr->find($participant[$i]->getIdS()->getId());
-
-                }
-                else{
-                    $users[sizeof($users)]=$fr->find($participant[$i]->getIdF()->getId());
-                }
-        }
-        // Configure Dompdf according to your needs
-        $pdfOptions = new Options();
-        $pdfOptions->set('defaultFont', 'Arial');
-
-        // Instantiate Dompdf with our options
-        $dompdf = new Dompdf($pdfOptions);
-        // Retrieve the HTML generated in our twig file
-        $html = $this->renderView('formation/FormationPDF.html.twig', [
-            'users' =>$users ,'societe'=>$societe ,'formation'=>$form ,'type'=>$participant1->getTypeE()]);
-
-        // Load HTML to Dompdf
-        $dompdf->loadHtml($html);
-
-        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
-        $dompdf->setPaper('A4', 'portrait');
-
-        // Render the HTML as PDF
-        $dompdf->render();
-
-        // Output the generated PDF to Browser (inline view)
-        $dompdf->stream("mypdf.pdf", [
-            "Attachment" => false
-        ]);
-    }
 
     /**
      * @Route("/participantsEventPDF/{id}", name="participantsEventPDF", methods={"GET"})
@@ -675,36 +499,32 @@ public function map($id){
      * @Route("/testSMS",name="testSMS")
      */
     public function sms(\Twilio\Rest\Client $twilio){
-    $message=$twilio->messages->create('+21625500979',
-    array('from'=>'+12562902100','body'=>'hello hadha just test '));
-        $call = $twilio->calls
-            ->create("+21629658549", // to
-                "+12562902100", // from
-                [
-                    "twiml" => "<Response><Say>ahla w sahla</Say></Response>"
-                ]
-            );
+        $message=$twilio->messages->create('+21629658549',
+            array('from'=>'+12562902100','body'=>'hello hadha just test '));
 
 
         return $this->redirectToRoute("Afficherformation",array('idu'=>1,'type'=>"freelancer"));
     }
 
+
+
     /**
-     * @Route("/searchFormation", name="searchFormation")
+     * @Route("/GetLatLng",name="GetLatLng")
      */
-    public function searchFormation(Request $request,NormalizerInterface $Normalizer,FormationRepository $repository)
-    {
-
-        $requestString=$request->get('searchValue');
-        $formations = $repository->search($requestString);
-        $jsonContent = $Normalizer->normalize($formations, 'json',['groups'=>'formation:read']);
-        $retour=json_encode($jsonContent);
-
-        return new Response($retour);
-
+    public function GetLatLng(Request $request){
+        $lat=$request->get("lat");
+        $lng=$request->get('lng');
+        $formation=new Formation();
+        $formation->setLat($lat);
+        $formation->setLng($lng);
+        return $formation;
     }
 
-
-
+    /**
+     * @Route("/testAuto",name="x   ")
+     */
+    public function test(){
+        return $this->render("formation/index.html.twig");
+    }
 
 }

@@ -32,7 +32,11 @@
 
 
 {% endblock %}
+{% block head %}
+    <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.6.0/maps/maps.css'/>
+    <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/6.x/6.6.0/maps/maps-web.min.js'></script>
 
+{% endblock %}
 {% block body %}
     <div class="wrapper">
         <div class="sa4d25">
@@ -106,6 +110,11 @@
                                                                 <label>Lieu du l'evenement</label>
                                                                 <div class="ui left icon input swdh19">
                                                                     {{ form_widget(f.Lieu) }}
+
+                                                                    {{ form_widget(f.lng)  }}
+
+                                                                    {{ form_widget(f.lat)  }}
+
 
                                                                 </div>
                                                             </div>
@@ -337,6 +346,30 @@
                 alert('Ajout avec succes ');
             }
         });
+    </script>
+    <script src={{ asset('js/services-web.min.js') }}></script>
+    <script >
+
+
+
+        //Here’s what our corresponding javascript would look like:
+        document.getElementById('event_loisir_Lieu').onfocusout = function () {
+
+            var geocodeOptions = {
+                query:document.getElementById('event_loisir_Lieu').value,
+                key: '0MWBNiAVRIke92CSc6vjYjseKJUmQSLy'
+            };
+            // Look up the geocode of the given address
+
+            tt.services.geocode(geocodeOptions).then(function (geocodeRes) {
+                console.log(geocodeRes['results'][0]['position']);
+                document.getElementById('event_loisir_lat').value=geocodeRes['results'][0]['position']['lat']
+                document.getElementById('event_loisir_lng').value=geocodeRes['results'][0]['position']['lng']
+
+
+
+            });
+        };
     </script>
 {% endblock %}
 

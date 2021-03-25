@@ -63,6 +63,56 @@
         <link href={{ asset('vendor/bootstrap/css/bootstrap.min.css') }} rel="stylesheet">
         <link rel="stylesheet" type="text/css" href={{ asset('vendor/semantic/semantic.min.css') }}>
 
+        <style>
+            .bg-model{
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.7);
+
+                position: absolute;
+                top: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                display: none;
+            }
+            .model-content{
+                width: 400px;
+                height: 250px;
+                background-color: white;
+
+                border-radius: 4px;
+                text-align: center;
+                padding: 20px;
+                position: relative;
+            }
+            #num{
+                width: 50%;
+                display: block;
+
+                margin: 15px auto;
+                height: 30px;
+
+
+            }
+            .close{
+                position: absolute;
+                top: 0;
+                right: 14px;
+                font-size: 42px;
+                transform: rotate(45deg);
+                cursor: pointer;
+
+            }
+            #img1{
+                width: 25%;
+                position: relative;
+
+            }
+        </style>
+
+
+
     </head>
     <body>
     <!-- Header Start -->
@@ -392,7 +442,8 @@
 
                                                             <div class="fcrse_content">
                                                                 <div class="eps_dots more_dropdown">
-                                                                    <a href="{{ path("addParticiper",{'typee':'evenement','typeu':'societe','idfo':0,'idev':ev.id,'ids':1,'idf':1}) }}"  title="Delete" class="gray-s" style="font-size: 15px">participer</a>
+
+                                                                    <a href="#"  data-id="{{ev.id}}"  title="participer" class="gray-s" id="BtnP" style="font-size: 15px">participer</a>
                                                                 </div>
                                                                 <div class="vdtodt">
                                                                     <span class="vdt14">{{ ev.DateDebut|date('Y-m-d') }}</span>
@@ -628,6 +679,26 @@
             </div>
         </footer>
     </div>
+    <div class="bg-model">
+        <div class="model-content">
+            <img src="{{ asset("images/Logo_complet.png") }}" id="img1">
+            <div class="close">+</div>
+            <form action="">
+                <input type="text" placeholder="num" id="num" >
+                </br>
+                <div >
+                    <input type="checkbox" id="call">Appeller moi
+                    <input type="checkbox" id="sms" style="margin-left: 10px">m'envoyer SMS
+                </div>
+
+                <div style="margin-top: 20px">
+                    <button class="btn btn-outline-primary " id="BtnS">Submit</button>
+                    <button class="btn btn-outline-secondary"  id="BtnA" style="margin-left: 10px ">annuler</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- Body End -->
 
     <script src={{ asset('js/vertical-responsive-menu.min.js') }}></script>
@@ -661,4 +732,52 @@
         });
 
     </script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
+
+    <script>
+
+        var idv=0;
+        var type="";
+        var typec="";
+        var url="";
+        var num="";
+        var elemnts=document.querySelectorAll("#BtnP");
+        for (var i=0; i<elemnts.length; i++) {
+
+            elemnts[i].addEventListener('click',function (){
+                idv=0;
+                idv=this.dataset.id;
+
+                document.querySelector('.bg-model').style.display='flex';
+            });
+        }
+
+        document.getElementById("BtnS").addEventListener('click',function () {
+
+            num="216"+document.getElementById("num").value;
+            if(document.getElementById("call").checked){
+                type="call";
+            }
+            if(document.getElementById("sms").checked){
+                typec="SMS";
+            }
+            url=Routing.generate('addParticiperE',{'idev':idv, 'num': num, 'type': type, 'typeC': typec})
+            setTimeout(function(){document.location.href = url},500);
+        });
+
+
+    </script>
+    <script>
+        document.querySelector('.close').addEventListener('click',function (){
+            document.querySelector('.bg-model').style.display="none";
+        });
+        document.querySelector('#BtnA').addEventListener('click',function (){
+            document.querySelector('.bg-model').style.display="none";
+        });
+
+    </script>
+
+
 {% endblock %}
