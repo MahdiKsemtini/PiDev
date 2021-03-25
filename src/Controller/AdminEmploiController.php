@@ -24,7 +24,7 @@ class AdminEmploiController extends AbstractController
 
 
 
-    public function OffreStageToAdmin(AdminRepository $adminRepository, $idOffreStage)
+    public function OffreStageToAdmin(AdminRepository $adminRepository, $idOffreStage,$SocieteEmail)
     {
         $list = $adminRepository->findBy(array('type'=>'Admin des emplois', 'etat'=>1));
         $EntityManager = $this->getDoctrine()->getManager();
@@ -35,7 +35,28 @@ class AdminEmploiController extends AbstractController
             $AdminEmploi->setIdOffreStage($idOffreStage);
             $EntityManager->persist($AdminEmploi);
             $EntityManager->flush();
+
+            $this->notify_creation->notify($SocieteEmail,$l->getLogin());
         }
 
     }
+
+    public function OffreEmploiToAdmin(AdminRepository $adminRepository, $idOffreEmploi,$SocieteEmail)
+    {
+        $list = $adminRepository->findBy(array('type'=>'Admin des emplois', 'etat'=>1));
+        $EntityManager = $this->getDoctrine()->getManager();
+        foreach ($list as $l)
+        {
+            $AdminEmploi = new AdminEmploi();
+            $AdminEmploi->setIdAE($l->getId());
+            $AdminEmploi->setIdOffreEpmloi($idOffreEmploi);
+            $EntityManager->persist($AdminEmploi);
+            $EntityManager->flush();
+
+            $this->notify_creation->notify($SocieteEmail,$l->getLogin());
+        }
+
+    }
+
+
 }

@@ -36,6 +36,11 @@ class ReclamationController extends AbstractController
     /**
      * @Route("/ajouterReclamation", name="ajouterReclamation")
      * @param Request $request
+     * @param AdminRepository $adminRepository
+     * @param AdminReclamationController $adminReclamationController
+     * @param FreelancerRepository $repository
+     * @param ReclamationRepository $reclamationRepository
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
 
     public function addReclamation(\Symfony\Component\HttpFoundation\Request $request,AdminRepository $adminRepository,AdminReclamationController $adminReclamationController,FreelancerRepository $repository, ReclamationRepository $reclamationRepository)
@@ -57,6 +62,7 @@ class ReclamationController extends AbstractController
 
 
             $NonApprouve = $reclamationRepository->countReclamtionNonApprouve();
+
             $admins = $adminRepository->findBy(array('type'=>'Admin des reclamations'));
             $entitymanager = $this->getDoctrine()->getManager();
             foreach ($NonApprouve as $count){
@@ -71,7 +77,7 @@ class ReclamationController extends AbstractController
 
 
 
-            $adminReclamationController->ReclamationToAdmin($adminRepository, $reclamation->getId(), $freelancer);
+            $adminReclamationController->ReclamationToAdmin($adminRepository, $reclamation->getId(), $freelancer,$reclamationRepository);
 
             return $this->redirectToRoute("ajouterReclamation");
         }

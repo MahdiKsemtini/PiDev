@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\AdminReclamtion;
 use App\Entity\Freelancer;
+use App\Repository\AdminEmploiRepository;
 use App\Repository\AdminReclamtionRepository;
 use App\Repository\AdminRepository;
 use App\Repository\ReclamationRepository;
@@ -50,45 +51,75 @@ class AdminReclamationController extends AbstractController
     }
 
     /**
+     * @param ReclamationRepository $reclamationRepository
+     * @param AdminRepository $adminRepository
+     * @param AdminReclamtionRepository $adminReclamtionRepository
+     * @param $id
      * @param Request $request
+     * @return Response
      * @Route("/deactivateReclamation/{id}", name="deactivateReclamation", methods={"GET","POST"})
      */
-    public function Deactivate(ReclamationRepository $reclamationRepository, AdminRepository $adminRepository,$id,Request $request): Response
+    public function Deactivate(ReclamationRepository $reclamationRepository, AdminRepository $adminRepository,AdminReclamtionRepository $adminReclamtionRepository,$id,Request $request): Response
     {
         $reclamation=$reclamationRepository->find($id);
         $reclamation->setEtat(0);
         $em=$this->getDoctrine()->getManager();
-        $em->remove($reclamation);
+
+
+
 
         $admins = $adminRepository->findBy(array('type'=>'Admin des reclamations'));
 
         foreach ($admins as $admin)
         {
             $adminRepository->find($admin->getId())->setNonapprouve($admin->getNonapprouve()-1);
+
         }
 
 
+        $adminASupprimer = $adminReclamtionRepository->findBy(array('id_Reclamation'=>$id));
+        //dd($adminASupprimer);
+        foreach ($adminASupprimer as $a) {
+            $em->remove($a);
+        }
+
+
+        $em->remove($reclamation);
         $em->flush();
         return $this->redirectToRoute('admin_reclamation');
 
     }
 
     /**
+     * @param ReclamationRepository $reclamationRepository
+     * @param AdminRepository $adminRepository
+     * @param AdminEmploiRepository $adminEmploiRepository
+     * @param $id
      * @param Request $request
+     * @return Response
      * @Route("/activateReclamation/{id}", name="activateReclamation", methods={"GET","POST"})
      */
-    public function Activate(ReclamationRepository $reclamationRepository,AdminRepository $adminRepository,$id,Request $request): Response
+    public function Activate(ReclamationRepository $reclamationRepository,AdminRepository $adminRepository,AdminReclamtionRepository $adminReclamtionRepository,$id,Request $request): Response
     {
         $reclamation=$reclamationRepository->find($id);
         $reclamation->setEtat(1);
         $em=$this->getDoctrine()->getManager();
         $admins = $adminRepository->findBy(array('type'=>'Admin des reclamations'));
 
+
+
         foreach ($admins as $admin)
         {
             $adminRepository->find($admin->getId())->setApprouve($admin->getApprouve()+1);
             $adminRepository->find($admin->getId())->setNonapprouve($admin->getNonapprouve()-1);
+
         }
+
+        /*$adminASupprimer = $adminReclamtionRepository->findBy(array('id_Reclamation'=>$id));
+        foreach ($adminASupprimer as $a) {
+            $em->remove($a);
+            $em->flush();
+        }*/
 
 
         $em->flush();
@@ -98,7 +129,7 @@ class AdminReclamationController extends AbstractController
 
 
 
-public function ReclamationToAdmin(AdminRepository $adminRepository , $IdReclamtion , Freelancer $freelancer)
+public function ReclamationToAdmin(AdminRepository $adminRepository , $IdReclamtion , Freelancer $freelancer,ReclamationRepository $reclamationRepository)
 {
     $list = $adminRepository->findBy(array('type'=>'Admin des reclamations', 'etat'=>1));
 
@@ -112,7 +143,7 @@ public function ReclamationToAdmin(AdminRepository $adminRepository , $IdReclamt
         $em->persist($adminReclamation);
         $em->flush();
 
-//        $this->notify_creation->notify($freelancer->getEmail(),$l->getLogin());
+       $this->notify_creation->notify($freelancer->getEmail(),$l->getLogin(),$IdReclamtion,$reclamationRepository);
 
 
         /*$email = (new NotificationEmail())

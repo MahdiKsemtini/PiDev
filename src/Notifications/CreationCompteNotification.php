@@ -4,8 +4,10 @@ namespace App\Notifications;
 
 // On importe les classes nécessaires à l'envoi d'e-mail et à twig
 
+use App\Repository\ReclamationRepository;
 use Swift_Message;
 use Twig\Environment;
+
 
 
 class CreationCompteNotification
@@ -24,21 +26,23 @@ class CreationCompteNotification
      */
     private $renderer;
 
-    /*public function __construct(\Swift_Mailer $mailer, Environment $renderer)
+    public function __construct(\Swift_Mailer $mailer, Environment $renderer)
     {
         $this->mailer = $mailer;
         $this->renderer = $renderer;
-    }*/
+    }
 
     /**
      * Méthode de notification (envoi de mail)
      *
      * @return void
      */
-   /* public function notify($emailSource,$emailDestination)
+    public function notify($emailSource,$emailDestination,$Idreclamation,ReclamationRepository $reclamationRepository)
     {
+
+        $reclamation = $reclamationRepository->find($Idreclamation);
         // On construit le mail
-        $message = (new Swift_Message('Mon blog - Nouvelle inscription'))
+        $message = (new Swift_Message('Mon blog - Nouvelle Reclamation'))
             // Expéditeur
             ->setFrom($emailSource)
             // Destinataire
@@ -46,7 +50,7 @@ class CreationCompteNotification
             // Corps du message
             ->setBody(
                 $this->renderer->render(
-                    'emails/Reclamtion_Notification.html.twig'
+                    'emails/ReclamationNotification.html.twig',['type'=>$reclamation->getType(),'message'=>$reclamation->getTexteReclamation()]
                 ),
                 'text/html'
             );
@@ -54,5 +58,5 @@ class CreationCompteNotification
         // On envoie le mail
         $this->mailer->send($message);
 
-    }*/
+    }
 }

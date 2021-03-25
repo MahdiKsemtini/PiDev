@@ -25,7 +25,7 @@ class AdminReclamtion
     /**
      * @ORM\Column(type="integer")
      */
-    private $id_Reclamtion;
+    private $id_Reclamation;
 
     public function getId(): ?int
     {
@@ -46,12 +46,12 @@ class AdminReclamtion
 
     public function getIdReclamtion(): ?int
     {
-        return $this->id_Reclamtion;
+        return $this->id_Reclamation;
     }
 
     public function setIdReclamtion(int $id_Reclamtion): self
     {
-        $this->id_Reclamtion = $id_Reclamtion;
+        $this->id_Reclamation = $id_Reclamtion;
 
         return $this;
     }

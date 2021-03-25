@@ -20,21 +20,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8536dbc3-61f5-4edd-a3f8-2ef114c64d86" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/PiDev.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PiDev.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/doctrine.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/dev/web_profiler.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/dev/web_profiler.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210303214110.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210310215417.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210323213342.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/chart.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chart.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/AdminEmploiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminEmploiController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AdminReclamationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminReclamationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/OffreEmploiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/OffreEmploiController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/OffreStageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/OffreStageController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ReclamationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReclamationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SuperAdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SuperAdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/AdminFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/AdminFormType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/StatController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/StatController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/AdminReclamtion.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/AdminReclamtion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Freelancer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Freelancer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Societe.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Societe.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Notifications/CreationCompteNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Notifications/CreationCompteNotification.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/FreelancerRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/FreelancerRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/ReclamationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ReclamationRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin_reclamation/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin_reclamation/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base_back.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base_back.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/super_admin/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/super_admin/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/SocieteRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/SocieteRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/emails/EmailNotification.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/emails/ReclamationNotification.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/offre_emploi/CreateOffreEmploi.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/offre_emploi/CreateOffreEmploi.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/offre_stage/CreateOffreStage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/offre_stage/CreateOffreStage.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/stat/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/stat/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/super_admin/ViewAdminProfile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/super_admin/ViewAdminProfile.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +59,9 @@
   </component>
   <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution />
+    <execution>
+      <executable path="composer" />
+    </execution>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -166,6 +184,13 @@
       <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
       <path value="$PROJECT_DIR$/vendor/sensio/framework-extra-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/web-server-bundle" />
+      <path value="$PROJECT_DIR$/vendor/tijsverkoyen/css-to-inline-styles" />
+      <path value="$PROJECT_DIR$/vendor/lorenzo/pinky" />
+      <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
+      <path value="$PROJECT_DIR$/vendor/twig/inky-extra" />
+      <path value="$PROJECT_DIR$/vendor/twig/cssinliner-extra" />
+      <path value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle" />
+      <path value="$PROJECT_DIR$/vendor/beberlei/doctrineextensions" />
     </include_path>
   </component>
   <component name="ProjectId" id="1p1AutDvOGgv87KHVPDV78SVv6J" />
@@ -179,7 +204,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Entity" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -190,12 +215,6 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\PiDev\src\Form" />
-      <recent name="C:\xampp\htdocs\PiDev\templates\reclamation" />
-      <recent name="C:\xampp\htdocs\PiDev\public\images" />
-      <recent name="C:\wamp64\www\PiDev\templates\offre_stage" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\PiDev\templates\offre_emploi" />
       <recent name="C:\wamp64\www\PiDev\templates\demande" />
@@ -203,6 +222,19 @@
       <recent name="C:\wamp64\www\PiDev\public\images" />
       <recent name="C:\wamp64\www\PiDev\public" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\PiDev\src\Entity" />
+      <recent name="C:\xampp\htdocs\PiDev\src\Form" />
+      <recent name="C:\xampp\htdocs\PiDev\templates\reclamation" />
+      <recent name="C:\xampp\htdocs\PiDev\public\images" />
+      <recent name="C:\wamp64\www\PiDev\templates\offre_stage" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="phpunit.xml.dist" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner scope="XML" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -237,6 +269,9 @@
       <workItem from="1616509756648" duration="265000" />
       <workItem from="1616510057099" duration="16301000" />
       <workItem from="1616578173535" duration="17004000" />
+      <workItem from="1616614847086" duration="249000" />
+      <workItem from="1616623873763" duration="4281000" />
+      <workItem from="1616684318532" duration="14491000" />
     </task>
     <servers />
   </component>
@@ -254,5 +289,23 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1616702337769">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1616702337769" />
+    <state x="545" y="325" key="ComposerInitDialogKey" timestamp="1616624538378">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="545" y="325" key="ComposerInitDialogKey/0.0.1536.824@0.0.1536.824" timestamp="1616624538378" />
+    <state x="478" y="145" width="589" height="534" key="find.popup" timestamp="1616687130122">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="478" y="145" width="589" height="534" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1616687130122" />
+    <state x="425" y="187" key="run.anything.popup" timestamp="1616687783432">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1616687783432" />
   </component>
 </project>

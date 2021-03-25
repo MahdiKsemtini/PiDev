@@ -5,7 +5,7 @@ namespace App\Repository;
 use App\Entity\Reclamation;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use DoctrineExtensions\Query\mysql;
+use DoctrineExtensions\Query\Mysql\Month;
 
 /**
  * @method Reclamation|null find($id, $lockMode = null, $lockVersion = null)
@@ -31,7 +31,7 @@ class ReclamationRepository extends ServiceEntityRepository
     public function reclamationParMois()
     {
         $query = $this->createQueryBuilder('r')
-        ->select(' SUBSTRING(r.dateReclamation,6,2) AS mois , count(r) as count')
+        ->select(' MONTH(r.dateReclamation) AS mois , count(r) as count')
             ->groupBy('mois');
         return $query->getQuery()->getResult();
     }

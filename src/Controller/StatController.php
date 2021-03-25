@@ -2,7 +2,11 @@
 
 namespace App\Controller;
 
+use App\Repository\FreelancerRepository;
+use App\Repository\OffreEmploiRepository;
+use App\Repository\OffreStageRepository;
 use App\Repository\ReclamationRepository;
+use App\Repository\SocieteRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -11,15 +15,26 @@ class StatController extends AbstractController
 {
     /**
      * @Route("/stat", name="stat")
+     * @param ReclamationRepository $reclamationRepository
+     * @param FreelancerRepository $freelancerRepository
+     * @param SocieteRepository $societeRepository
+     * @param OffreStageRepository $offreStageRepository
+     * @param OffreEmploiRepository $offreEmploiRepository
+     * @return Response
      */
-    public function index(ReclamationRepository $reclamationRepository): Response
+    public function index(ReclamationRepository $reclamationRepository , FreelancerRepository $freelancerRepository,SocieteRepository $societeRepository, OffreStageRepository $offreStageRepository,OffreEmploiRepository $offreEmploiRepository): Response
     {
+
+        //Statestique sur nombre de reclamation par mois
+
+        //Count des reclamations
         $nbReclamation = $reclamationRepository->countReclamtion();
         $countRec=0;
         foreach ($nbReclamation as $ArrayRec){
             $countRec = $ArrayRec['count'];
-    }
+        }
 
+        //Count des reclamations par mois
         $reclamationParMois = $reclamationRepository->reclamationParMois();
 
         $Recjanvier =0;
@@ -36,39 +51,39 @@ class StatController extends AbstractController
         $Recdecembre = 0;
         foreach ($reclamationParMois as $count)
         {
-            if ($count['mois'] == '01')
+            if ($count['mois'] == '1')
             {
                 $Recjanvier = $count['count'];
             }
-            if ($count['mois'] == '02')
+            if ($count['mois'] == '2')
             {
                 $Recfevrier = $count['count'];
             }
-            if ($count['mois'] == '03')
+            if ($count['mois'] == '3')
             {
                 $Recmars = $count['count'];
             }
-            if ($count['mois'] == '04')
+            if ($count['mois'] == '4')
             {
                 $Recavril = $count['count'];
             }
-            if ($count['mois'] == '05')
+            if ($count['mois'] == '5')
             {
                 $Recmai = $count['count'];
             }
-            if ($count['mois'] == '06')
+            if ($count['mois'] == '6')
             {
                 $Recjuin = $count['count'];
             }
-            if ($count['mois'] == '07')
+            if ($count['mois'] == '7')
             {
                 $Recjuillet= $count['count'];
             }
-            if ($count['mois'] == '08')
+            if ($count['mois'] == '8')
             {
                 $Recaout = $count['count'];
             }
-            if ($count['mois'] == '09')
+            if ($count['mois'] == '9')
             {
                 $Recseptemebre = $count['count'];
             }
@@ -87,13 +102,375 @@ class StatController extends AbstractController
             //dd($janvier,$fevrier,$mars, $avril,$mai,$juin,$juillet,$aout,$septemebre,$octobre,$novembre,$decembre);
         }
 
+        //Data de reclamation pour javaScript
         $ReclamationScript = "data: [".$Recjanvier.",".$Recfevrier.",".$Recmars.",".$Recavril.",".$Recmai.",".$Recjuin.",".$Recjuillet.",
         ".$Recaout.",".$Recseptemebre.",".$Recoctobre.",".$Recnovembre.",".$Recdecembre."]";
+
+        //Statestique sur nombre d'utilisateur par mois
+
+        //count des freelancers
+        $nbFreelancer = $freelancerRepository->countfreelancer();
+        $countfree=0;
+        foreach ($nbFreelancer as $ArrayFree){
+            $countfree = $ArrayFree['count'];
+        }
+
+        //count des societes
+        $nbSociete = $societeRepository->countsociete();
+        $countsos =0;
+
+        foreach ($nbSociete as $ArraySos){
+            $countsos = $ArraySos['count'];
+        }
+
+        //Somme des deux count
+        $countUsers = $countsos+$countfree;
+
+        //Count des Freelancer par mois
+
+        $freelancerParMois = $freelancerRepository->freelancerParMois();
+
+        $Freejanvier =0;
+        $Freefevrier = 0;
+        $Freemars = 0;
+        $Freeavril = 0;
+        $Freemai = 0;
+        $Freejuin = 0;
+        $Freejuillet = 0;
+        $Freeaout = 0;
+        $Freeseptemebre = 0;
+        $Freeoctobre = 0;
+        $Freenovembre = 0;
+        $Freedecembre = 0;
+        foreach ($freelancerParMois as $countfree)
+        {
+            if ($countfree['mois'] == '1')
+            {
+                $Freejanvier = $countfree['count'];
+            }
+            if ($countfree['mois'] == '2')
+            {
+                $Freefevrier = $countfree['count'];
+            }
+            if ($countfree['mois'] == '3')
+            {
+                $Freemars = $countfree['count'];
+            }
+            if ($countfree['mois'] == '4')
+            {
+                $Freeavril = $countfree['count'];
+            }
+            if ($countfree['mois'] == '5')
+            {
+                $Freemai = $countfree['count'];
+            }
+            if ($countfree['mois'] == '6')
+            {
+                $Freejuin = $countfree['count'];
+            }
+            if ($countfree['mois'] == '7')
+            {
+                $Freejuillet= $countfree['count'];
+            }
+            if ($countfree['mois'] == '8')
+            {
+                $Freeaout = $countfree['count'];
+            }
+            if ($countfree['mois'] == '9')
+            {
+                $Freeseptemebre = $countfree['count'];
+            }
+            if ($countfree['mois'] == '10')
+            {
+                $Freeoctobre = $countfree['count'];
+            }
+            if ($countfree['mois'] == '11')
+            {
+                $Freenovembre = $countfree['count'];
+            }
+            if ($countfree['mois'] == '12')
+            {
+                $Freedecembre = $countfree['count'];
+            }
+            //dd($janvier,$fevrier,$mars, $avril,$mai,$juin,$juillet,$aout,$septemebre,$octobre,$novembre,$decembre);
+        }
+
+        //Count des societe par mois
+
+
+        $societeParMois = $societeRepository->societeParMois();
+
+        $Sosjanvier =0;
+        $Sosfevrier = 0;
+        $Sosmars = 0;
+        $Sosavril = 0;
+        $Sosmai = 0;
+        $Sosjuin = 0;
+        $Sosjuillet = 0;
+        $Sosaout = 0;
+        $Sosseptemebre = 0;
+        $Sosoctobre = 0;
+        $Sosnovembre = 0;
+        $Sosdecembre = 0;
+        foreach ($societeParMois as $countsos)
+        {
+            if ($countsos['mois'] == '1')
+            {
+                $Sosjanvier = $countsos['count'];
+            }
+            if ($countsos['mois'] == '2')
+            {
+                $Sosfevrier = $countsos['count'];
+            }
+            if ($countsos['mois'] == '3')
+            {
+                $Sosmars = $countsos['count'];
+            }
+            if ($countsos['mois'] == '4')
+            {
+                $Sosavril = $countsos['count'];
+            }
+            if ($countsos['mois'] == '5')
+            {
+                $Sosmai = $countsos['count'];
+            }
+            if ($countsos['mois'] == '6')
+            {
+                $Sosjuin = $countsos['count'];
+            }
+            if ($countsos['mois'] == '7')
+            {
+                $Sosjuillet= $countsos['count'];
+            }
+            if ($countsos['mois'] == '8')
+            {
+                $Sosaout = $countsos['count'];
+            }
+            if ($countsos['mois'] == '9')
+            {
+                $Sosseptemebre = $countsos['count'];
+            }
+            if ($countsos['mois'] == '10')
+            {
+                $Sosoctobre = $countsos['count'];
+            }
+            if ($countsos['mois'] == '11')
+            {
+                $Sosnovembre = $countsos['count'];
+            }
+            if ($countsos['mois'] == '12')
+            {
+                $Sosdecembre = $countsos['count'];
+            }
+            //dd($janvier,$fevrier,$mars, $avril,$mai,$juin,$juillet,$aout,$septemebre,$octobre,$novembre,$decembre);
+        }
+
+        //Count user par mois
+
+        $Userjanvier = $Freejanvier+$Sosjanvier;
+        $Userfevrier = $Freefevrier+$Sosfevrier;
+        $Usermars = $Freemars+$Sosmars;
+        $Useravril = $Freeavril+$Sosavril;
+        $Usermai = $Freemai+$Sosmai;
+        $Userjuin = $Freejuin+$Sosjuin;
+        $Userjuillet = $Freejuillet+$Sosjuillet;
+        $Useraout = $Freeaout+$Sosaout;
+        $Userseptemebre = $Freeseptemebre +$Sosseptemebre ;
+        $Useroctobre = $Freeoctobre+$Sosoctobre;
+        $Usernovembre = $Freenovembre+$Sosnovembre;
+        $Userdecembre = $Freedecembre+$Sosdecembre;
+
+
+        //Data des utilisateurs pour javaScript
+        $UserScript = "data: [".$Userjanvier.",".$Userfevrier.",".$Usermars.",".$Useravril.",".$Usermai.",".$Userjuin.",".$Userjuillet.",
+        ".$Useraout.",".$Userseptemebre.",".$Useroctobre.",".$Usernovembre.",".$Userdecembre."]";
+
+
+
+        //statestique pour nombre des offre d'emploi et Stage par mois
+
+        //count des offre d'emploi
+        $nbOffreEmploi = $offreEmploiRepository->countOffreEmploi();
+        $countOffreEmploi=0;
+        foreach ($nbOffreEmploi as $Arrayoffreemploi){
+            $countOffreEmploi = $Arrayoffreemploi['count'];
+        }
+
+        //count des offre de stage
+        $nbOffreStage = $offreStageRepository->countOffreStage();
+        $countOffreStage=0;
+        foreach ($nbOffreStage as $Arrayoffrestage){
+            $countOffreStage = $Arrayoffrestage['count'];
+        }
+
+        //Somme des deux count
+        $countOffre = $countOffreEmploi+$countOffreStage;
+
+        //Count des offre d'emploi par mois
+
+        $offreemploiParMois = $offreEmploiRepository->OffreEmploiParMois();
+
+        $OffreEmploijanvier =0;
+        $OffreEmploifevrier = 0;
+        $OffreEmploimars = 0;
+        $OffreEmploiavril = 0;
+        $OffreEmploimai = 0;
+        $OffreEmploijuin = 0;
+        $OffreEmploijuillet = 0;
+        $OffreEmploiaout = 0;
+        $OffreEmploiseptemebre = 0;
+        $OffreEmploioctobre = 0;
+        $OffreEmploinovembre = 0;
+        $OffreEmploidecembre = 0;
+        foreach ($offreemploiParMois as $countoffreEmploi)
+        {
+            if ($countoffreEmploi['mois'] == '1')
+            {
+                $OffreEmploijanvier = $countoffreEmploi['count'];
+            }
+            if ($countoffreEmploi['mois'] == '2')
+            {
+                $OffreEmploifevrier = $countoffreEmploi['count'];
+            }
+            if ($countoffreEmploi['mois'] == '3')
+            {
+                $OffreEmploimars = $countoffreEmploi['count'];
+            }
+            if ($countoffreEmploi['mois'] == '4')
+            {
+                $OffreEmploiavril = $countoffreEmploi['count'];
+            }
+            if ($countoffreEmploi['mois'] == '5')
+            {
+                $OffreEmploimai = $countoffreEmploi['count'];
+            }
+            if ($countoffreEmploi['mois'] == '6')
+            {
+                $OffreEmploijuin = $countoffreEmploi['count'];
+            }
+            if ($countoffreEmploi['mois'] == '7')
+            {
+                $OffreEmploijuillet= $countoffreEmploi['count'];
+            }
+            if ($countoffreEmploi['mois'] == '8')
+            {
+                $OffreEmploiaout = $countoffreEmploi['count'];
+            }
+            if ($countoffreEmploi['mois'] == '9')
+            {
+                $OffreEmploiseptemebre = $countoffreEmploi['count'];
+            }
+            if ($countoffreEmploi['mois'] == '10')
+            {
+                $OffreEmploioctobre = $countoffreEmploi['count'];
+            }
+            if ($countoffreEmploi['mois'] == '11')
+            {
+                $OffreEmploinovembre = $countoffreEmploi['count'];
+            }
+            if ($countoffreEmploi['mois'] == '12')
+            {
+                $OffreEmploidecembre = $countoffreEmploi['count'];
+            }
+        }
+
+        //Data des offre d'emploi pour javaScript
+        $OffreEmploiScript = "data: [".$OffreEmploijanvier.",".$OffreEmploifevrier.",".$OffreEmploimars.",".$OffreEmploiavril.",".$OffreEmploimai.",".$OffreEmploijuin.",".$OffreEmploijuillet.",
+        ".$OffreEmploiaout.",".$OffreEmploiseptemebre.",".$OffreEmploioctobre.",".$OffreEmploinovembre.",".$OffreEmploidecembre."]";
+
+
+
+        //statestique pour nombre des offre de stage par mois
+
+
+
+
+        //Count des offre d'emploi par mois
+
+        $offrestageParMois = $offreStageRepository->OffreStageParMois();
+
+        $OffreStagejanvier =0;
+        $OffreStagefevrier = 0;
+        $OffreStagemars = 0;
+        $OffreStageavril = 0;
+        $OffreStagemai = 0;
+        $OffreStagejuin = 0;
+        $OffreStagejuillet = 0;
+        $OffreStageaout = 0;
+        $OffreStageseptemebre = 0;
+        $OffreStageoctobre = 0;
+        $OffreStagenovembre = 0;
+        $OffreStagedecembre = 0;
+        foreach ($offrestageParMois as $countoffreStage)
+        {
+            if ($countoffreStage['mois'] == '1')
+            {
+                $OffreStagejanvier = $countoffreStage['count'];
+            }
+            if ($countoffreStage['mois'] == '2')
+            {
+                $OffreStagefevrier = $countoffreStage['count'];
+            }
+            if ($countoffreStage['mois'] == '3')
+            {
+                $OffreStagemars = $countoffreStage['count'];
+            }
+            if ($countoffreStage['mois'] == '4')
+            {
+                $OffreStageavril = $countoffreStage['count'];
+            }
+            if ($countoffreStage['mois'] == '5')
+            {
+                $OffreStagemai = $countoffreStage['count'];
+            }
+            if ($countoffreStage['mois'] == '6')
+            {
+                $OffreStagejuin = $countoffreStage['count'];
+            }
+            if ($countoffreStage['mois'] == '7')
+            {
+                $OffreStagejuillet= $countoffreStage['count'];
+            }
+            if ($countoffreStage['mois'] == '8')
+            {
+                $OffreStageaout = $countoffreStage['count'];
+            }
+            if ($countoffreStage['mois'] == '9')
+            {
+                $OffreStageseptemebre = $countoffreStage['count'];
+            }
+            if ($countoffreStage['mois'] == '10')
+            {
+                $OffreStageoctobre = $countoffreStage['count'];
+            }
+            if ($countoffreStage['mois'] == '11')
+            {
+                $OffreStagenovembre = $countoffreStage['count'];
+            }
+            if ($countoffreStage['mois'] == '12')
+            {
+                $OffreStagedecembre = $countoffreStage['count'];
+            }
+        }
+
+        //Data des offre d'emploi pour javaScript
+        $OffreStageScript = "data: [".$OffreStagejanvier.",".$OffreStagefevrier.",".$OffreStagemars.",".$OffreStageavril.",".$OffreStagemai.",".$OffreStagejuin.",".$OffreStagejuillet.",
+        ".$OffreStageaout.",".$OffreStageseptemebre.",".$OffreStageoctobre.",".$OffreStagenovembre.",".$OffreStagedecembre."]";
+
+
+
         return $this->render('stat/index.html.twig', [
 
             'nbReclamation'=>$countRec,
+            'nbUtilisateur'=>$countUsers,
+            'nbOffreEmploi' =>$countOffreEmploi,
+            'nbOffreStage'=>$countOffreStage,
+            'nbOffre'=>$countOffre,
 
-            'ReclamationData'=>$ReclamationScript
+            'ReclamationData'=>$ReclamationScript,
+            'UtilisateurData'=>$UserScript,
+            'OffreEmploiData' =>$OffreEmploiScript,
+            'OffreStageData'=>$OffreStageScript
 
 
 

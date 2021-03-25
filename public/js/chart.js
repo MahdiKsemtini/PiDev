@@ -34,7 +34,7 @@
 $(document).ready(function() {
   "use strict";
 
-  /*======== 1. DUAL LINE CHART ========*/
+  /*/!*======== 1. DUAL LINE CHART ========*!/
   var dual = document.getElementById("dual-line");
   if (dual !== null) {
     var urChart = new Chart(dual, {
@@ -118,7 +118,7 @@ $(document).ready(function() {
         }
       }
     });
-  }
+  }*/
   /*======== 1. DUAL LINE CHART2 ========*/
   var dual3 = document.getElementById("dual-line3");
   if (dual3 !== null) {
@@ -1037,7 +1037,7 @@ $(document).ready(function() {
       }
     });
   }
-  /*======== 14. CURRENT USER BAR CHART ========*/
+  /*/!*======== 14. CURRENT USER BAR CHART ========*!/
   var cUser = document.getElementById("currentUser");
   if (cUser !== null) {
     var myUChart = new Chart(cUser, {
@@ -1126,7 +1126,7 @@ $(document).ready(function() {
         }
       }
     });
-  }
+  }*/
   /*======== 15. ANALYTICS - USER ACQUISITION ========*/
   var acquisition = document.getElementById("acquisition");
   if (acquisition !== null) {
