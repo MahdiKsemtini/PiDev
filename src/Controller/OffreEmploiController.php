@@ -179,13 +179,13 @@ class OffreEmploiController extends AbstractController
     }
 
      /**
-     * @Route("/showOwnEmploi", name="showuown")
+     * @Route("/showOwnEmploi/{id}", name="showuown")
      */
-    public function ShowOwnOffre(): Response
+    public function ShowOwnOffre($id): Response
     {
         
             $em=$this->getDoctrine()->getRepository(OffreEmploi::class);
-            $list=$em->findBy(array('societe'=>1));
+            $list=$em->findBy(array('societe'=>$id));
             return $this->render('offre_emploi/showOwnemploi.html.twig',["l"=>$list]);
         
     }

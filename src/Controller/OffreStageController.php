@@ -163,13 +163,13 @@ class OffreStageController extends AbstractController
 
 
       /**
-     * @Route("/showOwnStage", name="showuownS")
+     * @Route("/showOwnStage/{id}", name="showuownS")
      */
-    public function ShowOwnOffreStage(): Response
+    public function ShowOwnOffreStage($id): Response
     {
         
             $em=$this->getDoctrine()->getRepository(OffreStage::class);
-            $list=$em->findBy(array('societe'=>2));
+            $list=$em->findBy(array('societe'=>$id));
             return $this->render('offre_stage/showOwnStage.html.twig',["l"=>$list]);
         
     }
