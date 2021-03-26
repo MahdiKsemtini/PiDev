@@ -524,7 +524,8 @@
                                                                                 <th class="text-center" scope="col">Domaine</th>
 																				 <th class="cell-ta">Durée</th>
 																				 <th class="cell-ta">Type de stage</th>
-                                                                                <th class="text-center" scope="col">File</th>
+                                                                                <th class="text-center" scope="col">date création</th>
+																				<th class="text-center" scope="col">date éxpiration</th>
                                                                                 <th class="text-center" scope="col">Controls</th>
                                                                             </tr>
                                                                             </thead>
@@ -538,7 +539,8 @@
                                                                                 <td class="text-center">{{ i.domaine }}</td>
                                                                                 <td class="text-center">{{ i.duree }}</td>
 																				<td class="text-center">{{ i.typeStage }}</td>
-                                                                                <td class="text-center"><a href="#">{{ i.fichier }}</a></td>
+                                                                                <td class="text-center">{{i.dateCreation ? i.dateCreation|date('Y-m-d')}}</td>
+																				<td class="text-center">{{i.dateExpiration ? i.dateExpiration|date('Y-m-d')}}</td>
                                                                                 <td class="text-center">
                                                                                     <a href="{{ path('editStage', {'id': i.id}) }}" title="Edit" class="gray-s"><i class="uil uil-edit-alt"></i></a>
                                                                                     <a href="{{ path('deleteStage', {'id': i.id}) }}" title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a>
@@ -546,6 +548,25 @@
 																				
                                                                             </tr>
 																			{% endfor %}
+																			    <tr><th><p style="color:blue"> le nombre des offres d'emploi :	 {{c}} </p></th><th><a class="btn btn-success" href="{{ path('listhS') }}">Créer PDF</a></th><th><a class="btn btn-primary" href="{{ path('updateExpiration') }}">Expiration</a> </th></tr></tr>
+                                                                            </tbody>
+                                                                        </table>
+																		
+                                                                    </div>
+                                                                </div>
+																<div class="navigation" style="margin-left:40%">
+           {{ knp_pagination_render(
+                    l,
+                    '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig',
+                    {
+                        'queryParam1': 'param1 value',
+                        'queryParam2': 'param2 value'
+                    },
+                    {
+                        'viewParam1': 'param1 value',
+                        'viewParam2': 'param2 value'
+                    },
+                ) }}
                                                                            
                                                                             </tbody>
                                                                         </table>

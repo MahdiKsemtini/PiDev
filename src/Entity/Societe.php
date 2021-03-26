@@ -58,6 +58,10 @@ class Societe
      * @ORM\OneToMany(targetEntity=OffreEmploi::class, mappedBy="societe")
      */
     private $offreEmplois;
+     /**
+     * @ORM\OneToMany(targetEntity=OffreStage::class, mappedBy="societe")
+     */
+    private $offreStages;
 
     public function __construct()
     {

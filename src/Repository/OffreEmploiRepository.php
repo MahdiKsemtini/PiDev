@@ -34,26 +34,7 @@ class OffreEmploiRepository extends ServiceEntityRepository
         ->getSingleScalarResult();
        }
 
-       public function findOffresByOne($q){
-
-        $qd=$this->createQueryBuilder('u');
-        $qd
-        ->addSelect('u.nomProjet')
-        ->addSelect('u.competences')
-        
-        ->addSelect('u.description')
-        ->addSelect('u.domaine')
-        ->addSelect('u.fichier')
-        ->addSelect('c.Nom as nomClasse')
-         ->innerJoin('u.societe','c')
-         ->where('c.id = : :val')
-         ->setParameter('val', $q)
-         ->getQuery()
-         ->getResult();
-
-        
-
-    }
+      
 
     public function findEmploiParNom($nom){
         return $this->createQueryBuilder('emploi')
@@ -72,5 +53,15 @@ class OffreEmploiRepository extends ServiceEntityRepository
 
 
     }
+
+   
+    public function updateDate(){
+        return $this->getEntityManager()
+            ->createQuery('DELETE FROM App\Entity\OffreEmploi o WHERE o.dateExpiration < CURRENT_DATE()')
+            ->getResult();
+    }  
+
+    
+    
 
 }

@@ -69,6 +69,16 @@ class OffreEmploi
      */
     private $societe;
 
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $dateCreation;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $dateExpiration;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -154,6 +164,30 @@ class OffreEmploi
     public function setSociete(?Societe $societe): self
     {
         $this->societe = $societe;
+
+        return $this;
+    }
+
+    public function getDateCreation():?\DateTimeInterface
+    {
+        return $this->dateCreation;
+    }
+
+    public function setDateCreation(\DateTimeInterface $dateCreation): self
+    {
+        $this->dateCreation = $dateCreation;
+
+        return $this;
+    }
+
+    public function getDateExpiration(): ?\DateTimeInterface
+    {
+        return $this->dateExpiration;
+    }
+
+    public function setDateExpiration(\DateTimeInterface $dateExpiration): self
+    {
+        $this->dateExpiration = $dateExpiration;
 
         return $this;
     }

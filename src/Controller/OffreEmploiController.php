@@ -17,6 +17,7 @@ use Dompdf\Dompdf;
 use Dompdf\Options;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 use Symfony\Component\HttpFoundation\ResponseHeaderBag;
 use Knp\Component\Pager\PaginatorInterface;
@@ -71,6 +72,8 @@ class OffreEmploiController extends AbstractController
         if ($form->isSubmitted()&&$form->isValid()) {
           //  dd();
             $em = $this->getDoctrine()->getManager();
+            $newDate= new \DateTime('now');
+          $emploi->setDateCreation($newDate);
             $em->persist($emploi);
             $em->flush();
             return $this->redirectToRoute('showEmploi');
@@ -96,6 +99,18 @@ class OffreEmploiController extends AbstractController
         $em->flush();
         return $this->redirectToRoute("showEmploi");
     }
+
+     /**
+     * @Route("/deleteOwnEmploi/{id}", name="deleteOwnEmploi")
+     */
+    public function deleteOwnEmploi($id)
+    {
+        $em=$this->getDoctrine()->getManager();
+        $offre=$em->getRepository(OffreEmploi::class)->find($id);
+        $em->remove($offre);
+        $em->flush();
+        return $this->redirectToRoute("showuown");
+    }
     /**
      * @Route("/editEmploi/{id}", name="editEmploi")
      */
@@ -110,6 +125,28 @@ class OffreEmploiController extends AbstractController
          //   $em->persist($emploi);
             $em->flush();
             return $this->redirectToRoute('showEmploi');
+        }
+        return $this->render('offre_emploi/updateOffreEmploi.html.twig', [
+            "f" => $form->createView(),
+        ]);
+
+
+    }
+
+     /**
+     * @Route("/editOwnEmploi/{id}", name="editOwnEmploi")
+     */
+    public function editOwnEmploi(Request $request,$id){
+        $em = $this->getDoctrine()->getManager();
+        $emploi = $em->getRepository(OffreEmploi::class)->find($id);
+        $form = $this->createForm(EmploiUpdateType::class, $emploi);
+      //  $form->add('Modifier', SubmitType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted()) {
+            $em = $this->getDoctrine()->getManager();
+         //   $em->persist($emploi);
+            $em->flush();
+            return $this->redirectToRoute('showuown');
         }
         return $this->render('offre_emploi/updateOffreEmploi.html.twig', [
             "f" => $form->createView(),
@@ -148,7 +185,7 @@ class OffreEmploiController extends AbstractController
     {
         
             $em=$this->getDoctrine()->getRepository(OffreEmploi::class);
-            $list=$em->findAll();
+            $list=$em->findBy(array('societe'=>1));
             return $this->render('offre_emploi/showOwnemploi.html.twig',["l"=>$list]);
         
     }
@@ -176,6 +213,7 @@ class OffreEmploiController extends AbstractController
         // Configure Dompdf according to your needs
         $pdfOptions = new Options();
         $pdfOptions->set('defaultFont', 'Arial');
+      //  $pdfOptions->setIsRemoteEnabled(true);
 
         // Instantiate Dompdf with our options
         $dompdf = new Dompdf($pdfOptions);
@@ -193,10 +231,14 @@ class OffreEmploiController extends AbstractController
         // Render the HTML as PDF
         $dompdf->render();
 
+        
+
         // Output the generated PDF to Browser (inline view)
         $dompdf->stream("mypdf.pdf", [
             "Attachment" => false
         ]);
+
+       // $dompdf->output();
     }
 
     /**
@@ -227,7 +269,14 @@ class OffreEmploiController extends AbstractController
         return new Response($retour);
       
     }
-
-
+    /**
+     * @Route("/updateExpiration ", name="updateExpiration")
+     * 
+     */
+    public function updateExpiration(OffreEmploiRepository $offreEmploiRepository): Response
+    {
+        $offreEmploiRepository->updateDate();
+        return $this->redirectToRoute('showEmploi');
+    }
     
 }

@@ -16,20 +16,21 @@
 		<!-- Favicon Icon -->
 		<link rel="icon" type="image/png" href="images/fav.png">
     <!-- Stylesheets -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet'>
-    <link href='vendor/unicons-2.0.1/css/unicons.css' rel='stylesheet'>
-    <link href="css/vertical-responsive-menu1.min.css" rel="stylesheet">
-    <link href="css/instructor-dashboard.css" rel="stylesheet">
-    <link href="css/instructor-responsive.css" rel="stylesheet">
-    <link href="css/night-mode.css" rel="stylesheet">
-    <link href="css/jquery-steps.css" rel="stylesheet">
+    <link href={{asset('http://fonts.googleapis.com/css?family=Roboto:400,700,500')}} rel='stylesheet'>
+    <link href={{asset('vendor/unicons-2.0.1/css/unicons.css')}} rel='stylesheet'>
+    <link href={{asset("css/vertical-responsive-menu1.min.css")}} rel="stylesheet">
+    <link href={{asset("css/instructor-dashboard.css")}} rel="stylesheet">
+    <link href={{asset("css/instructor-responsive.css")}} rel="stylesheet">
+    <link href={{asset("css/night-mode.css")}} rel="stylesheet">
+    <link href={{asset("css/jquery-steps.css")}} rel="stylesheet">
 
     <!-- Vendor Stylesheets -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link href="vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
-    <link href="vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet">
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="vendor/semantic/semantic.min.css">
+    <link href={{asset("vendor/fontawesome-free/css/all.min.css")}} rel="stylesheet">
+    <link href={{asset("vendor/OwlCarousel/assets/owl.carousel.css")}} rel="stylesheet">
+    <link href={{asset("vendor/OwlCarousel/assets/owl.theme.default.min.css")}} rel="stylesheet">
+    <link href={{asset("vendor/bootstrap/css/bootstrap.min.css")}} rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href={{asset("vendor/semantic/semantic.min.css")}}>
+
 		
 		<!-- Stylesheets -->
 		<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet'>
@@ -434,7 +435,7 @@
 													</div>
 													<span class="play_btn1"><i class="uil uil-play"></i></span>
 													<div class="crse_timer">
-														25 hours
+														{{ i.dateCreation ? i.dateCreation|date('Y-m-d') }}
 													</div>
 												</div>
 											</a>
@@ -443,10 +444,10 @@
 													<a href="#"><i class='uil uil-ellipsis-v'></i></a>
 													<div class="dropdown-content">
 														
-                                                        <span><a href="{{ path('editEmploi', {'id': i.id}) }}" title="Edit" class="gray-s"><i class="uil uil-edit-alt"></i></a>Modifier</span>
+                                                        <span><a href="{{ path('editOwnEmploi', {'id': i.id}) }}" title="Edit" class="gray-s"><i class="uil uil-edit-alt"></i></a>Modifier</span>
 														
 
-                                                        <span><a href="{{ path('deleteEmploi', {'id': i.id}) }}" title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a>Supprimer</span>
+                                                        <span><a href="{{ path('deleteOwnEmploi', {'id': i.id}) }}" title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a>Supprimer</span>
 
          
                                                    
@@ -689,17 +690,23 @@
 	</div>
 	<!-- Body End -->
 
-	<script src="js/vertical-responsive-menu.min.js"></script>
-	<script src="js/jquery-3.3.1.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-	<script src="vendor/OwlCarousel/owl.carousel.js"></script>
-	<script src="vendor/semantic/semantic.min.js"></script>
-	<script src="js/custom.js"></script>
-	<script src="js/night-mode.js"></script>
+	
 	
 	
 </body>
 
+
 <!-- Mirrored from gambolthemes.net/html-items/cursus_demo_f12/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 20 Jun 2020 12:50:50 GMT -->
 </html>
+{% endblock %}
+
+{% block js %}
+
+<script src="{{asset("js/vertical-responsive-menu.min.js")}}"></script>
+	<script src="{{asset("js/jquery-3.3.1.min.js")}}"></script>
+	<script src="{{asset("vendor/bootstrap/js/bootstrap.bundle.min.js")}}"></script>
+	<script src="{{asset("vendor/OwlCarousel/owl.carousel.js")}}"></script>
+	<script src="{{asset("vendor/semantic/semantic.min.js")}}"></script>
+	<script src="{{asset("js/custom.js")}}"></script>
+	<script src="{{asset("js/night-mode.js")}}"></script>
 {% endblock %}

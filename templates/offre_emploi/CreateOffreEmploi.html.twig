@@ -129,6 +129,7 @@
                                                                             <div class="field">
                                                                               
                                                                               {{ form_widget(f.description) }}
+                                                                               {{ form_errors(f.description) }}
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -161,6 +162,7 @@
                                                                 <label>Choisir un domaine</label>
                                                                     
                                                                   {{ form_widget(f.domaine) }}
+                                                                  {{ form_errors(f.domaine) }}
                                                                   
                                                                 </div>
                                                             </div>
@@ -204,7 +206,19 @@
                                                                         <label>Salaire*</label>
                                                                         <div class="ui left icon input swdh19 swdh55">
                                                                            {{ form_widget(f.salaire) }}
+                                                                           {{ form_errors(f.salaire) }}
                                                                             <div class="badge_min">Dinars</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                 <div class="col-lg-5 col-md-6">
+                                                                    <div class="ui search focus mt-30 lbel25">
+                                                                        <label>Ajouter une date d'expiration*</label>
+                                                                        <div class="ui left icon input swdh19 swdh55">
+                                                                           {{ form_widget(f.dateExpiration) }}
+                                                                         
+                                                                            
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -283,14 +297,14 @@
 {% endblock %}
 
 {% block js %}
-    <script src="js/vertical-responsive-menu.min.js"></script>
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/OwlCarousel/owl.carousel.js"></script>
-    <script src="vendor/semantic/semantic.min.js"></script>
-    <script src="js/custom.js"></script>
-    <script src="js/night-mode.js"></script>
-    <script src="js/jquery-steps.min.js"></script>
+    <script src="{{asset("js/vertical-responsive-menu.min.js")}}"></script>
+    <script src="{{asset("js/jquery-3.3.1.min.js")}}"></script>
+    <script src="{{asset("vendor/bootstrap/js/bootstrap.bundle.min.js")}}"></script>
+    <script src="{{asset("vendor/OwlCarousel/owl.carousel.js")}}"></script>
+    <script src="{{asset("vendor/semantic/semantic.min.js")}}"></script>
+    <script src="{{asset("js/custom.js")}}"></script>
+    <script src="{{asset("js/night-mode.js")}}"></script>
+    <script src="{{asset("js/jquery-steps.min.js")}}"></script>
     <script>
         $('#add-course-tab').steps({
             onFinish: function () {

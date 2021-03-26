@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 class StageType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -108,7 +109,12 @@ class StageType extends AbstractType
                
             ],
 
-          ]);
+          ])
+          ->add('dateExpiration', DateType::class, [
+            'widget' => 'single_text',
+            'format' => 'yyyy-MM-dd',
+            'data' => new \DateTime(),
+        ]);
 
     }
 
