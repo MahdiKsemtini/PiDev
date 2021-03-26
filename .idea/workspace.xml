@@ -27,30 +27,27 @@
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/dev/web_profiler.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/dev/web_profiler.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210303214110.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210310215417.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210323213342.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210325150239.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210325150908.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210325163350.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210325194549.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/chart.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AdminEmploiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminEmploiController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AdminReclamationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminReclamationController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/OffreEmploiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/OffreEmploiController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/OffreStageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/OffreStageController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ReclamationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReclamationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/StatController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/StatController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/AdminReclamtion.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/AdminReclamtion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Freelancer.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Freelancer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Societe.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Societe.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/SuperAdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SuperAdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/EmploiType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/EmploiType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ReclamationType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ReclamationType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Notifications/CreationCompteNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Notifications/CreationCompteNotification.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/FreelancerRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/FreelancerRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ReclamationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ReclamationRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/SocieteRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/SocieteRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/AdminRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/AdminRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/emails/EmailNotification.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/emails/ReclamationNotification.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base_back.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base_back.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/emails/ReclamationNotification.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/emails/ReclamationNotification.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/offre_emploi/CreateOffreEmploi.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/offre_emploi/CreateOffreEmploi.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/offre_stage/CreateOffreStage.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/offre_stage/CreateOffreStage.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/stat/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/stat/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/super_admin/ViewAdminProfile.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/super_admin/ViewAdminProfile.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/super_admin/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/super_admin/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,6 +188,8 @@
       <path value="$PROJECT_DIR$/vendor/twig/cssinliner-extra" />
       <path value="$PROJECT_DIR$/vendor/symfony/swiftmailer-bundle" />
       <path value="$PROJECT_DIR$/vendor/beberlei/doctrineextensions" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
     </include_path>
   </component>
   <component name="ProjectId" id="1p1AutDvOGgv87KHVPDV78SVv6J" />
@@ -204,7 +203,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Entity" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -223,11 +222,11 @@
       <recent name="C:\wamp64\www\PiDev\public" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\PiDev\src\Entity" />
-      <recent name="C:\xampp\htdocs\PiDev\src\Form" />
-      <recent name="C:\xampp\htdocs\PiDev\templates\reclamation" />
-      <recent name="C:\xampp\htdocs\PiDev\public\images" />
-      <recent name="C:\wamp64\www\PiDev\templates\offre_stage" />
+      <recent name="C:\xampp\htdocs\PiDev integration avec ghaith\templates" />
+      <recent name="C:\xampp\htdocs\PiDev integration avec ghaith\templates\reclamation" />
+      <recent name="C:\xampp\htdocs\PiDev integration avec ghaith\src\Repository" />
+      <recent name="C:\xampp\htdocs\PiDev integration avec ghaith\src\Form" />
+      <recent name="C:\xampp\htdocs\PiDev integration avec ghaith\src\Entity" />
     </key>
   </component>
   <component name="RunManager">
@@ -271,7 +270,11 @@
       <workItem from="1616578173535" duration="17004000" />
       <workItem from="1616614847086" duration="249000" />
       <workItem from="1616623873763" duration="4281000" />
-      <workItem from="1616684318532" duration="14491000" />
+      <workItem from="1616684318532" duration="15146000" />
+      <workItem from="1616753424429" duration="2425000" />
+      <workItem from="1616756480778" duration="370000" />
+      <workItem from="1616757223147" duration="15279000" />
+      <workItem from="1616788159722" duration="518000" />
     </task>
     <servers />
   </component>
@@ -291,14 +294,18 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1616702337769">
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1616774898360">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1616702337769" />
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1616774898360" />
     <state x="545" y="325" key="ComposerInitDialogKey" timestamp="1616624538378">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="545" y="325" key="ComposerInitDialogKey/0.0.1536.824@0.0.1536.824" timestamp="1616624538378" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1616773322023">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1536.824@0.0.1536.824" timestamp="1616773322023" />
     <state x="478" y="145" width="589" height="534" key="find.popup" timestamp="1616687130122">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

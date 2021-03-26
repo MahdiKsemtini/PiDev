@@ -2,8 +2,6 @@
 
  {% block title %}RightJob{% endblock %}
 
-
-
 {% block body %}
 
     <!-- Body Start -->
@@ -15,20 +13,192 @@
                         <div class="section3125">
                             <div class="explore_search">
                                 <div class="ui search focus">
-                                    <div class="ui left icon input swdh11">
-                                        <input class="prompt srch_explore" type="text" placeholder="Search Tutors...">
+                                    <div class="ui left icon input swdh11" >
+                                        <input id="search" class="prompt srch_explore" type="text" placeholder="Chercher un admin..."><br>
                                         <i class="uil uil-search-alt icon icon2"></i>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
+
+
+
                     <div class="col-md-12">
-                        <div class="_14d25">
-                            <div class="row">
-                                {% if list is empty %}
-                                <h2 style="color: #bd2130"> No Admin available..Do you want to </h2><a href="{{ path('CreateAdmin') }}" class="upload_btn">Create New Admin</a>
-                                {% else %}
+                        {% if list is empty %}
+                        <h2 style="color: #bd2130"> No Admin available..Do you want to </h2><a href="{{ path('CreateAdmin') }}" class="upload_btn">Create New Admin</a>
+                        {% else %}
+
+                            <div class="_14d25">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="my_courses_tabs">
+                                <ul class="nav nav-pills my_crse_nav" id="pills-tab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" id="pills-my-courses-tab" data-toggle="pill" href="#Admins-des-reclamations" role="tab" aria-controls="Admins-des-reclamations" aria-selected="true"><i class="uil uil-book-alt"></i>Admins des reclamations </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="pills-my-purchases-tab" data-toggle="pill" href="#Admins-des-Pubs-Events" role="tab" aria-controls="Admins-des-Pubs-Events" aria-selected="false"><i class="uil uil-download-alt"></i>Admins des Pubs & Events</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" id="pills-upcoming-courses-tab" data-toggle="pill" href="#Admins-des-Emplois" role="tab" aria-controls="Admins-des-Emplois" aria-selected="false"><i class="uil uil-upload-alt"></i>Admins des Emplois</a>
+                                    </li>
+
+                                </ul>
+                                <div class="tab-content" id="pills-tabContent">
+                                    <div class="tab-pane fade show active" id="Admins-des-reclamations" role="tabpanel">
+                                        {% for l in adminReclamations %}
+
+                                            <div class="col-xl-3 col-lg-3 col-md-4">
+
+                                                <div class="fcrse_1 mt-30">
+                                                    <div class="tutor_img">
+                                                        <a href="{{ path('ViewAdminProfile', {'id': l.id}) }}"><img src="{{ asset ('images/left-imgs/img-17.jpg')}}" alt=""></a>
+                                                    </div>
+                                                    <div class="tutor_content_dt">
+                                                        <div class="tutor150">
+                                                            <a href="{{ path ('ViewAdminProfile', {'id': l.id}) }}" class="tutor_name">{{ l.nom }} {{ l.prenom }}</a>
+                                                            <div class="mef78" title="Verify">
+                                                                <i class="uil uil-check-circle"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tutor_cate">{{l.type}}</div>
+                                                        <ul class="tutor_social_links">
+                                                            <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+                                                            <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
+                                                            <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                                                            <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
+                                                        </ul>
+                                                        <div class="tut1250">
+                                                            <span class="vdt15">{{ random }} Approved</span>
+                                                            <span class="vdt15">0 Not Approved</span>
+                                                            <span class="vdt15">{{ l.approuve }} Approved</span>
+                                                            <span class="vdt15">{{ l.nonapprouve }} Not Approved</span>
+                                                        </div>
+                                                        {% if (l.etat == 0) %}
+                                                            <div class="tutor150">
+                                                                <a href="{{ path ('UpdateAdmin', {'id': l.id}) }}" class="tutor_nameLocked">This account is Locked</a>
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        {% endfor %}
+                                    </div>
+                                    <div class="tab-pane fade" id="Admins-des-Pubs-Events" role="tabpanel">
+                                        {% for l in adminPubsEvents %}
+                                            <div class="col-xl-3 col-lg-3 col-md-4">
+
+                                                <div class="fcrse_1 mt-30">
+                                                    <div class="tutor_img">
+                                                        <a href="{{ path('ViewAdminProfile', {'id': l.id}) }}"><img src="{{ asset ('images/left-imgs/img-17.jpg')}}" alt=""></a>
+                                                    </div>
+                                                    <div class="tutor_content_dt">
+                                                        <div class="tutor150">
+                                                            <a href="{{ path ('ViewAdminProfile', {'id': l.id}) }}" class="tutor_name">{{ l.nom }} {{ l.prenom }}</a>
+                                                            <div class="mef78" title="Verify">
+                                                                <i class="uil uil-check-circle"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tutor_cate">{{l.type}}</div>
+                                                        <ul class="tutor_social_links">
+                                                            <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+                                                            <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
+                                                            <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                                                            <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
+                                                        </ul>
+                                                        <div class="tut1250">
+                                                            <span class="vdt15">{{ random }} Approved</span>
+                                                            <span class="vdt15">0 Not Approved</span>
+                                                            <span class="vdt15">{{ l.approuve }} Approved</span>
+                                                            <span class="vdt15">{{ l.nonapprouve }} Not Approved</span>
+                                                        </div>
+                                                        {% if (l.etat == 0) %}
+                                                            <div class="tutor150">
+                                                                <a href="{{ path ('UpdateAdmin', {'id': l.id}) }}" class="tutor_nameLocked">This account is Locked</a>
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        {% endfor %}
+                                    </div>
+                                    <div class="tab-pane fade" id="Admins-des-Emplois" role="tabpanel">
+                                        {% for l in adminEmplois %}
+                                            <div class="col-xl-3 col-lg-3 col-md-4">
+
+                                                <div class="fcrse_1 mt-30">
+                                                    <div class="tutor_img">
+                                                        <a href="{{ path('ViewAdminProfile', {'id': l.id}) }}"><img src="{{ asset ('images/left-imgs/img-17.jpg')}}" alt=""></a>
+                                                    </div>
+                                                    <div class="tutor_content_dt">
+                                                        <div class="tutor150">
+                                                            <a href="{{ path ('ViewAdminProfile', {'id': l.id}) }}" class="tutor_name">{{ l.nom }} {{ l.prenom }}</a>
+                                                            <div class="mef78" title="Verify">
+                                                                <i class="uil uil-check-circle"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tutor_cate">{{l.type}}</div>
+                                                        <ul class="tutor_social_links">
+                                                            <li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+                                                            <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
+                                                            <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                                                            <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
+                                                        </ul>
+                                                        <div class="tut1250">
+                                                            <span class="vdt15">{{ random }} Approved</span>
+                                                            <span class="vdt15">0 Not Approved</span>
+                                                            <span class="vdt15">{{ l.approuve }} Approved</span>
+                                                            <span class="vdt15">{{ l.nonapprouve }} Not Approved</span>
+                                                        </div>
+                                                        {% if (l.etat == 0) %}
+                                                            <div class="tutor150">
+                                                                <a href="{{ path ('UpdateAdmin', {'id': l.id}) }}" class="tutor_nameLocked">This account is Locked</a>
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        {% endfor %}
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            {#<div class="row" id="t">
+
                                 {% for l in list %}
                                 <div class="col-xl-3 col-lg-4 col-md-6">
 
@@ -67,7 +237,7 @@
                                 </div>
 
                                 {% endfor %}
-                                {% endif %}
+
 
                                 <div class="col-md-12">
                                     <div class="main-loader mt-50">
@@ -78,12 +248,24 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>#}
+
+
+
+
+                            {% endif %}
+                            <div id ="search" class="col-md-12"></div><br>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+
+
+
+
+
+
+
+
+
         <footer class="footer mt-30">
             <div class="container">
                 <div class="row">
@@ -148,5 +330,91 @@
 
 
 
+
     <!-- Body End -->
+
+
+
+
+{% endblock %}
+
+{% block js %}
+    <script>
+        $( document ).ready(function() {
+            $("#search").keyup(function(e){
+                /* La variable value va prendre la valeur insérer dans le champ de texte afin d’effectuer la recherche */
+                var value = $(this).val();
+                /* Ajax est lancé lors du remplissage du champ texte dont l’id est « search » pour faire la recherche */
+                $.ajax({
+                    /* l’url est une chaine de caractères contenant l’adresse où la requête est envoyée */
+                    url : "{{ path('searchAdmin') }}",
+                    /* La méthode utilisée pour transférer les données est GET */
+                    type : 'GET',
+                    /*Ici search value va prendre la chaine entrée par un utilisateur dans la zone de recherche et sera placée après l’url */
+                    data: {
+                        'searchValue' : value
+                    },
+                    /*Cette fonction permet de vider le contenu du tableau pour recevoir le nouveau contenu*/
+                    success : function(retour){
+                        if(retour){
+                            $('#t div#search').empty();
+                            $.each(JSON.parse(retour), function(i, obj) {
+                                $('#t div#all').hide();
+
+
+
+                                $('#t div#search').append('<div class="col-xl-3 col-lg-3 col-md-4">'+
+
+                                    '<div class="fcrse_1 mt-30">'+
+                                    '<div class="tutor_img">'+
+                                    '<a href="/ViewAdminProfile/'+ obj.id+'"><img src="images/left-imgs/img-17.jpg" alt=""></a>'+
+                                    '</div>'+
+                                    '<div class="tutor_content_dt">'+
+                                    '<div class="tutor150">'+
+                                    '<a href="/ViewAdminProfile/'+ obj.id+'" class="tutor_name">'+ obj.nom + ' '+obj.prenom+'</a>'+
+                                    '<div class="mef78" title="Verify">'+
+                                    '<i class="uil uil-check-circle"></i>'+
+                                    '</div>'+
+                                    '</div>'+
+                                    '<div class="tutor_cate">'+obj.type+'</div>'+
+                                    '<ul class="tutor_social_links">'+
+                                    '<li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>'+
+                                    '<li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>'+
+                                    '<li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>'+
+                                    '<li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>'+
+                                    '</ul>'+
+                                    '<div class="tut1250">'+
+
+                                    '<span class="vdt15">'+obj.approuve+' Approved</span>'+
+                                    '<span class="vdt15">'+ obj.nonapprouve +' Not Approved</span>'+
+                                    ' </div>'+
+                                    '</div>'+
+                                    ' </div>'+
+
+                                    '</div>'+);
+                            });
+                        }
+                        else
+                        {
+                            $('#t div#all').show();
+                            $('#t div#search').empty();
+                            $('#t div#search').fadeIn('fast');
+                        }
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
+
+    <script src="{{ asset('js/vertical-responsive-menu.min.js') }}"></script>
+<script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+<script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+<script src="{{ asset('vendor/OwlCarousel/owl.carousel.js') }}"></script>
+<script src="{{ asset('vendor/semantic/semantic.min.js') }}"></script>
+<script src="{{ asset('js/custom.js') }}"></script>
+<script src="{{ asset('js/night-mode.js') }}"></script>
+<script src="{{ asset('./js/chart.js') }}"></script>
+<script src="{{ asset('./vendor/charts/Chart.min.js') }}"></script>
+
 {% endblock %}

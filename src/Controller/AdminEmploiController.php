@@ -3,14 +3,27 @@
 namespace App\Controller;
 
 use App\Entity\AdminEmploi;
+use App\Notifications\CreationCompteNotification;
 use App\Repository\AdminEmploiRepository;
 use App\Repository\AdminRepository;
+use App\Repository\OffreEmploiRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AdminEmploiController extends AbstractController
 {
+
+    /**
+     * @var CreationCompteNotification
+     */
+    private $notify_creation;
+
+
+    public function __construct(CreationCompteNotification $notify_creation)
+    {
+        $this->notify_creation = $notify_creation;
+    }
     /**
      * @Route("/admin/emploi", name="admin_emploi")
      */
@@ -41,7 +54,7 @@ class AdminEmploiController extends AbstractController
 
     }
 
-    public function OffreEmploiToAdmin(AdminRepository $adminRepository, $idOffreEmploi,$SocieteEmail)
+    public function OffreEmploiToAdmin(AdminRepository $adminRepository, $idOffreEmploi,$SocieteEmail,OffreEmploiRepository $offreEmploiRepository)
     {
         $list = $adminRepository->findBy(array('type'=>'Admin des emplois', 'etat'=>1));
         $EntityManager = $this->getDoctrine()->getManager();
@@ -49,11 +62,11 @@ class AdminEmploiController extends AbstractController
         {
             $AdminEmploi = new AdminEmploi();
             $AdminEmploi->setIdAE($l->getId());
-            $AdminEmploi->setIdOffreEpmloi($idOffreEmploi);
+            $AdminEmploi->setIdOffreEmploi($idOffreEmploi);
             $EntityManager->persist($AdminEmploi);
             $EntityManager->flush();
 
-            $this->notify_creation->notify($SocieteEmail,$l->getLogin());
+            $this->notify_creation->notifyEmploi($SocieteEmail,$l->getLogin(),$idOffreEmploi,$offreEmploiRepository);
         }
 
     }

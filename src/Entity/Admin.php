@@ -7,6 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * @ORM\Entity(repositoryClass=AdminRepository::class)
@@ -17,46 +19,55 @@ class Admin
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("admin")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("admin")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("admin")
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("admin")
      */
     private $login;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("admin")
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("admin")
      */
     private $type;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups("admin")
      */
     private $etat;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups("admin")
      */
     private $approuve;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups("admin")
      */
     private $nonapprouve;
 

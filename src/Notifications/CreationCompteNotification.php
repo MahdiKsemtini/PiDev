@@ -37,7 +37,7 @@ class CreationCompteNotification
      *
      * @return void
      */
-    public function notify($emailSource,$emailDestination,$Idreclamation,ReclamationRepository $reclamationRepository)
+    public function notifyReclamation($emailSource,$emailDestination,$Idreclamation,ReclamationRepository $reclamationRepository)
     {
 
         $reclamation = $reclamationRepository->find($Idreclamation);
@@ -51,6 +51,33 @@ class CreationCompteNotification
             ->setBody(
                 $this->renderer->render(
                     'emails/ReclamationNotification.html.twig',['type'=>$reclamation->getType(),'message'=>$reclamation->getTexteReclamation()]
+                ),
+                'text/html'
+            );
+
+        // On envoie le mail
+        $this->mailer->send($message);
+
+    }
+    /**
+     * Méthode de notification (envoi de mail)
+     *
+     * @return void
+     */
+    public function notifyEmploi($emailSource,$emailDestination)
+    {
+
+
+        // On construit le mail
+        $message = (new Swift_Message('Mon blog - Nouvelle Offre d Emploi'))
+            // Expéditeur
+            ->setFrom($emailSource)
+            // Destinataire
+            ->setTo($emailDestination)
+            // Corps du message
+            ->setBody(
+                $this->renderer->render(
+                    'emails/OffreEmploiNotification.html.twig'
                 ),
                 'text/html'
             );

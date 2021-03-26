@@ -16,6 +16,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bridge\Twig\Mime\NotificationEmail;
+use Knp\Component\Pager\PaginatorInterface;
+
 
 class ReclamationController extends AbstractController
 {
@@ -24,14 +26,23 @@ class ReclamationController extends AbstractController
     /**
      * @Route("/showReclamation", name="showReclamation")
      */
-    public function ShowReclamation(): Response
+    public function ShowReclamation(PaginatorInterface $paginator, Request $request): Response
     {
 
         $em = $this->getDoctrine()->getRepository(Reclamation::class);
         $list = $em->findAll();
+        $list = $paginator->paginate(
+        // Doctrine Query, not results
+            $list,
+            // Define the page parameter
+            $request->query->getInt('page', 1),
+            // Items per page
+            5
+        );
         return $this->render('reclamation/AfficherReclamation.html.twig', ["l" => $list]);
 
     }
+
 
     /**
      * @Route("/ajouterReclamation", name="ajouterReclamation")

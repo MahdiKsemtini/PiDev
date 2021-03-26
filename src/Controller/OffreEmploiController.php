@@ -37,6 +37,8 @@ class OffreEmploiController extends AbstractController
             $newDate= new \DateTime('now');
             $emploi->setDateCreation($newDate);
             $emploi->setEtat(0);
+            $societe = $societeRepository->find(1);
+            $emploi->setSociete($societe);
 
 
             $NonApprouve = $emploiRepository->countOffreEmploiNonApprouve();
@@ -51,13 +53,12 @@ class OffreEmploiController extends AbstractController
             }
 
 
-
                 $em->persist($emploi);
             $em->flush();
 
 
             $societeemail = $societeRepository->find($emploi->getSociete());
-            $adminEmploiController->OffreEmploiToAdmin($adminRepository,$emploi->getId(),$societeemail->getEmail());
+            $adminEmploiController->OffreEmploiToAdmin($adminRepository,$emploi->getId(),$societeemail->getEmail(),$emploiRepository);
 
             return $this->redirectToRoute('showEmploi');
         }

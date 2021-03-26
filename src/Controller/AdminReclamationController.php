@@ -143,7 +143,7 @@ public function ReclamationToAdmin(AdminRepository $adminRepository , $IdReclamt
         $em->persist($adminReclamation);
         $em->flush();
 
-       $this->notify_creation->notify($freelancer->getEmail(),$l->getLogin(),$IdReclamtion,$reclamationRepository);
+       $this->notify_creation->notifyReclamation($freelancer->getEmail(),$l->getLogin(),$IdReclamtion,$reclamationRepository);
 
 
         /*$email = (new NotificationEmail())

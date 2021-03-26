@@ -5,12 +5,15 @@ namespace App\Controller;
 use App\Entity\Admin;
 use App\Entity\Reclamation;
 use App\Form\AdminFormType;
+use App\Repository\AdminRepository;
 use App\Repository\ReclamationRepository;
 use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Exception\ExceptionInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 
 class SuperAdminController extends AbstractController
@@ -23,7 +26,12 @@ class SuperAdminController extends AbstractController
         $random = random_int(1, 10);
         $em=$this->getDoctrine()->getRepository(Admin::class);
         $list= $em->findAll();
-        return $this->render('super_admin/index.html.twig', [ 'list'=>$list , 'random'=>$random]);
+
+        $adminReclamations = $em->findBy(array('type'=>'Admin des reclamations'));
+        $adminPubsEvents = $em->findBy(array('type'=>'Admin des pubs & events'));
+        $adminEmplois = $em->findBy(array('type'=>'Admin des emplois'));
+        return $this->render('super_admin/index.html.twig', [ 'list'=>$list , 'random'=>$random,
+            'adminReclamations'=>$adminReclamations,'adminPubsEvents'=>$adminPubsEvents, 'adminEmplois'=>$adminEmplois]);
     }
 
    /**
@@ -122,6 +130,23 @@ class SuperAdminController extends AbstractController
 
     }
 
+    /**
+     * @Route("/searchAdmin ", name="searchAdmin")
+     * @param Request $request
+     * @param NormalizerInterface $Normalizer
+     * @param AdminRepository $adminRepository
+     * @return Response
+     * @throws ExceptionInterface
+     */
+    public function searchAdmin(Request $request,NormalizerInterface $Normalizer,AdminRepository $adminRepository)
+    {
+        $requestString=$request->get('searchValue');
+        $admin = $adminRepository->findAdminParNom($requestString);
+        $jsonContent = $Normalizer->normalize($admin, 'json',['groups'=>'admin']);
+        $retour=json_encode($jsonContent);
+        return new Response($retour);
+
+    }
 
 
 }
