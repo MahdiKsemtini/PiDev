@@ -20,34 +20,40 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8536dbc3-61f5-4edd-a3f8-2ef114c64d86" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/PiDev.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PiDev.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210325150239.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210325150908.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210325163350.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210325194549.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/chart.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/chart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AdminEmploiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminEmploiController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AdminReclamationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminReclamationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/OffreEmploiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/OffreEmploiController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ReclamationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReclamationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SuperAdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SuperAdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/EmploiType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/EmploiType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ReclamationType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ReclamationType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Notifications/CreationCompteNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Notifications/CreationCompteNotification.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/AdminRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/AdminRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base_back.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base_back.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/emails/ReclamationNotification.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/emails/ReclamationNotification.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/offre_emploi/CreateOffreEmploi.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/offre_emploi/CreateOffreEmploi.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/stat/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/stat/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/super_admin/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/super_admin/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/'64'" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/'8000k'" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/'Artisanat'" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/'Design'" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/'Informatique'" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/'Insérer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/'Journalisme'" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/'Marketing'" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/'Please" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/'competences'" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/'diagnostic" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/'domaine'" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/'id_competence'" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/'id_domaine'" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/'id_salaire'" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/'id_titre'" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/'jeux" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/'prompt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/'salaire'" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/'single_text'" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/'titre'" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/'ui" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/'yyyy-MM-dd'" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/[" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/add('competences'" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/add('dateExpiration'" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/add('description'" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/add('domaine'" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/add('fichier'" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/add('nomProjet'" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/add('salaire'" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/new" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/setDefaults([" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -275,6 +281,7 @@
       <workItem from="1616756480778" duration="370000" />
       <workItem from="1616757223147" duration="15279000" />
       <workItem from="1616788159722" duration="518000" />
+      <workItem from="1616792751172" duration="292000" />
     </task>
     <servers />
   </component>
