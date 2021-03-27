@@ -109,7 +109,7 @@ class OffreEmploiController extends AbstractController
         $offre=$em->getRepository(OffreEmploi::class)->find($id);
         $em->remove($offre);
         $em->flush();
-        return $this->redirectToRoute("showuown");
+        return $this->redirectToRoute("showuown",["id"=>$id]);
     }
     /**
      * @Route("/editEmploi/{id}", name="editEmploi")
@@ -146,7 +146,7 @@ class OffreEmploiController extends AbstractController
             $em = $this->getDoctrine()->getManager();
          //   $em->persist($emploi);
             $em->flush();
-            return $this->redirectToRoute('showuown');
+            return $this->redirectToRoute('showuown',["id"=>$id]);
         }
         return $this->render('offre_emploi/updateOffreEmploi.html.twig', [
             "f" => $form->createView(),
