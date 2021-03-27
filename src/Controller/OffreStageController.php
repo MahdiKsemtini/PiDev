@@ -92,7 +92,7 @@ class OffreStageController extends AbstractController
         $offre=$em->getRepository(OffreStage::class)->find($id);
         $em->remove($offre);
         $em->flush();
-        return $this->redirectToRoute("showuownS",["id"=>$id]);
+        return $this->redirectToRoute("showAllStage");
     }
 
      /**
@@ -130,7 +130,7 @@ class OffreStageController extends AbstractController
             $em = $this->getDoctrine()->getManager();
          //   $em->persist($emploi);
             $em->flush();
-            return $this->redirectToRoute('showuownS',["id"=>$id]);
+            return $this->redirectToRoute('showAllStage');
         }
         return $this->render('offre_stage/updateOffreStage.html.twig', [
             "f" => $form->createView(),

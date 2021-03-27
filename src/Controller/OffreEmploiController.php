@@ -41,9 +41,11 @@ class OffreEmploiController extends AbstractController
     {
         
             $em=$this->getDoctrine()->getRepository(OffreEmploi::class);
+           // $es=$this->getDoctrine()->getRepository(Societe::class);
             $list=$em->findAll();
         
             $count=$em->countNbOffre();
+           // $soc=$em->findSociete($soc);
             $list = $paginator->paginate(
                 // Doctrine Query, not results
                 $list,
@@ -109,7 +111,7 @@ class OffreEmploiController extends AbstractController
         $offre=$em->getRepository(OffreEmploi::class)->find($id);
         $em->remove($offre);
         $em->flush();
-        return $this->redirectToRoute("showuown",["id"=>$id]);
+        return $this->redirectToRoute("showutlis");
     }
     /**
      * @Route("/editEmploi/{id}", name="editEmploi")
@@ -146,7 +148,7 @@ class OffreEmploiController extends AbstractController
             $em = $this->getDoctrine()->getManager();
          //   $em->persist($emploi);
             $em->flush();
-            return $this->redirectToRoute('showuown',["id"=>$id]);
+            return $this->redirectToRoute('showutlis');
         }
         return $this->render('offre_emploi/updateOffreEmploi.html.twig', [
             "f" => $form->createView(),

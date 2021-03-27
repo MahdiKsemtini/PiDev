@@ -36,5 +36,16 @@ class SocieteRepository extends ServiceEntityRepository
         ->getResult();
        }
 
+       public function findSociete($soc){
+        return $this->createQueryBuilder('s')
+        ->where('s.nom = :soc')
+        ->setParameter('soc',$soc)
+        ->getQuery()
+            ->getResult();
+
+
+    }
+
+
      
 }
