@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\OffreStage;
 use App\Form\StageType;
+use App\Repository\AdminEmploiRepository;
 use App\Repository\AdminRepository;
 use App\Repository\OffreStageRepository;
 use App\Repository\SocieteRepository;
@@ -31,9 +32,10 @@ class OffreStageController extends AbstractController
      * @param AdminRepository $adminRepository
      * @param SocieteRepository $societeRepository
      * @param AdminEmploiController $adminEmploiController
+     * @param AdminEmploiRepository $adminEmploiRepository
      * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
      */
-    public function addStage(Request $request,OffreStageRepository $stageRepository,AdminRepository $adminRepository,SocieteRepository $societeRepository,AdminEmploiController $adminEmploiController){
+    public function addStage(Request $request,OffreStageRepository $stageRepository,AdminRepository $adminRepository,SocieteRepository $societeRepository,AdminEmploiController $adminEmploiController,AdminEmploiRepository $adminEmploiRepository){
         $stage = new OffreStage();
         $form = $this->createForm(StageType::class, $stage);
         // $form->add('Ajouter', SubmitType::class);
@@ -44,6 +46,7 @@ class OffreStageController extends AbstractController
             $newDate= new \DateTime('now');
             $stage->setDateCreation($newDate);
             $stage->setEtat(0);
+            $stage->setSociete($societeRepository->find(1));
 
 
 
@@ -67,7 +70,7 @@ class OffreStageController extends AbstractController
             $societeemail = $societeRepository->find($stage->getSociete());
 
 
-            $adminEmploiController->OffreStageToAdmin($adminRepository,$stage->getId(),$societeemail->getEmail());
+            $adminEmploiController->OffreStageToAdmin($adminRepository,$stage->getId(),$societeemail->getEmail(),$stageRepository,$adminEmploiRepository);
 
 
             return $this->redirectToRoute('showStage');

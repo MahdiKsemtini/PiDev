@@ -90,6 +90,7 @@ class AdminReclamationController extends AbstractController
 
     }
 
+
     /**
      * @param ReclamationRepository $reclamationRepository
      * @param AdminRepository $adminRepository
@@ -126,7 +127,24 @@ class AdminReclamationController extends AbstractController
         return $this->redirectToRoute('admin_reclamation');
 
     }
-
+    /**
+     * @param ReclamationRepository $reclamationRepository
+     * @param AdminReclamtionRepository $adminReclamtionRepository
+     * @Route ("/AllReclamation" , name="AllReclamation")
+     */
+    public function showReclamation(ReclamationRepository $reclamationRepository,AdminReclamtionRepository $adminReclamtionRepository,AdminRepository $adminRepository){
+        $id = $session->get('id');
+        $admin = $adminRepository->find($id);
+        $ListeReclamation = $adminReclamtionRepository->findBy(array('id'=>$id));
+        $AllReclamation = [];
+        foreach ($ListeReclamation as $Reclamation){
+            $Rec = $reclamationRepository->findBy(array('id'=>$Reclamation->getId(),'etat'=>1));
+            foreach ($Rec as $r){
+                $AllReclamation = $r;
+            }
+        }
+        $this->render('Admin_reclamation/ShowDoneReclamation.html.twig',['ListReclamations'=>$AllReclamation,'admin'=>$admin]);
+    }
 
 
 public function ReclamationToAdmin(AdminRepository $adminRepository , $IdReclamtion , Freelancer $freelancer,ReclamationRepository $reclamationRepository)

@@ -3,11 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Admin;
-use App\Entity\Reclamation;
 use App\Form\AdminFormType;
 use App\Repository\AdminRepository;
 use App\Repository\ReclamationRepository;
-use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -142,7 +140,7 @@ class SuperAdminController extends AbstractController
     {
         $requestString=$request->get('searchValue');
         $admin = $adminRepository->findAdminParNom($requestString);
-        $jsonContent = $Normalizer->normalize($admin, 'json',['groups'=>'admin']);
+        $jsonContent = $Normalizer->normalize($admin, 'json',['groups'=>'admin:read']);
         $retour=json_encode($jsonContent);
         return new Response($retour);
 

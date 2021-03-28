@@ -84,6 +84,11 @@ class OffreStage
      */
     private $etat;
 
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $dateExpiration;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -205,6 +210,18 @@ class OffreStage
     public function setEtat(bool $etat): self
     {
         $this->etat = $etat;
+
+        return $this;
+    }
+
+    public function getDateExpiration(): ?\DateTimeInterface
+    {
+        return $this->dateExpiration;
+    }
+
+    public function setDateExpiration(\DateTimeInterface $dateExpiration): self
+    {
+        $this->dateExpiration = $dateExpiration;
 
         return $this;
     }

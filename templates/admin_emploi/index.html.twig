@@ -1,20 +1,470 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_back.html.twig' %}
 
-{% block title %}Hello AdminEmploiController!{% endblock %}
+ {% block title %}RightJob{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <!-- Body Start -->
+    <div class="wrapper">
+        <div class="sa4d25">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-8">
+                        <div class="section3125">
+                            <div class="explore_search">
+                                <div class="ui search focus">
+                                    <div class="ui left icon input swdh11" >
+                                        <input id="search" class="prompt srch_explore" type="text" placeholder="Chercher un admin..."><br>
+                                        <i class="uil uil-search-alt icon icon2"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/xampp/htdocs/PiDev/src/Controller/AdminEmploiController.php'|file_link(0) }}">src/Controller/AdminEmploiController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/xampp/htdocs/PiDev/templates/admin_emploi/index.html.twig'|file_link(0) }}">templates/admin_emploi/index.html.twig</a></code></li>
-    </ul>
-</div>
+
+
+
+
+                    <div class="col-md-12">
+
+
+                            <div class="_14d25">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="my_courses_tabs" id="t">
+
+                                            <ul class="nav nav-pills my_crse_nav" id="pills-tab" role="tablist">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" id="pills-my-courses-tab" data-toggle="pill" href="#Offre-Emploi" role="tab" aria-controls="Offre-Emploi" aria-selected="true"><i class="uil uil-book-alt"></i>Les Offres d'emplois </a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="pills-my-purchases-tab" data-toggle="pill" href="#Offre-Stage" role="tab" aria-controls="Offre-Stage" aria-selected="false"><i class="uil uil-download-alt"></i>Les Offres de stages</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="pills-upcoming-courses-tab" data-toggle="pill" href="#Demande-Emploi" role="tab" aria-controls="Demande-Emploi" aria-selected="false"><i class="uil uil-upload-alt"></i>Les Demandes d'emplois</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" id="pills-upcoming-courses-tab" data-toggle="pill" href="#Demande-Stage" role="tab" aria-controls="Demande-Stage" aria-selected="false"><i class="uil uil-upload-alt"></i>Les Demandes de stages</a>
+                                                </li>
+
+                                            </ul>
+                                            <div class="tab-content" id="pills-tabContent">
+                                                <div class="tab-pane fade show active" id="Offre-Emploi" role="tabpanel">
+                                                    <div class="col-lg-12 col-md-12">
+
+
+                                                        {% if ListeOffreEmploi == null %}
+                                                        <span>Aucune Offre d'emploi</span>
+                                                        {% else %}
+
+                                                        <div class="table-responsive mt-50 mb-0">
+                                                            <table class="table ucp-table">
+                                                                <thead class="thead-s">
+                                                                <tr>
+                                                                    <th class="text-center" scope="col">Nom de projet</th>
+                                                                    <th class="text-center" scope="col">Compétences</th>
+                                                                    <th class="text-center" scope="col">Description</th>
+
+                                                                    <th class="text-center" scope="col">Domaine</th>
+                                                                    <th class="cell-ta">Salaire</th>
+                                                                    <th class="text-center" scope="col">date création</th>
+                                                                    <th class="text-center" scope="col">date expiration</th>
+                                                                    <th class="text-center" scope="col">Controls</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+
+                                                                {% for i in ListeOffreEmploi %}
+                                                                    {% if i.etat == 0 %}
+                                                                    <tr>
+
+                                                                        <td class="text-center">{{ i.nomProjet }}</td>
+                                                                        <td class="cell-ta">{{ i.competences }}</td>
+                                                                        <td class="text-center">{{ i.description }}</td>
+                                                                        <td class="text-center">{{ i.domaine }}</td>
+                                                                        <td class="text-center">{{ i.salaire }}</td>
+                                                                        <td class="text-center">{{i.dateCreation ? i.dateCreation|date('Y-m-d')}}</td>
+                                                                        <td class="text-center">{{i.dateExpiration ? i.dateExpiration|date('Y-m-d')}}</td>
+                                                                        <td class="text-center">
+                                                                            <a href="{{ path('activateOffreEmploi', {'id': i.id}) }}" title="Approuver" class="gray-s"><i class="uil uil-check"></i></a>
+                                                                            <a href="{{ path('deactivateOffreEmploi', {'id': i.id}) }}" title="Effacer" class="gray-s"><i class="uil uil-trash-alt"></i></a>
+                                                                        </td>
+
+                                                                    </tr>
+                                                                    {% endif %}
+                                                                {% endfor %}
+
+                                                                </tbody>
+                                                            </table>
+
+                                                        </div>
+                                                        {% endif %}
+                                                    </div>
+
+
+                                                </div>
+                                                <div class="tab-pane fade" id="Offre-Stage" role="tabpanel">
+                                                    <div class="col-lg-12 col-md-12">
+
+
+                                                        {% if ListeOffreStage == null %}
+                                                            <span>Aucune Offre de stage</span>
+                                                        {% else %}
+
+                                                            <div class="table-responsive mt-50 mb-0">
+                                                                <table class="table ucp-table">
+                                                                    <thead class="thead-s">
+                                                                    <tr>
+                                                                        <th class="text-center" scope="col">Nom de projet</th>
+                                                                        <th class="text-center" scope="col">Compétences</th>
+                                                                        <th class="text-center" scope="col">Description</th>
+
+                                                                        <th class="text-center" scope="col">Domaine</th>
+                                                                        <th class="cell-ta">Durée</th>
+                                                                        <th class="text-center" scope="col">Type de stage</th>
+                                                                        <th class="text-center" scope="col">date création</th>
+                                                                        <th class="text-center" scope="col">date expiration</th>
+                                                                        <th class="text-center" scope="col">Controls</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+
+                                                                    {% for i in ListeOffreStage %}
+                                                                        {% if i.etat == 0 %}
+                                                                            <tr>
+
+                                                                                <td class="text-center">{{ i.nomProjet }}</td>
+                                                                                <td class="cell-ta">{{ i.competences }}</td>
+                                                                                <td class="text-center">{{ i.description }}</td>
+                                                                                <td class="text-center">{{ i.domaine }}</td>
+                                                                                <td class="text-center">{{ i.duree }}</td>
+                                                                                <td class="text-center">{{ i.typeStage }}</td>
+                                                                                <td class="text-center">{{i.dateCreation ? i.dateCreation|date('Y-m-d')}}</td>
+                                                                                <td class="text-center">{{i.dateExpiration ? i.dateExpiration|date('Y-m-d')}}</td>
+                                                                                <td class="text-center">
+                                                                                    <a href="{{ path('activateOffreStage', {'id': i.id}) }}" title="Approuver" class="gray-s"><i class="uil uil-check"></i></a>
+                                                                                    <a href="{{ path('deactivateOffreStage', {'id': i.id}) }}" title="Effacer" class="gray-s"><i class="uil uil-trash-alt"></i></a>
+                                                                                </td>
+
+                                                                            </tr>
+                                                                        {% endif %}
+                                                                    {% endfor %}
+
+                                                                    </tbody>
+                                                                </table>
+
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
+
+
+                                                </div>
+                                                <div class="tab-pane fade" id="Demande-Emploi" role="tabpanel">
+                                                    <div class="col-lg-12 col-md-12">
+
+
+                                                        {% if ListeOffreEmploi == null %}
+                                                            <span>Aucune Offre d'emploi</span>
+                                                        {% else %}
+
+                                                            <div class="table-responsive mt-50 mb-0">
+                                                                <table class="table ucp-table">
+                                                                    <thead class="thead-s">
+                                                                    <tr>
+                                                                        <th class="text-center" scope="col">Nom de projet</th>
+                                                                        <th class="text-center" scope="col">Compétences</th>
+                                                                        <th class="text-center" scope="col">Description</th>
+
+                                                                        <th class="text-center" scope="col">Domaine</th>
+                                                                        <th class="cell-ta">Salaire</th>
+                                                                        <th class="text-center" scope="col">date création</th>
+                                                                        <th class="text-center" scope="col">date expiration</th>
+                                                                        <th class="text-center" scope="col">Controls</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+
+                                                                    {% for i in ListeOffreEmploi %}
+                                                                        {% if i.etat == 0 %}
+                                                                            <tr>
+
+                                                                                <td class="text-center">{{ i.nomProjet }}</td>
+                                                                                <td class="cell-ta">{{ i.competences }}</td>
+                                                                                <td class="text-center">{{ i.description }}</td>
+                                                                                <td class="text-center">{{ i.domaine }}</td>
+                                                                                <td class="text-center">{{ i.salaire }}</td>
+                                                                                <td class="text-center">{{i.dateCreation ? i.dateCreation|date('Y-m-d')}}</td>
+                                                                                <td class="text-center">{{i.dateExpiration ? i.dateExpiration|date('Y-m-d')}}</td>
+                                                                                <td class="text-center">
+                                                                                    <a href="{{ path('editEmploi', {'id': i.id}) }}" title="Approuver" class="gray-s"><i class="uil uil-check"></i></a>
+                                                                                    <a href="{{ path('deleteEmploi', {'id': i.id}) }}" title="Effacer" class="gray-s"><i class="uil uil-trash-alt"></i></a>
+                                                                                </td>
+
+                                                                            </tr>
+                                                                        {% endif %}
+                                                                    {% endfor %}
+
+                                                                    </tbody>
+                                                                </table>
+
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
+
+
+                                                </div>
+                                                <div class="tab-pane fade" id="Demande-Stage" role="tabpanel">
+                                                    <div class="col-lg-12 col-md-12">
+
+
+                                                        {% if ListeOffreEmploi == null %}
+                                                            <span>Aucune Offre d'emploi</span>
+                                                        {% else %}
+
+                                                            <div class="table-responsive mt-50 mb-0">
+                                                                <table class="table ucp-table">
+                                                                    <thead class="thead-s">
+                                                                    <tr>
+                                                                        <th class="text-center" scope="col">Nom de projet</th>
+                                                                        <th class="text-center" scope="col">Compétences</th>
+                                                                        <th class="text-center" scope="col">Description</th>
+
+                                                                        <th class="text-center" scope="col">Domaine</th>
+                                                                        <th class="cell-ta">Salaire</th>
+                                                                        <th class="text-center" scope="col">date création</th>
+                                                                        <th class="text-center" scope="col">date expiration</th>
+                                                                        <th class="text-center" scope="col">Controls</th>
+                                                                    </tr>
+                                                                    </thead>
+                                                                    <tbody>
+
+                                                                    {% for i in ListeOffreEmploi %}
+                                                                        {% if i.etat == 0 %}
+                                                                            <tr>
+
+                                                                                <td class="text-center">{{ i.nomProjet }}</td>
+                                                                                <td class="cell-ta">{{ i.competences }}</td>
+                                                                                <td class="text-center">{{ i.description }}</td>
+                                                                                <td class="text-center">{{ i.domaine }}</td>
+                                                                                <td class="text-center">{{ i.salaire }}</td>
+                                                                                <td class="text-center">{{i.dateCreation ? i.dateCreation|date('Y-m-d')}}</td>
+                                                                                <td class="text-center">{{i.dateExpiration ? i.dateExpiration|date('Y-m-d')}}</td>
+                                                                                <td class="text-center">
+                                                                                    <a href="{{ path('editEmploi', {'id': i.id}) }}" title="Approuver" class="gray-s"><i class="uil uil-check"></i></a>
+                                                                                    <a href="{{ path('deleteEmploi', {'id': i.id}) }}" title="Effacer" class="gray-s"><i class="uil uil-trash-alt"></i></a>
+                                                                                </td>
+
+                                                                            </tr>
+                                                                        {% endif %}
+                                                                    {% endfor %}
+
+                                                                    </tbody>
+                                                                </table>
+
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
+
+
+                                                </div>
+
+                                               {# <div class="navigation" style="margin-left:40%">
+                                                    {{ knp_pagination_render(
+                                                        ListeOffreStage,
+
+                                                        '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig',
+                                                        {
+                                                            'queryParam1': 'param1 value',
+                                                            'queryParam2': 'param2 value'
+                                                        },
+                                                        {
+                                                            'viewParam1': 'param1 value',
+                                                            'viewParam2': 'param2 value'
+                                                        },
+                                                    ) }}
+                                                </div>
+                                                <div class="navigation" style="margin-left:40%">
+                                                    {{ knp_pagination_render(
+                                                        ListeOffreEmploi,
+
+                                                        '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig',
+                                                        {
+                                                            'queryParam1': 'param1 value',
+                                                            'queryParam2': 'param2 value'
+                                                        },
+                                                        {
+                                                            'viewParam1': 'param1 value',
+                                                            'viewParam2': 'param2 value'
+                                                        },
+                                                    ) }}
+                                                </div>#}
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                    </div>
+
+                    <footer class="footer mt-30">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                    <div class="item_f1">
+                                        <a href="about_us.html">About</a>
+                                        <a href="our_blog.html">Blog</a>
+                                        <a href="career.html">Careers</a>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                    <div class="item_f1">
+                                        <a href="coming_soon.html">Advertise</a>
+                                        <a href="coming_soon.html">Developers</a>
+                                        <a href="contact_us.html">Contact Us</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                    <div class="item_f1">
+                                        <a href="terms_of_use.html">Copyright Policy</a>
+                                        <a href="terms_of_use.html">Terms</a>
+                                        <a href="terms_of_use.html">Privacy Policy</a>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <div class="footer_bottm">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <ul class="fotb_left">
+                                                    <li>
+                                                        <a href="index.html">
+                                                            <div class="footer_logo">
+                                                                <img src="images/logo1.svg" alt="">
+                                                            </div>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <p>© 2020 <strong>Cursus</strong>. All Rights Reserved.</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="edu_social_links">
+                                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                                    <a href="#"><i class="fab fa-google-plus-g"></i></a>
+                                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                                    <a href="#"><i class="fab fa-youtube"></i></a>
+                                                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Body End -->
+
+
+
+
+{% endblock %}
+
+{% block js %}
+    <script>
+        $( document ).ready(function() {
+            $("#search").keyup(function(e){
+                /* La variable value va prendre la valeur insérer dans le champ de texte afin d’effectuer la recherche */
+                var value = $(this).val();
+                /* Ajax est lancé lors du remplissage du champ texte dont l’id est « search » pour faire la recherche */
+                $.ajax({
+                    /* l’url est une chaine de caractères contenant l’adresse où la requête est envoyée */
+                    url : "{{ path('searchAdmin') }}",
+                    /* La méthode utilisée pour transférer les données est GET */
+                    type : 'GET',
+                    /*Ici search value va prendre la chaine entrée par un utilisateur dans la zone de recherche et sera placée après l’url */
+                    data: {
+                        'searchValue' : value
+                    },
+                    /*Cette fonction permet de vider le contenu du tableau pour recevoir le nouveau contenu*/
+                    success : function(retour){
+                        if(retour){
+                            $('#t div#search').empty();
+                            $.each(JSON.parse(retour), function(i, obj) {
+                                $('#t div#all').hide();
+
+
+
+                                $('#t div#search').append('<div class="col-xl-3 col-lg-3 col-md-4">'+
+
+                                    '<div class="fcrse_1 mt-30">'+
+                                    '<div class="tutor_img">'+
+                                    '<a href="/ViewAdminProfile/'+ obj.id+'"><img src="images/left-imgs/img-17.jpg" alt=""></a>'+
+                                    '</div>'+
+                                    '<div class="tutor_content_dt">'+
+                                    '<div class="tutor150">'+
+                                    '<a href="/ViewAdminProfile/'+ obj.id+'" class="tutor_name">'+ obj.nom + ' '+obj.prenom+'</a>'+
+                                    '<div class="mef78" title="Verify">'+
+                                    '<i class="uil uil-check-circle"></i>'+
+                                    '</div>'+
+                                    '</div>'+
+                                    '<div class="tutor_cate">'+obj.type+'</div>'+
+                                    '<ul class="tutor_social_links">'+
+                                    '<li><a href="#" class="fb"><i class="fab fa-facebook-f"></i></a></li>'+
+                                    '<li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>'+
+                                    '<li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>'+
+                                    '<li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>'+
+                                    '</ul>'+
+                                    '<div class="tut1250">'+
+
+                                    '<span class="vdt15">'+obj.approuve+' Approved</span>'+
+                                    '<span class="vdt15">'+ obj.nonapprouve +' Not Approved</span>'+
+                                    ' </div>'+
+                                    '</div>'+
+                                    ' </div>'+
+
+                                    '</div>');
+                            });
+                        }
+                        else
+                        {
+                            $('#t div#all').show();
+                            $('#t div#search').empty();
+                            $('#t div#search').fadeIn('fast');
+                        }
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{{ asset('js/vertical-responsive-menu.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('vendor/OwlCarousel/owl.carousel.js') }}"></script>
+    <script src="{{ asset('vendor/semantic/semantic.min.js') }}"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
+    <script src="{{ asset('js/night-mode.js') }}"></script>
+    <script src="{{ asset('./js/chart.js') }}"></script>
+    <script src="{{ asset('./vendor/charts/Chart.min.js') }}"></script>
+
 {% endblock %}

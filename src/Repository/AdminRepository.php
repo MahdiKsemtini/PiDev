@@ -48,7 +48,7 @@ class AdminRepository extends ServiceEntityRepository
     }
     */
 
-    public function findAdminParNom($prenom){
+    public function findAdminParPrenom($prenom){
         return $this->createQueryBuilder('a')
             ->where('a.prenom LIKE :prenom')
             ->setParameter('prenom', '%'.$prenom.'%')

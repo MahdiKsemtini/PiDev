@@ -19,55 +19,55 @@ class Admin
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups("admin")
+     * @Groups("admin:read")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("admin")
+     * @Groups("admin:read")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("admin")
+     * @Groups("admin:read")
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("admin")
+     * @Groups("admin:read")
      */
     private $login;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("admin")
+     * @Groups("admin:read")
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("admin")
+     * @Groups("admin:read")
      */
     private $type;
 
     /**
      * @ORM\Column(type="boolean")
-     * @Groups("admin")
+     * @Groups("admin:read")
      */
     private $etat;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
-     * @Groups("admin")
+     * @Groups("admin:read")
      */
     private $approuve;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
-     * @Groups("admin")
+     * @Groups("admin:read")
      */
     private $nonapprouve;
 

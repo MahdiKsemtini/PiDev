@@ -19,7 +19,7 @@ class AdminFormType extends AbstractType
             ->add('nom',TextType::class,[
             'attr'=>[
 
-        'placeholder'=>'Enter the firs name.',
+        'placeholder'=>'Enter the last name.',
         'class'=>'prompt srch_explore',
         'name'=>'first_name',
         'id'=>'id_nom',
@@ -28,7 +28,7 @@ class AdminFormType extends AbstractType
             ->add('prenom',TextType::class,[
                 'attr'=>[
 
-                    'placeholder'=>'Enter the last name.',
+                    'placeholder'=>'Enter the first name.',
                     'class'=>'prompt srch_explore',
                     'name'=>'last_name',
                     'id'=>'id_prenom',
