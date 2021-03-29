@@ -72,8 +72,9 @@
 
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="ui search focus mt-30 lbel25">
-
+                                                                <p>Description : </p>
                                                                 <div class="ui left icon input swdh19">
+
                                                                     {{ form_widget(form.description) }}
                                                                     {{ form_errors(form.description) }}
 
@@ -82,7 +83,7 @@
                                                         </div>
                                                         <div class="col-lg-6 col-md-6">
                                                             <div class="ui search focus mt-30 lbel25">
-
+                                                                <p>fichier(CV) : </p>
                                                                 <div class="ui left icon input swdh19">
                                                                     {{ form_widget(form.cv) }}
                                                                     {{ form_errors(form.cv) }}
@@ -94,6 +95,7 @@
                                                             <div class="course_des_textarea mt-30 lbel25">
 
                                                                 <div class="course_des_bg">
+                                                                    <p>Domaine : </p>
                                                                     <ul class="course_des_ttle">
                                                                         {{ form_widget(form.domaine) }}
                                                                         {{ form_errors(form.domaine) }}
@@ -101,8 +103,7 @@
                                                                     <div class="textarea_dt">
                                                                         <div class="ui form swdh339">
                                                                             <div class="field">
-                                                                                {{ form_widget(form.nomsociete) }}
-                                                                                {{ form_errors(form.nomsociete) }}
+
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -110,24 +111,28 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-12">
+                                                            <p>Nom de la societe: </p>
                                                             <div class="mt-30 lbel25">
-
+                                                                {{ form_widget(form.nomsociete) }}
+                                                                {{ form_errors(form.nomsociete) }}
                                                             </div>
                                                            <div>
-                                                               {{ form_widget(form.salaire) }}
-                                                               {{ form_errors(form.salaire) }}
+
                                                            </div>
                                                         </div>
                                                         <div class="col-lg-4 col-md-6">
+                                                            <p>Salaire Demandée: </p>
                                                             <div class="mt-30 lbel25">
-
+                                                                {{ form_widget(form.salaire) }}
+                                                                {{ form_errors(form.salaire) }}
                                                             </div>
-                                                            {{ form_widget(form.diplome) }}
-                                                            {{ form_errors(form.diplome) }}
+
                                                         </div>
                                                         <div class="col-lg-4 col-md-6">
+                                                            <p>Diplome En : </p>
                                                             <div class="mt-30 lbel25">
-
+                                                                {{ form_widget(form.diplome) }}
+                                                                {{ form_errors(form.diplome) }}
                                                             </div>
 
                                                         </div>

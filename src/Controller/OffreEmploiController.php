@@ -71,9 +71,12 @@ class OffreEmploiController extends AbstractController
         if ($form->isSubmitted()&&$form->isValid()) {
             //  dd();
             $em = $this->getDoctrine()->getManager();
+            $newDate= new \DateTime('now');
+            $emploi->setDateCreation($newDate);
             $em->persist($emploi);
             $em->flush();
-            return $this->redirectToRoute('showEmploi');
+            return $this->redirectToRoute('quiz_new',array('id'=>$emploi->getId()));
+
         }
         return $this->render('offre_emploi/CreateOffreEmploi.html.twig', [
             "f" => $form->createView(),

@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 class EmploiType extends AbstractType
 
 {
@@ -93,9 +94,13 @@ class EmploiType extends AbstractType
                     'name'=>'salaire',
                     'id'=>'id_salaire',
                     'maxlength'=>'64',
-                ] ]);
+                ] ])
 
-
+            ->add('dateExpiration', DateType::class, [
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
+                'data' => new \DateTime(),
+            ]);
 
     }
 

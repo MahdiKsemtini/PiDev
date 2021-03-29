@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\DemandeEmploiRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -88,6 +90,11 @@ class DemandeEmploi
      */
     private $Freelancer;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Quiz::class, mappedBy="DemandeEmploi")
+     */
+    private $quizzes;
+
 
 
 
@@ -98,6 +105,7 @@ class DemandeEmploi
     public function __construct()
     {
         $this->dateCreation = new \DateTime('now');
+        $this->quizzes = new ArrayCollection();
     }
 
 
@@ -216,6 +224,36 @@ class DemandeEmploi
     public function setFreelancer(?Freelancer $Freelancer): self
     {
         $this->Freelancer = $Freelancer;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Quiz[]
+     */
+    public function getQuizzes(): Collection
+    {
+        return $this->quizzes;
+    }
+
+    public function addQuiz(Quiz $quiz): self
+    {
+        if (!$this->quizzes->contains($quiz)) {
+            $this->quizzes[] = $quiz;
+            $quiz->setDemandeEmploi($this);
+        }
+
+        return $this;
+    }
+
+    public function removeQuiz(Quiz $quiz): self
+    {
+        if ($this->quizzes->removeElement($quiz)) {
+            // set the owning side to null (unless already changed)
+            if ($quiz->getDemandeEmploi() === $this) {
+                $quiz->setDemandeEmploi(null);
+            }
+        }
 
         return $this;
     }

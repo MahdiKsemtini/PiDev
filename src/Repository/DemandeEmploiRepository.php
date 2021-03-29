@@ -20,13 +20,15 @@ class DemandeEmploiRepository extends ServiceEntityRepository
     }
 
 
-    public function OrderBynameQb()
+    public function OrderBydateCreationQb()
     {
 return $this->createQueryBuilder('d')
-    ->orderBy('d.salaire','ASC')
+    ->orderBy('d.dateCreation','ASC')
     ->getQuery()->getResult();
 
     }
+
+
     public  function SearchNomSociete($data){
         return $this->createQueryBuilder('d')
             ->where('d.nomsociete LIKE :data')
@@ -35,20 +37,7 @@ return $this->createQueryBuilder('d')
 
     }
 
-    public function countNb_demandes(){
-        return $this->createQueryBuilder('d')
 
-
-            ->Select('COUNT(d.id)')
-
-
-            // ->andWhere('e.NomProjet= :val')
-            //->setParameter('val', $id)
-
-            ->getQuery()
-
-            ->getSingleScalarResult();
-    }
 
 
 
@@ -80,7 +69,7 @@ return $this->createQueryBuilder('d')
     }
     */
 
-    /*
+
     public function findOneBySomeField($value): ?DemandeEmploi
     {
         return $this->createQueryBuilder('d')
@@ -90,5 +79,6 @@ return $this->createQueryBuilder('d')
             ->getOneOrNullResult()
         ;
     }
-    */
+
+
 }

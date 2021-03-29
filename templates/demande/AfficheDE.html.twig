@@ -1,0 +1,80 @@
+<div class="tab-pane fade show" id="nav-purchased" role="tabpanel">
+
+
+
+
+    {% for D in pagination %}
+        <div class="_htg451">
+            <div class="_htg452">
+
+
+                <div class="row">
+
+
+                    <div class="col-md-9">
+
+                        <div class="fcrse_1 mt-20">
+
+
+                            <div class="course-overlay">
+                                <div class="badge_seller">Votre Demande</div>
+                                <div class="crse_reviews">
+
+                                </div>
+
+                                <div class="crse_timer">
+                                    <p> cv file </p>    {{ D.cv }}
+                                </div>
+                            </div>
+                            </a>
+                            <div class="hs_content">
+                                <div class="eps_dots eps_dots10 more_dropdown">
+                                    <a href="#"><i class="uil uil-ellipsis-v"></i></a>
+                                    <div class="dropdown-content">
+                                        <span><i class="uil uil-download-alt"></i> <a href="{{ path('updateE',{'id':D.id}) }}">Update</a></span>
+                                        <span><i class="uil uil-trash-alt"></i> <a href='{{ path('deleteDEmploi',{'id':D.id}) }}'>Delete</a></span>
+                                    </div>
+                                </div>
+                                <div class="vdtodt">
+
+                                    <span class="vdt14"></span>
+                                </div>
+                                <a href="course_detail_view.html" class="crse14s title900">{{ D.description }}</a>
+                                <a href="#" class="crse-cate">{{ D.domaine }}</a>
+                                <div class="purchased_badge">{{ D.nomsociete}} </div>
+
+                                <div class="auth1lnkprce">
+                                    <p class="cr1fot">diplome: <a href="#">{{ D.diplome }}</a></p>
+                                    <div class="prce142">{{ D.salaire }}</div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+                </div >
+
+
+            </div>
+
+        </div>
+    {% endfor %}
+
+    <div class="navigation" style="margin-left:40%">
+        {{ knp_pagination_render(
+            pagination,
+            '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig',
+            {
+                'queryParam1': 'param1 value',
+                'queryParam2': 'param2 value'
+            },
+            {
+                'viewParam1': 'param1 value',
+                'viewParam2': 'param2 value'
+            },
+        ) }}
+    </div>
+</div>

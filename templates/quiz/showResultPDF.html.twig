@@ -1,0 +1,24 @@
+<h1 >Quiz du {{ user.nom }}</h1>
+<table class="table">
+    <tbody>
+
+    {% for reponse in quiz.reponses %}
+        <tr>
+            <th>question</th>
+            <td>{{ reponse.question.ContenuQues }}</td>
+        </tr>
+        <tr>
+            <th>Reponse condidat </th>
+            {% if  reponse.reponse == reponse.question.repjust %}
+                <td >{{ reponse.reponse.contenuRep }}<i style="font-size: 150%; color:limegreen" class="fa fa-check-circle-o" ></i></td>
+            {% else %}
+                <td >{{ reponse.reponse.contenuRep }}<i style="font-size: 150%; color:red" class="fa fa-times-circle-o"S ></i></td>
+            {% endif %}
+        </tr>
+    {% endfor %}
+    {#        <tr>#}
+    {#            <th>Nomb_question</th>#}
+    {#            <td>{{ quiz.nombQuestion }}</td>#}
+    {#        </tr>#}
+    </tbody>
+</table>

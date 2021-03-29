@@ -72,7 +72,7 @@
 
                                                             <div class="col-lg-6 col-md-6">
                                                                 <div class="ui search focus mt-30 lbel25">
-
+                                                              <p> Type de Stage: </p>
                                                                     <div class="ui left icon input swdh19">
                                                                         {{ form_widget(form2.type) }}
                                                                         {{ form_errors(form2.type) }}
@@ -82,7 +82,7 @@
                                                             </div>
                                                             <div class="col-lg-6 col-md-6">
                                                                 <div class="ui search focus mt-30 lbel25">
-
+                                                                    <p> Durée de Stage: </p>
                                                                     <div class="ui left icon input swdh19">
                                                                         {{ form_widget(form2.duree) }}
                                                                         {{ form_errors(form2.duree) }}
@@ -94,13 +94,12 @@
                                                                 <div class="course_des_textarea mt-30 lbel25">
 
                                                                     <div class="course_des_bg">
-                                                                        <ul class="course_des_ttle">
-                                                                            {{ form_widget(form2.etude) }}
-                                                                            {{ form_errors(form2.etude) }}
-                                                                        </ul>
+
                                                                         <div class="textarea_dt">
                                                                             <div class="ui form swdh339">
+
                                                                                 <div class="field">
+                                                                                    <p> Description : </p>
                                                                                     {{ form_widget(form2.description) }}
                                                                                     {{ form_errors(form2.description) }}
                                                                                 </div>
@@ -110,7 +109,9 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-4 col-md-12">
+
                                                                 <div class="mt-30 lbel25">
+                                                                    <p> Domaine d'etude : </p>
                                                                     {{ form_widget(form2.domaine) }}
                                                                     {{ form_errors(form2.domaine) }}
                                                                 </div>
@@ -119,13 +120,18 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-lg-4 col-md-6">
-                                                                <div class="mt-30 lbel25">
 
+                                                                <div class="mt-30 lbel25">
+                                                                    <p> Votre etude: </p>
+                                                                    {{ form_widget(form2.etude) }}
+                                                                    {{ form_errors(form2.etude) }}
                                                                 </div>
 
                                                             </div>
                                                             <div class="col-lg-4 col-md-6">
+
                                                                 <div class="mt-30 lbel25">
+                                                                    <p> Nom de la societe: </p>
                                                                     {{ form_widget(form2.nomsociete) }}
                                                                     {{ form_errors(form2.nomsociete) }}
                                                                 </div>

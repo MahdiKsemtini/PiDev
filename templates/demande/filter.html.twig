@@ -46,33 +46,33 @@
                                             <img src="images/hd_dp.jpg" alt="">
                                         </div>
                                         <div class="prfledt1">
-                                            <h2>Joginder Singh</h2>
-                                            <span>UI / UX Designer and Web Developer</span>
+                                            <h2>{{ freelancer.nom }} {{ freelancer.prenom }} </h2>
+                                            <span>{{ freelancer.email }}</span>
                                         </div>
                                     </div>
                                     <ul class="_ttl120">
                                         <li>
                                             <div class="_ttl121">
-                                                <div class="_ttl122">Enroll Students</div>
-                                                <div class="_ttl123">612K</div>
+                                                <div class="_ttl122">Adresse</div>
+                                                <div class="_ttl123">{{ freelancer.adresse }}</div>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="_ttl121">
-                                                <div class="_ttl122">Courses</div>
-                                                <div class="_ttl123">8</div>
+                                                <div class="_ttl122">Competences</div>
+                                                <div class="_ttl123">{{ freelancer.competences }}</div>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="_ttl121">
-                                                <div class="_ttl122">Reviews</div>
-                                                <div class="_ttl123">11K</div>
+                                                <div class="_ttl122">sex</div>
+                                                <div class="_ttl123">{{ freelancer.Sexe }}</div>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="_ttl121">
-                                                <div class="_ttl122">Subscriptions</div>
-                                                <div class="_ttl123">452K</div>
+                                                <div class="_ttl122">Vues</div>
+                                                <div class="_ttl123">{{ freelancer.viewsNb }}</div>
                                             </div>
                                         </li>
                                     </ul>
@@ -89,10 +89,7 @@
                                             <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
                                         </ul>
                                     </div>
-                                    <ul class="_bty149">
-                                        <li><button class="studio-link-btn btn500" onclick="window.location.href = '#';">Edututs Studio</button></li>
-                                        <li><button class="msg125 btn500" onclick="window.location.href = '#';">Edit</button></li>
-                                    </ul>
+
 
                                 </div>
                             </div>
@@ -109,8 +106,8 @@
                             <nav>
                                 <div class="nav nav-tabs tab_crse" id="nav-tab" role="tablist">
 
-                                    <a class="nav-item nav-link" id="nav-courses-tab" data-toggle="tab" href="#nav-courses" role="tab" aria-selected="false">Demande de d'emploi</a>
-                                    <a class="nav-item nav-link active" id="nav-purchased-tab" data-toggle="tab" href="#nav-purchased" role="tab" aria-selected="true">Demande de stage</a>
+                                    <a class="nav-item nav-link active" id="nav-courses-tab" data-toggle="tab" href="#nav-courses" role="tab" aria-selected="true">Demande de Stage</a>
+                                    <a class="nav-item nav-link " id="nav-purchased-tab" data-toggle="tab" href="#nav-purchased" role="tab" aria-selected="false">Demande d'emploi</a>
 
                                 </div>
                             </nav>
@@ -126,112 +123,34 @@
                         <div class="course_tab_content">
                             <div class="tab-content" id="nav-tabContent">
 
-
-                                <div class="tab-pane fade show active" id="nav-purchased" role="tabpanel">
-                                    <h3>Updating demande!</h3>
-
-                                    <div class="_htg451">
-                                        <div class="_htg452">
+                                <div class="tab-pane fade show active" id="nav-courses" role="tabpanel">
+                                    <h3>Les Demandes de stage evnvoyer!</h3>
 
 
-                                            <div class="row">
-                                                <div class="course__form">
-                                                    <form {{ form_start(form2,{'attr':{'novalidate':'novalidate'}}) }}>
-                                                        <div class="general_info10">
-                                                            <div class="row">
-
-                                                                <div class="col-lg-6 col-md-6">
-                                                                    <div class="ui search focus mt-30 lbel25">
-
-                                                                        <div class="ui left icon input swdh19">
-                                                                            {{ form_widget(form2.type) }}
-                                                                            {{ form_errors(form2.type) }}
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-6 col-md-6">
-                                                                    <div class="ui search focus mt-30 lbel25">
-
-                                                                        <div class="ui left icon input swdh19">
-                                                                            {{ form_widget(form2.duree) }}
-                                                                            {{ form_errors(form2.duree) }}
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-12 col-md-12">
-                                                                    <div class="course_des_textarea mt-30 lbel25">
-
-                                                                        <div class="course_des_bg">
-                                                                            <ul class="course_des_ttle">
-                                                                                {{ form_widget(form2.etude) }}
-                                                                                {{ form_errors(form2.etude) }}
-                                                                            </ul>
-                                                                            <div class="textarea_dt">
-                                                                                <div class="ui form swdh339">
-                                                                                    <div class="field">
-                                                                                        {{ form_widget(form2.description) }}
-                                                                                        {{ form_errors(form2.description) }}
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-4 col-md-12">
-                                                                    <div class="mt-30 lbel25">
-                                                                        {{ form_widget(form2.domaine) }}
-                                                                        {{ form_errors(form2.domaine) }}
-                                                                    </div>
-                                                                    <div>
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-4 col-md-6">
-                                                                    <div class="mt-30 lbel25">
-
-                                                                    </div>
-
-                                                                </div>
-                                                                <div class="col-lg-4 col-md-6">
-                                                                    <div class="mt-30 lbel25">
-                                                                        {{ form_widget(form2.nomsociete) }}
-                                                                        {{ form_errors(form2.nomsociete) }}
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="price_course">
-                                                            <div class="row">
-                                                                <div class="col-lg-12">
-                                                                    <div class="price_title">
-
-                                                                    </div>
-
-                                                                    {{ form_widget(form2.Envoyer, {'attr': {'class':'class="btn btn-danger'}}) }}
-                                                                </div>
-                                                                {{ form_rest(form2) }}
-                                                    </form>
+                                   {% include 'demande/AfficheDS.html.twig' %}
+                                </div>
+                                <div class="tab-pane fade show" id="nav-purchased" role="tabpanel">
+                                    <h3>Les Demande D'emploi evnvoyer!</h3>
+                                    <a href=""> order by date </a>
+                                    <div class="section3125">
+                                        <div class="explore_search">
+                                            <div class="ui search focus">
+                                                <div class="ui left icon input swdh11" >
+                                                    <input id="search" class="prompt srch_explore" type="text" placeholder="Search un emploi..."><br>
+                                                    <i class="uil uil-search-alt icon icon2"></i>
                                                 </div>
-
-
-                                            </div >
-
-
+                                            </div>
                                         </div>
                                     </div>
 
-
-                                </div>
-
+                                 {% include'demande/AfficheDE.html.twig' %}
 
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
         <footer class="footer mt-30">
             <div class="container">
@@ -409,6 +328,72 @@
 {% endblock %}
 
 {% block js %}
+
+    <script>
+        $( document ).ready(function() {
+            $("#search").keyup(function(e){
+                /* La variable value va prendre la valeur insérer dans le champ de texte afin d’effectuer la recherche */
+                var value = $(this).val();
+                /* Ajax est lancé lors du remplissage du champ texte dont l’id est « search » pour faire la recherche */
+                $.ajax({
+                    /* l’url est une chaine de caractères contenant l’adresse où la requête est envoyée */
+                    url : "{{ path('searchDemploi') }}",
+                    /* La méthode utilisée pour transférer les données est GET */
+                    type : 'GET',
+                    /*Ici search value va prendre la chaine entrée par un utilisateur dans la zone de recherche et sera placée après l’url */
+                    data: {
+                        'searchValue' : value
+                    },
+                    /*Cette fonction permet de vider le contenu du tableau pour recevoir le nouveau contenu*/
+                    success : function(retour){
+                        if(retour){
+                            $('#t div#search').empty();
+                            $.each(JSON.parse(retour), function(i, obj) {
+                                $('#t div#all').hide();
+                                $('#t div#search').append('<div class="row" style="margin-left:20%;margin-right:20%">'+
+
+                                    '<div class="fcrse_1 mt-30">'+
+                                    '<div class="tutor_img">'+
+                                    '<a href="instructor_profile_view.html"><img src="images/left-imgs/img-1.jpg" alt=""></a>'+
+                                    '</div>'+
+                                    '<div class="tutor_content_dt">'+
+                                    '<div class="tutor150">'+
+                                    '<a href="instructor_profile_view.html" class="tutor_name"> '+obj.nomsociete+' </a>'+
+                                    '<div class="mef78" title="Verify">'+
+                                    '<i class="uil uil-check-circle"></i>'+
+                                    '</div>'+
+                                    '</div>'+
+
+
+
+
+
+                                    '<div class="tut1250">'+
+                                    '<span class="vdt15">domaine : '+obj.domaine+'</span>'+
+                                    '<span class="vdt15">Compétences : '+obj.salaire+'</span><br>'+
+                                    '<span class="vdt15">Description : '+obj.description+'</span>'+
+                                    '</div>'+
+                                    '<div class="tutor_cate">Salaire : '+obj.diplome+'</div>'+
+                                    '<a href="#"> '+obj.cv+'</a>'+
+                                    '</div>'+
+                                    '</div>'+
+
+
+                                    '</div>');
+                            });
+                        }
+                        else
+                        {
+                            $('#t div#all').show();
+                            $('#t div#search').empty();
+                            $('#t div#search').fadeIn('fast');
+                        }
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
     <script src='{{ asset("js/vertical-responsive-menu.min.js") }}'></script>
     <script src='{{ asset("js/jquery-3.3.1.min.js") }}'></script>
     <script src='{{ asset("vendor/bootstrap/js/bootstrap.bundle.min.js") }}'></script>
@@ -416,6 +401,7 @@
     <script src='{{ asset("vendor/semantic/semantic.min.js") }}'></script>
     <script src='{{ asset("js/custom.js") }}'></script>
     <script src='{{ asset("js/night-mode.js") }}'></script>
+    <script src="{{ asset('js/filters.js') }}"></script>
 {% endblock %}
 
 

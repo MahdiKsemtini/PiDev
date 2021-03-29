@@ -17,7 +17,11 @@ use App\Repository\DemandeEmploiRepository;
 use App\Repository\DemandeStageRepository;
 use App\Repository\FreelancerRepository;
 
+use App\Repository\QuizRepository;
 use App\Repository\SocieteRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use phpDocumentor\Reflection\Types\Array_;
+use phpDocumentor\Reflection\Types\String_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,9 +41,10 @@ class DemandeController extends AbstractController
      * @Route("/demande/{id_offre}", name="demande")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function Add_DemandeEmploi(Request $request, int $id_offre, FreelancerRepository $repository): Response
+    public function Add_DemandeEmploi(Request $request, int $id_offre, FreelancerRepository $repository,QuizRepository $qrepo): Response
     {
         $freelancer = $repository->find($this->get('session')->get('id'));
+
         $em = $this->getDoctrine()->getManager();
         $e = $this->getDoctrine()->getManager();
         $offre = $e->getRepository(OffreEmploi::class)->find($id_offre);
@@ -59,7 +64,7 @@ class DemandeController extends AbstractController
                 $freelancer->addDemandeEmploi($DemandeEmploi);
 
                 $em->flush();
-                return $this->redirectToRoute('AfficherDemande');
+                return $this->redirectToRoute('quiz_take');
 
             }
         }
@@ -67,6 +72,7 @@ class DemandeController extends AbstractController
             'controller_name' => 'DemandeController',
             'form' => $form->createView(),
             'id_offre' => $id_offre,
+
 
         ]);
 
@@ -117,6 +123,7 @@ class DemandeController extends AbstractController
             'form2' => $form2->createView(),
             'id_offre' => $id_offre,
 
+
         ]);
     }
 
@@ -127,7 +134,7 @@ class DemandeController extends AbstractController
      * @Route("/AfficherDemande", name="AfficherDemande")
      */
     public function AfficherDemandeE(DemandeEmploiRepository $repository, DemandeStageRepository $repo, Request $request, PaginatorInterface $paginator, FreelancerRepository $frepo): Response
-    {
+    { $cat= new String_('domaine',"domaine2");
         $session = $request->getSession();
         if ($session->get('id') == null) {
             return $this->redirectToRoute('SignIn');
@@ -143,13 +150,14 @@ class DemandeController extends AbstractController
             // Define the page parameter
             $request->query->getInt('page1', 1), 2);
 
-        return $this->render('demande/AfficherDemande.html.twig',  [
+        return $this->render('demande/filter.html.twig',  [
             'freelancer' => $freelancer,
 
             'controller_name' => 'DemandeController',
             'pagination2' => $pagination2,
 
             'pagination' => $pagination,
+
         ]);
     }
 
@@ -331,20 +339,6 @@ class DemandeController extends AbstractController
 
     }
 
-    /**
-     * @Route("/filtreDEmploi/{domaine} ", name="filtreDEmploi")
-     * @param $domaine
-     */
-    public function filtreDEmploi(NormalizerInterface $Normalizer, $domaine)
-    {
-        $repository = $this->getDoctrine()->getRepository(DemandeEmploi::class);
-
-        $Demploi = $repository->findDomaine($domaine);
-        $jsonContent = $Normalizer->normalize($Demploi, 'json',['groups'=>'Demploi']);
-        $retour=json_encode($jsonContent);
-        return new Response($retour);
-
-    }
 }
 
 
