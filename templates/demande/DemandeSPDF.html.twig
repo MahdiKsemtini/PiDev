@@ -1,0 +1,45 @@
+{% block body %}
+
+    <div class="content">
+    <div class="container-fluid">
+    <div class="row">
+    <div class="col-md-12">
+    <div class="card">
+    <div class="card-header card-header-primary">
+
+        <h1> LES DEMANDES DE STAGE</h1>
+
+    </div>
+    <div class="card-body">
+    <div class="table-responsive">
+    <table align="center"class="table" border="3">
+        <thead class=" text-primary">
+        <tr>
+            <th>Description </th>
+            <th>Domaine</th>
+            <th>Nom de societe</th>
+            <th> type </th>
+            <th> etude </th>
+            <th> duree </th>
+            <th> Date de Creation </th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for d in demandes %}
+            <tr>
+                <td>{{ d.description }}</td>
+                <td>{{ d.domaine }}</td>
+                <td>{{ d.nomsociete }}</td>
+                <td>{{ d.type }}</td>
+                <td>{{ d.etude }}</td>
+                <td>{{ d.duree }}</td>
+                <td>{{ d.dateCreation }}</td>
+
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+{% endblock %}

@@ -46,33 +46,33 @@
                                             <img src="images/hd_dp.jpg" alt="">
                                         </div>
                                         <div class="prfledt1">
-                                            <h2>Joginder Singh</h2>
-                                            <span>UI / UX Designer and Web Developer</span>
+                                            <h2>{{ freelancer.nom }} {{ freelancer.prenom }} </h2>
+                                            <span>{{ freelancer.email }}</span>
                                         </div>
                                     </div>
                                     <ul class="_ttl120">
                                         <li>
                                             <div class="_ttl121">
-                                                <div class="_ttl122">Enroll Students</div>
-                                                <div class="_ttl123">612K</div>
+                                                <div class="_ttl122">Adresse</div>
+                                                <div class="_ttl123">{{ freelancer.adresse }}</div>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="_ttl121">
-                                                <div class="_ttl122">Courses</div>
-                                                <div class="_ttl123">8</div>
+                                                <div class="_ttl122">Competences</div>
+                                                <div class="_ttl123">{{ freelancer.competences }}</div>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="_ttl121">
-                                                <div class="_ttl122">Reviews</div>
-                                                <div class="_ttl123">11K</div>
+                                                <div class="_ttl122">sex</div>
+                                                <div class="_ttl123">{{ freelancer.Sexe }}</div>
                                             </div>
                                         </li>
                                         <li>
                                             <div class="_ttl121">
-                                                <div class="_ttl122">Subscriptions</div>
-                                                <div class="_ttl123">452K</div>
+                                                <div class="_ttl122">Vues</div>
+                                                <div class="_ttl123">{{ freelancer.viewsNb }}</div>
                                             </div>
                                         </li>
                                     </ul>
@@ -89,10 +89,7 @@
                                             <li><a href="#" class="yu"><i class="fab fa-youtube"></i></a></li>
                                         </ul>
                                     </div>
-                                    <ul class="_bty149">
-                                        <li><button class="studio-link-btn btn500" onclick="window.location.href = '#';">Edututs Studio</button></li>
-                                        <li><button class="msg125 btn500" onclick="window.location.href = '#';">Edit</button></li>
-                                    </ul>
+
 
                                 </div>
                             </div>
@@ -109,8 +106,8 @@
                             <nav>
                                 <div class="nav nav-tabs tab_crse" id="nav-tab" role="tablist">
 
-                                    <a class="nav-item nav-link" id="nav-courses-tab" data-toggle="tab" href="#nav-courses" role="tab" aria-selected="false">Demande de Stage</a>
-                                    <a class="nav-item nav-link active" id="nav-purchased-tab" data-toggle="tab" href="#nav-purchased" role="tab" aria-selected="true">Demande d'emploi</a>
+                                    <a class="nav-item nav-link active" id="nav-courses-tab" data-toggle="tab" href="#nav-courses" role="tab" aria-selected="true">Demande de Stage</a>
+                                    <a class="nav-item nav-link " id="nav-purchased-tab" data-toggle="tab" href="#nav-purchased" role="tab" aria-selected="false">Demande d'emploi</a>
 
                                 </div>
                             </nav>
@@ -125,16 +122,12 @@
                     <div class="col-lg-12">
                         <div class="course_tab_content">
                             <div class="tab-content" id="nav-tabContent">
-                                <div class="tab-pane fade show active" id="nav-about" role="tabpanel">
-                                    <div class="_htg451">
 
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="nav-courses" role="tabpanel">
+                                <div class="tab-pane fade show active" id="nav-courses" role="tabpanel">
                                     <div class="_htg451">
                                         <div class="_htg452">
                                             <h3>Les Demandes de stage evnvoyer!</h3>
-                                            {% for D in ds %}
+                                            {% for D in pagination2 %}
                                             <div class="row">
                                                 <div class="col-md-9">
                                                     <div class="fcrse_1 mt-20">
@@ -143,9 +136,7 @@
                                                             <div class="course-overlay">
                                                                 <div class="badge_seller">Votre demande</div>
                                                                 <div class="crse_reviews">
-
                                                                 </div>
-                                                                <span class="play_btn1"><i class="uil uil-play"></i></span>
                                                                 <div class="crse_timer">
                                                                   {{ D.type }}
                                                                 </div>
@@ -153,21 +144,18 @@
                                                         </a>
                                                         <div class="hs_content">
                                                             <div class="eps_dots eps_dots10 more_dropdown">
-                                                                <a href="#"><i class="uil uil-ellipsis-v"></i></a>
+
                                                                 <div class="dropdown-content">
                                                                     <span><i class="uil uil-download-alt"></i><a href="{{ path('updateS',{'id':D.id}) }}">Update</a></span>
                                                                     <span><i class="uil uil-trash-alt"></i> <a href="{{ path('deleteDStage',{'id':D.id}) }}">Delete</a></span>
                                                                 </div>
                                                             </div>
-                                                            <div class="vdtodt">
-                                                                <span class="vdt14">109k views</span>
-                                                                <span class="vdt14">{{ D.dateCreation }}</span>
-                                                            </div>
+
                                                             <a class="crse14s title900">{{ D.description }}</a>
                                                             <a href="#" class="crse-cate">{{ D.domaine }}</a>
                                                             <div class="purchased_badge">{{ D.nomsociete}}</div>
                                                             <div class="auth1lnkprce">
-                                                                <p class="cr1fot">By <a href="#">John Doe</a></p>
+
                                                                 <div class="prce142">{{ D.etude }}</div>
                                                             </div>
                                                         </div>
@@ -178,13 +166,37 @@
                                                 </div>
                                             </div>
                                             {% endfor %}
+
+                                        </div>
+                                        <div class="navigation" style="margin-left:40%">
+                                            {{ knp_pagination_render(
+                                                pagination2,
+                                                '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig',
+                                                {
+                                                    'queryParam1': 'param1 value',
+                                                    'queryParam2': 'param2 value'
+                                                },
+                                                {
+                                                    'viewParam1': 'param1 value',
+                                                    'viewParam2': 'param2 value'
+                                                },
+                                            ) }}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade show" id="nav-purchased" role="tabpanel">
                                     <h3>Les Demande D'emploi evnvoyer!</h3>
+                                    <div class="section3125">
+                                        <div class="explore_search">
+                                            <div class="ui search focus">
+                                                <div class="ui left icon input swdh11" >
+                                                    <input id="search" class="prompt srch_explore" type="text" placeholder="Search un emploi..."><br>
+                                                    <i class="uil uil-search-alt icon icon2"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                    <input class="prompt srch10" type="text" placeholder="search for nom" name="search"><input TYPE="submit" value="recherche">
 
                                     {% for D in pagination %}
                                     <div class="_htg451">
@@ -245,9 +257,22 @@
 
                                     </div>
                                     {% endfor %}
-                                    {{ knp_pagination_render(pagination)}}
-                                </div>
 
+                                <div class="navigation" style="margin-left:40%">
+                                    {{ knp_pagination_render(
+                                        pagination,
+                                        '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig',
+                                        {
+                                            'queryParam1': 'param1 value',
+                                            'queryParam2': 'param2 value'
+                                        },
+                                        {
+                                            'viewParam1': 'param1 value',
+                                            'viewParam2': 'param2 value'
+                                        },
+                                    ) }}
+                                </div>
+                                </div>
 
                             </div>
                         </div>
@@ -431,6 +456,72 @@
 {% endblock %}
 
 {% block js %}
+
+    <script>
+        $( document ).ready(function() {
+            $("#search").keyup(function(e){
+                /* La variable value va prendre la valeur insérer dans le champ de texte afin d’effectuer la recherche */
+                var value = $(this).val();
+                /* Ajax est lancé lors du remplissage du champ texte dont l’id est « search » pour faire la recherche */
+                $.ajax({
+                    /* l’url est une chaine de caractères contenant l’adresse où la requête est envoyée */
+                    url : "{{ path('searchDemploi') }}",
+                    /* La méthode utilisée pour transférer les données est GET */
+                    type : 'GET',
+                    /*Ici search value va prendre la chaine entrée par un utilisateur dans la zone de recherche et sera placée après l’url */
+                    data: {
+                        'searchValue' : value
+                    },
+                    /*Cette fonction permet de vider le contenu du tableau pour recevoir le nouveau contenu*/
+                    success : function(retour){
+                        if(retour){
+                            $('#t div#search').empty();
+                            $.each(JSON.parse(retour), function(i, obj) {
+                                $('#t div#all').hide();
+                                $('#t div#search').append('<div class="row" style="margin-left:20%;margin-right:20%">'+
+
+                                    '<div class="fcrse_1 mt-30">'+
+                                    '<div class="tutor_img">'+
+                                    '<a href="instructor_profile_view.html"><img src="images/left-imgs/img-1.jpg" alt=""></a>'+
+                                    '</div>'+
+                                    '<div class="tutor_content_dt">'+
+                                    '<div class="tutor150">'+
+                                    '<a href="instructor_profile_view.html" class="tutor_name"> '+obj.nomsociete+' </a>'+
+                                    '<div class="mef78" title="Verify">'+
+                                    '<i class="uil uil-check-circle"></i>'+
+                                    '</div>'+
+                                    '</div>'+
+
+
+
+
+
+                                    '<div class="tut1250">'+
+                                    '<span class="vdt15">domaine : '+obj.domaine+'</span>'+
+                                    '<span class="vdt15">Compétences : '+obj.salaire+'</span><br>'+
+                                    '<span class="vdt15">Description : '+obj.description+'</span>'+
+                                    '</div>'+
+                                    '<div class="tutor_cate">Salaire : '+obj.diplome+'</div>'+
+                                    '<a href="#"> '+obj.cv+'</a>'+
+                                    '</div>'+
+                                    '</div>'+
+
+
+                                    '</div>');
+                            });
+                        }
+                        else
+                        {
+                            $('#t div#all').show();
+                            $('#t div#search').empty();
+                            $('#t div#search').fadeIn('fast');
+                        }
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
 <script src='{{ asset("js/vertical-responsive-menu.min.js") }}'></script>
 <script src='{{ asset("js/jquery-3.3.1.min.js") }}'></script>
 <script src='{{ asset("vendor/bootstrap/js/bootstrap.bundle.min.js") }}'></script>

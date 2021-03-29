@@ -34,6 +34,35 @@ return $this->createQueryBuilder('d')
             ->getQuery()->getResult();
 
     }
+
+    public function countNb_demandes(){
+        return $this->createQueryBuilder('d')
+
+
+            ->Select('COUNT(d.id)')
+
+
+            // ->andWhere('e.NomProjet= :val')
+            //->setParameter('val', $id)
+
+            ->getQuery()
+
+            ->getSingleScalarResult();
+    }
+
+
+
+
+
+    public function searchDomaine($domaine){
+        return $this->createQueryBuilder('demande')
+            ->where('demande.domaine = :domaine')
+            ->setParameter('domaine',$domaine)
+            ->getQuery()
+            ->getResult();
+
+
+    }
     // /**
     //  * @return DemandeEmploi[] Returns an array of DemandeEmploi objects
     //  */

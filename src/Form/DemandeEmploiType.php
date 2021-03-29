@@ -33,22 +33,7 @@ class DemandeEmploiType extends AbstractType
                 ]
 
             )
-            ->add('dateCreation',TextType::class,[
-                    'attr'=>[
-                        'required'   => true,
-                        'placeholder'=>'Date de creation',
-                        'class'=>'prompt srch_explore',
-                        'name'=>'dateCreation',
-                        'id'=>'id_date',
-                        'maxlength'=>'64',
-                    ]
-
-]
-
-
-
-
-            )
+         
             ->add('domaine',TextType::class,[
 
 
@@ -120,8 +105,8 @@ class DemandeEmploiType extends AbstractType
             )
 
             ->add('Envoyer', SubmitType::class,[
-                'attr' => ['class' => 'envoyer-btn',
-                'class'=>'prompt srch_explore']
+                'attr' => [
+                'class'=>'class="btn btn-danger"']
             ]);
 
     }

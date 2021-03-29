@@ -87,7 +87,8 @@
         <div class="header_right">
             <ul>
                 <li>
-                    <a href="/addEmploi" class="upload_btn">Create New Course</a>
+                    <a href="/addStage" class="upload_btn">Créer un offre de stage</a>
+                    <a href="/addStage" class="upload_btn">Créer un offre d'emploi</a>
                 </li>
                 <li>
                     <a href="index.html" class="option_links"><i class='uil uil-home-alt'></i><span class="noti_count">9+</span></a>
@@ -512,6 +513,7 @@
                                     <div class="_htg451">
                                         <div class="_htg452">
                                             <div class="col-lg-12 col-md-12">
+
                                                 <div class="table-responsive mt-50 mb-0">
                                                     <table class="table ucp-table">
                                                         <thead class="thead-s">
@@ -527,6 +529,7 @@
                                                         </tr>
                                                         </thead>
                                                         <tbody>
+
                                                         {% for i in l %}
                                                             <tr>
 
@@ -535,7 +538,7 @@
                                                                 <td class="text-center">{{ i.description }}</td>
                                                                 <td class="text-center">{{ i.domaine }}</td>
                                                                 <td class="text-center">{{ i.salaire }}</td>
-                                                                <td class="text-center"><a href="#">{{ i.fichier }}</a></td>
+                                                                <td class="text-center"><a href="/pdf">{{ i.fichier }}</a></td>
                                                                 <td class="text-center">
                                                                     <a href="{{ path('editEmploi', {'id': i.id}) }}" title="Edit" class="gray-s"><i class="uil uil-edit-alt"></i></a>
                                                                     <a href="{{ path('deleteEmploi', {'id': i.id}) }}" title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a>
@@ -543,10 +546,25 @@
 
                                                             </tr>
                                                         {% endfor %}
-
+                                                        <tr><th><p style="color:blue"> le nombre des offres d'emploi :	 {{c}} </p></th><th><a class="btn btn-success" href="{{ path('listh') }}">Créer PDF</a></th></tr>
                                                         </tbody>
                                                     </table>
+
                                                 </div>
+                                            </div>
+                                            <div class="navigation" style="margin-left:40%">
+                                                {{ knp_pagination_render(
+                                                    l,
+                                                    '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig',
+                                                    {
+                                                        'queryParam1': 'param1 value',
+                                                        'queryParam2': 'param2 value'
+                                                    },
+                                                    {
+                                                        'viewParam1': 'param1 value',
+                                                        'viewParam2': 'param2 value'
+                                                    },
+                                                ) }}
                                             </div>
 
                                             <div class="col-lg-12 col-md-12">
@@ -1081,13 +1099,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <ul class="fotb_left">
-                                        <li>
-                                            <a href="index.html">
-                                                <div class="footer_logo">
-                                                    <img src="images/logo1.svg" alt="">
-                                                </div>
-                                            </a>
-                                        </li>
+
                                         <li>
                                             <p>© 2020 <strong>Cursus</strong>. All Rights Reserved.</p>
                                         </li>

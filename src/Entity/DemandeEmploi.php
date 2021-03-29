@@ -52,12 +52,9 @@ class DemandeEmploi
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @Assert\Type(
-     *     type="string",
-     *     message="The value {{ value }} is not a valid {{ type }}."
+     * @ORM\Column(type="datetime", length=255)
+
      * )
-     * @Assert\NotBlank(message="votre champs date de creation est vide")
      */
     private $dateCreation;
 
@@ -86,6 +83,11 @@ class DemandeEmploi
      */
     private $OffreEmploi;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Freelancer::class, inversedBy="demandeEmplois")
+     */
+    private $Freelancer;
+
 
 
 
@@ -95,7 +97,7 @@ class DemandeEmploi
      */
     public function __construct()
     {
-
+        $this->dateCreation = new \DateTime('now');
     }
 
 
@@ -163,12 +165,12 @@ class DemandeEmploi
         return $this;
     }
 
-    public function getDateCreation(): ?string
+    public function getDateCreation(): ?\DateTime
     {
         return $this->dateCreation;
     }
 
-    public function setDateCreation(string $dateCreation): self
+    public function setDateCreation(\DateTime $dateCreation): self
     {
         $this->dateCreation = $dateCreation;
 
@@ -202,6 +204,18 @@ class DemandeEmploi
     public function setOffreEmploi(?OffreEmploi $OffreEmploi): self
     {
         $this->OffreEmploi = $OffreEmploi;
+
+        return $this;
+    }
+
+    public function getFreelancer(): ?Freelancer
+    {
+        return $this->Freelancer;
+    }
+
+    public function setFreelancer(?Freelancer $Freelancer): self
+    {
+        $this->Freelancer = $Freelancer;
 
         return $this;
     }

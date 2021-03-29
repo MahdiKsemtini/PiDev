@@ -3,12 +3,16 @@
 namespace App\Form;
 
 use App\Entity\DemandeStage;
+
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class DemandeStageType extends AbstractType
 {
@@ -31,27 +35,12 @@ class DemandeStageType extends AbstractType
                 ]
 
             )
-            ->add('dateCreation',TextType::class,[
-                    'attr'=>[
-                        'required'   => true,
-                        'placeholder'=>'Date de creation',
-                        'class'=>'prompt srch_explore',
-                        'name'=>'dateCreation',
-                        'id'=>'id_date',
-                        'maxlength'=>'64',
-                    ]
 
-                ]
-
-
-
-
-            )
             ->add('domaine',TextType::class,[
 
 
                     'attr'=>[
-                        'required'   => true,
+                        'required'   => false,
                         'placeholder'=>'Domaine',
                         'class'=>'prompt srch_explore',
                         'name'=>'domaine',
@@ -66,7 +55,7 @@ class DemandeStageType extends AbstractType
 
 
                     'attr'=>[
-                        'required'   => true,
+                        'required'   => false,
                         'placeholder'=>'Nom societe',
                         'class'=>'prompt srch_explore',
                         'name'=>'nom_societe',
@@ -127,10 +116,11 @@ class DemandeStageType extends AbstractType
                 ]
 
             )
+
             ->add('Envoyer', SubmitType::class,[
-                'attr' => ['class' => 'envoyer-btn'],
+                'attr' => [
+                    'class'=>'class="btn btn-danger"']
             ]);
-        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -61,11 +61,8 @@ class DemandeStage
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * * @Assert\NotBlank(message="votre datedecreation est vide")
-     *@Assert\Type(
-     *     type="string",
-     *     message="The value {{ value }} is not a valid {{ type }}."
+     * @ORM\Column(type="datetime", length=255)
+
      * )
      */
     private $dateCreation;
@@ -91,12 +88,22 @@ class DemandeStage
     private $nom_societe;
 
     /**
+     * @ORM\ManyToOne(targetEntity=OffreStage::class, inversedBy="demandeStages")
+     */
+    private $OffreStage;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Freelancer::class, inversedBy="demandeStages")
+     */
+    private $Freelancer;
+
+    /**
      * DemandeStage constructor.
 
      */
     public function __construct()
     {
-
+        $this->dateCreation = new \DateTime('now');
     }
 
 
@@ -160,12 +167,12 @@ class DemandeStage
         return $this;
     }
 
-    public function getDateCreation(): ?string
+    public function getDateCreation(): ?\DateTime
     {
         return $this->dateCreation;
     }
 
-    public function setDateCreation(string $dateCreation): self
+    public function setDateCreation(\DateTime $dateCreation): self
     {
         $this->dateCreation = $dateCreation;
 
@@ -192,6 +199,30 @@ class DemandeStage
     public function setNomSociete(string $nom_societe): self
     {
         $this->nom_societe = $nom_societe;
+
+        return $this;
+    }
+
+    public function getOffreStage(): ?OffreStage
+    {
+        return $this->OffreStage;
+    }
+
+    public function setOffreStage(?OffreStage $OffreStage): self
+    {
+        $this->OffreStage = $OffreStage;
+
+        return $this;
+    }
+
+    public function getFreelancer(): ?Freelancer
+    {
+        return $this->Freelancer;
+    }
+
+    public function setFreelancer(?Freelancer $Freelancer): self
+    {
+        $this->Freelancer = $Freelancer;
 
         return $this;
     }

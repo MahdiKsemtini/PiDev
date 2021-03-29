@@ -75,12 +75,49 @@ class Freelancer
      */
     private $societe;
 
+    /**
+     * @ORM\OneToMany(targetEntity=DemandeEmploi::class, mappedBy="Freelancer")
+     */
+    private $demandeEmplois;
+
+    /**
+     * @ORM\OneToMany(targetEntity=DemandeStage::class, mappedBy="Freelancer")
+     */
+    private $demandeStages;
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $compte_facebook;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $compte_linkedin;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $compte_twitter;
+
+
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $viewsNb;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $etat;
 
 
     public function __construct()
     {
         $this->societe = new ArrayCollection();
         $this->demandes = new ArrayCollection();
+        $this->demandeEmplois = new ArrayCollection();
+        $this->demandeStages = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -111,12 +148,7 @@ class Freelancer
         return $this->adresse;
     }
 
-    public function setAdresse(string $adresse): self
-    {
-        $this->adresse = $adresse;
 
-        return $this;
-    }
 
     public function getEmail(): ?string
     {
@@ -138,6 +170,13 @@ class Freelancer
     public function setMotDePasse(string $mot_de_passe): self
     {
         $this->mot_de_passe = $mot_de_passe;
+
+        return $this;
+    }
+
+    public function setAdresse(string $adresse): self
+    {
+        $this->adresse = $adresse;
 
         return $this;
     }
@@ -207,9 +246,75 @@ class Freelancer
         return $this->comptes_reseaux_sociaux;
     }
 
+
+    public function getViewsNb(): ?string
+    {
+        return 5;
+    }
+
     public function setComptesReseauxSociaux(string $comptes_reseaux_sociaux): self
     {
         $this->comptes_reseaux_sociaux = $comptes_reseaux_sociaux;
+
+        return $this;
+    }
+
+
+    public function setCompteFacebook(string $compte_facebook): self
+    {
+        $this->compte_facebook = $compte_facebook;
+
+        return $this;
+    }
+
+    public function getCompteLinkedin(): ?string
+    {
+        return $this->compte_linkedin;
+    }
+
+    public function getCompteFacebook(): ?string
+    {
+        return $this->compte_facebook;
+    }
+
+    public function setCompteLinkedin(string $compte_linkedin): self
+    {
+        $this->compte_linkedin = $compte_linkedin;
+
+        return $this;
+    }
+
+    public function getCompteTwitter(): ?string
+    {
+        return $this->compte_twitter;
+    }
+
+    public function setCompteTwitter(string $compte_twitter): self
+    {
+        $this->compte_twitter = $compte_twitter;
+
+        return $this;
+    }
+
+
+    public function setViewsNb(int $viewsNb): self
+    {
+        $this->viewsNb = $viewsNb;
+
+        return $this;
+    }
+
+
+
+
+    public function getEtat(): ?int
+    {
+        return $this->etat;
+    }
+
+    public function setEtat(int $etat): self
+    {
+        $this->etat = $etat;
 
         return $this;
     }
@@ -238,30 +343,62 @@ class Freelancer
         return $this;
     }
 
+
+
     /**
-     * @return Collection|Demande[]
+     * @return Collection|DemandeEmploi[]
      */
-    public function getDemandes(): Collection
+    public function getDemandeEmplois(): Collection
     {
-        return $this->demandes;
+        return $this->demandeEmplois;
     }
 
-    public function addDemande(Demande $demande): self
+    public function addDemandeEmploi(DemandeEmploi $demandeEmploi): self
     {
-        if (!$this->demandes->contains($demande)) {
-            $this->demandes[] = $demande;
-            $demande->setIdUser($this);
+        if (!$this->demandeEmplois->contains($demandeEmploi)) {
+            $this->demandeEmplois[] = $demandeEmploi;
+            $demandeEmploi->setFreelancer($this);
         }
 
         return $this;
     }
 
-    public function removeDemande(Demande $demande): self
+    public function removeDemandeEmploi(DemandeEmploi $demandeEmploi): self
     {
-        if ($this->demandes->removeElement($demande)) {
+        if ($this->demandeEmplois->removeElement($demandeEmploi)) {
             // set the owning side to null (unless already changed)
-            if ($demande->getIdUser() === $this) {
-                $demande->setIdUser(null);
+            if ($demandeEmploi->getFreelancer() === $this) {
+                $demandeEmploi->setFreelancer(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|DemandeStage[]
+     */
+    public function getDemandeStages(): Collection
+    {
+        return $this->demandeStages;
+    }
+
+    public function addDemandeStage(DemandeStage $demandeStage): self
+    {
+        if (!$this->demandeStages->contains($demandeStage)) {
+            $this->demandeStages[] = $demandeStage;
+            $demandeStage->setFreelancer($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDemandeStage(DemandeStage $demandeStage): self
+    {
+        if ($this->demandeStages->removeElement($demandeStage)) {
+            // set the owning side to null (unless already changed)
+            if ($demandeStage->getFreelancer() === $this) {
+                $demandeStage->setFreelancer(null);
             }
         }
 

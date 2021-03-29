@@ -18,7 +18,27 @@ class DemandeStageRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, DemandeStage::class);
     }
+    public function findDemandesByOne($q){
 
+        $qd=$this->createQueryBuilder('u');
+        $qd
+            ->addSelect('u.type')
+            ->addSelect('u.duree')
+            ->addSelect('u.description')
+            ->addSelect('u.domaine')
+            ->addSelect('u.etude')
+
+            ->innerJoin('u.Freelancer','c')
+            ->where('c.id = : :val')
+
+
+            ->setParameter('val', $q)
+            ->getQuery()
+            ->getResult();
+
+
+
+    }
     // /**
     //  * @return DemandeStage[] Returns an array of DemandeStage objects
     //  */
@@ -36,7 +56,7 @@ class DemandeStageRepository extends ServiceEntityRepository
     }
     */
 
-    /*
+
     public function findOneBySomeField($value): ?DemandeStage
     {
         return $this->createQueryBuilder('d')
@@ -46,5 +66,5 @@ class DemandeStageRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-    */
+
 }

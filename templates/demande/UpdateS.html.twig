@@ -108,9 +108,9 @@
                         <div class="course_tabs">
                             <nav>
                                 <div class="nav nav-tabs tab_crse" id="nav-tab" role="tablist">
-                                    <a class="nav-item nav-link active" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-selected="true">About</a>
-                                    <a class="nav-item nav-link" id="nav-courses-tab" data-toggle="tab" href="#nav-courses" role="tab" aria-selected="false">Demande de Stage</a>
-                                    <a class="nav-item nav-link" id="nav-purchased-tab" data-toggle="tab" href="#nav-purchased" role="tab" aria-selected="false">Demande d'emploi</a>
+
+                                    <a class="nav-item nav-link" id="nav-courses-tab" data-toggle="tab" href="#nav-courses" role="tab" aria-selected="false">Demande de d'emploi</a>
+                                    <a class="nav-item nav-link active" id="nav-purchased-tab" data-toggle="tab" href="#nav-purchased" role="tab" aria-selected="true">Demande de stage</a>
 
                                 </div>
                             </nav>
@@ -125,59 +125,10 @@
                     <div class="col-lg-12">
                         <div class="course_tab_content">
                             <div class="tab-content" id="nav-tabContent">
-                                <div class="tab-pane fade show active" id="nav-about" role="tabpanel">
-                                    <div class="_htg451">
-                                        <div class="_htg452">
-                                            <h3>About Me</h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum scelerisque nibh sed ligula blandit, quis faucibus lorem pellentesque. Suspendisse pulvinar dictum pellentesque. Vestibulum at sagittis lectus, sit amet aliquam turpis. In quis elit tempus, semper justo vitae, lacinia massa. Etiam sagittis quam quis fermentum lacinia. Curabitur blandit sapien et risus congue viverra. Mauris auctor risus sit amet cursus sollicitudin. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla feugiat sodales massa, in viverra dolor condimentum ut. In imperdiet, justo nec volutpat blandit, tellus justo tempor quam, sed pretium nibh nunc nec mauris. Mauris vel malesuada magna. Quisque iaculis molestie purus, non luctus mauris porta id. Maecenas imperdiet tincidunt mauris vestibulum vulputate. Aenean sollicitudin pretium nibh, et sagittis risus tincidunt ac. Phasellus scelerisque rhoncus massa, ac euismod massa pharetra non. Phasellus dignissim, urna in iaculis varius, turpis libero mollis velit, sit amet euismod arcu mi ac nibh. Praesent tincidunt eros at ligula pellentesque elementum. Fusce condimentum enim a tellus egestas, sit amet rutrum elit gravida. Pellentesque in porta sapien. Fusce tristique maximus ipsum et mollis. Sed at massa ac est dapibus vulputate at eu nibh.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="nav-courses" role="tabpanel">
-                                    <div class="_htg451">
-                                        <div class="_htg452">
-                                            <h3>Les Demandes de stage evnvoyer!</h3>
-                                            <form {{ form_start(form2,{'attr':{'novalidate':'novalidate'}}) }}>
 
 
-                                                {{ form_widget(form2.description) }}
-                                                {{ form_errors(form2.description) }}
-
-
-
-                                                {{ form_widget(form2.dateCreation) }}
-                                                {{ form_errors(form2.dateCreation) }}
-
-
-
-                                                {{ form_widget(form2.domaine) }}
-                                                {{ form_errors(form2.domaine) }}
-
-                                                {{ form_widget(form2.nomsociete) }}
-                                                {{ form_errors(form2.nomsociete) }}
-
-
-                                                {{ form_widget(form2.type) }}
-                                                {{ form_errors(form2.type) }}
-
-                                                {{ form_widget(form2.duree) }}
-                                                {{ form_errors(form2.duree) }}
-
-                                                {{ form_widget(form2.etude) }}
-                                                {{ form_errors(form2.etude) }}
-
-
-
-                                                {{ form_widget(form2.Envoyer) }}
-
-                                                {{ form_rest(form2) }}
-
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade show" id="nav-purchased" role="tabpanel">
-                                    <h3>Les Demande D'emploi evnvoyer!</h3>
+                                <div class="tab-pane fade show active" id="nav-purchased" role="tabpanel">
+                                    <h3>Updating demande!</h3>
 
                                     <div class="_htg451">
                                         <div class="_htg452">
@@ -186,7 +137,40 @@
                                             <div class="row">
 
 
+                                                <form {{ form_start(form2,{'attr':{'novalidate':'novalidate'}}) }}>
 
+
+                                                    {{ form_widget(form2.description) }}
+                                                    {{ form_errors(form2.description) }}
+
+
+
+
+
+
+
+                                                    {{ form_widget(form2.domaine) }}
+                                                    {{ form_errors(form2.domaine) }}
+
+
+
+
+                                                    {{ form_widget(form2.type) }}
+                                                    {{ form_errors(form2.type) }}
+
+                                                    {{ form_widget(form2.etude) }}
+                                                    {{ form_errors(form2.etude) }}
+
+                                                    {{ form_widget(form2.duree) }}
+                                                    {{ form_errors(form2.duree) }}
+
+
+
+                                                    {{ form_widget(form2.Envoyer) }}
+
+
+
+                                                </form>
                                             </div >
 
 
