@@ -37,6 +37,8 @@ class ReponseCondidat
      */
     private $listReponsesCondidat;
 
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -74,6 +76,18 @@ class ReponseCondidat
     public function setListReponsesCondidat(?ListReponsesCondidat $listReponsesCondidat): self
     {
         $this->listReponsesCondidat = $listReponsesCondidat;
+
+        return $this;
+    }
+
+    public function getIdFreelancer(): ?string
+    {
+        return $this->id_freelancer;
+    }
+
+    public function setIdFreelancer(string $id_freelancer): self
+    {
+        $this->id_freelancer = $id_freelancer;
 
         return $this;
     }

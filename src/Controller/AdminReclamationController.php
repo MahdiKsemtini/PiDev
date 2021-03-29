@@ -13,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Component\Pager\PaginatorInterface;
 
 class AdminReclamationController extends AbstractController
 {
@@ -41,7 +42,7 @@ class AdminReclamationController extends AbstractController
     /**
      * @Route("/admin/reclamation", name="admin_reclamation")
      */
-    public function index(AdminReclamationRepository $adminReclamationRepository, ReclamationRepository $reclamationRepository): Response
+    public function index(PaginatorInterface $paginator, Request $request,AdminReclamationRepository $adminReclamationRepository, ReclamationRepository $reclamationRepository): Response
     {
 
         /*$list = $adminReclamationRepository->findBy(array('id_A_R'=> 1));
@@ -53,6 +54,14 @@ class AdminReclamationController extends AbstractController
             $listReclamation = $reclamationRepository->find($id);
         }*/
         $listReclamation=$reclamationRepository->findAll();
+        $listReclamation = $paginator->paginate(
+        // Doctrine Query, not results
+            $listReclamation,
+            // Define the page parameter
+            $request->query->getInt('page', 1),
+            // Items per page
+            5
+        );
         return $this->render('admin_reclamation/index.html.twig', [
 
             'listeReclamation'=>$listReclamation
@@ -87,7 +96,7 @@ class AdminReclamationController extends AbstractController
 
     }
 
-    public function ReclamationToAdmin(AdminRepository $adminRepository , $IdReclamtion, Freelancer $freelancer)
+    public function ReclamationToAdmin(AdminRepository $adminRepository , $IdReclamtion, Freelancer $freelancer,ReclamationRepository $reclamationRepository)
     {
         $list = $adminRepository->findBy(array('type'=>'Admin des reclamations', 'etat'=>1));
 
@@ -100,7 +109,7 @@ class AdminReclamationController extends AbstractController
             $adminReclamation->setIdReclamation($IdReclamtion);
             $em->persist($adminReclamation);
             $em->flush();
-            $this->notify_creation->notify($freelancer->getEmail(),$l->getLogin());
+            $this->notify_creation->notify($freelancer->getEmail(),$l->getLogin(),$IdReclamtion,$reclamationRepository);
         }
     }
 }

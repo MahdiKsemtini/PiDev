@@ -29,6 +29,8 @@ class ListReponsesCondidat
      */
     private $quiz;
 
+
+
     public function __construct()
     {
         $this->reponses = new ArrayCollection();
@@ -80,4 +82,5 @@ class ListReponsesCondidat
 
         return $this;
     }
+
 }

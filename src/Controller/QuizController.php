@@ -31,9 +31,9 @@ class QuizController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="quiz_new", methods={"GET","POST"})
+     * @Route("/new/{id}", name="quiz_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, $id): Response
     {
         $quiz = new Quiz();
         $form = $this->createForm(QuizType::class, $quiz);
@@ -41,6 +41,7 @@ class QuizController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $quiz->setIdSociete($id);
             $entityManager->persist($quiz);
             $entityManager->flush();
 
@@ -92,7 +93,7 @@ class QuizController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-                return $this->redirectToRoute('quiz_show', ['id' => $quiz->getId()]);
+            return $this->redirectToRoute('quiz_show', ['id' => $quiz->getId()]);
 
 
         }
@@ -108,9 +109,9 @@ class QuizController extends AbstractController
      */
     public function delete(Request $request, Quiz $quiz): Response
     {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($quiz);
-            $entityManager->flush();
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($quiz);
+        $entityManager->flush();
 
 
         return $this->render('home/index.html.twig');

@@ -46,6 +46,11 @@ class Quiz
      */
     private $listReponsesCondidats;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $id_societe;
+
     public function __construct()
     {
         $this->questions = new ArrayCollection();
@@ -142,6 +147,18 @@ class Quiz
                 $listReponsesCondidat->setQuiz(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getIdSociete(): ?string
+    {
+        return $this->id_societe;
+    }
+
+    public function setIdSociete(string $id_societe): self
+    {
+        $this->id_societe = $id_societe;
 
         return $this;
     }
