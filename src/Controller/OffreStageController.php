@@ -50,16 +50,16 @@ class OffreStageController extends AbstractController
 
 
 
-            $NonApprouve = $stageRepository->countOffreStageNonApprouve();
+            //$NonApprouve = $stageRepository->countOffreStageNonApprouve();
 
             $admins = $adminRepository->findBy(array('type'=>'Admin des emplois'));
 
-            foreach ($NonApprouve as $count) {
+
                 foreach ($admins as $admin) {
-                    $adminRepository->find($admin->getId())->setNonapprouve(((integer)$count['count']) + 1);
+                    $admin->setNonapprouve($admin->getNonapprouve() + 1);
 
                 }
-            }
+
 
 
 

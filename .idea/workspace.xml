@@ -21,28 +21,18 @@
   <component name="ChangeListManager">
     <list default="true" id="8536dbc3-61f5-4edd-a3f8-2ef114c64d86" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/dev/web_profiler.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/dev/web_profiler.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210325150239.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210325150908.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210325163350.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20210325194549.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210326112239.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20210328124852.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/AdminEmploiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminEmploiController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AdminReclamationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminReclamationController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/OffreEmploiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/OffreEmploiController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/OffreStageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/OffreStageController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/StatController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/StatController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/SuperAdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SuperAdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/OffreStage.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/OffreStage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/AdminFormType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/AdminFormType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/StageType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/StageType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/AdminEmploi.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/AdminEmploi.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Notifications/CreationCompteNotification.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Notifications/CreationCompteNotification.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/AdminEmploiRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/AdminEmploiRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/AdminRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/AdminRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/OffreEmploiRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/OffreEmploiRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin_emploi/ShowDoneEmploi.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin_emploi/ShowDoneEmploi.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin_emploi/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin_emploi/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/super_admin/aaa.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/super_admin/aaa.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/stat/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/stat/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/super_admin/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/super_admin/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -273,7 +263,10 @@
       <workItem from="1616788159722" duration="518000" />
       <workItem from="1616792751172" duration="5724000" />
       <workItem from="1616849566863" duration="12469000" />
-      <workItem from="1616934014117" duration="10515000" />
+      <workItem from="1616934014117" duration="11303000" />
+      <workItem from="1616957503487" duration="7477000" />
+      <workItem from="1617019024302" duration="19723000" />
+      <workItem from="1617104940717" duration="8768000" />
     </task>
     <servers />
   </component>
@@ -297,14 +290,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="515" y="214" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1616792841751" />
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1616940947503">
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1617055099287">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1616940947503" />
+    <state x="499" y="167" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1617055099287" />
     <state x="545" y="325" key="ComposerInitDialogKey" timestamp="1616624538378">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="545" y="325" key="ComposerInitDialogKey/0.0.1536.824@0.0.1536.824" timestamp="1616624538378" />
+    <state x="585" y="135" key="NewPhpClassDialog" timestamp="1617038290117">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="585" y="135" key="NewPhpClassDialog/0.0.1536.824@0.0.1536.824" timestamp="1617038290117" />
+    <state x="604" y="336" key="NewPhpFileDialog" timestamp="1617038623219">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="604" y="336" key="NewPhpFileDialog/0.0.1536.824@0.0.1536.824" timestamp="1617038623219" />
     <state width="498" height="446" key="SwitcherDM" timestamp="1616773322023">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -313,10 +314,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="478" y="145" width="589" height="534" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1616687130122" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1616687783432">
+    <state x="425" y="187" key="run.anything.popup" timestamp="1617046699582">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1616687783432" />
+    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1617046699582" />
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1616850901251">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

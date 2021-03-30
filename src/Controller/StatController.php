@@ -459,6 +459,178 @@ class StatController extends AbstractController
 
 
 
+        //statestique pour nombre des demande d'emploi et Stage par mois
+
+        //count des demande d'emploi
+        $nbDemandeEmploi = $demandeEmploiRepository->countDemandeEmploi();
+        $countDemandeEmploi=0;
+        foreach ($nbDemandeEmploi as $Arraydemandeemploi){
+            $countDemandeEmploi = $Arraydemandeemploi['count'];
+        }
+
+        //count des offre de stage
+        $nbDemandeStage = $demandeStageRepository->countdemandeStage();
+        $countDemandeStage=0;
+        foreach ($nbDemandeStage as $Arraydemandestage){
+            $countDemandeStage = $Arraydemandestage['count'];
+        }
+
+        //Somme des deux count
+        $countDemande = $countDemandeEmploi+$countDemandeStage;
+
+        //Count des offre d'emploi par mois
+
+        $demandeemploiParMois = $demandeEmploiRepository->DemandeEmploiParMois();
+
+        $DemandeEmploijanvier =0;
+        $DemandeEmploifevrier = 0;
+        $DemandeEmploimars = 0;
+        $DemandeEmploiavril = 0;
+        $DemandeEmploimai = 0;
+        $DemandeEmploijuin = 0;
+        $DemandeEmploijuillet = 0;
+        $DemandeEmploiaout = 0;
+        $DemandeEmploiseptemebre = 0;
+        $DemandeEmploioctobre = 0;
+        $DemandeEmploinovembre = 0;
+        $DemandeEmploidecembre = 0;
+        foreach ($demandeemploiParMois as $countdemandeEmploi)
+        {
+            if ($countdemandeEmploi['mois'] == '1')
+            {
+                $DemandeEmploijanvier = $countdemandeEmploi['count'];
+            }
+            if ($countdemandeEmploi['mois'] == '2')
+            {
+                $DemandeEmploifevrier = $countdemandeEmploi['count'];
+            }
+            if ($countdemandeEmploi['mois'] == '3')
+            {
+                $DemandeEmploimars = $countdemandeEmploi['count'];
+            }
+            if ($countdemandeEmploi['mois'] == '4')
+            {
+                $DemandeEmploiavril = $countdemandeEmploi['count'];
+            }
+            if ($countdemandeEmploi['mois'] == '5')
+            {
+                $DemandeEmploimai = $countdemandeEmploi['count'];
+            }
+            if ($countdemandeEmploi['mois'] == '6')
+            {
+                $DemandeEmploijuin = $countdemandeEmploi['count'];
+            }
+            if ($countdemandeEmploi['mois'] == '7')
+            {
+                $DemandeEmploijuillet= $countdemandeEmploi['count'];
+            }
+            if ($countdemandeEmploi['mois'] == '8')
+            {
+                $DemandeEmploiaout = $countdemandeEmploi['count'];
+            }
+            if ($countdemandeEmploi['mois'] == '9')
+            {
+                $DemandeEmploiseptemebre = $countdemandeEmploi['count'];
+            }
+            if ($countdemandeEmploi['mois'] == '10')
+            {
+                $DemandeEmploioctobre = $countdemandeEmploi['count'];
+            }
+            if ($countdemandeEmploi['mois'] == '11')
+            {
+                $DemandeEmploinovembre = $countdemandeEmploi['count'];
+            }
+            if ($countdemandeEmploi['mois'] == '12')
+            {
+                $DemandeEmploidecembre = $countdemandeEmploi['count'];
+            }
+        }
+
+        //Data des offre d'emploi pour javaScript
+        $DemandeEmploiScript = "data: [".$DemandeEmploijanvier.",".$DemandeEmploifevrier.",".$DemandeEmploimars.",".$DemandeEmploiavril.",".$DemandeEmploimai.",".$DemandeEmploijuin.",".$DemandeEmploijuillet.",
+        ".$DemandeEmploiaout.",".$DemandeEmploiseptemebre.",".$DemandeEmploioctobre.",".$DemandeEmploinovembre.",".$DemandeEmploidecembre."]";
+
+
+
+        //statestique pour nombre des demande de stage par mois
+
+
+
+
+        //Count des demande d'emploi par mois
+
+        $demandestageParMois = $demandeStageRepository->DemandeStageParMois();
+
+        $DemandeStagejanvier =0;
+        $DemandeStagefevrier = 0;
+        $DemandeStagemars = 0;
+        $DemandeStageavril = 0;
+        $DemandeStagemai = 0;
+        $DemandeStagejuin = 0;
+        $DemandeStagejuillet = 0;
+        $DemandeStageaout = 0;
+        $DemandeStageseptemebre = 0;
+        $DemandeStageoctobre = 0;
+        $DemandeStagenovembre = 0;
+        $DemandeStagedecembre = 0;
+        foreach ($demandestageParMois as $countdemandeStage)
+        {
+            if ($countdemandeStage['mois'] == '1')
+            {
+                $DemandeStagejanvier = $countdemandeStage['count'];
+            }
+            if ($countdemandeStage['mois'] == '2')
+            {
+                $DemandeStagefevrier = $countdemandeStage['count'];
+            }
+            if ($countdemandeStage['mois'] == '3')
+            {
+                $DemandeStagemars = $countdemandeStage['count'];
+            }
+            if ($countdemandeStage['mois'] == '4')
+            {
+                $DemandeStageavril = $countdemandeStage['count'];
+            }
+            if ($countdemandeStage['mois'] == '5')
+            {
+                $DemandeStagemai = $countdemandeStage['count'];
+            }
+            if ($countdemandeStage['mois'] == '6')
+            {
+                $DemandeStagejuin = $countdemandeStage['count'];
+            }
+            if ($countdemandeStage['mois'] == '7')
+            {
+                $DemandeStagejuillet= $countdemandeStage['count'];
+            }
+            if ($countdemandeStage['mois'] == '8')
+            {
+                $DemandeStageaout = $countdemandeStage['count'];
+            }
+            if ($countdemandeStage['mois'] == '9')
+            {
+                $DemandeStageseptemebre = $countdemandeStage['count'];
+            }
+            if ($countdemandeStage['mois'] == '10')
+            {
+                $DemandeStageoctobre = $countdemandeStage['count'];
+            }
+            if ($countdemandeStage['mois'] == '11')
+            {
+                $DemandeStagenovembre = $countdemandeStage['count'];
+            }
+            if ($countdemandeStage['mois'] == '12')
+            {
+                $countdemandeStage = $countdemandeStage['count'];
+            }
+        }
+
+        //Data des offre d'emploi pour javaScript
+        $DemandeStageScript = "data: [".$DemandeStagejanvier.",".$DemandeStagefevrier.",".$DemandeStagemars.",".$DemandeStageavril.",".$DemandeStagemai.",".$DemandeStagejuin.",".$DemandeStagejuillet.",
+        ".$DemandeStageaout.",".$DemandeStageseptemebre.",".$DemandeStageoctobre.",".$DemandeStagenovembre.",".$DemandeStagedecembre."]";
+
+
+
         return $this->render('stat/index.html.twig', [
 
             'nbReclamation'=>$countRec,
@@ -466,11 +638,16 @@ class StatController extends AbstractController
             'nbOffreEmploi' =>$countOffreEmploi,
             'nbOffreStage'=>$countOffreStage,
             'nbOffre'=>$countOffre,
+            'nbDemandeEmploi'=>$countDemandeEmploi,
+            'nbDemandeStage'=>$countDemandeStage,
+            'nbDemande'=>$countDemande,
 
             'ReclamationData'=>$ReclamationScript,
             'UtilisateurData'=>$UserScript,
             'OffreEmploiData' =>$OffreEmploiScript,
-            'OffreStageData'=>$OffreStageScript
+            'OffreStageData'=>$OffreStageScript,
+            'DemandeEmploiData' =>$DemandeEmploiScript,
+            'DemandeStageData'=>$DemandeStageScript
 
 
 

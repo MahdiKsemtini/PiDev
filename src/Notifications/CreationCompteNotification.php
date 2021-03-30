@@ -4,6 +4,8 @@ namespace App\Notifications;
 
 // On importe les classes nécessaires à l'envoi d'e-mail et à twig
 
+use App\Repository\EventLoisirRepository;
+use App\Repository\FormationRepository;
 use App\Repository\OffreEmploiRepository;
 use App\Repository\OffreStageRepository;
 use App\Repository\ReclamationRepository;
@@ -119,6 +121,50 @@ class CreationCompteNotification
             ->setBody(
                 $this->renderer->render(
                     'emails/OffreStageNotification.html.twig'
+                ),
+                'text/html'
+            );
+
+        // On envoie le mail
+        $this->mailer->send($message);
+
+    }
+    public function notifyEventLoisir($emailSource,$emailDestination,$idEvent,EventLoisirRepository $eventLoisirRepository)
+    {
+
+
+        // On construit le mail
+        $message = (new Swift_Message('Mon blog - Nouvelle Evenement Détécté'))
+            // Expéditeur
+            ->setFrom($emailSource)
+            // Destinataire
+            ->setTo($emailDestination)
+            // Corps du message
+            ->setBody(
+                $this->renderer->render(
+                    'emails/EventLoisirNotification.html.twig'
+                ),
+                'text/html'
+            );
+
+        // On envoie le mail
+        $this->mailer->send($message);
+
+    }
+    public function notifyFormation($emailSource,$emailDestination,$idFormation,FormationRepository $formationRepository)
+    {
+
+
+        // On construit le mail
+        $message = (new Swift_Message('Mon blog - Nouvelle Formation détécté'))
+            // Expéditeur
+            ->setFrom($emailSource)
+            // Destinataire
+            ->setTo($emailDestination)
+            // Corps du message
+            ->setBody(
+                $this->renderer->render(
+                    'emails/FormationNotification.html.twig'
                 ),
                 'text/html'
             );

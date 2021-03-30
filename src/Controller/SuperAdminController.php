@@ -3,10 +3,20 @@
 namespace App\Controller;
 
 use App\Entity\Admin;
+use App\Entity\AdminEmploi;
+use App\Entity\AdminEvent;
+use App\Entity\AdminReclamtion;
 use App\Form\AdminFormType;
+use App\Repository\AdminEmploiRepository;
+use App\Repository\AdminEventRepository;
 use App\Repository\AdminRepository;
+use App\Repository\EventLoisirRepository;
+use App\Repository\FormationRepository;
+use App\Repository\OffreEmploiRepository;
+use App\Repository\OffreStageRepository;
 use App\Repository\ReclamationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -32,10 +42,19 @@ class SuperAdminController extends AbstractController
             'adminReclamations'=>$adminReclamations,'adminPubsEvents'=>$adminPubsEvents, 'adminEmplois'=>$adminEmplois]);
     }
 
-   /**
+    /**
      * @Route("/super/admin/CreateAdmin", name="CreateAdmin")
+     * @param Request $request
+     * @param ReclamationRepository $reclamationRepository
+     * @param OffreStageRepository $offreStageRepository
+     * @param OffreEmploiRepository $offreEmploiRepository
+     * @param EventLoisirRepository $eventLoisirRepository
+     * @param FormationRepository $formationRepository
+     * @param AdminEmploiRepository $adminEmploiRepository
+     * @param AdminEventRepository $adminEventRepository
+     * @return RedirectResponse|Response
      */
-    public function ajouterAdmin(Request $request , ReclamationRepository $reclamationRepository)
+    public function ajouterAdmin(Request $request , ReclamationRepository $reclamationRepository,OffreStageRepository $offreStageRepository,OffreEmploiRepository $offreEmploiRepository,EventLoisirRepository $eventLoisirRepository,FormationRepository $formationRepository,AdminEmploiRepository $adminEmploiRepository,AdminEventRepository $adminEventRepository)
     {
         $admin = new Admin();
         $form = $this->createForm(AdminFormType::class, $admin);
@@ -51,13 +70,153 @@ class SuperAdminController extends AbstractController
                 $admin->setEtat(0);
             }
 
+            //Count nobre de reclamation non approuve
             if ($form->getData()->getType() == 'Admin des reclamations'){
                 $nb = $reclamationRepository->countReclamtionNonApprouve();
                 foreach ($nb as $count) {
                     $admin->setNonapprouve((integer)$count['count']);
+                    if($count['count']!=0){
+                        $ListeRec = $reclamationRepository->findBy(array('etat'=>0));
+                        foreach ($ListeRec as $item) {
+                            $adminRec = new AdminReclamtion();
+                            $adminRec->setIdAR($admin->getId());
+                            $adminRec->setIdReclamtion($item->getId());
+                            $em->persist($adminRec);
+                        }
+                    }
                 }
+
             }
 
+            //Count de nombre d'offre d'emploi et de stage non approuvé
+            if ($form->getData()->getType() == 'Admin des emplois'){
+                $count1 = 0;
+                $count2 = 0;
+                $nbOffreEmploi = $offreEmploiRepository->countOffreEmploiNonApprouve();
+                foreach ($nbOffreEmploi as $countOffreEmploi) {
+                    $count1 = (integer)$countOffreEmploi['count'];
+                }
+                $nbOffreStage = $offreStageRepository->countOffreStageNonApprouve();
+                foreach ($nbOffreStage as $countOffreStage) {
+                    $count2 = (integer)$countOffreStage['count'];
+                }
+                $ListeOffreEmploi = $offreEmploiRepository->findBy(array('etat'=>0));
+                $ListeOffreStage = $offreStageRepository->findBy(array('etat'=>0));
+
+                if($count1!=0) {
+
+                    if ($count1 >= $count2) {
+                        foreach ($ListeOffreEmploi as $item) {
+                            $adminEmploi = new AdminEmploi();
+                            $adminEmploi->setIdAE($admin->getId());
+                            $adminEmploi->setIdOffreEmploi($item->getId());
+                            $em->persist($adminEmploi);
+                        }
+                        if ($count2 != 0) {
+                            $ListeadminEmploi = $adminEmploiRepository->findBy(array('id_A_E' => $admin->getId(), 'id_Offre_Stage' => null));
+                            $i = 0;
+                            foreach ($ListeadminEmploi as $item) {
+                                if ($i < $count2) {
+                                    $item->setIdOffreStage($ListeOffreStage[$i]->getId());
+                                    $i += 1;
+                                }
+                            }
+                        }
+                    }
+                }
+                if($count2!=0){
+
+                    if($count2>=$count1){
+                        foreach ($ListeOffreStage as $item){
+                            $adminEmploi = new AdminEmploi();
+                            $adminEmploi->setIdAE($admin->getId());
+                            $adminEmploi->setIdOffreStage($item->getId());
+                            $em->persist($adminEmploi);
+                        }
+                        if($count1 !=0){
+                            $ListeadminEmploi = $adminEmploiRepository->findBy(array('id_A_E'=>$admin->getId(),'id_Offre_Emploi'=>null));
+                            $i=0;
+                            foreach ($ListeadminEmploi as $item){
+                                if($i<$count1) {
+                                    $item->setIdOffreEmploi($ListeOffreEmploi[$i]->getId());
+                                    $i += 1;
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+
+
+                $nbOffre=$count1+$count2;
+                $admin->setNonapprouve($nbOffre);
+            }
+
+            //Count de nombre fe formation et evenements non approuve
+            if ($form->getData()->getType() == 'Admin des evenements'){
+                $count3 = 0;
+                $count4 = 0;
+                $nbEventLoisir = $eventLoisirRepository->countEventLoisirNonApprouve();
+                foreach ($nbEventLoisir as $countEventLoisir) {
+                    $count3 = (integer)$countEventLoisir['count'];
+                }
+                $nbFormation = $formationRepository->countFormationNonApprouve();
+                foreach ($nbFormation as $countFormation) {
+                    $count4 = (integer)$countFormation['count'];
+                }
+
+                $ListeEventLoisir = $eventLoisirRepository->findBy(array('Ztat'=>0));
+                $ListeFormation = $formationRepository->findBy(array('Etat'=>0));
+
+                if($count3!=0) {
+
+                    if ($count3 >= $count4) {
+                        foreach ($ListeEventLoisir as $item) {
+                            $adminEvent = new AdminEvent();
+                            $adminEvent->setIdAE($admin->getId());
+                            $adminEvent->setIdEventLoisir($item->getId());
+                            $em->persist($adminEvent);
+                        }
+                        if ($count4 != 0) {
+                            $ListeadminEmploi = $adminEventRepository->findBy(array('id_A_E' => $admin->getId(), 'id_Formation' => null));
+                            $i = 0;
+                            foreach ($ListeadminEmploi as $item) {
+                                if ($i < $count4) {
+                                    $item->setIdFormation($ListeFormation[$i]->getId());
+                                    $i += 1;
+                                }
+                            }
+                        }
+                    }
+                }
+                if($count4!=0){
+
+                    if($count4>=$count3){
+                        foreach ($ListeFormation as $item){
+                            $adminEvent = new AdminEvent();
+                            $adminEvent->setIdAE($admin->getId());
+                            $adminEvent->setIdFormation($item->getId());
+                            $em->persist($adminEvent);
+                        }
+                        if($count3 !=0){
+                            $ListeadminEmploi = $adminEventRepository->findBy(array('id_A_E'=>$admin->getId(),'id_Event_Loisir'=>null));
+                            $i=0;
+                            foreach ($ListeadminEmploi as $item){
+                                if($i<$count3) {
+                                    $item->setIdEventLoisir($ListeEventLoisir[$i]->getId());
+                                    $i += 1;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                $nbEvent=$count3+$count4;
+                $admin->setNonapprouve($nbEvent);
+
+
+            }
 
             $admin->setApprouve(0);
 
@@ -85,7 +244,7 @@ class SuperAdminController extends AbstractController
     /**
      * @param Request $request
      * @param $id
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     * @return RedirectResponse|Response
      * @Route ("/super/admin/UpdateAdmin/{id}" , name="UpdateAdmin")
      */
     public function UpdateAdmin(Request $request,$id)
@@ -115,7 +274,7 @@ class SuperAdminController extends AbstractController
 
     /**
      * @param $id
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @return RedirectResponse
      * @Route ("/super/admin/DeleteAdmin/{id}" , name="DeleteAdmin")
      */
     public function deleteAdmin($id)
@@ -139,7 +298,7 @@ class SuperAdminController extends AbstractController
     public function searchAdmin(Request $request,NormalizerInterface $Normalizer,AdminRepository $adminRepository)
     {
         $requestString=$request->get('searchValue');
-        $admin = $adminRepository->findAdminParNom($requestString);
+        $admin = $adminRepository->findAdminParPrenom($requestString);
         $jsonContent = $Normalizer->normalize($admin, 'json',['groups'=>'admin:read']);
         $retour=json_encode($jsonContent);
         return new Response($retour);

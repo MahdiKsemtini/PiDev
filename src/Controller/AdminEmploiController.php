@@ -30,6 +30,8 @@ class AdminEmploiController extends AbstractController
 
     /**
      * @Route("/admin/emploi", name="admin_emploi")
+     * @param PaginatorInterface $paginator
+     * @param Request $request
      * @param OffreEmploiRepository $offreEmploiRepository
      * @param OffreStageRepository $offreStageRepository
      * @return Response
@@ -37,9 +39,9 @@ class AdminEmploiController extends AbstractController
     public function index(PaginatorInterface $paginator,Request $request,OffreEmploiRepository $offreEmploiRepository,OffreStageRepository $offreStageRepository): Response
     {
 
-        $ListeOffreEmploi = $offreEmploiRepository->findAll();
-        $ListeOffreStage = $offreStageRepository->findAll();
-        /*$ListeOffreEmploi = $paginator->paginate(
+        $ListeOffreEmploi = $offreEmploiRepository->findBy(array('etat'=>0));
+        $ListeOffreStage = $offreStageRepository->findBy(array('etat'=>0));
+        $ListeOffreEmploi = $paginator->paginate(
         // Doctrine Query, not results
             $ListeOffreEmploi,
             // Define the page parameter
@@ -49,12 +51,12 @@ class AdminEmploiController extends AbstractController
         );
         $ListeOffreStage = $paginator->paginate(
         // Doctrine Query, not results
-            $ListeOffreEmploi,
+            $ListeOffreStage,
             // Define the page parameter
             $request->query->getInt('page', 1),
             // Items per page
             5
-        );*/
+        );
         return $this->render('admin_emploi/index.html.twig', [
             'Liste' => 'AdminEmploiController',
             'ListeOffreEmploi'=>$ListeOffreEmploi,
@@ -67,6 +69,7 @@ class AdminEmploiController extends AbstractController
     {
         $list = $adminRepository->findBy(array('type' => 'Admin des emplois', 'etat' => 1));
         $EntityManager = $this->getDoctrine()->getManager();
+
         foreach ($list as $l) {
             $ListeadminExiste = $adminEmploiRepository->findBy(array('id_A_E' => $l->getId(), 'id_Offre_Emploi' => null));
             if ($ListeadminExiste == null) {
@@ -96,7 +99,6 @@ class AdminEmploiController extends AbstractController
         foreach ($list as $l)
         {
             $ListeadminExiste = $adminEmploiRepository->findBy(array('id_A_E'=>$l->getId(),'id_Offre_Stage'=>null));
-            $ListeadminExiste = $adminEmploiRepository->findBy(array('id_A_E' => $l->getId(), 'id_Offre_Emploi' => null));
             if ($ListeadminExiste == null) {
                 $AdminEmploi = new AdminEmploi();
                 $AdminEmploi->setIdAE($l->getId());
@@ -267,16 +269,19 @@ class AdminEmploiController extends AbstractController
     }
 
     /**
+     * @param Request $request
+     * @param PaginatorInterface $paginator
      * @param OffreEmploiRepository $offreEmploiRepository
      * @param OffreStageRepository $offreStageRepository
      * @param AdminEmploiRepository $adminEmploiRepository
      * @param AdminRepository $adminRepository
+     * @return Response
      * @Route ("/AllEmploi" , name="AllEmploi")
      */
-    public function showEmploi(OffreEmploiRepository $offreEmploiRepository,OffreStageRepository $offreStageRepository,AdminEmploiRepository $adminEmploiRepository,AdminRepository $adminRepository){
+    public function showEmploi(Request $request,PaginatorInterface $paginator,OffreEmploiRepository $offreEmploiRepository,OffreStageRepository $offreStageRepository,AdminEmploiRepository $adminEmploiRepository,AdminRepository $adminRepository){
         //$session = $request->getSession();
         //$id = $session->get('id');
-        $id=20;
+        $id=23;
         $admin = $adminRepository->find($id);
         $ListeOffre = $adminEmploiRepository->findBy(array('id_A_E'=>$id));
         $AllOffreEmploi = [];
@@ -297,6 +302,23 @@ class AdminEmploiController extends AbstractController
                 $j+=1;
             }
         }
+
+        $AllOffreEmploi = $paginator->paginate(
+        // Doctrine Query, not results
+            $AllOffreEmploi,
+            // Define the page parameter
+            $request->query->getInt('page', 1),
+            // Items per page
+            5
+        );
+        $AllOffreStage = $paginator->paginate(
+        // Doctrine Query, not results
+            $AllOffreStage,
+            // Define the page parameter
+            $request->query->getInt('page', 1),
+            // Items per page
+            5
+        );
         return $this->render('Admin_emploi/ShowDoneEmploi.html.twig',['ListeOffreEmploi'=>$AllOffreEmploi,'ListeOffreStage'=>$AllOffreStage,'admin'=>$admin]);
     }
 

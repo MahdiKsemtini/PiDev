@@ -45,16 +45,17 @@ class OffreEmploiController extends AbstractController
             $emploi->setSociete($societe);
 
 
-            $NonApprouve = $emploiRepository->countOffreEmploiNonApprouve();
+            //$NonApprouve = $emploiRepository->countOffreEmploiNonApprouve();
 
             $admins = $adminRepository->findBy(array('type'=>'Admin des emplois'));
 
-            foreach ($NonApprouve as $count) {
+
+
                 foreach ($admins as $admin) {
-                    $adminRepository->find($admin->getId())->setNonapprouve(((integer)$count['count']) + 1);
+                    $admin->setNonapprouve($admin->getNonapprouve() + 1);
 
                 }
-            }
+
 
 
                 $em->persist($emploi);

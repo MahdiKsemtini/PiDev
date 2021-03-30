@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\AdminEmploiRepository;
+use App\Repository\AdminEventRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=AdminEmploiRepository::class)
+ * @ORM\Entity(repositoryClass=AdminEventRepository::class)
  */
-class AdminEmploi
+class AdminEvent
 {
     /**
      * @ORM\Id
@@ -25,13 +25,12 @@ class AdminEmploi
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $id_Offre_Emploi;
+    private $id_EventLoisir;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $id_Offre_Stage;
-
+    private $id_Formation;
 
     public function getId(): ?int
     {
@@ -50,28 +49,27 @@ class AdminEmploi
         return $this;
     }
 
-    public function getIdOffreEmploi(): ?int
+    public function getIdEventLoisir(): ?int
     {
-        return $this->id_Offre_Emploi;
+        return $this->id_EventLoisir;
     }
 
-    public function setIdOffreEmploi(?int $id_Offre_Emploi): self
+    public function setIdEventLoisir(?int $id_EventLoisir): self
     {
-        $this->id_Offre_Emploi = $id_Offre_Emploi;
+        $this->id_EventLoisir = $id_EventLoisir;
 
         return $this;
     }
 
-    public function getIdOffreStage(): ?int
+    public function getIdFormation(): ?int
     {
-        return $this->id_Offre_Stage;
+        return $this->id_Formation;
     }
 
-    public function setIdOffreStage(?int $id_Offre_Stage): self
+    public function setIdFormation(?int $id_Formation): self
     {
-        $this->id_Offre_Stage = $id_Offre_Stage;
+        $this->id_Formation = $id_Formation;
 
         return $this;
     }
-
 }

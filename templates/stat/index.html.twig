@@ -71,10 +71,10 @@
                     <div class="col-xl-6 col-sm-6">
                         <div class="card card-mini analysis_card">
                             <div class="card-body">
-                                <h2 class="mb-1">{{ nbOffre }}</h2>
-                                <p>Offre Emploi/Stage par mois</p>
-                                <p>Offre Emploi : {{ nbOffreEmploi }}</p>
-                                <p>Offre Stage : {{ nbOffreStage }}</p>
+                                <h2 class="mb-1">{{ nbDemande }}</h2>
+                                <p>Demande Emploi/Stage par mois</p>
+                                <p>Demande Emploi : {{ nbDemandeEmploi }}</p>
+                                <p>Demande Stage : {{ nbDemandeStage }}</p>
                                 <div class="chartjs-wrapper">
                                     <canvas id="dual-line"></canvas>
                                 </div>
@@ -85,8 +85,10 @@
                         <!-- Sales Graph -->
                         <div class="card card-mini analysis_card" >
                             <div class="card-body">
-                                <h2 class="mb-1">{{  nbOffre }}</h2>
+                                <h2 class="mb-1">{{ nbOffre }}</h2>
                                 <p>Offre Emploi/Stage par mois</p>
+                                <p>Offre Emploi : {{ nbOffreEmploi }}</p>
+                                <p>Offre Stage : {{ nbOffreStage }}</p>
                                 <div class="chartjs-wrapper">
                                     <canvas id="activity" class="chartjs"></canvas>
                                 </div>
@@ -416,7 +418,7 @@
                             backgroundColor: "transparent",
                             borderWidth: 2,
                             borderColor: "#ffc136",
-                        {{ OffreEmploiData }}
+                        {{ DemandeEmploiData }}
                         },
                         {
                             label: "Stage",
@@ -427,7 +429,7 @@
                             backgroundColor: "transparent",
                             borderWidth: 2,
                             borderColor: "#ed2a26",
-                        {{ OffreStageData }}
+                        {{ DemandeStageData }}
                         }
                     ]
                 },
