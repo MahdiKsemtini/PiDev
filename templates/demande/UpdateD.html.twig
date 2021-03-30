@@ -141,6 +141,7 @@
                                                                         <div class="ui search focus mt-30 lbel25">
 
                                                                             <div class="ui left icon input swdh19">
+                                                                                <P> Description:</P>
                                                                                 {{ form_widget(form.description) }}
                                                                                 {{ form_errors(form.description) }}
 
@@ -151,6 +152,7 @@
                                                                         <div class="ui search focus mt-30 lbel25">
 
                                                                             <div class="ui left icon input swdh19">
+                                                                                <p> Domaine :</p>
                                                                                 {{ form_widget(form.domaine) }}
                                                                                 {{ form_errors(form.domaine) }}
 
@@ -161,13 +163,11 @@
                                                                         <div class="course_des_textarea mt-30 lbel25">
 
                                                                             <div class="course_des_bg">
-                                                                                <ul class="course_des_ttle">
-                                                                                    {{ form_widget(form.domaine) }}
-                                                                                    {{ form_errors(form.domaine) }}
-                                                                                </ul>
+
                                                                                 <div class="textarea_dt">
                                                                                     <div class="ui form swdh339">
                                                                                         <div class="field">
+                                                                                            <p> Salaire:</p>
                                                                                             {{ form_widget(form.salaire) }}
                                                                                             {{ form_errors(form.salaire) }}
                                                                                         </div>
@@ -181,21 +181,20 @@
 
                                                                         </div>
                                                                         <div>
-                                                                            {{ form_widget(form.salaire) }}
-                                                                            {{ form_errors(form.salaire) }}
+
                                                                         </div>
+                                                                    </div>
+                                                                    <div class="col-lg-4 col-md-6">
+                                                                        <div class="mt-30 lbel25">
+                                                                            <p> Diplome :</p>
+                                                                            {{ form_widget(form.diplome) }}
+                                                                            {{ form_errors(form.diplome) }}
+                                                                        </div>
+
                                                                     </div>
                                                                     <div class="col-lg-4 col-md-6">
                                                                         <div class="mt-30 lbel25">
 
-                                                                        </div>
-                                                                        {{ form_widget(form.diplome) }}
-                                                                        {{ form_errors(form.diplome) }}
-                                                                    </div>
-                                                                    <div class="col-lg-4 col-md-6">
-                                                                        <div class="mt-30 lbel25">
-                                                                            {{ form_widget(form.cv) }}
-                                                                            {{ form_errors(form.cv) }}
                                                                         </div>
 
                                                                     </div>
@@ -205,6 +204,7 @@
                                                                 <div class="row">
                                                                     <div class="col-lg-12">
                                                                         <div class="price_title">
+                                                                            <p> Nom de projet </p>
                                                                             {{ form_widget(form.nomsociete) }}
                                                                             {{ form_errors(form.nomsociete) }}
                                                                         </div>
@@ -214,7 +214,7 @@
                                                                 </div>
                                                                 {{ form_widget(form.Envoyer, {'attr': {'class':'class="btn btn-danger'}}) }}
                                                             </div>
-                                                            {{ form_rest(form) }}
+
                                                         </form>
 
                                                     </div>

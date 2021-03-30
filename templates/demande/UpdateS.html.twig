@@ -109,7 +109,7 @@
                             <nav>
                                 <div class="nav nav-tabs tab_crse" id="nav-tab" role="tablist">
 
-                                    <a class="nav-item nav-link" id="nav-courses-tab" data-toggle="tab" href="#nav-courses" role="tab" aria-selected="false">Demande de d'emploi</a>
+
                                     <a class="nav-item nav-link active" id="nav-purchased-tab" data-toggle="tab" href="#nav-purchased" role="tab" aria-selected="true">Demande de stage</a>
 
                                 </div>
@@ -144,6 +144,7 @@
                                                                     <div class="ui search focus mt-30 lbel25">
 
                                                                         <div class="ui left icon input swdh19">
+                                                                            <p> Type de Stage :</p>
                                                                             {{ form_widget(form2.type) }}
                                                                             {{ form_errors(form2.type) }}
 
@@ -154,6 +155,7 @@
                                                                     <div class="ui search focus mt-30 lbel25">
 
                                                                         <div class="ui left icon input swdh19">
+                                                                            <p> Durée de Stage :</p>
                                                                             {{ form_widget(form2.duree) }}
                                                                             {{ form_errors(form2.duree) }}
 
@@ -164,13 +166,11 @@
                                                                     <div class="course_des_textarea mt-30 lbel25">
 
                                                                         <div class="course_des_bg">
-                                                                            <ul class="course_des_ttle">
-                                                                                {{ form_widget(form2.etude) }}
-                                                                                {{ form_errors(form2.etude) }}
-                                                                            </ul>
+
                                                                             <div class="textarea_dt">
                                                                                 <div class="ui form swdh339">
                                                                                     <div class="field">
+                                                                                        <p> Description :</p>
                                                                                         {{ form_widget(form2.description) }}
                                                                                         {{ form_errors(form2.description) }}
                                                                                     </div>
@@ -181,6 +181,7 @@
                                                                 </div>
                                                                 <div class="col-lg-4 col-md-12">
                                                                     <div class="mt-30 lbel25">
+                                                                        <p>Domaine :</p>
                                                                         {{ form_widget(form2.domaine) }}
                                                                         {{ form_errors(form2.domaine) }}
                                                                     </div>
@@ -190,12 +191,15 @@
                                                                 </div>
                                                                 <div class="col-lg-4 col-md-6">
                                                                     <div class="mt-30 lbel25">
-
+                                                                        <p> Votre Etude :</p>
+                                                                        {{ form_widget(form2.etude) }}
+                                                                        {{ form_errors(form2.etude) }}
                                                                     </div>
 
                                                                 </div>
                                                                 <div class="col-lg-4 col-md-6">
                                                                     <div class="mt-30 lbel25">
+                                                                        <p> Nom de projet :</p>
                                                                         {{ form_widget(form2.nomsociete) }}
                                                                         {{ form_errors(form2.nomsociete) }}
                                                                     </div>

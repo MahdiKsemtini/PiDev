@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\File;
 
 class DemandeEmploiType extends AbstractType
 {
@@ -96,13 +97,21 @@ class DemandeEmploiType extends AbstractType
                 ]
 
             )
-            ->add('cv',TextType::class,[
-                    'attr'=>[
-                        'required'   => true,
-                        'name'=>'cv',
-                ]
-                ]
-            )
+
+
+            ->add('cv', FileType::class,[
+
+                'constraints' => [
+                    new File([
+                        'maxSize' => '8000k',
+                        'mimeTypes' => [
+                            'application/pdf',
+                            'application/x-pdf',
+                        ],
+                        'mimeTypesMessage' => 'Please upload a valid PDF document',
+                    ])
+                ],
+            ])
 
             ->add('Envoyer', SubmitType::class,[
                 'attr' => [

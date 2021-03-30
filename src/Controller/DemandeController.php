@@ -41,7 +41,7 @@ class DemandeController extends AbstractController
      * @Route("/demande/{id_offre}", name="demande")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function Add_DemandeEmploi(Request $request, int $id_offre, FreelancerRepository $repository,QuizRepository $qrepo): Response
+    public function Add_DemandeEmploi(Request $request, int $id_offre, FreelancerRepository $repository): Response
     {
         $freelancer = $repository->find($this->get('session')->get('id'));
 
@@ -64,7 +64,7 @@ class DemandeController extends AbstractController
                 $freelancer->addDemandeEmploi($DemandeEmploi);
 
                 $em->flush();
-                return $this->redirectToRoute('quiz_take');
+                return $this->redirectToRoute('AfficherDemande');
 
             }
         }
@@ -209,6 +209,9 @@ class DemandeController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+
+
+
             $em = $this->getDoctrine()->getManager();
             $em->flush();
             return $this->redirectToRoute('AfficherDemande');
