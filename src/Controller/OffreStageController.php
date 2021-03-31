@@ -146,7 +146,7 @@ class OffreStageController extends AbstractController
         
             $em=$this->getDoctrine()->getRepository(OffreStage::class);
             $list=$em->findAll();
-
+            
             $list = $paginator->paginate(
                 // Doctrine Query, not results
                 $list,
