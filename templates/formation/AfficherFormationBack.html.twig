@@ -346,8 +346,8 @@
                                                                 <td class="cell-ta">{{ f.Description }}</td>
                                                                 <td class="text-center">{{ f.Domaine }}</td>
                                                                 <td class="text-center">{{ f.Lieu }}</td>
-                                                                <td class="text-center">{{ f.DateDebut|date('Y-m-d') }}</td>
-                                                                <td class="text-center">{{ f.DateFin|date('Y-m-d') }}</td>
+                                                                <td class="text-center">{{ f.DateDebut|date('Y-m-d H:i')}}</td>
+                                                                <td class="text-center">{{ f.DateFin|date('Y-m-d H:i') }}</td>
                                                                 <td class="text-center">{{ f.Montant }}</td>
 
                                                                 <td class="text-center">
@@ -731,8 +731,8 @@
                             $.each(JSON.parse(retour), function(i, obj) {
                                 $('#t tbody#all').hide();
                                 $('#t tbody#search').append('<tr><td> '+obj.Labelle+'  </td><td>    '+obj.Description+'  </td><td>'
-                                    +obj.Domaine+' </td><td>    '+obj.Lieu+'  </td><td>    '+new Date(obj.DateDebut).getFullYear()+'-'+new Date(obj.DateDebut).getMonth()+'-'+new Date(obj.DateDebut).getDate()+'</td><td>    '
-                                    +new Date(obj.DateFin).getFullYear()+'-'+new Date(obj.DateFin).getMonth()+'-'+new Date(obj.DateFin).getDate()+'  </td><td> '+obj.Montant+'  </td><td><a href="ModifierFormationBack/'+obj.id+' "title="Edit" class="gray-s"><i class="uil uil-edit-alt"></i></a><a href="deleteFormationBack/'+obj.id+' "title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a></td><td class="text-center"><a class="btn btn-success" href="participantsPDF/'+obj.id+'">Create pdf</a></td></tr>');
+                                    +obj.Domaine+' </td><td>    '+obj.Lieu+'  </td><td>   test</td><td>    '
+                                    +new Date(obj.DateFin).getFullYear()+'-'+new Date(obj.DateFin).getMonth()+'-'+new Date(obj.DateFin).getDate()+'-'+new Date(obj.DateFin).getHours()+':'+new Date(obj.DateFin).getMinutes()+'  </td><td> '+obj.Montant+'  </td><td><a href="ModifierFormationBack/'+obj.id+' "title="Edit" class="gray-s"><i class="uil uil-edit-alt"></i></a><a href="deleteFormationBack/'+obj.id+' "title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a></td><td class="text-center"><a class="btn btn-success" href="participantsPDF/'+obj.id+'">Create pdf</a></td></tr>');
                             });
                         }
                         else

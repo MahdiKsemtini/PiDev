@@ -31,19 +31,9 @@ class Formation
 
     private $Description;
 
-    /**
-     * @ORM\Column(type="date")
-     * @Assert\NotBlank(message="tt")
-     * @Groups("formation:read")
-     */
-    private $DateDebut;
 
-    /**
-     * @ORM\Column(type="date")
-     * @Assert\NotBlank(message="tt")
-     * @Groups("formation:read")
-     */
-    private $DateFin;
+
+
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -108,9 +98,28 @@ class Formation
      */
     private $idSo;
 
+    /**
+     * @ORM\Column(type="datetime")
+     * @Groups("formation:read")
+     * @Assert\GreaterThan("now",message="verrifier le date")
+     */
+    private $DateDebut;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @Assert\NotBlank(message="tt")
+     * @Groups("formation:read")
+     * @Assert\Expression(
+     *      "this.getDateDebut()<this.getDateFin()",
+     *     message="La date fin ne doit pas être antérieure à la date début"
+     * )
+     */
+    private $DateFin;
+
     public function __construct()
     {
         $this->participants = new ArrayCollection();
+        $this->DateDebut=new \DateTime('now');
     }
 
 
@@ -139,29 +148,9 @@ class Formation
         return $this;
     }
 
-    public function getDateDebut():?\DateTimeInterface
-    {
-        return $this->DateDebut;
-    }
 
-    public function setDateDebut(\DateTimeInterface $DateDebut): self
-    {
-        $this->DateDebut = $DateDebut;
 
-        return $this;
-    }
 
-    public function getDateFin():?\DateTimeInterface
-    {
-        return $this->DateFin;
-    }
-
-    public function setDateFin(\DateTimeInterface $DateFin): self
-    {
-        $this->DateFin = $DateFin;
-
-        return $this;
-    }
 
     public function getLieu(): ?string
     {
@@ -299,6 +288,30 @@ class Formation
     public function setIdSo(?Societe $idSo): self
     {
         $this->idSo = $idSo;
+
+        return $this;
+    }
+
+    public function getDateDebut(): ?\DateTimeInterface
+    {
+        return $this->DateDebut;
+    }
+
+    public function setDateDebut(\DateTimeInterface $DateDebut): self
+    {
+        $this->DateDebut = $DateDebut;
+
+        return $this;
+    }
+
+    public function getDateFin(): ?\DateTimeInterface
+    {
+        return $this->DateFin;
+    }
+
+    public function setDateFin(\DateTimeInterface $DateFin): self
+    {
+        $this->DateFin = $DateFin;
 
         return $this;
     }

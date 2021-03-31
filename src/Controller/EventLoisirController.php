@@ -109,17 +109,44 @@ class EventLoisirController extends AbstractController
     /**
      * @Route("/deleteEvent/{id}",name="deleteEvent")
      */
-    public function deleteEvent($id){
+    public function deleteEvent($id,\Swift_Mailer $mailer ){
+
         $em=$this->getDoctrine()->getManager();
+        $e = $em->getRepository(EventLoisir::class)->find($id);
         $part=$em->getRepository(Participant::class)->findBy(array('idE'=>$id));
-        if($part!=null){
-            $this->addFlash('info',"Cet evenement ne peut pas étre supprimé car elle contient deja des participants;Veuillez contacter l'administrateur pour la supprimer");
+        if($part!=null) {
+            for ($i = 0; $i < sizeof($part); $i++) {
+                if ($part[$i]->getIdF() != null) {
+                    $user = $em->getRepository(Freelancer::class)->find($part[$i]->getIdF());
+                    $ev = $em->getRepository(Participant::class)->findOneBy(array('idE' => $id, 'idF' => $part[$i]->getIdF()));
+                    $em->remove($ev);
+                    $em->flush();
+                    $message = (new \Swift_Message('Hello Email'))
+                        ->setFrom('nadebessioud20@gmail.com')
+                        ->setTo($user->getEmail())
+                        ->setSubject('annulation du evenement')
+                        ->setBody($this->renderView('formation/FormationMAILDelete.html.twig', ['user' => $user, 'e' => $e, 'type' => 'evenement']), 'text/html');
+                    $mailer->send($message);
+                } else {
+                    $userS = $em->getRepository(Societe::class)->find($part[$i]->getIdS());
+                    $e1 = $em->getRepository(Participant::class)->findOneBy(array('idE' => $id, 'idS' => $part[$i]->getIdS()));
+                    $em->remove($e1);
+                    $em->flush();
+                    $message = (new \Swift_Message('Hello Email'))
+                        ->setFrom('nadebessioud20@gmail.com')
+                        ->setTo($userS->getEmail())
+                        ->setSubject('annulation  evenement')
+                        ->setBody($this->renderView('formation/FormationMAILDelete.html.twig', ['user' => $userS, 'e' => $e, 'type' => 'evenement']), 'text/html');
+                    $mailer->send($message);
+                }
+            }
         }
-        else {
-            $e = $em->getRepository(EventLoisir::class)->find($id);
-            $em->remove($e);
+
+        $this->addFlash('info', "evenement supprimé");
+
+        $em->remove($e);
             $em->flush();
-        }
+
         return $this->redirectToRoute("AfficherEvent",array('idu'=>1,'type'=>"freelancer"));
     }
 

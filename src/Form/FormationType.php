@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Formation;
 use Cassandra\Map;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -33,15 +34,18 @@ class FormationType extends AbstractType
                     'name'=>'description',
                     'id'=>'id_des',
                     'maxlength'=>'64']])
-            ->add('DateDebut',DateType::class,[
+            ->add('DateDebut',DateTimeType::class,[
                 'attr'=>[
+
+                    'date_widget'=>'single_text',
                     'placeholder'=>'date debut ',
                     'class'=>'prompt srch_explore',
                     'name'=>'dateDebut',
                     'id'=>'id_db',
                     'maxlength'=>'64']])
-            ->add('DateFin',DateType::class,[
+            ->add('DateFin',DateTimeType::class,[
                 'attr'=>[
+                    'date_widget'=>'single_text',
                     'placeholder'=>'date fin',
                     'class'=>'prompt srch_explore',
                     'name'=>'dateFin',

@@ -34,14 +34,7 @@ class BackController extends AbstractController
     public function AfficherAllFormationBack(FormationRepository  $formationRepository,\Symfony\Component\HttpFoundation\Request $request, PaginatorInterface $paginator){
         $eme=$this->getDoctrine()->getRepository(EventLoisir::class);
         $event=$eme->findBy(array('Etat'=>1));
-        $formation = new Formation();
-        $searchForm = $this->createForm(SearchType::class,$formation);
-        $searchForm->handleRequest($request);
-        if ($searchForm->isSubmitted()) {
-            $labelle = $searchForm['Labelle']->getData();
-            $donnees = $formationRepository->search($labelle);
-            return $this->redirectToRoute('search', array('labelle' => $labelle));
-        }
+
         $donnees = $this->getDoctrine()->getRepository(Formation::class)->findBy([],['id' => 'desc']);
 
         // Paginate the results of the query
@@ -67,7 +60,7 @@ class BackController extends AbstractController
         return $this->render('back/AfficherFormationBack.html.twig', [
             'forms' => $formations,
             'events'=>$events,
-            'searchForm' => $searchForm->createView()
+
         ]);
 
     }

@@ -20,28 +20,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8536dbc3-61f5-4edd-a3f8-2ef114c64d86" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/js/services-web.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/services-web.min.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/PiDev.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/PiDev.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/BackController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BackController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/EventLoisirController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EventLoisirController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/FormationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/FormationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/EventLoisirType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/EventLoisirType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Formation.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Formation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/FormationType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/FormationType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/event_loisir/AfficherEventLoisir.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/event_loisir/AfficherEventLoisir.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/event_loisir/AjouterEvent.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/event_loisir/AjouterEvent.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/event_loisir/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/event_loisir/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/FormationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/FormationRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/back/AfficherFormationBack.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back/AfficherFormationBack.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/formation/AfficherFormation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/formation/AfficherFormation.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/formation/AfficherFormationBack.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back/AfficherFormationBack.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/formation/AfficherFormationBack.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/formation/AfficherFormationBack.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/formation/AfficherFormationTri.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/formation/AfficherFormationTri.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/formation/AjouterFormation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/formation/AjouterFormation.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/formation/FormationPDF.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/back/FormationPDF.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/formation/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/formation/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,25 +188,25 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="12.16.1" />
     <property name="javascript.nodejs.core.library.typings.version" value="12.20.6" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/back" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/formation" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2020.2.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\PiDev\templates\back" />
-      <recent name="C:\wamp64\www\PiDev\templates\formation" />
-      <recent name="C:\wamp64\www\PiDev\src\Form" />
-      <recent name="C:\wamp64\www\PiDev\templates\event_loisir" />
-      <recent name="C:\wamp64\www\PiDev\templates\offre_stage" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\wamp64\www\PiDev\public\js" />
       <recent name="C:\wamp64\www\PiDev\templates\back" />
       <recent name="C:\wamp64\www\PiDev\templates\offre_emploi" />
       <recent name="C:\wamp64\www\PiDev\templates\demande" />
       <recent name="C:\wamp64\www\PiDev\templates\reclamation" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\PiDev\templates\formation" />
+      <recent name="C:\wamp64\www\PiDev\templates\back" />
+      <recent name="C:\wamp64\www\PiDev\src\Form" />
+      <recent name="C:\wamp64\www\PiDev\templates\event_loisir" />
+      <recent name="C:\wamp64\www\PiDev\templates\offre_stage" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -267,6 +258,14 @@
       <workItem from="1616589033421" duration="9882000" />
       <workItem from="1616619055595" duration="32000" />
       <workItem from="1616620253102" duration="10810000" />
+      <workItem from="1616672716642" duration="14394000" />
+      <workItem from="1616771282318" duration="2080000" />
+      <workItem from="1616797667406" duration="1605000" />
+      <workItem from="1616877313922" duration="20735000" />
+      <workItem from="1616938596235" duration="6470000" />
+      <workItem from="1617015159809" duration="5216000" />
+      <workItem from="1617030927933" duration="7238000" />
+      <workItem from="1617108828818" duration="11861000" />
     </task>
     <servers />
   </component>
@@ -307,10 +306,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1616621800256" />
-    <state x="500" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1616557198460">
+    <state x="500" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1616888938308">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="500" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1616557198460" />
+    <state x="500" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1616888938308" />
     <state x="390" y="97" width="585" height="534" key="find.popup" timestamp="1616452683694">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -323,5 +322,16 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="346" y="49" width="672" height="160" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1616558497872" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/Repository/FormationRepository.php</url>
+          <line>62</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

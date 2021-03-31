@@ -207,7 +207,9 @@
                                                                         <div class="ui left icon input swdh19 swdh55">
                                                                             {{ form_widget(f.DateDebut) }}
 
+
                                                                         </div>
+                                                                        <div>{{ form_errors(f.DateDebut) }}</div>
                                                                     </div>
                                                                 </div>
 
@@ -219,7 +221,9 @@
                                                                         <div class="ui left icon input swdh19 swdh55">
                                                                             {{ form_widget(f.DateFin) }}
 
+
                                                                         </div>
+                                                                        <div>{{ form_errors(f.DateFin) }}</div>
                                                                     </div>
                                                                 </div>
 
@@ -395,7 +399,7 @@
         var ttSearchBox = new tt.plugins.SearchBox(tt.services, options);
         var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
 
-        document.getElementById("lieu").append(searchBoxHTML).attr("id","serarchid");
+        document.getElementById("lieu").append(searchBoxHTML);
 
 
         ttSearchBox.on('tomtom.searchbox.resultselected', function(data) {
@@ -420,30 +424,6 @@
 
     </script>
 
-    <script >
 
-
-
-        //Here’s what our corresponding javascript would look like:
-        document.getElementById("serarchid").onfocusout = function () {
-            console.log(document.getElementById("serarchid").value);
-            document.getElementById('formation_Lieu').value= document.getElementById("serarchid").value;
-            var geocodeOptions = {
-                query:document.getElementById("serarchid").value,
-                key: '0MWBNiAVRIke92CSc6vjYjseKJUmQSLy'
-            };
-            // Look up the geocode of the given address
-
-            tt.services.geocode(geocodeOptions).then(function (geocodeRes) {
-                console.log(geocodeRes['results'][0]['position']);
-                document.getElementById('formation_lat').value=geocodeRes['results'][0]['position']['lat']
-                document.getElementById('formation_lng').value=geocodeRes['results'][0]['position']['lng']
-
-
-
-            });
-
-        };
-    </script>
 {% endblock %}
 

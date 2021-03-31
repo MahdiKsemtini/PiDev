@@ -66,4 +66,11 @@ class FormationRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+    public function getAllF($id){
+        return $this->createQueryBuilder('fo')
+            ->where('fo.Etat = 1')
+            ->andWhere('fo.idFr != :id or fo.idFr IS NULL ')
+            ->setParameter('id',$id)
+            ->getQuery()->getResult();
+    }
 }

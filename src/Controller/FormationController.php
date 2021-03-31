@@ -11,12 +11,14 @@ use App\Entity\Societe;
 use App\Entity\Student;
 use App\Form\FormationType;
 use App\Form\ParticipantType;
+
 use App\Form\SearchType;
 use App\Form\StudentType;
 use App\Repository\FormationRepository;
 use App\Repository\FreelancerRepository;
 use App\Repository\ParticipantRepository;
 use App\Repository\SocieteRepository;
+use Cassandra\Date;
 use http\Message;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -47,7 +49,7 @@ class FormationController extends AbstractController
     /**
      * @Route("/Afficherformation", name="Afficherformation")
      */
-    public function AfficherFormation(Request $request){
+    public function AfficherFormation(Request $request,FormationRepository $repository){
         $type=$request->get("type");
         $idu=$request->get("idu");
         $em=$this->getDoctrine()->getRepository(Formation::class);
@@ -70,8 +72,8 @@ class FormationController extends AbstractController
             }
         }
 
-        $formations1=$em->findBy(array('Etat'=>1));;
-        return $this->render("formation/AfficherFormation.html.twig",['formations'=>$formations,'forms'=>$formations1,'participation'=>$formparticipation]);
+        $formations1=$repository->getAllF($idu);
+        return $this->render("formation/AfficherFormation.html.twig",['formations'=>$formations,'forms'=>$formations1,'participation'=>$formparticipation,'id'=>1,'type'=>'societe']);
 }
     /**
      * @Route("/Afficherallformation", name="Afficherallformation")
@@ -135,17 +137,44 @@ class FormationController extends AbstractController
     /**
      * @Route("/deleteFormation/{id}",name="deleteFormation")
      */
-    public function deleteClass($id){
+    public function deleteClass($id,\Swift_Mailer $mailer){
         $em=$this->getDoctrine()->getManager();
         $part=$em->getRepository(Participant::class)->findBy(array('idFO'=>$id));
+        $f = $em->getRepository(Formation::class)->find($id);
         if($part!=null){
-            $this->addFlash('info',"Cette formation ne peut pas étre supprimé car elle contient deja des participants;Veuillez contacter l'administrateur pour la supprimer");
+            for($i=0;$i<sizeof($part);$i++){
+                if($part[$i]->getIdF() != null){
+                    $user=$em->getRepository(Freelancer::class)->find($part[$i]->getIdF());
+                    $e=$em->getRepository(Participant::class)->findOneBy(array('idFO'=>$id,'idF'=>$part[$i]->getIdF()));
+                    $em->remove($e);
+                    $em->flush();
+                    $message = (new \Swift_Message('Hello Email'))
+                        ->setFrom('nadebessioud20@gmail.com')
+                        ->setTo($user->getEmail())
+                        ->setSubject('annulation du formation')
+                        ->setBody($this->renderView('formation/FormationMAILDelete.html.twig',['user'=>$user,'e'=>$f,'type'=>'formation']), 'text/html');
+                    $mailer->send($message);
+                }
+                else{
+                    $userS=$em->getRepository(Societe::class)->find($part[$i]->getIdS());
+                    $e1=$em->getRepository(Participant::class)->findOneBy(array('idFO'=>$id,'idS'=>$part[$i]->getIdS()));
+                    $em->remove($e1);
+                    $em->flush();
+                    $message = (new \Swift_Message('Hello Email'))
+                        ->setFrom('nadebessioud20@gmail.com')
+                        ->setTo($userS->getEmail())
+                        ->setSubject('annulation du formation')
+                        ->setBody($this->renderView('formation/FormationMAILDelete.html.twig',['user'=>$userS,'e'=>$f,'type'=>'formation']), 'text/html');
+                    $mailer->send($message);
+                }
+
+            }
+
         }
-        else {
-            $f = $em->getRepository(Formation::class)->find($id);
             $em->remove($f);
             $em->flush();
-        }
+
+        $this->addFlash('info',"formation supprimée");
         return $this->redirectToRoute("Afficherformation",array('idu'=>1,'type'=>"freelancer"));
     }
 
@@ -525,6 +554,102 @@ public function map($id){
      */
     public function test(){
         return $this->render("formation/index.html.twig");
+    }
+
+
+    /**
+     * @Route("/testCalender",name="testCalender")
+     */
+    public function testC(){
+        return $this->render("formation/Calender.html.twig");
+    }
+    /**
+     * @Route("/CalenderF",name="CalenderF")
+     */
+    public function CalenderF(FormationRepository $repository){
+        $type="freelancer";
+        $em=$this->getDoctrine()->getManager();
+        if($type=='freelancer'){
+            $formation=$repository->findBy(array('idFr'=>1));
+        }
+        else{
+            $formation=$repository->findBy(array('idSo'=>1));
+        }
+
+        $part=$em->getRepository(Participant::class)->findBy(array('idF'=>1,'typeU'=>$type));
+        $participation=array();
+        for($i=0;$i<sizeof($part);$i++){
+            if($part[$i]->getTypeE()=="formation"){
+                $participation[$i]=$repository->find($part[$i]->getIdFo());
+            }
+            else{
+                $participation[$i]=$repository->find($part[$i]->getIdSo());
+            }
+
+        }
+        $fms=[];
+        foreach ($formation as $form){
+            $fms[]=[
+                'id'=>$form->getId(),
+                'start'=>$form->getDateDebut()->format('Y-m-d H:i:s'),
+                'end'=>$form->getDateFin()->format('Y-m-d H:i:s'),
+                'title'=>$form->getLabelle(),
+                'description'=>$form->getDescription(),
+                'backgroundColor'=>'blue',
+                'borderColor'=>'blue',
+                'textColor'=>'white',
+                'editable'=>true,
+                
+
+            ];
+        }
+        foreach ($participation as $p){
+            $fms[]=[
+                'id'=>$p->getId(),
+                'start'=>$p->getDateDebut()->format('Y-m-d H:i:s'),
+                'end'=>$p->getDateFin()->format('Y-m-d H:i:s'),
+                'title'=>$p->getLabelle(),
+                'description'=>$p->getDescription(),
+                'backgroundColor'=>'red',
+                'borderColor'=>'red',
+                'textColor'=>'black',
+                'editable'=>false,
+
+            ];
+        }
+
+        $data=json_encode($fms);
+        return $this->render("formation/Calender.html.twig",['data'=>$data]);
+    }
+
+    /**
+     * @Route("/api/{id}/edit",name="api_event_edit", methods={"PUT"})
+     */
+    public function majFormation(?Formation $formation,Request $request,FormationRepository $repository){
+        $donnees=json_decode($request->getContent());
+
+            $code=200;
+            $form=$repository->find($donnees->id);
+            $form->setDateDebut(new \DateTime($donnees->start));
+            if($donnees->allDay){
+                $form->setDateFin(new \DateTime($donnees->start));
+            }
+            else{
+                $form->setDateFin(new \DateTime($donnees->end));
+            }
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($form);
+            $em->flush();
+
+        return new Response('ok',$code);
+    }
+    /**
+     * @Route("/testdate",name="testdate", )
+     */
+    public function testdate(){
+        $formation=new Formation();
+        $formation->setDateDebut(\DateTime::createFromFormat("D M d Y H:i:s e+","Tue Mar 30 2021 01:00:00 GMT+0100 (heure normale d’Afrique de l’Ouest)"));
+        return new Response("ok",200);
     }
 
 }

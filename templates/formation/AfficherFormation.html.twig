@@ -192,9 +192,9 @@
                                                                 <a href="{{ path("deleteFormation",{'id':f.id}) }}"  title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a>
                                                             </div>
                                                             <div class="vdtodt">
-                                                                <span class="vdt14">{{ f.DateDebut|date('Y-m-d') }}</span>
+                                                                <span class="vdt14">{{ f.DateDebut|date('Y-m-d H:i') }}</span>
 
-                                                                <span class="vdt14">{{ f.DateFin|date('Y-m-d') }}</span>
+                                                                <span class="vdt14">{{ f.DateFin|date('Y-m-d H:i') }}</span>
                                                             </div>
                                                             <p  class="crse14s" style="color: red">{{ f.Labelle }}</p>
                                                             <a href="course_detail_view.html" class="crse14s" >{{ f.Description }}</a>
@@ -227,6 +227,7 @@
                                             <div class="row">
 
                                                 {% for fo in forms%}
+
                                                     <div class="col-lg-3 col-md-4">
                                                         <div class="fcrse_1 mt-30">
 
@@ -235,9 +236,9 @@
                                                                     <a href="#"  data-id="{{fo.id}}" title="participer" class="gray-s" id="BtnP" style="font-size: 15px">participer</a>
                                                                 </div>
                                                                 <div class="vdtodt">
-                                                                    <span class="vdt14">{{ fo.DateDebut|date('Y-m-d') }}</span>
+                                                                    <span class="vdt14">{{ fo.DateDebut|date('Y-m-d H:i') }}</span>
 
-                                                                    <span class="vdt14">{{ fo.DateFin|date('Y-m-d') }}</span>
+                                                                    <span class="vdt14">{{ fo.DateFin|date('Y-m-d H:i') }}</span>
                                                                 </div>
                                                                 <p  class="crse14s" style="color: red">{{ fo.Labelle }}</p>
                                                                 <a href="course_detail_view.html" class="crse14s" >{{ fo.Description }}</a>
@@ -272,9 +273,9 @@
                                                                     <a href="{{ path("deleteFormationP",{'id':fo.id,'idu':1,'type':"freelancer"}) }}"  title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a>
                                                                 </div>
                                                                 <div class="vdtodt">
-                                                                    <span class="vdt14">{{ fo.DateDebut|date('Y-m-d') }}</span>
+                                                                    <span class="vdt14">{{ fo.DateDebut|date('Y-m-d H:i') }}</span>
 
-                                                                    <span class="vdt14">{{ fo.DateFin|date('Y-m-d') }}</span>
+                                                                    <span class="vdt14">{{ fo.DateFin|date('Y-m-d H:i') }}</span>
                                                                 </div>
                                                                 <p  class="crse14s" style="color: red">{{ fo.Labelle }}</p>
                                                                 <a href="course_detail_view.html" class="crse14s" >{{ fo.Description }}</a>
@@ -549,7 +550,7 @@
             var type="";
             var typec="";
             var url="";
-            var num="216"+document.getElementById("num").value;
+            var num="+216"+document.getElementById("num").value;
             if(document.getElementById("call").checked){
                 type="call";
             }
