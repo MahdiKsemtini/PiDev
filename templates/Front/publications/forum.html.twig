@@ -2,38 +2,6 @@
 
 {% block title %}RightJob{% endblock %}
 
-{% block css %}
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, shrink-to-fit=9">
-    <meta name="description" content="Gambolthemes">
-    <meta name="author" content="Gambolthemes">
-    <title>RightJOB - FORUM</title>
-
-    <!-- Favicon Icon -->
-    <link rel="icon" type="image/png" href="images/lg.png">
-
-    <!-- Stylesheets -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet'>
-    <link href='vendor/unicons-2.0.1/css/unicons.css' rel='stylesheet'>
-    <link href="css/vertical-responsive-menu.min.css" rel="stylesheet">
-    <link href="css/instructor-dashboard.css" rel="stylesheet">
-    <link href="css/instructor-responsive.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/responsive.css" rel="stylesheet">
-    <link href="css/night-mode.css" rel="stylesheet">
-    <link href="css/jquery-steps.css" rel="stylesheet">
-
-    <!-- Vendor Stylesheets -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link href="vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
-    <link href="vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet">
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="vendor/semantic/semantic.min.css">
-
-
-{% endblock %}
-
 {% block body %}
 
 
@@ -47,10 +15,6 @@
                                 <div class="course_des_textarea mt-30 lbel25">
                                     <h4>Créer une publication</h4>
                                     {{ form_start(f) }}
-                                    <div class="form-group">
-                                        <label for="exampleInputName1">{{ form_label(f.id_utilisateur) }}</label>
-                                        {{ form_widget(f.id_utilisateur,{'attr':{'class':'form-control'}}) }}
-                                    </div>
                                     <div class="form-group">
                                         <label for="exampleInputName1">{{ form_label(f.description) }}</label>
                                         {{ form_widget(f.description,{'attr':{'class':'form-control'}}) }}
@@ -72,56 +36,162 @@
                         </div>
 
 
-                        {% for i in publications %}
-                        <div class="fcrse_1" style="margin-bottom: 20px;" >
-                            <div class="user_dt5" style="margin-top: 10px; margin-left: 10px" >
-                                <div class="user_dt_left">
-                                    <div class="live_user_dt">
-                                        <div class="user_img5">
-                                            <img src="images/left-imgs/img-15.jpg" alt="">
-                                        </div>
-                                        <div class="user_cntnt">
-                                            <h4>{{ i.idUtilisateur }}</h4>
+                        {% for i in publications|reverse %}
+                        {% if  i.freelancer != null%}
+                            <div class="fcrse_1" style="margin-bottom: 20px;" >
+                                <div class="user_dt5" style="margin-top: 10px; margin-left: 10px" >
+                                    <div class="user_dt_left">
+                                        <div class="live_user_dt">
+                                            <div class="user_img5">
+                                                    {% if i.freelancer.id!= app.session.get('id')%}
+                                                        <a href="{{ path('ViewFreelancerProfileF', {'id': i.freelancer.id}) }}"><img src="{{ asset('picture/' ~ i.freelancer.PhotoDeProfile) }}" alt=""></a>
+
+                                                    {% elseif i.freelancer.id== app.session.get('id') and  app.session.get('compte_facebook')==null %}
+                                                        <a href="{{ path('ViewFreelancerProfileF', {'id': i.freelancer.id}) }}"><img src="{{ asset('picture/' ~ i.freelancer.PhotoDeProfile) }}" alt=""></a>
+                                                    {% else %}
+                                                        <a href="#"><img src="{{ asset('picture/' ~ i.freelancer.PhotoDeProfile) }}" alt=""></a>
+                                                    {% endif %}
+                                            </div>
+
+                                            <div class="user_cntnt">
+                                                <br>
+                                                    {% if i.freelancer.id!= app.session.get('id')%}
+                                                        <a href="{{ path('ViewFreelancerProfileF', {'id': i.freelancer.id}) }}"><h4>{{ i.freelancer.nom }} {{ i.freelancer.prenom }}</h4></a>
+
+                                                    {% elseif i.freelancer.id== app.session.get('id') and  app.session.get('compte_facebook')==null %}
+                                                        <a href="{{ path('ViewFreelancerProfileF', {'id': i.freelancer.id}) }}"><h4>{{ i.freelancer.nom }} {{ i.freelancer.prenom }}</h4></a>
+                                                    {% else %}
+                                                        <a href="#"><h4>{{ i.freelancer.nom }} {{ i.freelancer.prenom }}</h4></a>
+                                                    {% endif %}
+
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="eps_dots more_dropdown" style="margin-right: 30px; margin-top: 10px" >
-                                <a href="#"><i class='uil uil-ellipsis-v'></i></a>
-                                <div class="dropdown-content">
-                                    <a href={{ path('modifierpublication',{'id': i.id }) }}> <span   ><i class='uil-edit' ></i>Modifier</span> </a>
-                                    <a href={{ path('supprimerPublication',{'id': i.id }) }}> <span><i class='uil uil-trash-alt'></i>Supprimer</span> </a>
-                                    <a href="#"> <span><i class="uil uil-windsock"></i>Signaler</span> </a>
-                                </div>
-                            </div>
+                                {% if i.freelancer.id== app.session.get('id') and  app.session.get('compte_facebook')!=null %}
+                                    <div class="eps_dots more_dropdown" style="margin-right: 30px; margin-top: 10px" >
+                                        <a href="#"><i class='uil uil-ellipsis-v'></i></a>
+                                        <div class="dropdown-content">
+                                                <a href={{ path('modifierpublication',{'id': i.id }) }}> <span   ><i class='uil-edit' ></i>Modifier</span> </a>
+                                                <a href={{ path('supprimerPublication',{'id': i.id }) }}> <span><i class='uil uil-trash-alt'></i>Supprimer</span> </a>
 
-                            <div class="live1452">
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                <div class="live1452">
 
-                                <a class="crse-cate">{{ i.description }}</a>
-                                <div align="center">
-                                    <img src="uploads/{{ i.image }}" class="fcrse_img"  alt="">
-                                </div>
-                                <div class="fcrse_content">
-                                    {{ i.datePublication |date}}
-                                </div>
-                            </div>
-                            <button type="button" class="btn btn-light"><i class="uil-thumbs-up"></i> <span>Like</span> </button>
-                            <button type="button" class="btn btn-light"><i class="uil-thumbs-down"></i> <span>Dislike</span> </button>
-                            <div class="fcrse_3">
-                                <div class="cater_ttle">
-                                    <h4>Commentaires</h4>
-
-
-
-                                    <div align="center" >
-                                        <a href={{ path('commentaires',{'id_pub': i.id }) }} class="upload_btn">Afficher commentaire</a>
-
-
+                                    <h4>{{ i.description }}</h4>
+                                    <div align="center">
+                                        <img src="picture/{{ i.image }}" class="fcrse_img"  alt="">
+                                    </div>
+                                    <div class="fcrse_content">
+                                        {{ i.datePublication |date}}
                                     </div>
                                 </div>
+                                <a href="{{ path('post_like',{'id': i.id }) }}" class="btn-btn-link js-like" >
+                                    <span class="js-likes">{{ i.likes | length }}</span>
+                                    {% set x = 1 %}
+                                    {% for j in likes %}
+                                        {% if j.post.id==i.id and j.user.id== app.session.get('id') %}
+                                            <i class="fas fa-thumbs-up"></i>
+                                            {% set x = 0 %}
+                                        {% elseif x   %}
+                                            <i class="far fa-thumbs-up"></i>
+                                            {% set x = 0 %}
+                                        {% endif %}
 
+                                    {% endfor %}
+                                    <span class="js-label">J'aime</span>
+                                </a>
+                                <div class="fcrse_3">
+                                    <div class="cater_ttle">
+                                        <h4>Commentaires</h4>
+                                        <div align="center" >
+                                            <a href={{ path('commentaires',{'id_pub': i.id }) }} class="upload_btn">Afficher commentaire</a>
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
-                        </div>
+                        {% else %}
+                            <div class="fcrse_1" style="margin-bottom: 20px;" >
+                                <div class="user_dt5" style="margin-top: 10px; margin-left: 10px" >
+                                    <div class="user_dt_left">
+                                        <div class="live_user_dt">
+                                            <div class="user_img5">
+                                                    {% if i.societe.id!= app.session.get('id')%}
+                                                        <a href="{{ path('ViewSocieteProfileF', {'id': i.societe.id}) }}"><img src="{{ asset('picture/' ~ i.societe.PhotoDeProfile) }}" alt=""></a>
+
+                                                    {% elseif i.societe.id== app.session.get('id') and  app.session.get('compte_facebook')!=null %}
+                                                        <a href="{{ path('ViewSocieteProfileF', {'id': i.societe.id}) }}"><img src="{{ asset('picture/' ~ i.societe.PhotoDeProfile) }}" alt=""></a>
+                                                    {% else %}
+                                                        <a href="#"><img src="{{ asset('picture/' ~ i.societe.PhotoDeProfile) }}" alt=""></a>
+                                                    {% endif %}
+
+                                            </div>
+                                            <br>
+                                            <div class="user_cntnt">
+                                                <br>
+                                                    {% if i.societe.id!= app.session.get('id')%}
+                                                        <a href="{{ path('ViewSocieteProfileF', {'id': i.societe.id}) }}"><h4>{{ i.societe.nom }}</h4></a>
+
+                                                    {% elseif i.societe.id== app.session.get('id') and  app.session.get('compte_facebook')!=null %}
+                                                        <a href="{{ path('ViewSocieteProfileF', {'id': i.societe.id}) }}"><h4>{{ i.societe.nom }}</h4></a>
+                                                    {% else %}
+                                                        <a href="#"><h4>{{ i.societe.nom }}</h4></a>
+                                                    {% endif %}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% if i.societe.id== app.session.get('id') and  app.session.get('compte_facebook')==null %}
+                                    <div class="eps_dots more_dropdown" style="margin-right: 30px; margin-top: 10px" >
+                                        <a href="#"><i class='uil uil-ellipsis-v'></i></a>
+                                        <div class="dropdown-content">
+                                            <a href={{ path('modifierpublication',{'id': i.id }) }}> <span   ><i class='uil-edit' ></i>Modifier</span> </a>
+                                            <a href={{ path('supprimerPublication',{'id': i.id }) }}> <span><i class='uil uil-trash-alt'></i>Supprimer</span> </a>
+
+
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                <div class="live1452">
+
+                                    <h4>{{ i.description }}</h4>
+                                    <div align="center">
+                                        <img src="picture/{{ i.image }}" class="fcrse_img"  alt="">
+                                    </div>
+                                    <div class="fcrse_content">
+                                        {{ i.datePublication |date}}
+                                    </div>
+                                </div>
+                                <a href="{{ path('post_like',{'id': i.id }) }}" class="btn-btn-link js-like" >
+                                    <span class="js-likes">{{ i.likes | length }}</span>
+                                    {% set x = 1 %}
+                                    {% for j in likes %}
+                                        {% if j.post.id==i.id and j.user.id== app.session.get('id') %}
+                                            <i class="fas fa-thumbs-up"></i>
+                                            {% set x = 0 %}
+                                        {% elseif x  %}
+                                            <i class="far fa-thumbs-up"></i>
+                                            {% set x = 0 %}
+                                        {% endif %}
+
+                                    {% endfor %}
+                                    <span class="js-label">J'aime</span>
+                                </a>
+                                <div class="fcrse_3">
+                                    <div class="cater_ttle">
+                                        <h4>Commentaires</h4>
+                                        <div align="center" >
+                                            <a href={{ path('commentaires',{'id_pub': i.id }) }} class="upload_btn">Afficher commentaire</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        {% endif %}
                         {% endfor %}
 
                         <div class="live_text" >
@@ -154,82 +224,46 @@
                 </div>
             </div>
         </div>
-        <footer class="footer mt-30">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-6">
-                        <div class="item_f1">
-                            <a href="about_us.html">About</a>
-                            <a href="our_blog.html">Blog</a>
-                            <a href="career.html">Careers</a>
-                            <a href="press.html">Press</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6">
-                        <div class="item_f1">
-                            <a href="help.html">Help</a>
-                            <a href="coming_soon.html">Advertise</a>
-                            <a href="coming_soon.html">Developers</a>
-                            <a href="contact_us.html">Contact Us</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6">
-                        <div class="item_f1">
-                            <a href="terms_of_use.html">Copyright Policy</a>
-                            <a href="terms_of_use.html">Terms</a>
-                            <a href="terms_of_use.html">Privacy Policy</a>
-                            <a href="#">Sitemap</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6">
-                        <div class="item_f3">
-                            <a href="#" class="btn1542">Teach on Cursus</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-12">
-                        <div class="footer_bottm">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <ul class="fotb_left">
-                                        <li>
-                                            <a href="index.html">
-                                                <div class="footer_logo">
-                                                    <img src="images/lg.png" alt="">
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <p>© 2021 <strong>RightJOB</strong>. All Rights Reserved.</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="edu_social_links">
-                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="#"><i class="fab fa-google-plus-g"></i></a>
-                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                        <a href="#"><i class="fab fa-instagram"></i></a>
-                                        <a href="#"><i class="fab fa-youtube"></i></a>
-                                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
+
 
 {% endblock %}
 
 {% block js %}
-    <script src="js/vertical-responsive-menu.min.js"></script>
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/OwlCarousel/owl.carousel.js"></script>
-    <script src="vendor/semantic/semantic.min.js"></script>
-    <script src="js/custom.js"></script>
-    <script src="js/night-mode.js"></script>
+    <script src="{{ asset('js/vertical-responsive-menu.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('vendor/OwlCarousel/owl.carousel.js') }}"></script>
+    <script src="{{ asset('vendor/semantic/semantic.min.js') }}"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
+    <script src="{{ asset('js/night-mode.js') }}"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+
+        function onClickBtnLike(event){
+            event.preventDefault();
+
+            const url = this.href;
+            const spanCount = this.querySelector('span.js-likes');
+            const icone = this.querySelector('i');
+
+            axios.get(url).then(function (response){
+                spanCount.textContent = response.data.likes;
+
+                if (icone.classList.contains('fas')){
+                        icone.classList.replace('fas','far');
+                }
+                else {
+                    icone.classList.replace('far','fas');
+                }
+            });
+        }
+
+        document.querySelectorAll('a.js-like').forEach(function (link){
+            link.addEventListener('click', onClickBtnLike);
+
+        })
+
+    </script>
+
 {% endblock %}

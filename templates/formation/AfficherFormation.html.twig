@@ -1,0 +1,380 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RightJob{% endblock %}
+
+{% block css %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=9">
+    <meta name="description" content="Gambolthemes">
+    <meta name="author" content="Gambolthemes">
+    <title>Cursus - Create New Course</title>
+
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/png" href={{ asset('images/fav.png') }}>
+
+    <!-- Stylesheets -->
+    <link href={{asset('http://fonts.googleapis.com/css?family=Roboto:400,700,500')}} rel='stylesheet'>
+    <link href={{asset('vendor/unicons-2.0.1/css/unicons.css')}} rel='stylesheet'>
+    <link href={{asset("css/vertical-responsive-menu1.min.css")}} rel="stylesheet">
+    <link href={{asset("css/instructor-dashboard.css")}} rel="stylesheet">
+    <link href={{asset("css/instructor-responsive.css")}} rel="stylesheet">
+    <link href={{asset("css/night-mode.css")}} rel="stylesheet">
+    <link href={{asset("css/jquery-steps.css")}} rel="stylesheet">
+
+    <!-- Vendor Stylesheets -->
+    <link href={{asset("vendor/fontawesome-free/css/all.min.css")}} rel="stylesheet">
+    <link href={{asset("vendor/OwlCarousel/assets/owl.carousel.css")}} rel="stylesheet">
+    <link href={{asset("vendor/OwlCarousel/assets/owl.theme.default.min.css")}} rel="stylesheet">
+    <link href={{asset("vendor/bootstrap/css/bootstrap.min.css")}} rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href={{asset("vendor/semantic/semantic.min.css")}}>
+
+{% endblock %}
+{% block body %}
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, shrink-to-fit=9">
+        <meta name="description" content="Gambolthemes">
+        <meta name="author" content="Gambolthemes">
+        <title>Cursus - Instructor Profile View</title>
+
+        <!-- Favicon Icon -->
+        <link rel="icon" type="image/png" href={{ asset('images/fav.png') }}>
+
+        <!-- Stylesheets -->
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet'>
+        <link href={{ asset('vendor/unicons-2.0.1/css/unicons.css') }} rel='stylesheet'>
+        <link href={{ asset('css/vertical-responsive-menu.min.css') }} rel="stylesheet">
+        <link href={{ asset('css/style.css') }} rel="stylesheet">
+        <link href={{ asset('css/responsive.css') }} rel="stylesheet">
+        <link href={{ asset('css/night-mode.css') }} rel="stylesheet">
+
+        <!-- Vendor Stylesheets -->
+        <link href={{ asset('vendor/fontawesome-free/css/all.min.css') }} rel="stylesheet">
+        <link href={{ asset('vendor/OwlCarousel/assets/owl.carousel.css') }} rel="stylesheet">
+        <link href={{ asset('vendor/OwlCarousel/assets/owl.theme.default.min.css') }} rel="stylesheet">
+        <link href={{ asset('vendor/bootstrap/css/bootstrap.min.css') }} rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href={{ asset('vendor/semantic/semantic.min.css') }}>
+
+        <style>
+            .bg-model{
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.7);
+
+                position: absolute;
+                top: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                display: none;
+            }
+            .model-content{
+                width: 400px;
+                height: 250px;
+                background-color: white;
+
+                border-radius: 4px;
+                text-align: center;
+                padding: 20px;
+                position: relative;
+            }
+            #num{
+                width: 50%;
+                display: block;
+
+                margin: 15px auto;
+                height: 30px;
+
+
+            }
+            .close{
+                position: absolute;
+                top: 0;
+                right: 14px;
+                font-size: 42px;
+                transform: rotate(45deg);
+                cursor: pointer;
+
+            }
+            #img1{
+                width: 25%;
+                position: relative;
+
+            }
+        </style>
+
+
+
+
+    </head>
+
+    <!-- Body Start -->
+    <div class="wrapper _bg4586">
+
+        <div class="_215b15">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="course_tabs">
+                            <nav>
+                                <div class="nav nav-tabs tab_crse" id="nav-tab" role="tablist">
+                                    <a class="nav-item nav-link active" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-selected="true">Mes formations</a>
+                                    <a class="nav-item nav-link" id="nav-courses-tab" data-toggle="tab" href="#nav-courses" role="tab" aria-selected="false">Les formations</a>
+                                    <a class="nav-item nav-link" id="nav-courses-tab" data-toggle="tab" href="#nav-reviews" role="tab" aria-selected="false">Mes Participation</a>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="_215b17">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="course_tab_content">
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-about" role="tabpanel">
+
+                                    <div style="display: flex">
+                                        <h3>Mes formations</h3>
+
+                                    </div>
+                                    <div class="crse_content">
+
+                                        {% for message in app.flashes('alert') %}
+                                            <div class="alert alert-warning">
+                                                {{ message }}
+                                            </div>
+                                        {% endfor %}
+
+                                        {% for message in app.flashes('info') %}
+                                            <div class="alert alert-danger">
+
+                                                {{ message|replace({";":"<br/>"})|raw }}
+                                            </div>
+                                        {% endfor %}
+                                        {% for message in app.flashes('msg') %}
+                                            <div class="alert alert-success">
+                                                {{ message }}
+                                            </div>
+                                        {% endfor %}
+
+
+                                        <form action="{{ path('addFormation') }}">
+                                            <button class="btn btn-default steps_btn" style="margin-left: 0px">Ajouter</button>
+                                        </form>
+                                        </br></br>
+
+                                        <div class="_14d25">
+                                            <div class="row">
+
+                                                {% for f in formations %}
+                                                <div class="col-lg-3 col-md-4">
+                                                    <div class="fcrse_1 mt-30">
+
+                                                        <div class="fcrse_content">
+                                                            <div class="eps_dots more_dropdown">
+                                                                <a href="{{ path("ModifierFormation",{'id':f.id}) }}"    title="Edit" class="gray-s"  style="font-size: 18px"><i class="uil uil-edit-alt" ></i></a>
+                                                                <a href="{{ path("deleteFormation",{'id':f.id}) }}"  title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a>
+                                                            </div>
+                                                            <div class="vdtodt">
+                                                                <span class="vdt14">{{ f.DateDebut|date('Y-m-d H:i') }}</span>
+
+                                                                <span class="vdt14">{{ f.DateFin|date('Y-m-d H:i') }}</span>
+                                                            </div>
+                                                            <p  class="crse14s" style="color: red">{{ f.Labelle }}</p>
+                                                            <a href="course_detail_view.html" class="crse14s" >{{ f.Description }}</a>
+                                                            <p class="crse-cate">{{ f.Domaine }}</p>
+                                                            <div class="auth1lnkprce">
+                                                                <p class="cr1fot">{{ f.Lieu }}</p>
+                                                                <div class="prce142">{{ f.Montant }}</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="nav-courses" role="tabpanel">
+                                    <div style="display: flex">
+                                    <h3>Formations</h3>
+                                    <div style="margin-left: 20px">
+                                        <a href="{{ path('triDateC') }}"    title="Edit" class="gray-s"  style="font-size: 18px"><i class="uil uil-sort-amount-up" ></i></a>
+                                    <a href="{{ path('triDateD') }}"  title="Delete" class="gray-s"><i class="uil uil-sort-amount-down"></i></a>
+                                    </div>
+                                    </div>
+
+                                    <div class="crse_content">
+
+                                        <div class="_14d25">
+                                            <div class="row">
+
+                                                {% for fo in forms%}
+                                                    <div class="col-lg-3 col-md-4">
+                                                        <div class="fcrse_1 mt-30">
+
+                                                            <div class="fcrse_content">
+                                                                <div class="eps_dots more_dropdown">
+                                                                    <a href="#"  data-id="{{fo.id}}" title="participer" class="gray-s" id="BtnP" style="font-size: 15px">participer</a>
+                                                                </div>
+                                                                <div class="vdtodt">
+                                                                    <span class="vdt14">{{ fo.DateDebut|date('Y-m-d H:i') }}</span>
+
+                                                                    <span class="vdt14">{{ fo.DateFin|date('Y-m-d H:i') }}</span>
+                                                                </div>
+                                                                <p  class="crse14s" style="color: red">{{ fo.Labelle }}</p>
+                                                                <a href="course_detail_view.html" class="crse14s" >{{ fo.Description }}</a>
+                                                                <p href="#" class="crse-cate">{{ fo.Domaine }}</p>
+                                                                <div class="auth1lnkprce">
+                                                                    <a href="{{ path("mapF",{'id':fo.id}) }}" ><p class="cr1fot">{{ fo.Lieu }}</p></a>
+                                                                    <div class="prce142">{{ fo.Montant }}</div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="nav-reviews" role="tabpanel">
+
+                                    <h3>Mes participations</h3>
+                                    <div class="crse_content">
+
+                                        <div class="_14d25">
+                                            <div class="row">
+
+                                                {% for fo in participation %}
+                                                    <div class="col-lg-3 col-md-4">
+                                                        <div class="fcrse_1 mt-30">
+
+                                                            <div class="fcrse_content">
+                                                                <div class="eps_dots more_dropdown">
+                                                                    <a href="{{ path("deleteFormationP",{'id':fo.id,'idu':1,'type':"freelancer"}) }}"  title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a>
+                                                                </div>
+                                                                <div class="vdtodt">
+                                                                    <span class="vdt14">{{ fo.DateDebut|date('Y-m-d H:i') }}</span>
+
+                                                                    <span class="vdt14">{{ fo.DateFin|date('Y-m-d H:i') }}</span>
+                                                                </div>
+                                                                <p  class="crse14s" style="color: red">{{ fo.Labelle }}</p>
+                                                                <a href="course_detail_view.html" class="crse14s" >{{ fo.Description }}</a>
+                                                                <p class="crse-cate">{{ fo.Domaine }}</p>
+                                                                <div class="auth1lnkprce">
+                                                                    <a href="{{ path("mapF",{'id':fo.id}) }}" ><p class="cr1fot">{{ fo.Lieu }}</p></a>
+                                                                    <div class="prce142">{{ fo.Montant }}</div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="bg-model">
+        <div class="model-content">
+            <img src="{{ asset("images/Logo_complet.png") }}" id="img1">
+            <div class="close">+</div>
+            <form action="">
+                <input type="text" placeholder="num" id="num" >
+            </br>
+                <div >
+                <input type="checkbox" id="call">Appeller moi
+                <input type="checkbox" id="sms" style="margin-left: 10px">m'envoyer SMS
+                </div>
+
+                <div style="margin-top: 20px">
+                <button class="btn btn-outline-primary " id="BtnS">Submit</button>
+                <button class="btn btn-outline-secondary" id="BtnA" style="margin-left: 10px ">annuler</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Body End -->
+
+
+{% endblock %}
+
+{% block js %}
+    <script src={{ asset('js/vertical-responsive-menu.min.js') }}></script>
+    <script src={{ asset('js/jquery-3.3.1.min.js') }}></script>
+    <script src={{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}></script>
+    <script src={{ asset('vendor/OwlCarousel/owl.carousel.js') }}></script>
+    <script src={{ asset('vendor/semantic/semantic.min.js') }}></script>
+    <script src={{ asset('js/custom.js') }}></script>
+    <script src={{ asset('js/night-mode.js') }}></script>
+    <script src={{ asset('js/jquery-steps.min.js') }}></script>
+    <script>
+        $('#add-course-tab').steps({
+            onFinish: function () {
+                alert('Wizard Completed');
+            }
+        });
+
+    </script>
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+
+
+    <script>
+
+        var idv=0;
+        var elemnts=document.querySelectorAll("#BtnP");
+        for (var i=0; i<elemnts.length; i++) {
+
+            elemnts[i].addEventListener('click',function (){
+                idv=0;
+                idv=this.dataset.id;
+
+                document.querySelector('.bg-model').style.display='flex';
+            });
+        }
+
+        document.getElementById("BtnS").addEventListener('click',function () {
+            var type="";
+            var typec="";
+            var url="";
+            var num="+216"+document.getElementById("num").value;
+            if(document.getElementById("call").checked){
+                type="call";
+            }
+            if(document.getElementById("sms").checked){
+                typec="SMS";
+            }
+             url=Routing.generate('addParticiper',{'idfo':idv,'typee': 'formation', 'num': num, 'type': type, 'typeC': typec})
+            console.log(url);
+            setTimeout(function(){document.location.href = url},500);
+                              });
+
+
+    </script>
+    <script>
+        document.querySelector('.close').addEventListener('click',function (){
+           document.querySelector('.bg-model').style.display="none";
+        });
+        document.querySelector('#BtnA').addEventListener('click',function (){
+            document.querySelector('.bg-model').style.display="none";
+        });
+
+    </script>
+
+
+{% endblock %}

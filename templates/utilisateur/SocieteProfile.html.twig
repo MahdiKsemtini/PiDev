@@ -1,0 +1,235 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RightJob{% endblock %}
+
+{% block css %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=9">
+    <meta name="description" content="Gambolthemes">
+    <meta name="author" content="Gambolthemes">
+    <title>RightJOB - FORUM</title>
+
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/png" href="{{ asset('images/fav.png') }}">
+
+    <!-- Stylesheets -->
+    <link href='{{ asset('http://fonts.googleapis.com/css?family=Roboto:400,700,500') }}' rel='stylesheet'>
+    <link href='{{ asset('vendor/unicons-2.0.1/css/unicons.css') }}' rel='stylesheet'>
+    <link href="{{ asset('css/vertical-responsive-menu.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/instructor-dashboard.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/instructor-responsive.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/responsive.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/night-mode.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/jquery-steps.css') }}" rel="stylesheet">
+
+    <!-- Vendor Stylesheets -->
+    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/OwlCarousel/assets/owl.carousel.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/OwlCarousel/assets/owl.theme.default.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/semantic/semantic.min') }}.css">
+
+
+{% endblock %}
+
+{% block body %}
+    <!-- Body Start -->
+    <div class="wrapper _bg4586">
+
+        <div class="_216b01">
+            <div class="container-fluid">
+                <div class="row justify-content-md-center">
+                    <div class="col-md-10">
+                        <div class="section3125 rpt145">
+                            <div class="row">
+                                <div class="col-lg-7">
+                                    <a href="#" class="_216b22">
+                                        <span><i class="uil uil-cog"></i></span>Setting
+                                    </a>
+                                    <div class="dp_dt150">
+                                        <div class="img148">
+                                            <img src="{{ asset('picture/' ~ app.session.get('photo_de_profile')) }}" alt="">
+                                        </div>
+                                        <div class="prfledt1">
+                                            <h2>{{ app.session.get('nom') }}</h2>
+                                            <span>{{ app.session.get('email') }}</span>
+                                        </div>
+                                    </div>
+                                    <ul class="_ttl120">
+                                        <li>
+                                            <div class="_ttl121">
+                                                <div class="_ttl122">Adresse</div>
+                                                <div class="_ttl123">{{ app.session.get('adresse') }}</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="_ttl121">
+                                                <div class="_ttl122">Status Juridique</div>
+                                                <div class="_ttl123">{{ app.session.get('status_juridique') }} </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="_ttl121">
+                                                <div class="_ttl122">Views</div>
+                                                <div class="_ttl123">{{ app.session.get('viewNb') }} </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="_ttl121">
+                                                <div class="_ttl122">Rating</div>
+
+                                            </div>
+                                            <div class="rating rating2" >
+                                                            {% if app.session.get('NumbReviews')!=0 %}
+                                                                {% if app.session.get('NumbReviews')!=5 %}
+                                                                    {% for i in range(1,5- app.session.get('NumbReviews')) %}
+                                                                        <a style="color: gray" >★</a>
+                                                                    {% endfor %}
+                                                                {% endif %}
+                                                                {% for i in range(1, app.session.get('NumbReviews')) %}
+                                                                <a style="color: orange" >★</a>
+                                                                {% endfor %}
+                                                            {% else %}
+                                                                {% for i in range(1,5) %}
+                                                                        <a style="color: gray" >★</a>
+                                                                {% endfor %}
+                                                            {% endif %}
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="_215b15">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="course_tabs">
+                            <nav>
+                                <div class="nav nav-tabs tab_crse" id="nav-tab" role="tablist">
+                                    <a class="nav-item nav-link active" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-selected="true">Editer le profil</a>
+                                    <a class="nav-item nav-link" id="nav-courses-tab" data-toggle="tab" href="#nav-courses" role="tab" aria-selected="false">Mes Reviews</a>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="_215b17">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="course_tab_content">
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-about" role="tabpanel">
+                                    <div class="_htg451">
+                                        <div class="_htg452">
+                                            <form {{ form_start(form) }}
+                                                <div class="basic_ptitle">
+                                                    <h4>Nom de Societe</h4>
+                                                    <p>Changer le Nom de votre societe</p>
+                                                </div>
+                                                <div class="ui search focus">
+                                                    <div class="ui left icon input swdh11 swdh19">
+                                                        {{ form_widget(form.nom) }}
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="basic_ptitle">
+                                                    <h4>Email de Societe</h4>
+                                                    <p>Changer le Email de votre societe</p>
+                                                </div>
+                                                <div class="ui search focus mt-15">
+                                                    <div class="ui left icon input swdh11 swdh19">
+                                                        {{ form_widget(form.email) }}
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="basic_ptitle">
+                                                    <h4>Adresse de Societe</h4>
+                                                    <p>Changer la Adresse de votre societe</p>
+                                                </div>
+                                                <div class="ui search focus mt-15">
+                                                    <div class="ui left icon input swdh11 swdh19">
+                                                        {{ form_widget(form.adresse) }}
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="basic_ptitle">
+                                                    <h4>Status Juridique de Freelancer</h4>
+                                                    <p>Modifier la Status Juridique de votre societe</p>
+                                                </div>
+                                                <div class="ui search focus mt-15">
+                                                    <div class="ui left icon input swdh11 swdh19">
+                                                        {{ form_widget(form.status_juridique) }}
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="basic_ptitle">
+                                                    <h4>Photo de Societe</h4>
+                                                    <p>Modifier le photo de votre societe</p>
+                                                </div>
+                                                <div class="ui search focus mt-15">
+                                                    <div class="ui left icon input swdh11 swdh19">
+                                                        {{ form_widget(form.photo_de_profile) }}
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                {{ form_widget(form.Save) }}
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="nav-courses" role="tabpanel">
+                                        <div class="_htg452">
+                                            {% for l in reviews%}
+
+
+                                                    <div class="fcrse_1 mt-30">
+                                                        <div class="tutor_img">
+                                                            <a href="{{ path('ViewFreelancerProfileF', {'id': l.freelancer.id}) }}"><img src="{{ asset('picture/' ~ l.freelancer.PhotoDeProfile) }}" alt=""></a>
+                                                        </div>
+                                                        <div class="tutor_content_dt">
+                                                            <div class="tutor150">
+                                                                <a href="{{ path ('ViewFreelancerProfileF', {'id': l.freelancer.id}) }}" class="tutor_name">{{ l.freelancer.nom }} {{ l.freelancer.prenom }}</a>
+                                                                <div class="mef78" title="Verify">
+                                                                    <i class="uil uil-check-circle"></i>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tutor_cate">{{l.freelancer.email}}</div>
+                                                            <div class="tutor_cate">Review: {{l.Description}}</div>
+                                                        </div>
+                                                    </div>
+                                            {% endfor %}
+                                        </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- Body End -->
+{% endblock %}
+
+{% block js %}
+    <script src="{{ asset('js/vertical-responsive-menu.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('vendor/OwlCarousel/owl.carousel.js') }}"></script>
+    <script src="{{ asset('vendor/semantic/semantic.min.js') }}"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
+    <script src="{{ asset('js/night-mode.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends 'base_back.html.twig' %}
+
+ {% block title %}RightJob{% endblock %}
+{% block body %}
+    <!-- Body Start -->
+    <!-- Body Start -->
+    <div class="wrapper _bg4586">
+        <div class="_216b01">
+            <div class="container">
+                <div class="row justify-content-md-center">
+                    <div class="col-md-10">
+                        <div class="section3125 rpt145">
+                            <div class="row">
+                                <div class="col-lg-7">
+
+                                    <div class="dp_dt150">
+                                        <div class="img148">
+                                            <img src="{{ asset('images/left-imgs/img-17.jpg') }}" alt="">
+                                        </div>
+                                        <div class="prfledt1">
+                                            <h2>{{ admin.nom }} {{ admin.prenom }}</h2>
+                                            <span style="color: #1da1f2">{{ admin.login }}</span>
+                                            <br>
+                                            <br>
+                                            <span>{{ admin.type }}</span>
+                                        </div>
+
+                                    </div>
+                                    {% if (admin.etat == 0) %}
+                                        <div class="tutor150">
+                                            <a href="{{ path ('UpdateAdmin', {'id': admin.id}) }}" class="tutor_nameLocked">This account is Locked</a>
+                                        </div>
+                                    {% endif %}
+                                    <ul class="_ttl120">
+                                        <li>
+                                            <div class="_ttl121">
+                                                <div class="_ttl122">Approuvé</div>
+                                                <div class="_ttl123">{{ admin.approuve }}</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="_ttl121">
+                                                <div class="_ttl122">Non approuvé</div>
+                                                <div class="_ttl123">{{ admin.nonapprouve }}</div>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="_215b17">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="course_tab_content">
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-about" role="tabpanel">
+                                    <div class="_htg451">
+                                        <div class="_htg452">
+                                            <div class="col-lg-12 col-md-12">
+
+                                                <div class="table-responsive mt-50 mb-0">
+
+                                                    <table class="table ucp-table">
+                                                        <thead class="thead-s">
+                                                        <tr>
+                                                            <th class="text-center" scope="col">id Reclamation</th>
+                                                            <th class="text-center" scope="col">Type</th>
+                                                            <th class="text-center" scope="col">Texte</th>
+
+                                                            <th class="text-center" scope="col">DateCreation</th>
+                                                            <th class="text-center" scope="col">Desactiver</th>
+
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        {% for i in ListReclamations %}
+                                                            <tr>
+                                                                <td class="text-center">{{ i.id }}</td>
+                                                                <td class="cell-ta">{{ i.type }}</td>
+                                                                <td class="text-center">{{ i.texteReclamation }}</td>
+                                                                <td class="text-center">{{ i.dateReclamation }}</td>
+                                                                <td class="text-center">
+                                                                    <a href="{{ path('deactivateReclamation', {'id': i.id}) }}" title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a>
+                                                                </td>
+                                                            </tr>
+                                                        {% endfor %}
+
+
+                                                        </tbody>
+                                                    </table>
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- Body End -->
+{% endblock %}

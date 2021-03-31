@@ -2,6 +2,12 @@
     "beberlei/doctrineextensions": {
         "version": "v1.3.0"
     },
+    "captcha-com/captcha": {
+        "version": "4.2.5"
+    },
+    "captcha-com/symfony-captcha-bundle": {
+        "version": "4.2.12"
+    },
     "cmen/google-charts-bundle": {
         "version": "4.0.0"
     },
@@ -84,17 +90,53 @@
     "doctrine/sql-formatter": {
         "version": "1.1.1"
     },
+    "dompdf/dompdf": {
+        "version": "v1.0.2"
+    },
     "egulias/email-validator": {
         "version": "2.1.25"
+    },
+    "erusev/parsedown": {
+        "version": "1.7.4"
     },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.3"
     },
+    "friendsofsymfony/jsrouting-bundle": {
+        "version": "2.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.3",
+            "ref": "a9f2e49180f75cdc71ae279a929c4b2e0638de84"
+        }
+    },
+    "guzzlehttp/guzzle": {
+        "version": "7.2.0"
+    },
+    "guzzlehttp/promises": {
+        "version": "1.4.1"
+    },
+    "guzzlehttp/psr7": {
+        "version": "1.7.0"
+    },
     "knplabs/knp-components": {
-        "version": "v3.0.1"
+        "version": "v2.5.1"
     },
     "knplabs/knp-paginator-bundle": {
-        "version": "v5.4.2"
+        "version": "v5.3.0"
+    },
+    "knpuniversity/oauth2-client-bundle": {
+        "version": "1.20",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.20",
+            "ref": "80acc9223a205cbf5d9828fd616c82a374d281dd"
+        },
+        "files": [
+            "./config/packages/knpu_oauth2_client.yaml"
+        ]
     },
     "laminas/laminas-code": {
         "version": "3.4.1"
@@ -105,11 +147,26 @@
     "laminas/laminas-zendframework-bridge": {
         "version": "1.1.1"
     },
+    "league/oauth2-client": {
+        "version": "2.6.0"
+    },
+    "league/oauth2-facebook": {
+        "version": "2.0.5"
+    },
+    "lorenzo/pinky": {
+        "version": "1.0.5"
+    },
     "monolog/monolog": {
         "version": "1.26.0"
     },
     "nikic/php-parser": {
         "version": "v4.10.4"
+    },
+    "phenx/php-font-lib": {
+        "version": "0.5.2"
+    },
+    "phenx/php-svg-lib": {
+        "version": "v0.3.3"
     },
     "php": {
         "version": "7.2"
@@ -129,11 +186,23 @@
     "psr/container": {
         "version": "1.0.0"
     },
+    "psr/http-client": {
+        "version": "1.0.1"
+    },
+    "psr/http-message": {
+        "version": "1.0.1"
+    },
     "psr/link": {
         "version": "1.0.0"
     },
     "psr/log": {
         "version": "1.1.3"
+    },
+    "ralouphie/getallheaders": {
+        "version": "3.0.3"
+    },
+    "sabberworm/php-css-parser": {
+        "version": "8.3.1"
     },
     "sensio/framework-extra-bundle": {
         "version": "5.2",
@@ -147,8 +216,8 @@
             "./config/packages/sensio_framework_extra.yaml"
         ]
     },
-    "snilius/twig-sort-by-field": {
-        "version": "v0.1.5"
+    "swiftmailer/swiftmailer": {
+        "version": "v6.2.7"
     },
     "symfony/asset": {
         "version": "v4.4.19"
@@ -267,6 +336,15 @@
             "./src/Controller/.gitignore",
             "./src/Kernel.php"
         ]
+    },
+    "symfony/google-mailer": {
+        "version": "4.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.4",
+            "ref": "f8fd4ddb9b477510f8f4bce2b9c054ab428c0120"
+        }
     },
     "symfony/http-client": {
         "version": "v4.4.19"
@@ -435,6 +513,20 @@
     "symfony/stopwatch": {
         "version": "v4.4.19"
     },
+    "symfony/swiftmailer-bundle": {
+        "version": "2.5",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.5",
+            "ref": "ae4d22af30bbd484506bc1817c5a3ef72c855b93"
+        },
+        "files": [
+            "./config/packages/dev/swiftmailer.yaml",
+            "./config/packages/swiftmailer.yaml",
+            "./config/packages/test/swiftmailer.yaml"
+        ]
+    },
     "symfony/test-pack": {
         "version": "v1.0.7"
     },
@@ -522,13 +614,31 @@
     "symfony/yaml": {
         "version": "v4.4.19"
     },
+    "tijsverkoyen/css-to-inline-styles": {
+        "version": "2.2.3"
+    },
+    "twig/cssinliner-extra": {
+        "version": "v3.3.0"
+    },
     "twig/extra-bundle": {
+        "version": "v3.3.0"
+    },
+    "twig/inky-extra": {
+        "version": "v3.3.0"
+    },
+    "twig/markdown-extra": {
         "version": "v3.3.0"
     },
     "twig/twig": {
         "version": "v3.3.0"
     },
+    "twilio/sdk": {
+        "version": "6.20.0"
+    },
     "webmozart/assert": {
         "version": "1.9.1"
+    },
+    "willdurand/jsonp-callback-validator": {
+        "version": "v1.1.0"
     }
 }

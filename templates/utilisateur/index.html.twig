@@ -11,7 +11,7 @@
 
 
     <!-- Favicon Icon -->
-    <link rel="icon" type="image/png" href="images/fav.png">
+    <link rel="icon" type="image/png" href="{{ asset('images/fav.png') }}">
 
     <!-- Stylesheets -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet'>
@@ -32,13 +32,7 @@
 
 {% block WholeBody %}
     <header class="header clearfix">
-        <button type="button" id="toggleMenu" class="toggle_menu">
-            <i class='uil uil-bars'></i>
-        </button>
-        <button id="collapse_menu" class="collapse_menu">
-            <i class="uil uil-bars collapse_menu--icon "></i>
-            <span class="collapse_menu--label"></span>
-        </button>
+
         <div class="main_logo" id="logo">
             <a href="index.html"><img src="{{ asset('images/logo.svg') }}" alt="" width="120" height="70"></a>
             <a href="{{ path('index') }}"><img class="logo-inverse" src="{{ asset('images/logo.svg') }}" alt="" width="120" height="70"></a>
@@ -75,117 +69,6 @@
         </div>
     </header>
     <!-- Header End -->
-    <!-- Left Sidebar Start -->
-    <nav class="vertical_nav">
-        <div class="left_section menu_left" id="js-menu" >
-            <div class="left_section">
-                <ul>
-                    <li class="menu--item">
-                        <a href="index.html" class="menu--link active" title="Home">
-                            <i class='uil uil-home-alt menu--icon'></i>
-                            <span class="menu--label">Home</span>
-                        </a>
-                    </li>
-                    <li class="menu--item">
-                        <a href="live_streams.html" class="menu--link" title="Live Streams">
-                            <i class='uil uil-kayak menu--icon'></i>
-                            <span class="menu--label">Events</span>
-                        </a>
-                    </li>
-                    <li class="menu--item">
-                        <a href="explore.html" class="menu--link" title="Explore">
-                            <i class='uil uil-search menu--icon'></i>
-                            <span class="menu--label">Offre</span>
-                        </a>
-                    </li>
-                    <li class="menu--item">
-                        <a href="categories.html" class="menu--link" title="Categories">
-                            <i class='uil uil-layers menu--icon'></i>
-                            <span class="menu--label">Déposer demande</span>
-                        </a>
-                    </li>
-                    <li class="menu--item  menu--item__has_sub_menu">
-                        <label class="menu--link" title="Tests">
-                            <i class='uil uil-clipboard-alt menu--icon'></i>
-                            <span class="menu--label">Réclamation</span>
-                        </label>
-
-                    </li>
-                    <li class="menu--item">
-                        <a href="saved_courses.html" class="menu--link" title="Saved Courses">
-                            <i class="uil uil-heart-alt menu--icon"></i>
-                            <span class="menu--label">Saved Courses</span>
-                        </a>
-                    </li>
-                    <li class="menu--item  menu--item__has_sub_menu">
-                        <label class="menu--link" title="Pages">
-                            <i class='uil uil-file menu--icon'></i>
-                            <span class="menu--label">Pages</span>
-                        </label>
-                        <ul class="sub_menu">
-                            <li class="sub_menu--item">
-                                <a href="about_us.html" class="sub_menu--link">About</a>
-                            </li>
-                            <li class="sub_menu--item">
-                                <a href="sign_in.html" class="sub_menu--link">Sign In</a>
-                            </li>
-                            <li class="sub_menu--item">
-                                <a href="sign_up.html" class="sub_menu--link">Sign Up</a>
-                            </li>
-
-
-                            <li class="sub_menu--item">
-                                <a href="course_detail_view.html" class="sub_menu--link">Course Detail View</a>
-                            </li>
-                            <li class="sub_menu--item">
-                                <a href="checkout_membership.html" class="sub_menu--link">Checkout</a>
-                            </li>
-
-                            <li class="sub_menu--item">
-                                <a href="career.html" class="sub_menu--link">Career</a>
-                            </li>
-                            <li class="sub_menu--item">
-                                <a href="apply_job.html" class="sub_menu--link">Job Apply</a>
-                            </li>
-
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <div class="left_section">
-
-            </div>
-            <div class="left_section pt-2">
-                <ul>
-
-
-
-                    <li class="menu--item">
-                        <a href="feedback.html" class="menu--link" title="Send Feedback">
-                            <i class='uil uil-comment-alt-exclamation menu--icon'></i>
-                            <span class="menu--label">Send Feedback</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="left_footer">
-                <ul>
-                    <li><a href="about_us.html">About</a></li>
-                    <li><a href="press.html">Press</a></li>
-                    <li><a href="contact_us.html">Contact Us</a></li>
-                    <li><a href="coming_soon.html">Advertise</a></li>
-                    <li><a href="coming_soon.html">Developers</a></li>
-                    <li><a href="terms_of_use.html">Copyright</a></li>
-                    <li><a href="terms_of_use.html">Privacy Policy</a></li>
-                    <li><a href="terms_of_use.html">Terms</a></li>
-                </ul>
-                <div class="left_footer_content">
-                    <p>© 2020 <strong>Cursus</strong>. All Rights Reserved.</p>
-                </div>
-            </div>
-        </div>
-    </nav>
-    <!-- Left Sidebar End -->
         <!-- Body Start -->
         <div class="wrapper">
             <div class="sa4d25">
@@ -796,31 +679,7 @@
 
 
                         </div>
-                        <div class="col-xl-3 col-lg-4">
-                            <div class="right_side">
 
-                                <div class="fcrse_3">
-                                    <div class="cater_ttle">
-                                        <h4>Top Categories</h4>
-                                    </div>
-                                    <ul class="allcate15">
-                                        <li><a href="#" class="ct_item"><i class='uil uil-arrow'></i>Development</a></li>
-                                        <li><a href="#" class="ct_item"><i class='uil uil-graph-bar'></i>Business</a></li>
-                                        <li><a href="#" class="ct_item"><i class='uil uil-monitor'></i>IT and Software</a></li>
-                                        <li><a href="#" class="ct_item"><i class='uil uil-ruler'></i>Design</a></li>
-                                        <li><a href="#" class="ct_item"><i class='uil uil-chart-line'></i>Marketing</a></li>
-                                        <li><a href="#" class="ct_item"><i class='uil uil-book-open'></i>Personal Development</a></li>
-                                        <li><a href="#" class="ct_item"><i class='uil uil-camera'></i>Photography</a></li>
-                                        <li><a href="#" class="ct_item"><i class='uil uil-music'></i>Music</a></li>
-                                    </ul>
-                                </div>
-                                <div class="strttech120">
-                                    <h4>Become an Instructor</h4>
-                                    <p>Top instructors from around the world teach millions of students on Cursus. We provide the tools and skills to teach what you love.</p>
-                                    <button class="Get_btn" onclick="window.location.href = '#';">Start Teaching</button>
-                                </div>
-                            </div>
-                        </div>
 
                     </div>
                 </div>

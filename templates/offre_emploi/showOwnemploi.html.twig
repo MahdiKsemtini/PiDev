@@ -1,0 +1,132 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RightJob{% endblock %}
+
+
+{% block body %}
+		
+
+
+<div class="wrapper">
+		<div class="sa4d25">
+			<div class="container-fluid">			
+				<div class="row" >
+                
+					<div class="col-xl-9 col-lg-8">
+                    
+						<div class="section3125">
+
+
+
+			
+						
+							<h4 class="item_title">Liste des offres d'emploi</h4>
+							<a href="#" class="see150">See all</a>
+                            
+							<div class="la5lo1">
+								<div class="owl-carousel featured_courses owl-theme">
+                                	{% for i in l %}
+									<div class="item"  style="height:60%">
+										<div class="fcrse_1 mb-20">
+											<a href="course_detail_view.html" class="fcrse_img">
+												<img src="images/courses/img-1.jpg" alt="" style="margin-top:50%">
+												<div class="course-overlay">
+													<div class="badge_seller">{{ i.nomProjet }}</div>
+													
+													<span class="play_btn1"><i class="uil uil-play"></i></span>
+													<div class="crse_timer">
+														{{ i.dateCreation ? i.dateCreation|date('Y-m-d') }}
+													</div>
+												</div>
+											</a>
+											<div class="fcrse_content">
+												<div class="eps_dots more_dropdown">
+													<a href="#"><i class='uil uil-ellipsis-v'></i></a>
+													<div class="dropdown-content">
+														
+                                                        <span><a href="{{ path('editOwnEmploi', {'id': i.id}) }}" title="Edit" class="gray-s"><i class="uil uil-edit-alt"></i></a>Modifier</span>
+														
+
+                                                        <span><a href="{{ path('deleteOwnEmploi', {'id': i.id}) }}" title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a>Supprimer</span>
+
+         
+                                                   
+                                                                               
+													 </div>																										
+												</div>
+												
+												<a href="course_detail_view.html" class="crse14s">{{ i.nomProjet }}</a>
+												<a href="#" class="crse-cate">{{ i.domaine }}</a>
+                                                <div class="vdtodt">
+                                                <span class="vdt14">{{ i.description }}</span><br>
+													<span class="vdt14">{{ i.competences }}</span>
+													
+												</div>
+												<div class="auth1lnkprce">
+													<p class="cr1fot">By <a href="#">{{ app.session.get('nom') }}</a></p>
+													<div class="prce142">{{ i.salaire }} DT</div>
+												</div>
+											</div>
+										</div>
+									</div>
+                                    {% endfor %}
+									
+									
+									
+									
+									
+									
+								</div>
+							</div>
+						</div>
+						
+									
+									</div>
+									
+									
+									
+									</div>
+								</div>
+                               <div class="fcrse_3" style="margin-left:75%;margin-top:-36%">
+								<div class="cater_ttle">
+									<h4>Top Categories</h4>
+								</div>
+								<ul class="allcate15">
+									<li><a href="#" class="ct_item"><i class='uil uil-arrow'></i>Development</a></li>
+									<li><a href="#" class="ct_item"><i class='uil uil-graph-bar'></i>Business</a></li>
+									<li><a href="#" class="ct_item"><i class='uil uil-monitor'></i>IT and Software</a></li>
+									<li><a href="#" class="ct_item"><i class='uil uil-ruler'></i>Design</a></li>
+									<li><a href="#" class="ct_item"><i class='uil uil-chart-line'></i>Marketing</a></li>
+									<li><a href="#" class="ct_item"><i class='uil uil-book-open'></i>Personal Development</a></li>
+									<li><a href="#" class="ct_item"><i class='uil uil-camera'></i>Photography</a></li>
+									<li><a href="#" class="ct_item"><i class='uil uil-music'></i>Music</a></li>
+								</ul>
+							</div>
+							</div>
+
+						
+						
+
+        
+
+	<!-- Body End -->
+
+	
+	
+	
+
+	<!-- Left Sidebar End -->
+	<!-- Body Start -->
+
+{% endblock %}
+
+{% block js %}
+
+<script src="{{asset("js/vertical-responsive-menu.min.js")}}"></script>
+	<script src="{{asset("js/jquery-3.3.1.min.js")}}"></script>
+	<script src="{{asset("vendor/bootstrap/js/bootstrap.bundle.min.js")}}"></script>
+	<script src="{{asset("vendor/OwlCarousel/owl.carousel.js")}}"></script>
+	<script src="{{asset("vendor/semantic/semantic.min.js")}}"></script>
+	<script src="{{asset("js/custom.js")}}"></script>
+	<script src="{{asset("js/night-mode.js")}}"></script>
+{% endblock %}

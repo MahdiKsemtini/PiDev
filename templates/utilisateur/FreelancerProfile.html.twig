@@ -1,0 +1,316 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RightJob{% endblock %}
+
+
+
+{% block body %}
+    <!-- Body Start -->
+    <div class="wrapper _bg4586">
+        <div class="_216b01">
+            <div class="container-fluid">
+                <div class="row justify-content-md-center">
+                    <div class="col-md-10">
+                        <div class="section3125 rpt145">
+                            <div class="row">
+                                <div class="col-lg-7">
+                                    <a href="#" class="_216b22">
+                                        <span><i class="uil uil-cog"></i></span>Setting
+                                    </a>
+                                    <div class="dp_dt150">
+                                        <div class="img148">
+                                            <img src="{{ asset('picture/' ~ app.session.get('photo_de_profile')) }}" alt="">
+                                        </div>
+                                        <div class="prfledt1">
+                                            <h2>{{ app.session.get('nom') }} {{ app.session.get('prenom') }}</h2>
+                                            <span>{{ app.session.get('email') }}</span>
+                                        </div>
+                                    </div>
+                                    <ul class="_ttl120">
+                                        <li>
+                                            <div class="_ttl121">
+                                                <div class="_ttl122">Adresse</div>
+                                                <div class="_ttl123">{{ app.session.get('adresse') }}</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="_ttl121">
+                                                <div class="_ttl122">Competences</div>
+                                                <div class="_ttl123">{{ app.session.get('competences') }}</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="_ttl121">
+                                                <div class="_ttl122">Langues</div>
+                                                <div class="_ttl123">{{ app.session.get('langues') }}</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="_ttl121">
+                                                <div class="_ttl122">Sexe</div>
+                                                <div class="_ttl123">{{ app.session.get('sexe') }}</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="_ttl121">
+                                                <div class="_ttl122">CV</div>
+                                                <a class="btn btn-success" href="{{ path('CV') }}">pdf</a>                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="_ttl121">
+                                                <div class="_ttl122">Vues</div>
+                                                <div class="_ttl123">{{ app.session.get('viewsNb') }}</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                </div>
+
+                                <div class="col-lg-5">
+                                    <a href="#" class="_216b12">
+                                        Comptes Resaux Sociaux :
+                                    </a>
+                                    <div class="rgt-145">
+                                        <ul class="tutor_social_links">
+                                            {% if app.session.get('compte_facebook') =="Add Compte Facebook" %}
+                                                <li><a href="#" class="fb"><i class="fab fa-facebook"></i></a></li>
+                                            {% else %}
+                                                <li><a href="{{ app.session.get('compte_facebook') }}" target="_blank" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+                                            {% endif %}
+                                            {% if app.session.get('compte_twitter') =="Add Compte Twitter" %}
+                                                <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
+                                            {% else %}
+                                                <li><a href="{{ app.session.get('compte_twitter') }}" target="_blank" class="tw"><i class="fab fa-twitter"></i></a></li>
+                                            {% endif %}
+                                            {% if app.session.get('compte_linkedin') =="Add Compte LinkedIn" %}
+                                                <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                                            {% else %}
+                                                <li><a href="{{ app.session.get('compte_linkedin') }}" target="_blank" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                                            {% endif %}
+                                        </ul>
+                                        <br>
+                                        <div><span style="color: white">Rating:</span></div>
+                                        <div class="rating rating2">
+                                            {% if app.session.get('NumbReviews')!=0 %}
+                                                {% if app.session.get('NumbReviews')!=5 %}
+                                                    {% for i in range(1,5- app.session.get('NumbReviews')) %}
+                                                        <a style="color: gray" >★</a>
+                                                    {% endfor %}
+                                                {% endif %}
+                                                {% for i in range(1, app.session.get('NumbReviews')) %}
+                                                <a style="color: orange" >★</a>
+                                                {% endfor %}
+                                            {% else %}
+                                                {% for i in range(1,5) %}
+                                                        <a style="color: gray" >★</a>
+                                                {% endfor %}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="_215b15">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="course_tabs">
+                            <nav>
+                                <div class="nav nav-tabs tab_crse" id="nav-tab" role="tablist">
+                                    <a class="nav-item nav-link active" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-selected="true">Editer le profil</a>
+                                    <a class="nav-item nav-link" id="nav-courses-tab" data-toggle="tab" href="#nav-courses" role="tab" aria-selected="false">Mes Reviews</a>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="_215b17">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="course_tab_content">
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-about" role="tabpanel">
+                                    <div class="_htg451">
+                                        <div class="_htg452">
+                                            <form {{ form_start(form) }}
+                                                <div class="basic_ptitle">
+                                                    <h4>Nom de Freelancer</h4>
+                                                    <p>Changer votre Nom</p>
+                                                </div>
+                                                <div class="ui search focus">
+                                                    <div class="ui left icon input swdh11 swdh19">
+                                                        {{ form_widget(form.nom) }}
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="basic_ptitle">
+                                                    <h4>Prenom de Freelancer</h4>
+                                                    <p>Changer votre Prenom</p>
+                                                </div>
+                                                <div class="ui search focus mt-15">
+                                                    <div class="ui left icon input swdh11 swdh19">
+                                                        {{ form_widget(form.prenom) }}
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="basic_ptitle">
+                                                    <h4>Email de Freelancer</h4>
+                                                    <p>Changer votre Email</p>
+                                                </div>
+                                                <div class="ui search focus mt-15">
+                                                    <div class="ui left icon input swdh11 swdh19">
+                                                        {{ form_widget(form.email) }}
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="basic_ptitle">
+                                                    <h4>Adresse de Freelancer</h4>
+                                                    <p>Changer votre Adresse</p>
+                                                </div>
+                                                <div class="ui search focus mt-15">
+                                                    <div class="ui left icon input swdh11 swdh19">
+                                                        {{ form_widget(form.adresse) }}
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="basic_ptitle">
+                                                    <h4>Compte Linkedin de Freelancer</h4>
+                                                    <p>Changer votre compte LinkedIn</p>
+                                                </div>
+                                                <div class="ui search focus mt-15">
+                                                    <div class="ui left icon input swdh11 swdh19">
+                                                        {{ form_widget(form.compte_linkedin) }}
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="basic_ptitle">
+                                                    <h4>Compte Facebook de Freelancer</h4>
+                                                    <p>Changer votre compte Facebook</p>
+                                                </div>
+                                                <div class="ui search focus mt-15">
+                                                    <div class="ui left icon input swdh11 swdh19">
+                                                        {{ form_widget(form.compte_facebook) }}
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="basic_ptitle">
+                                                    <h4>Compte Twitter de Freelancer</h4>
+                                                    <p>Changer votre compte Twitter</p>
+                                                </div>
+                                                <div class="ui search focus mt-15">
+                                                    <div class="ui left icon input swdh11 swdh19">
+                                                        {{ form_widget(form.compte_twitter) }}
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="basic_ptitle">
+                                                    <h4>Sexe de Freelancer</h4>
+                                                    <p>Changer votre Sexe</p>
+                                                </div>
+                                                <div class="ui search focus mt-15">
+                                                    <div class="ui left icon input swdh11 swdh19">
+                                                        {{ form_widget(form.sexe) }}
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="basic_ptitle">
+                                                    <h4>Competences de Freelancer</h4>
+                                                    <p>Modifier votre Competences</p>
+                                                </div>
+                                                <div class="ui search focus mt-15">
+                                                    <div class="ui left icon input swdh11 swdh19">
+                                                        {{ form_widget(form.competences) }}
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="basic_ptitle">
+                                                    <h4>Langues de Freelancer</h4>
+                                                    <p>Modifier votre Langues</p>
+                                                </div>
+                                                <div class="ui search focus mt-15">
+                                                    <div class="ui left icon input swdh11 swdh19">
+                                                        {{ form_widget(form.langues) }}
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <div class="basic_ptitle">
+                                                    <h4>Photo de profile de Freelancer</h4>
+                                                    <p>Modifier votre Photo de profile</p>
+                                                </div>
+                                                <div class="ui search focus mt-15">
+                                                    <div class="ui left icon input swdh11 swdh19">
+                                                        {{ form_widget(form.photo_de_profile,{'attr':{'value': app.session.get('photo_de_profile')}}) }}
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                {{ form_widget(form.Save) }}
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="nav-courses" role="tabpanel">
+                                        <div class="_htg452">
+                                            {% for l in reviews%}
+                                                    <div class="fcrse_1 mt-30">
+                                                        <div class="tutor_img">
+                                                            <a href="{{ path('ViewSocieteProfileF', {'id': l.societe.id}) }}"><img src="{{ asset('picture/' ~ l.societe.PhotoDeProfile) }}" alt=""></a>
+                                                        </div>
+                                                        <div class="tutor_content_dt">
+                                                            <div class="tutor150">
+                                                                <a href="{{ path ('ViewSocieteProfileF', {'id': l.societe.id}) }}" class="tutor_name">{{ l.societe.nom }}</a>
+                                                                <div class="mef78" title="Verify">
+                                                                    <i class="uil uil-check-circle"></i>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tutor_cate">{{l.societe.email}}</div>
+                                                            <div class="tutor_cate">Review: {{l.Description}}</div>
+                                                        </div>
+                                                    </div>
+                                            {% endfor %}
+                                        </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <!-- Body End -->
+{% endblock %}
+
+{% block js %}
+        <script src="{{ asset('js/vertical-responsive-menu.min.js') }}"></script>
+        <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+        <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('vendor/OwlCarousel/owl.carousel.js') }}"></script>
+        <script src="{{ asset('vendor/semantic/semantic.min.js') }}"></script>
+        <script src="{{ asset('js/custom.js') }}"></script>
+        <script src="{{ asset('js/night-mode.js') }}"></script>
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6060d1c7067c2605c0bd153a/1f1t6set0';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+{% endblock %}

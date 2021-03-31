@@ -1,0 +1,227 @@
+{% extends 'base_back.html.twig' %}
+
+ {% block title %}RightJob{% endblock %}
+
+
+
+{% block body %}
+    <!-- Body Start -->
+    <!-- Body Start -->
+    <div class="wrapper _bg4586">
+        <div class="_216b01">
+            <div class="container">
+                <div class="row justify-content-md-center">
+                    <div class="col-md-10">
+                        <div class="section3125 rpt145">
+                            <div class="row">
+                                <div class="col-lg-7">
+
+                                    <div class="dp_dt150">
+                                        <div class="img148">
+                                            <img src="{{ asset('images/left-imgs/img-17.jpg') }}" alt="">
+                                        </div>
+                                        <div class="prfledt1">
+                                            <h2>{{ admin.nom }} {{ admin.prenom }}</h2>
+                                            <span style="color: #1da1f2">{{ admin.login }}</span>
+                                            <br>
+                                            <br>
+                                            <span>{{ admin.type }}</span>
+                                        </div>
+
+                                    </div>
+                                    <ul class="_ttl120">
+                                        <li>
+                                            <div class="_ttl121">
+                                                <div class="_ttl122">Approved</div>
+                                                <div class="_ttl123">{{ admin.approuve }}</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="_ttl121">
+                                                <div class="_ttl122">No Approved</div>
+                                                <div class="_ttl123">{{ admin.nonapprouve }}</div>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="_215b17">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="my_courses_tabs" id="t">
+
+                            <ul class="nav nav-pills my_crse_nav"  id="pills-tab" role="tablist">
+                                <li class="nav-item" style="width: 50%">
+                                    <a class="nav-link active" id="pills-my-courses-tab" data-toggle="pill" href="#Event-Loisir" role="tab" aria-controls="Event-Loisir" aria-selected="true"><i class="uil uil-book-alt"></i>Les Evenements de Loisirs </a>
+                                </li>
+                                <li class="nav-item" style="width: 50%">
+                                    <a class="nav-link" id="pills-my-purchases-tab" data-toggle="pill" href="#Formation" role="tab" aria-controls="Formation" aria-selected="false"><i class="uil uil-book-alt"></i>Les Formations</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="pills-tabContent">
+                                <div class="tab-pane fade show active" id="Event-Loisir" role="tabpanel">
+                                    <div class="col-lg-12 col-md-12">
+
+
+                                        {% if ListeEventLoisir.items == null %}
+                                            <div class="title129 mt-35 mb-35">
+                                                <h2>Aucune Evenement de Loisir non approuvé</h2>
+                                            </div>
+                                        {% else %}
+
+                                            <div class="table-responsive mt-50 mb-0">
+                                                <table class="table ucp-table">
+                                                    <thead class="thead-s">
+                                                    <tr>
+                                                        <th class="text-center" scope="col">Titre de l'Evenement</th>
+                                                        <th class="text-center" scope="col">Créé par</th>
+                                                        <th class="text-center" scope="col">Description</th>
+                                                        <th class="text-center" scope="col">Domaine</th>
+                                                        <th class="text-center" scope="col">Date début</th>
+                                                        <th class="text-center" scope="col">Date fin</th>
+                                                        <th class="text-center" scope="col">Nombre de participant</th>
+                                                        <th class="text-center" scope="col">Lieu</th>                                                                    <th class="text-center" scope="col">Controls</th>
+                                                        <th class="text-center" scope="col">Controls</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                    {% for i in ListeEventLoisir %}
+
+                                                        <tr>
+
+                                                            <td class="text-center">{{ i.Labelle }}</td>
+                                                            {% if i.idFr == null %}
+                                                                <td class="cell-center">{{ i.idSo.nom }}</td>
+                                                            {% else %}
+                                                                <td class="cell-center">{{ i.idFr.nom }} {{ i.idFr.prenom }}</td>
+                                                            {% endif %}
+
+                                                            <td class="text-center">{{ i.Description }}</td>
+                                                            <td class="text-center">{{ i.Domaine }}</td>
+                                                            <td class="text-center">{{i.DateDebut ? i.DateDebut|date('Y-m-d')}}</td>
+                                                            <td class="text-center">{{i.DateFin ? i.DateFin|date('Y-m-d')}}</td>
+                                                            <td class="text-center">{{ i.NbParticipant }}</td>
+                                                            <td class="text-center">{{ i.Lieu }}</td>
+
+                                                            <td class="text-center">
+                                                                <a href="{{ path('deactivateEvenement', {'id': i.id}) }}" title="Effacer" class="gray-s"><i class="uil uil-trash-alt"></i></a>
+                                                            </td>
+
+                                                        </tr>
+                                                    {% endfor %}
+
+                                                    </tbody>
+                                                </table>
+                                                <div class="main-p-pagination">
+                                                    <nav aria-label="Page navigation example">
+                                                        <ul class="pagination">
+                                                            <li class="page-item">
+                                                                {{ knp_pagination_render(ListeEventLoisir) }}
+                                                            </li>
+
+                                                        </ul>
+                                                    </nav>
+                                                </div>
+
+                                            </div>
+                                        {% endif %}
+                                    </div>
+
+
+                                </div>
+                                <div class="tab-pane fade" id="Formation" role="tabpanel">
+                                    <div class="col-lg-12 col-md-12">
+
+
+                                        {% if ListeFormation.items == null %}
+                                            <div class="title129 mt-35 mb-35">
+                                                <h2>Aucune Formation non approuvé</h2>
+                                            </div>
+                                        {% else %}
+
+                                            <div class="table-responsive mt-50 mb-0">
+                                                <table class="table ucp-table">
+                                                    <thead class="thead-s">
+                                                    <tr>
+                                                        <th class="text-center" scope="col">Titre de l'Evenement</th>
+                                                        <th class="text-center" scope="col">Créé par</th>
+                                                        <th class="text-center" scope="col">Description</th>
+                                                        <th class="text-center" scope="col">Domaine</th>
+                                                        <th class="text-center" scope="col">Date début</th>
+                                                        <th class="text-center" scope="col">Date fin</th>
+                                                        <th class="text-center" scope="col">Montant</th>
+                                                        <th class="text-center" scope="col">Lieu</th>
+                                                        <th class="text-center" scope="col">Controls</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                    {% for i in ListeFormation %}
+                                                        <tr>
+
+                                                            <td class="text-center">{{ i.Labelle }}</td>
+                                                            {% if i.idFr == null %}
+                                                                <td class="cell-center"><center>{{ i.idSo.nom }}</center></td>
+                                                            {% else %}
+                                                                <td class="cell-center"><center>{{ i.idFr.nom }} {{ i.idFr.prenom }}</center></td>
+                                                            {% endif %}
+
+                                                            <td class="text-center">{{ i.Description }}</td>
+                                                            <td class="text-center">{{ i.Domaine }}</td>
+                                                            <td class="text-center">{{i.DateDebut ? i.DateDebut|date('Y-m-d')}}</td>
+                                                            <td class="text-center">{{i.DateFin ? i.DateFin|date('Y-m-d')}}</td>
+                                                            <td class="text-center">{{ i.Montant }}</td>
+                                                            <td class="text-center">{{ i.Lieu }}</td>
+
+                                                            <td class="text-center">
+                                                                <a href="{{ path('deactivateFormation', {'id': i.id}) }}" title="Effacer" class="gray-s"><i class="uil uil-trash-alt"></i></a>
+                                                            </td>
+
+                                                        </tr>
+                                                    {% endfor %}
+
+                                                    </tbody>
+                                                </table>
+                                                <div class="main-p-pagination">
+                                                    <nav aria-label="Page navigation example">
+                                                        <ul class="pagination">
+                                                            <li class="page-item">
+                                                                {{ knp_pagination_render(ListeFormation) }}
+                                                            </li>
+
+                                                        </ul>
+                                                    </nav>
+                                                </div>
+
+                                            </div>
+                                        {% endif %}
+                                    </div>
+
+
+                                </div>
+
+
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!-- Body End -->
+{% endblock %}

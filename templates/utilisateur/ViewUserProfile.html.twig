@@ -1,0 +1,248 @@
+{% extends 'base.html.twig' %}
+
+ {% block title %}RightJob{% endblock %}
+
+
+
+{% block body %}
+<!-- Body Start -->
+<!-- Body Start -->
+<div class="wrapper _bg4586">
+    <div class="_216b01">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-md-10">
+                    <div class="section3125 rpt145">
+                        {% if type=='Freelancer' %}
+                            <div class="row">
+                                <div class="col-lg-7">
+
+                                    <div class="dp_dt150">
+                                        <div class="img148">
+                                            <img src="{{ asset('picture/' ~ profile.PhotoDeProfile) }}" alt="">
+                                        </div>
+                                        <div class="prfledt1">
+                                            <h2>{{ profile.nom }} {{ profile.prenom }}</h2>
+                                            <span style="color: #1da1f2">{{ profile.email }}</span>
+                                        </div>
+                                    </div>
+                                    <ul class="_ttl120">
+                                        <li>
+                                            <div class="_ttl121">
+                                                <div class="_ttl122">Adresse</div>
+                                                <div class="_ttl123">{{ profile.adresse }}</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="_ttl121">
+                                                <div class="_ttl122">Competences</div>
+                                                <div class="_ttl123">{{ profile.competences }}</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="_ttl121">
+                                                <div class="_ttl122">Langues</div>
+                                                <div class="_ttl123">{{ profile.langues }}</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="_ttl121">
+                                                <div class="_ttl122">Sexe</div>
+                                                <div class="_ttl123">{{ profile.sexe }}</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-5">
+                                    <a href="#" class="_216b12">
+                                        Comptes Resaux Sociaux :
+                                    </a>
+                                    <div class="rgt-145">
+                                        <ul class="tutor_social_links">
+                                            {% if profile.CompteFacebook =="Add Compte Facebook" %}
+                                                <li><a href="#" class="fb"><i class="fab fa-facebook"></i></a></li>
+                                            {% else %}
+                                                <li><a href="{{ profile.CompteFacebook }}" target="_blank" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+                                            {% endif %}
+                                            {% if profile.CompteLinkedin =="Add Compte Twitter" %}
+                                                <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
+                                            {% else %}
+                                                <li><a href="{{ profile.CompteLinkedin }}" target="_blank" class="tw"><i class="fab fa-twitter"></i></a></li>
+                                            {% endif %}
+                                            {% if profile.CompteTwitter =="Add Compte LinkedIn" %}
+                                                <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                                            {% else %}
+                                                <li><a href="{{ profile.CompteTwitter }}" target="_blank" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                                            {% endif %}
+                                        </ul>
+                                        <br>
+                                        <div><span style="color: white">Rating:</span></div>
+                                        <div class="rating rating2">
+                                            <div class="rating rating2"><!--
+		                                    --><a href="{{ path('ratingSocite',{'numb':5 , 'idTaker':profile.id, 'id':profile.id}) }}" title="Give 5 stars">★</a><!--
+                                            --><a href="{{ path('ratingSocite',{'numb':4 , 'idTaker':profile.id, 'id':profile.id}) }}" title="Give 4 stars">★</a><!--
+                                            --><a href="{{ path('ratingSocite',{'numb':3 , 'idTaker':profile.id, 'id':profile.id}) }}" title="Give 3 stars">★</a><!--
+                                            --><a href="{{ path('ratingSocite',{'numb':2 , 'idTaker':profile.id, 'id':profile.id}) }}" title="Give 2 stars">★</a><!--
+                                            --><a href="{{ path('ratingSocite',{'numb':1 , 'idTaker':profile.id, 'id':profile.id}) }}" title="Give 1 star">★</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="row">
+                                <div class="col-lg-7">
+
+                                    <div class="dp_dt150">
+                                        <div class="img148">
+                                            <img src="{{ asset('picture/' ~ profile.PhotoDeProfile) }}" alt="">
+                                        </div>
+                                        <div class="prfledt1">
+                                            <h2>{{ profile.nom }}</h2>
+                                            <span style="color: #1da1f2">{{ profile.email }}</span>
+                                            <br>
+                                            <br>
+                                        </div>
+                                    </div>
+                                    <ul class="_ttl120">
+                                        <li>
+                                            <div class="_ttl121">
+                                                <div class="_ttl122">Adresse</div>
+                                                <div class="_ttl123">{{ profile.adresse }}</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="_ttl121">
+                                                <div class="_ttl122">Status Juridique</div>
+                                                <div class="_ttl123">{{ profile.StatusJuridique }}</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-lg-5">
+                                    <a href="#" class="_216b12">
+                                        Rating de  {{ nbpersone }} personne(s):
+                                    </a>
+                                    <div class="rgt-145">
+                                        <div class="rating rating2" >
+                                            {% if numbrev!=0 %}
+                                                {% if numbrev!=5 %}
+                                                    {% for i in range(1,5- numbrev) %}
+                                                        <a style="color: gray" >★</a>
+                                                    {% endfor %}
+                                                {% endif %}
+                                                {% for i in range(1, numbrev) %}
+                                                    <a style="color: orange" >★</a>
+                                                {% endfor %}
+                                            {% else %}
+                                                {% for i in range(1,5) %}
+                                                    <a style="color: gray" >★</a>
+                                                {% endfor %}
+                                            {% endif %}
+                                        </div>
+                                        <br>
+                                        <div><span style="color: white">Rate:</span></div>
+                                        <div class="rating rating2">
+                                            <div class="rating rating2"><!--
+		                                    --><a href="{{ path('ratingFreelancer',{'numb':5 , 'idTaker':profile.id, 'id':profile.id}) }}" title="Give 5 stars">★</a><!--
+                                            --><a href="{{ path('ratingFreelancer',{'numb':4 , 'idTaker':profile.id, 'id':profile.id}) }}" title="Give 4 stars">★</a><!--
+                                            --><a href="{{ path('ratingFreelancer',{'numb':3 , 'idTaker':profile.id, 'id':profile.id}) }}" title="Give 3 stars">★</a><!--
+                                            --><a href="{{ path('ratingFreelancer',{'numb':2 , 'idTaker':profile.id, 'id':profile.id}) }}" title="Give 2 stars">★</a><!--
+                                            --><a href="{{ path('ratingFreelancer',{'numb':1 , 'idTaker':profile.id, 'id':profile.id}) }}" title="Give 1 star">★</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="_215b17">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="course_tab_content">
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="nav-about" role="tabpanel">
+                                <div class="_htg451">
+                                    <div class="_htg452">
+                                        <form {{ form_start(form) }}
+                                        <div class="basic_ptitle">
+                                            <h4>Ajouter une Review:</h4>
+                                            <br>
+                                        </div>
+                                        <div class="ui search focus">
+                                            <div class="ui left icon input swdh11 swdh19">
+                                                {{ form_widget(form.Description) }}
+                                            </div>
+                                        </div>
+                                        {{ form_widget(form.Valider) }}
+
+                                        </form>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="course_tab_content">
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="nav-about" role="tabpanel">
+                                <div class="_htg451">
+                                    <div class="_htg452">
+                                        {% for l in reviews|reverse%}
+                                            {% if type=='Societe' %}
+                                                <div class="fcrse_1 mt-30">
+                                                    <div class="tutor_img">
+                                                        <a href="{{ path('ViewFreelancerProfileF', {'id': l.freelancer.id}) }}"><img src="{{ asset('picture/' ~ l.freelancer.PhotoDeProfile) }}" alt=""></a>
+                                                    </div>
+                                                    <div class="tutor_content_dt">
+                                                        <div class="tutor150">
+                                                            <a href="{{ path ('ViewFreelancerProfileF', {'id': l.freelancer.id}) }}" class="tutor_name">{{ l.freelancer.nom }} {{ l.freelancer.prenom }}</a>
+                                                            <div class="mef78" title="Verify">
+                                                                <i class="uil uil-check-circle"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tutor_cate">{{l.freelancer.email}}</div>
+                                                        <div class="tutor_cate">Review: {{l.Description}}</div>
+                                                    </div>
+                                                </div>
+                                            {% elseif type=='Freelancer' %}
+                                                <div class="fcrse_1 mt-30">
+                                                    <div class="tutor_img">
+                                                        <a href="{{ path('ViewSocieteProfileF', {'id': l.societe.id}) }}"><img src="{{ asset('picture/' ~ l.societe.PhotoDeProfile) }}" alt=""></a>
+                                                    </div>
+                                                    <div class="tutor_content_dt">
+                                                        <div class="tutor150">
+                                                            <a href="{{ path ('ViewSocieteProfileF', {'id': l.societe.id}) }}" class="tutor_name">{{ l.societe.nom }}</a>
+                                                            <div class="mef78" title="Verify">
+                                                                <i class="uil uil-check-circle"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tutor_cate">{{l.societe.email}}</div>
+                                                        <div class="tutor_cate">Review: {{l.Description}}</div>
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Body End -->
+    {% endblock %}

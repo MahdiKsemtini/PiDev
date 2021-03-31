@@ -2,38 +2,6 @@
 
 {% block title %}RightJob{% endblock %}
 
-{% block css %}
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, shrink-to-fit=9">
-    <meta name="description" content="Gambolthemes">
-    <meta name="author" content="Gambolthemes">
-    <title>RightJOB - FORUM</title>
-
-    <!-- Favicon Icon -->
-    <link rel="icon" type="image/png" href="images/lg.png">
-
-    <!-- Stylesheets -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet'>
-    <link href='vendor/unicons-2.0.1/css/unicons.css' rel='stylesheet'>
-    <link href="css/vertical-responsive-menu.min.css" rel="stylesheet">
-    <link href="css/instructor-dashboard.css" rel="stylesheet">
-    <link href="css/instructor-responsive.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
-    <link href="css/responsive.css" rel="stylesheet">
-    <link href="css/night-mode.css" rel="stylesheet">
-    <link href="css/jquery-steps.css" rel="stylesheet">
-
-    <!-- Vendor Stylesheets -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link href="vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
-    <link href="vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet">
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="vendor/semantic/semantic.min.css">
-
-
-{% endblock %}
-
 {% block body %}
 
     <div class="wrapper">
@@ -48,19 +16,70 @@
         </div>
         <div class="live_chat">
             {% for i in commentaires %}
-                <div class="chat1">
-                    <p>
-                    <div class="eps_dots more_dropdown" style="margin-right: 30px; margin-top: 10px" >
-                        <a href="#"><i class='uil uil-ellipsis-v'></i></a>
-                        <div class="dropdown-content">
-                            <a href={{ path('modifiercommentaire',{'id': i.id }) }}> <span   ><i class='uil-edit' ></i>Modifier</span> </a>
-                            <a href={{ path('supprimerCommentaire',{'id': i.id }) }}> <span><i class='uil uil-trash-alt'></i>Supprimer</span> </a>
+                {% if i.id_util!=null %}
+                    <div class="chat1">
+                        <div class="fcrse_1 mt-30">
+
+                                            <div class="tutor_content_dt">
+                                                <div class="tutor_img">
+                                                    {% if i.id_util.id!= app.session.get('id') %}
+                                                        <a href="{{ path('ViewFreelancerProfileF', {'id': i.id_util.id}) }}"><img src="{{ asset('picture/' ~ i.id_util.PhotoDeProfile) }}" alt=""></a>
+                                                    {% elseif i.id_util.id== app.session.get('id') and  app.session.get('compte_facebook')==null %}
+                                                        <a href="{{ path('ViewFreelancerProfileF', {'id': i.id_util.id}) }}"><img src="{{ asset('picture/' ~ i.id_util.PhotoDeProfile) }}" alt=""></a>
+
+                                                    {% else %}
+                                                        <a href="#"><img src="{{ asset('picture/' ~ i.id_util.PhotoDeProfile) }}" alt=""></a>
+                                                    {% endif %}
+                                                    </div>
+                                                <div class="tut1250">
+                                                    {% if i.id_util.id!= app.session.get('id') %}
+                                                        <a href="{{ path('ViewFreelancerProfileF', {'id': i.id_util.id}) }}" class="tutor_name">{{ i.id_util.nom }}</a>
+                                                    {% else %}
+                                                        <a href="#" class="tutor_name">{{ i.id_util.nom }}</a>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="tut1250">
+                                                    <h5>{{ i.description }}</h5>
+                                            </div>
+                                        </div>
+
+
                         </div>
+
                     </div>
-                    <a href="#">{{ i.id_util }}</a>
-                    {{ i.description }}
-                    </p>
-                </div>
+                {% else %}
+                    <div class="chat1">
+                        <div class="fcrse_1 mt-30">
+
+                                            <div class="tutor_content_dt">
+                                                <div class="tutor_img">
+                                                    {% if i.societe.id!= app.session.get('id') %}
+                                                        <a href="{{ path('ViewSocieteProfileF', {'id': i.societe.id}) }}"><img src="{{ asset('picture/' ~ i.societe.PhotoDeProfile) }}" alt=""></a>
+                                                    {% elseif i.societe.id== app.session.get('id') and  app.session.get('compte_facebook')!=null %}
+                                                        <a href="{{ path('ViewSocieteProfileF', {'id': i.societe.id}) }}"><img src="{{ asset('picture/' ~ i.societe.PhotoDeProfile) }}" alt=""></a>
+
+                                                    {% else %}
+                                                        <a href="#"><img src="{{ asset('picture/' ~ i.societe.PhotoDeProfile) }}" alt=""></a>
+                                                    {% endif %}
+                                                    </div>
+                                                <div class="tut1250">
+                                                    {% if i.societe.id!= app.session.get('id') %}
+                                                        <a href="{{ path('ViewSocieteProfileF', {'id': i.societe.id}) }}" class="tutor_name">{{ i.societe.nom }}</a>
+                                                    {% else %}
+                                                        <a href="#" class="tutor_name">{{ i.societe.nom }}</a>
+                                                    {% endif %}
+                                                </div>
+
+                                                <div class="tut1250">
+                                                    <h5>{{ i.description }}</h5>
+                                            </div>
+                                        </div>
+
+
+                    </div>
+
+                    </div>
+                {% endif %}
             {% endfor %}
         </div>
         <div class="live_comment">
@@ -68,12 +87,6 @@
 
                     <div class="cater_ttle">
                         <h4>Ajouter un commentaire</h4>
-                    </div>
-
-                    {{ form_start(form) }}
-                    <div class="form-group">
-                        <label for="exampleInputName1">{{ form_label(form.id_util) }}</label>
-                        {{ form_widget(form.id_util,{'attr':{'class':'form-control'}}) }}
                     </div>
                     {{ form_start(form) }}
 
@@ -101,16 +114,16 @@
 
 
     </div>
-    </div>
+
 
 {% endblock %}
 
 {% block js %}
-    <script src="js/vertical-responsive-menu.min.js"></script>
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/OwlCarousel/owl.carousel.js"></script>
-    <script src="vendor/semantic/semantic.min.js"></script>
-    <script src="js/custom.js"></script>
-    <script src="js/night-mode.js"></script>
+    <script src="{{ asset('js/vertical-responsive-menu.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('vendor/OwlCarousel/owl.carousel.js') }}"></script>
+    <script src="{{ asset('vendor/semantic/semantic.min.js') }}"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
+    <script src="{{ asset('js/night-mode.js') }}"></script>
 {% endblock %}

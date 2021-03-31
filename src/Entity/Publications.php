@@ -6,7 +6,6 @@ use App\Repository\PublicationsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PublicationsRepository::class)
@@ -20,14 +19,9 @@ class Publications
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $id_utilisateur;
 
     /**
      * @ORM\Column(type="string", length=1000)
-     * @Assert\NotBlank(message="la description est obligatoire")
      */
     private $description;
 
@@ -41,28 +35,29 @@ class Publications
      */
     private $date_publication;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Freelancer::class)
+     */
+    private $freelancer;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Societe::class)
+     */
+    private $societe;
+
+    /**
+     * @ORM\OneToMany(targetEntity=PostLike::class, mappedBy="post")
+     */
+    private $likes;
 
     public function __construct()
     {
-        $this->commentaires = new ArrayCollection();
+        $this->likes = new ArrayCollection();
     }
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getIdUtilisateur(): ?int
-    {
-        return $this->id_utilisateur;
-    }
-
-    public function setIdUtilisateur(int $id_utilisateur): self
-    {
-        $this->id_utilisateur = $id_utilisateur;
-
-        return $this;
     }
 
     public function getDescription(): ?string
@@ -77,12 +72,12 @@ class Publications
         return $this;
     }
 
-    public function getImage()
+    public function getImage(): ?string
     {
         return $this->image;
     }
 
-    public function setImage( $image)
+    public function setImage(?string $image): self
     {
         $this->image = $image;
 
@@ -96,15 +91,79 @@ class Publications
 
     public function setDatePublication(\DateTimeInterface $date_publication): self
     {
-        $this->date_publication = new \DateTime('now');
+        $this->date_publication = $date_publication;
 
         return $this;
     }
 
-    public function __toString(): ?string
+    public function getFreelancer(): ?Freelancer
     {
-        return $this->id;
+        return $this->freelancer;
     }
 
+    public function setFreelancer(?Freelancer $freelancer): self
+    {
+        $this->freelancer = $freelancer;
+
+        return $this;
+    }
+
+    public function getSociete(): ?Societe
+    {
+        return $this->societe;
+    }
+
+    public function setSociete(?Societe $societe): self
+    {
+        $this->societe = $societe;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|PostLike[]
+     */
+    public function getLikes(): Collection
+    {
+        return $this->likes;
+    }
+
+    public function addLike(PostLike $like): self
+    {
+        if (!$this->likes->contains($like)) {
+            $this->likes[] = $like;
+            $like->setPost($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLike(PostLike $like): self
+    {
+        if ($this->likes->removeElement($like)) {
+            // set the owning side to null (unless already changed)
+            if ($like->getPost() === $this) {
+                $like->setPost(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function isLikedByUser(Freelancer $user) : bool{
+        foreach ($this->likes as $like){
+            if($like->getUser() === $user) return true;
+        }
+        return false;
+
+    }
+
+    public function isLikedBySociete(Societe $societe) : bool{
+        foreach ($this->likes as $like){
+            if($like->getSociete() === $societe) return true;
+        }
+        return false;
+
+    }
 
 }

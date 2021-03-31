@@ -19,14 +19,23 @@
     <select />
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
+    <list default="true" id="15af684e-6c45-4779-8c76-e6372bcafffc" name="Default Changelist" comment="" />
+=======
     <list default="true" id="8536dbc3-61f5-4edd-a3f8-2ef114c64d86" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/doctrine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/doctrine.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CommentairesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CommentairesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/CommentairesRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/CommentairesRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/PublicationsRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PublicationsRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/Back/publications/statistiques.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/Back/publications/statistiques.html.twig" afterDir="false" />
+<<<<<<< Updated upstream
+      <change beforePath="$PROJECT_DIR$/src/Controller/PublicationsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PublicationsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/publications/forum.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/publications/forum.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/publications/forumedit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/publications/forumedit.html.twig" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/src/Controller/UtilisateurController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UtilisateurController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/utilisateur/Login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/utilisateur/Login.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/utilisateur/SignUp.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/utilisateur/SignUp.html.twig" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
+>>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -149,11 +158,6 @@
       <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
       <path value="$PROJECT_DIR$/vendor/sensio/framework-extra-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/web-server-bundle" />
-      <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
-      <path value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle" />
-      <path value="$PROJECT_DIR$/vendor/snilius/twig-sort-by-field" />
-      <path value="$PROJECT_DIR$/vendor/cmen/google-charts-bundle" />
-      <path value="$PROJECT_DIR$/vendor/beberlei/doctrineextensions" />
     </include_path>
   </component>
   <component name="ProjectId" id="1p1AutDvOGgv87KHVPDV78SVv6J" />
@@ -167,9 +171,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+<<<<<<< Updated upstream
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Test" />
+>>>>>>> Stashed changes
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.composer" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -177,22 +184,12 @@
       <recent name="C:\wamp64\www\PiDev\templates\offre_stage" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\wamp64\www\PiDev\templates\Back\publications" />
-      <recent name="C:\wamp64\www\PiDev\templates\Front" />
       <recent name="C:\wamp64\www\PiDev\templates\offre_emploi" />
       <recent name="C:\wamp64\www\PiDev\templates\demande" />
       <recent name="C:\wamp64\www\PiDev\templates\reclamation" />
+      <recent name="C:\wamp64\www\PiDev\public\images" />
+      <recent name="C:\wamp64\www\PiDev\public" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="127.0.0.1:8000" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://127.0.0.1:8000">
-      <method v="2" />
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="JavaScript Debug.127.0.0.1:8000" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -207,6 +204,7 @@
       <workItem from="1614347682114" duration="3226000" />
       <workItem from="1614362389290" duration="6881000" />
       <workItem from="1614372126520" duration="490000" />
+<<<<<<< Updated upstream
       <workItem from="1614414389060" duration="2000" />
       <workItem from="1614414401935" duration="2843000" />
       <workItem from="1614427656807" duration="3041000" />
@@ -215,31 +213,10 @@
       <workItem from="1614437571397" duration="156000" />
       <workItem from="1614442658181" duration="981000" />
       <workItem from="1614447317320" duration="6622000" />
-      <workItem from="1614526706869" duration="2023000" />
-      <workItem from="1614533294460" duration="18175000" />
-      <workItem from="1614601578681" duration="14756000" />
-      <workItem from="1614619495953" duration="3417000" />
-      <workItem from="1614622925528" duration="14401000" />
-      <workItem from="1614675182622" duration="6223000" />
-      <workItem from="1614682713514" duration="6265000" />
-      <workItem from="1614694218114" duration="7414000" />
-      <workItem from="1614748996764" duration="2587000" />
-      <workItem from="1614780495674" duration="13151000" />
-      <workItem from="1614839108387" duration="299000" />
-      <workItem from="1614955920954" duration="1443000" />
-      <workItem from="1614957470641" duration="14654000" />
-      <workItem from="1615012119461" duration="3848000" />
-      <workItem from="1615033448071" duration="4814000" />
-      <workItem from="1615057448847" duration="6585000" />
-      <workItem from="1615097388083" duration="6376000" />
-      <workItem from="1615160586917" duration="5937000" />
-      <workItem from="1615188790746" duration="18005000" />
-      <workItem from="1615210665143" duration="2286000" />
-      <workItem from="1615212962812" duration="4983000" />
-      <workItem from="1615312344790" duration="8302000" />
-      <workItem from="1615402902197" duration="8295000" />
-      <workItem from="1615448724023" duration="2055000" />
-      <workItem from="1616147017889" duration="5101000" />
+=======
+      <workItem from="1614376382825" duration="855000" />
+      <workItem from="1614433287464" duration="16047000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
@@ -257,9 +234,22 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+<<<<<<< Updated upstream
+=======
   </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
+  <component name="WindowStateProjectService">
+    <state x="499" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1614436141400">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="499" y="187" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.864@0.0.1536.864" timestamp="1614436141400" />
+    <state x="549" y="187" key="FileChooserDialogImpl" timestamp="1614434862174">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="549" y="187" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1614434862174" />
+    <state x="425" y="197" key="run.anything.popup" timestamp="1614444393261">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="425" y="197" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1614444393261" />
+>>>>>>> Stashed changes
   </component>
 </project>

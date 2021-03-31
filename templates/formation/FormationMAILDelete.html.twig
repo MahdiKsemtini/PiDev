@@ -1,0 +1,9 @@
+{% if type =="formation" %}
+    <h1>{{ type }} annulée</h1>
+    <p>Bonjour {{ user.nom }} , on vous informe que la  {{ type }}  {{ e.Labelle }} qui debutera {{ e.DateDebut|date('Y-m-d H:i') }} et
+        se termine {{ e.DateFin|('Y-m-d H:i') }} a éte annulée</p>
+{% else %}
+    <h1>{{ type }} annulé</h1>
+    <p>Bonjour {{ user.nom }} , on vous informe que l'  {{ type }}  {{ e.Labelle }} qui debutera {{ e.DateDebut|date('Y-m-d H:i') }} et
+        se termine {{ e.DateFin|date('Y-m-d H:i') }} a éte annulé</p>
+{% endif %}

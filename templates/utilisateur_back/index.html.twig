@@ -1,0 +1,125 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}RightJob{% endblock %}
+
+
+{% block body %}
+
+    <!-- Body Start -->
+    <div class="wrapper">
+        <div class="sa4d25">
+            <div class="container-fluid">
+
+                <div class="row">
+
+                    {{ form_start(search) }}
+                    <div class="col-xl-12 col-lg-8">
+                        <div class="section3125">
+                            <div class="explore_search">
+                                <div class="ui search focus">
+                                    <div class="ui left icon input swdh11">
+                                        {{ form_widget(search.nom) }}
+                                        <i class="uil uil-search-alt icon icon2"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{ form_widget(search.Recherche) }}
+                    {{ form_end(search) }}
+                    <div class="col-md-12">
+                        <div>
+                            <a href="{{ path('pdflist',{'type':type}) }}"><button class="Desactivate-btn" style="width: 250px">pdf</button></a>
+                        </div>
+                        <div class="_14d25">
+                            <div class="row">
+
+                                    {% for l in list %}
+                                        {%if (type=='Freelancer') %}
+                                        <div class="col-xl-3 col-lg-4 col-md-6">
+
+                                            <div class="fcrse_1 mt-30">
+                                                <div class="tutor_img">
+                                                    <a href="{{ path('ViewFreelancerProfile', {'id': l.id}) }}"><img src="{{ asset('picture/' ~ l.PhotoDeProfile) }}" alt=""></a>
+                                                </div>
+                                                <div class="tutor_content_dt">
+                                                    <div class="tutor150">
+                                                        <a href="{{ path ('ViewFreelancerProfile', {'id': l.id}) }}" class="tutor_name">{{ l.nom }} {{ l.prenom }}</a>
+                                                        <div class="mef78" title="Verify">
+                                                            <i class="uil uil-check-circle"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tutor_cate">{{l.email}}</div>
+                                                    <ul class="tutor_social_links">
+                                                        {% if l.CompteFacebook =="Add Compte Facebook" %}
+                                                            <li><a href="#" class="fb"><i class="fab fa-facebook"></i></a></li>
+                                                        {% else %}
+                                                            <li><a href="{{ l.CompteFacebook }}" target="_blank" class="fb"><i class="fab fa-facebook-f"></i></a></li>
+                                                        {% endif %}
+                                                        {% if l.CompteLinkedin =="Add Compte Twitter" %}
+                                                            <li><a href="#" class="tw"><i class="fab fa-twitter"></i></a></li>
+                                                        {% else %}
+                                                            <li><a href="{{ l.CompteLinkedin }}" target="_blank" class="tw"><i class="fab fa-twitter"></i></a></li>
+                                                        {% endif %}
+                                                        {% if l.CompteTwitter =="Add Compte LinkedIn" %}
+                                                            <li><a href="#" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                                                        {% else %}
+                                                            <li><a href="{{ l.CompteTwitter }}" target="_blank" class="ln"><i class="fab fa-linkedin-in"></i></a></li>
+                                                        {% endif %}
+                                                    </ul>
+                                                    {% if l.etat==0 %}
+                                                        <a href="{{ path('deactivateFreelancer',{'id':l.id}) }}"><button class="Desactivate-btn">Activated</button></a>
+                                                    {% else %}
+                                                        <a href="{{ path('activateFreelancer',{'id':l.id}) }}"><button class="Activate-btn">Deactivated</button></a>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                            {% else %}
+                                                <div class="col-xl-3 col-lg-4 col-md-6">
+
+                                                    <div class="fcrse_1 mt-30">
+                                                        <div class="tutor_img">
+                                                            <a href="{{ path('ViewSocieteProfile', {'id': l.id}) }}"><img src="{{ asset('picture/' ~ l.PhotoDeProfile) }}" alt=""></a>
+                                                        </div>
+                                                        <div class="tutor_content_dt">
+                                                            <div class="tutor150">
+                                                                <a href="{{ path ('ViewSocieteProfile', {'id': l.id}) }}" class="tutor_name">{{ l.nom }}</a>
+                                                                <div class="mef78" title="Verify">
+                                                                    <i class="uil uil-check-circle"></i>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tutor_cate">{{l.email}}</div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                    {% endif %}
+                                    {% endfor %}
+
+
+                            </div>
+                            <br>
+                            <div class="navigation" style="margin-left:40%">
+                                {{ knp_pagination_render(
+                                    list,
+                                    '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig',
+                                    {
+                                        'queryParam1': 'param1 value',
+                                        'queryParam2': 'param2 value'
+                                    },
+                                    {
+                                        'viewParam1': 'param1 value',
+                                        'viewParam2': 'param2 value'
+                                    },
+                                ) }}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- Body End -->
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base_back.html.twig' %}
+
+ {% block title %}RightJob{% endblock %}
+
+
+
+{% block body %}
+
+    <!-- Body Start -->
+    <div class="wrapper">
+        <div class="sa4d25">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="st_title"><i class="uil uil-bell"></i> Notifications</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        {% for l in listeReclamation %}
+                            {% if l.etat|number_format == 0 %}
+                                {#                        <a hraef="#" class="setting_noti">Notification Setting</a>#}
+                                <div class="all_msg_bg">
+                                    <div class="channel_my item all__noti5">
+                                        <div class="profile_link">
+                                            <img src="{{ asset('images/left-imgs/img-2.jpg') }}" alt="">
+                                            <div class="pd_content">
+                                                <h6>Type : {{ l.type }}</h6>
+                                                <p class="noti__text5">Texte : {{ l.texteReclamation }}</strong></p>
+                                                <span class="nm_time">Date : {{ l.dateReclamation }}</span>
+                                                <br>
+                                                <br>
+                                                <a href="{{ path('activateReclamation', {'id' : l.id}) }}" class="upload_btn">Approuver</a>
+                                                <a href="{{ path('deactivateReclamation', {'id': l.id}) }}" class="upload_btn">Supprimer</a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Body End -->
+{% endblock %}

@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_back.html.twig' %}
 
 {% block title %}RightJob{% endblock %}
 
@@ -11,23 +11,23 @@
     <title>Cursus - My Courses</title>
 
     <!-- Favicon Icon -->
-    <link rel="icon" type="image/png" href="images/fav.png">
+    <link rel="icon" type="image/png" href="{{ asset('images/fav.png') }}">
 
     <!-- Stylesheets -->
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet'>
-    <link href='vendor/unicons-2.0.1/css/unicons.css' rel='stylesheet'>
-    <link href="css/vertical-responsive-menu1.min.css" rel="stylesheet">
-    <link href="css/instructor-dashboard.css" rel="stylesheet">
-    <link href="css/instructor-responsive.css" rel="stylesheet">
-    <link href="css/night-mode.css" rel="stylesheet">
-    <link href="css/datepicker.min.css" rel="stylesheet">
+    <link href='{{ asset('http://fonts.googleapis.com/css?family=Roboto:400,700,500') }}' rel='stylesheet'>
+    <link href='{{ asset('vendor/unicons-2.0.1/css/unicons.css') }}' rel='stylesheet'>
+    <link href="{{ asset('css/vertical-responsive-menu1.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/instructor-dashboard.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/instructor-responsive.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/night-mode.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/datepicker.min.css') }}" rel="stylesheet">
 
     <!-- Vendor Stylesheets -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link href="vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
-    <link href="vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet">
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="vendor/semantic/semantic.min.css">
+    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/OwlCarousel/assets/owl.carousel.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/OwlCarousel/assets/owl.theme.default.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('vendor/semantic/semantic.min.css') }}">
 
 
 {% endblock %}
@@ -84,16 +84,16 @@
                 </div>
             </div>
         </div>
-    </div>
+
 
 {% endblock %}
 
 {% block js %}
-    <script src="js/vertical-responsive-menu.min.js"></script>
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/OwlCarousel/owl.carousel.js"></script>
-    <script src="vendor/semantic/semantic.min.js"></script>
-    <script src="js/custom.js"></script>
-    <script src="js/night-mode.js"></script>
+    <script src="{{ asset('js/vertical-responsive-menu.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('vendor/OwlCarousel/owl.carousel.js') }}"></script>
+    <script src="{{ asset('vendor/semantic/semantic.min.js') }}"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
+    <script src="{{ asset('js/night-mode.js') }}"></script>
 {% endblock %}

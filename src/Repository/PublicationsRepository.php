@@ -19,7 +19,34 @@ class PublicationsRepository extends ServiceEntityRepository
         parent::__construct($registry, Publications::class);
     }
 
+    // /**
+    //  * @return Publications[] Returns an array of Publications objects
+    //  */
+    /*
+    public function findByExampleField($value)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.exampleField = :val')
+            ->setParameter('val', $value)
+            ->orderBy('p.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    */
 
+    /*
+    public function findOneBySomeField($value): ?Publications
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.exampleField = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+    */
 
     public function trierdatep()
     {
@@ -43,10 +70,9 @@ class PublicationsRepository extends ServiceEntityRepository
 
     public function findByKey($keyword){
         $query = $this->createQueryBuilder('p')
-            ->where('p.description LIKE :key')->orWhere('p.id_utilisateur LIKE :key')
+            ->where('p.description LIKE :key')
             ->setParameter('key' , '%'.$keyword.'%')->getQuery();
 
         return $query->getResult();
     }
-
 }

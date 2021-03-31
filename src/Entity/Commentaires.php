@@ -3,8 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CommentairesRepository;
-use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=CommentairesRepository::class)
@@ -18,10 +18,6 @@ class Commentaires
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $id_util;
 
     /**
      * @ORM\Column(type="string", length=1000)
@@ -40,36 +36,21 @@ class Commentaires
      */
     private $id_pub;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Freelancer::class)
+     */
+    private $id_util;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Societe::class)
+     */
+    private $societe;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-
-    public function getId_Util(): ?int
-    {
-        return $this->id_util;
-    }
-
-    public function setId_Util(int $id_util): self
-    {
-        $this->id_util = $id_util;
-
-        return $this;
-    }
-
-    public function getIdUtil(): ?int
-    {
-        return $this->id_util;
-    }
-
-    public function setIdUtil(int $id_util): self
-    {
-        $this->id_util = $id_util;
-
-        return $this;
-    }
 
     public function getDescription(): ?string
     {
@@ -100,13 +81,46 @@ class Commentaires
         return $this->id_pub;
     }
 
-
-    public function setIdPub( $id_pub): self
+    public function setIdPub(?Publications $id_pub): self
     {
         $this->id_pub = $id_pub;
 
         return $this;
     }
 
+    public function getIdUtil(): ?Freelancer
+    {
+        return $this->id_util;
+    }
 
+    public function setIdUtil(?Freelancer $id_util): self
+    {
+        $this->id_util = $id_util;
+
+        return $this;
+    }
+
+    public function getId_Util(): ?Freelancer
+    {
+        return $this->id_util;
+    }
+
+    public function setId_Util(?Freelancer $id_util): self
+    {
+        $this->id_util = $id_util;
+
+        return $this;
+    }
+
+    public function getSociete(): ?Societe
+    {
+        return $this->societe;
+    }
+
+    public function setSociete(?Societe $societe): self
+    {
+        $this->societe = $societe;
+
+        return $this;
+    }
 }

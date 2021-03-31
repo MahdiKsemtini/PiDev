@@ -6,6 +6,8 @@ use App\Entity\Commentaires;
 use App\Entity\Publications;
 use App\Form\CommentairesType;
 use App\Form\PublicationsType;
+use App\Repository\FreelancerRepository;
+use App\Repository\SocieteRepository;
 use phpDocumentor\Reflection\Type;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,31 +27,43 @@ class CommentairesController extends AbstractController
     /**
      * @Route("/commentaires{id_pub}",name="commentaires")
      */
-    public function afficherCommentaires(Request $request, $id_pub): Response
+    public function afficherCommentaires(Request $request, $id_pub, FreelancerRepository $freelancerRepository, SocieteRepository  $societeRepository): Response
     {
-        $em=$this->getDoctrine()->getManager();
-        $com=$em->getRepository(Commentaires::class)->findBy(['id_pub'=> $id_pub]);
-        $id=$id_pub;
-        $publications=$em->getRepository(Publications::class)->find($id);
-        $commentaire = new Commentaires();
-        $commentaire->setIdPub($publications);
-        $commentaire->setDateCom(new \DateTime('now'));
+
+        $session = $request->getSession();
+        if($session->get('id')==null){
+            return $this->redirectToRoute('SignIn');
+        }else{
+            $em=$this->getDoctrine()->getManager();
+            $com=$em->getRepository(Commentaires::class)->findBy(['id_pub'=> $id_pub]);
+            $id=$id_pub;
+            $publications=$em->getRepository(Publications::class)->find($id);
+            $commentaire = new Commentaires();
+            $commentaire->setIdPub($publications);
+            $commentaire->setDateCom(new \DateTime('now'));
+
+            if($session->get('compte_facebook')!=null){
+                $freelancer=$freelancerRepository->find($session->get('id'));
+                $commentaire->setIdUtil($freelancer);
+            }else{
+                $societe=$societeRepository->find($session->get('id'));
+                $commentaire->setSociete($societe);
+            }
+            $form1 = $this->createForm(CommentairesType::class, $commentaire);
+            $form1->handleRequest($request);
+
+            if ($form1->isSubmitted() and $form1->isValid()) {
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($commentaire);
+                $em->flush();
 
 
-        $form1 = $this->createForm(CommentairesType::class, $commentaire);
-        $form1->handleRequest($request);
-
-        if ($form1->isSubmitted() and $form1->isValid()) {
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($commentaire);
-            $em->flush();
-
-
-            return $this->redirect('forum');
+                return $this->redirect('forum');
+            }
+            return $this->render('Front/publications/commentaires.html.twig', array('commentaires'=>$com,'form' => $form1->createView()));
         }
 
-        return $this->render('Front/publications/commentaires.html.twig', array('commentaires'=>$com,'form' => $form1->createView()));
     }
 
     /**

@@ -15,11 +15,9 @@ class PublicationsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('id_utilisateur')
             ->add('description')
             ->add('image', FileType::class)
             ->add('Publier', SubmitType::class);
-
         ;
     }
 

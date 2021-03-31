@@ -1,0 +1,267 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RightJob{% endblock %}
+
+{% block css %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=9">
+    <meta name="description" content="Gambolthemes">
+    <meta name="author" content="Gambolthemes">
+    <title>Cursus - Create New Course</title>
+
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/png" href={{ asset('images/fav.png') }}>
+
+    <!-- Stylesheets -->
+    <link href={{asset('http://fonts.googleapis.com/css?family=Roboto:400,700,500')}} rel='stylesheet'>
+    <link href={{asset('vendor/unicons-2.0.1/css/unicons.css')}} rel='stylesheet'>
+    <link href={{asset("css/vertical-responsive-menu1.min.css")}} rel="stylesheet">
+    <link href={{asset("css/instructor-dashboard.css")}} rel="stylesheet">
+    <link href={{asset("css/instructor-responsive.css")}} rel="stylesheet">
+    <link href={{asset("css/night-mode.css")}} rel="stylesheet">
+    <link href={{asset("css/jquery-steps.css")}} rel="stylesheet">
+
+    <!-- Vendor Stylesheets -->
+    <link href={{asset("vendor/fontawesome-free/css/all.min.css")}} rel="stylesheet">
+    <link href={{asset("vendor/OwlCarousel/assets/owl.carousel.css")}} rel="stylesheet">
+    <link href={{asset("vendor/OwlCarousel/assets/owl.theme.default.min.css")}} rel="stylesheet">
+    <link href={{asset("vendor/bootstrap/css/bootstrap.min.css")}} rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href={{asset("vendor/semantic/semantic.min.css")}}>
+
+
+{% endblock %}
+{% block body %}
+    <!DOCTYPE html>
+    <html lang="en">
+
+
+    <!-- Mirrored from gambolthemes.net/html-items/cursus_demo_f12/instructor_profile_view.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 20 Jun 2020 12:57:20 GMT -->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, shrink-to-fit=9">
+        <meta name="description" content="Gambolthemes">
+        <meta name="author" content="Gambolthemes">
+        <title>Cursus - Instructor Profile View</title>
+
+        <!-- Favicon Icon -->
+        <link rel="icon" type="image/png" href={{ asset('images/fav.png') }}>
+
+        <!-- Stylesheets -->
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet'>
+        <link href={{ asset('vendor/unicons-2.0.1/css/unicons.css') }} rel='stylesheet'>
+        <link href={{ asset('css/vertical-responsive-menu.min.css') }} rel="stylesheet">
+        <link href={{ asset('css/style.css') }} rel="stylesheet">
+        <link href={{ asset('css/responsive.css') }} rel="stylesheet">
+        <link href={{ asset('css/night-mode.css') }} rel="stylesheet">
+
+        <!-- Vendor Stylesheets -->
+        <link href={{ asset('vendor/fontawesome-free/css/all.min.css') }} rel="stylesheet">
+        <link href={{ asset('vendor/OwlCarousel/assets/owl.carousel.css') }} rel="stylesheet">
+        <link href={{ asset('vendor/OwlCarousel/assets/owl.theme.default.min.css') }} rel="stylesheet">
+        <link href={{ asset('vendor/bootstrap/css/bootstrap.min.css') }} rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href={{ asset('vendor/semantic/semantic.min.css') }}>
+
+    </head>
+    <body>
+    <!-- Header Start -->
+
+    <!-- Header End -->
+    <!-- Left Sidebar Start -->
+    <!-- Left Sidebar End -->
+    <!-- Body Start -->
+    <div class="wrapper _bg4586">
+
+        <div class="_215b15">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="course_tabs">
+                            <nav>
+                                <div class="nav nav-tabs tab_crse" id="nav-tab" role="tablist">
+                                    <a class="nav-item nav-link " id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-selected="false">Mes formations</a>
+                                    <a class="nav-item nav-link active" id="nav-courses-tab" data-toggle="tab" href="#nav-courses" role="tab" aria-selected="true">Les formations</a>
+                                    <a class="nav-item nav-link" id="nav-courses-tab" data-toggle="tab" href="#nav-reviews" role="tab" aria-selected="false">Mes Participation</a>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="_215b17">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="course_tab_content">
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade " id="nav-about" role="tabpanel">
+
+                                    <div style="display: flex">
+                                        <h3>Mes formations</h3>
+                                        <div style="margin-left: 20px">
+                                            <a href="{{ path('triDateC') }}"    title="Edit" class="gray-s"  style="font-size: 18px"><i class="uil uil-sort-amount-up" ></i></a>
+                                            <a href="{{ path('triDateD') }}"  title="Delete" class="gray-s"><i class="uil uil-sort-amount-down"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="crse_content">
+
+
+
+                                        <form action="{{ path('addEvent') }}">
+                                            <button class="btn btn-default steps_btn" style="margin-left: 0px">Ajouter</button>
+                                        </form>
+                                        </br></br>
+
+                                        <div class="_14d25">
+                                            <div class="row">
+
+                                                {% for f in formations %}
+                                                <div class="col-lg-3 col-md-4">
+                                                    <div class="fcrse_1 mt-30">
+
+                                                        <div class="fcrse_content">
+                                                            <div class="eps_dots more_dropdown">
+                                                                <a href="{{ path("ModifierFormation",{'id':f.id}) }}"    title="Edit" class="gray-s"  style="font-size: 18px"><i class="uil uil-edit-alt" ></i></a>
+                                                                <a href="{{ path("deleteFormation",{'id':f.id}) }}"  title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a>
+                                                            </div>
+                                                            <div class="vdtodt">
+                                                                <span class="vdt14">{{ f.DateDebut|date('Y-m-d H:i') }}</span>
+
+                                                                <span class="vdt14">{{ f.DateFin|date('Y-m-d H:i') }}</span>
+                                                            </div>
+                                                            <p  class="crse14s" style="color: red">{{ f.Labelle }}</p>
+                                                            <a href="course_detail_view.html" class="crse14s" >{{ f.Description }}</a>
+                                                            <a href="#" class="crse-cate">{{ f.Domaine }}</a>
+                                                            <div class="auth1lnkprce">
+                                                                <p class="cr1fot">{{ f.Lieu }}</p>
+                                                                <div class="prce142">{{ f.Montant }}</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            {% endfor %}
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade show active" id="nav-courses" role="tabpanel">
+                                    <div style="display: flex">
+                                    <h3>Formations</h3>
+                                    <div style="margin-left: 20px">
+                                        <a href="{{ path('triDateC') }}"    title="Edit" class="gray-s"  style="font-size: 18px"><i class="uil uil-sort-amount-up" ></i></a>
+                                    <a href="{{ path('triDateD') }}"  title="Delete" class="gray-s"><i class="uil uil-sort-amount-down"></i></a>
+                                    </div>
+                                    </div>
+
+                                    <div class="crse_content">
+
+                                        <div class="_14d25">
+                                            <div class="row">
+                                                {% for fo in forms%}
+                                                    <div class="col-lg-3 col-md-4">
+                                                        <div class="fcrse_1 mt-30">
+
+                                                            <div class="fcrse_content">
+                                                                <div class="eps_dots more_dropdown">
+                                                                    <a href="{{ path("addParticiper",{'typee':'formation','typeu':'societe','idfo':fo.id,'idev':0,'ids':1,'idf':1}) }}"  title="Delete" class="gray-s" style="font-size: 15px">participer</a>
+                                                                </div>
+                                                                <div class="vdtodt">
+                                                                    <span class="vdt14">{{ fo.DateDebut|date('Y-m-d H:i') }}</span>
+
+                                                                    <span class="vdt14">{{ fo.DateFin|date('Y-m-d H:i') }}</span>
+                                                                </div>
+                                                                <p  class="crse14s" style="color: red">{{ fo.Labelle }}</p>
+                                                                <a href="course_detail_view.html" class="crse14s" >{{ fo.Description }}</a>
+                                                                <a href="#" class="crse-cate">{{ fo.Domaine }}</a>
+                                                                <div class="auth1lnkprce">
+                                                                    <a href="{{ path("mapF",{'id':fo.id}) }}" ><p class="cr1fot">{{ fo.Lieu }}</p></a>
+                                                                    <div class="prce142">{{ fo.Montant }}</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="nav-reviews" role="tabpanel">
+                                    <h3>Mes participations</h3>
+                                    <div class="crse_content">
+
+                                        <div class="_14d25">
+                                            <div class="row">
+
+                                                {% for fo in participation %}
+                                                    <div class="col-lg-3 col-md-4">
+                                                        <div class="fcrse_1 mt-30">
+
+                                                            <div class="fcrse_content">
+                                                                <div class="eps_dots more_dropdown">
+                                                                    <a href="{{ path("deleteFormationP",{'id':fo.id,'idu':1,'type':"freelancer"}) }}"  title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a>
+                                                                </div>
+                                                                <div class="vdtodt">
+                                                                    <span class="vdt14">{{ fo.DateDebut|date('Y-m-d H:i') }}</span>
+
+                                                                    <span class="vdt14">{{ fo.DateFin|date('Y-m-d H:i') }}</span>
+                                                                </div>
+                                                                <p  class="crse14s" style="color: red">{{ fo.Labelle }}</p>
+                                                                <a href="course_detail_view.html" class="crse14s" >{{ fo.Description }}</a>
+                                                                <p class="crse-cate">{{ fo.Domaine }}</p>
+                                                                <div class="auth1lnkprce">
+                                                                    <a href="{{ path("mapF",{'id':fo.id}) }}" ><p class="cr1fot">{{ fo.Lieu }}</p></a>
+                                                                    <div class="prce142">{{ fo.Montant }}</div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- Body End -->
+
+    <script src={{ asset('js/vertical-responsive-menu.min.js') }}></script>
+    <script src={{ asset('js/jquery-3.3.1.min.js') }}></script>
+    <script src={{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}></script>
+    <script src={{ asset('vendor/OwlCarousel/owl.carousel.js') }}></script>
+    <script src={{ asset('vendor/semantic/semantic.min.js') }}></script>
+    <script src= {{ asset('js/custom.js') }}></script>
+    <script src={{ asset('js/night-mode.js') }}></script>
+
+    </body>
+
+    <!-- Mirrored from gambolthemes.net/html-items/cursus_demo_f12/instructor_profile_view.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 20 Jun 2020 12:57:24 GMT -->
+    </html>
+{% endblock %}
+
+{% block js %}
+    <script src={{ asset('js/vertical-responsive-menu.min.js') }}></script>
+    <script src={{ asset('js/jquery-3.3.1.min.js') }}></script>
+    <script src={{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}></script>
+    <script src={{ asset('vendor/OwlCarousel/owl.carousel.js') }}></script>
+    <script src={{ asset('vendor/semantic/semantic.min.js') }}></script>
+    <script src={{ asset('js/custom.js') }}></script>
+    <script src={{ asset('js/night-mode.js') }}></script>
+    <script src={{ asset('js/jquery-steps.min.js') }}></script>
+    <script>
+        $('#add-course-tab').steps({
+            onFinish: function () {
+                alert('Wizard Completed');
+            }
+        });
+
+    </script>
+{% endblock %}

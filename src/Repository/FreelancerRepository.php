@@ -47,4 +47,25 @@ class FreelancerRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function search($nom) {
+        return $this->createQueryBuilder('Freelancer')
+            ->andWhere('Freelancer.nom LIKE :nom')
+            ->setParameter('nom', '%'.$nom.'%')
+            ->getQuery()
+            ->getResult();
+    }
+    public function freelancerParMois()
+    {
+        $query = $this->createQueryBuilder('r')
+            ->select(' MONTH(r.date_Creation) AS mois , count(r) as count')
+            ->groupBy('mois');
+        return $query->getQuery()->getResult();
+    }
+
+    public function countfreelancer()
+    {
+        $query = $this->createQueryBuilder('r')
+            ->select('count(r) as count');
+        return $query->getQuery()->getResult();
+    }
 }

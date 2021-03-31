@@ -3,7 +3,6 @@
 namespace App\Repository;
 
 use App\Entity\Commentaires;
-use App\Entity\Publications;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -19,6 +18,35 @@ class CommentairesRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Commentaires::class);
     }
+
+    // /**
+    //  * @return Commentaires[] Returns an array of Commentaires objects
+    //  */
+    /*
+    public function findByExampleField($value)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.exampleField = :val')
+            ->setParameter('val', $value)
+            ->orderBy('c.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    */
+
+    /*
+    public function findOneBySomeField($value): ?Commentaires
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.exampleField = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+    */
 
     public function getNB()
     {
@@ -51,5 +79,4 @@ class CommentairesRepository extends ServiceEntityRepository
         return $qb->getQuery()
             ->getResult();
     }
-
 }

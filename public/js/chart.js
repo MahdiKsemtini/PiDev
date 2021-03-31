@@ -33,8 +33,8 @@
 
 $(document).ready(function() {
   "use strict";
-  
-  /*======== 1. DUAL LINE CHART ========*/
+
+  /*/!*======== 1. DUAL LINE CHART ========*!/
   var dual = document.getElementById("dual-line");
   if (dual !== null) {
     var urChart = new Chart(dual, {
@@ -51,7 +51,7 @@ $(document).ready(function() {
             backgroundColor: "transparent",
             borderWidth: 2,
             borderColor: "#ffc136",
-            data: [0, 4, 3, 5, 3, 7, 0]
+            data: [0, 4, 3, 5, 3, 7, 0 ]
           },
           {
             label: "New",
@@ -118,7 +118,7 @@ $(document).ready(function() {
         }
       }
     });
-  }
+  }*/
   /*======== 1. DUAL LINE CHART2 ========*/
   var dual3 = document.getElementById("dual-line3");
   if (dual3 !== null) {
@@ -196,8 +196,8 @@ $(document).ready(function() {
       }
     });
   }
-  /*======== 3. LINE CHART ========*/
-  var ctx = document.getElementById("linechart");
+  //!*======== 3. LINE CHART ========*!/
+  /*var ctx = document.getElementById("linechart");
   if (ctx !== null) {
     var chart = new Chart(ctx, {
       // The type of chart we want to create
@@ -325,7 +325,7 @@ $(document).ready(function() {
         }
       }
     });
-  }
+  }*/
   /*======== 4. LINE CHART1 ========*/
   var lchart1 = document.getElementById("linechart1");
   if (lchart1 !== null) {
@@ -761,7 +761,7 @@ $(document).ready(function() {
       }
     });
   }
-  /*======== 10. GRADIENT LINE CHART ========*/
+  //!*======== 10. GRADIENT LINE CHART ========*!/
   var line = document.getElementById("line");
   if (line !== null) {
     line = line.getContext("2d");
@@ -887,72 +887,72 @@ $(document).ready(function() {
     });
   }
   /*======== 12. POLAR CHART ========*/
-    var polar = document.getElementById("polar");
-    if (polar !== null) {
-      var configPolar = {
-        data: {
-          datasets: [
-            {
-              data: [43, 23, 53, 33, 55],
-              backgroundColor: [
-                "rgba(41,204,151,0.5)",
-                "rgba(254,88,101,0.5)",
-                "rgba(128,97,239,0.5)",
-                "rgba(254,196,0,0.5)",
-                "rgba(76,132,255,0.5)"
-              ],
-              label: "" // for legend
-            }
-          ],
-          labels: ["Total Sales", "Rejected", "Completed", "Pending", "Reserve"]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          legend: {
-            position: "right",
-            display: false
-          },
-          layout: {
-            padding: {
-              top: 10,
-              bottom: 10,
-              right: 10,
-              left: 10
-            }
-          },
-          title: {
-            display: false,
-            text: "Chart.js Polar Area Chart"
-          },
-          scale: {
-            ticks: {
-              beginAtZero: true,
-              fontColor: "#1b223c",
-              fontSize: 12,
-              stepSize: 10,
-              max: 60
-            },
-            reverse: false
-          },
-          animation: {
-            animateRotate: false,
-            animateScale: true
-          },
-          tooltips: {
-            titleFontColor: "#888",
-            bodyFontColor: "#555",
-            titleFontSize: 12,
-            bodyFontSize: 14,
-            backgroundColor: "rgba(256,256,256,0.95)",
-            displayColors: true,
-            borderColor: "rgba(220, 220, 220, 0.9)",
-            borderWidth: 2
+  var polar = document.getElementById("polar");
+  if (polar !== null) {
+    var configPolar = {
+      data: {
+        datasets: [
+          {
+            data: [43, 23, 53, 33, 55],
+            backgroundColor: [
+              "rgba(41,204,151,0.5)",
+              "rgba(254,88,101,0.5)",
+              "rgba(128,97,239,0.5)",
+              "rgba(254,196,0,0.5)",
+              "rgba(76,132,255,0.5)"
+            ],
+            label: "" // for legend
           }
+        ],
+        labels: ["Total Sales", "Rejected", "Completed", "Pending", "Reserve"]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        legend: {
+          position: "right",
+          display: false
+        },
+        layout: {
+          padding: {
+            top: 10,
+            bottom: 10,
+            right: 10,
+            left: 10
+          }
+        },
+        title: {
+          display: false,
+          text: "Chart.js Polar Area Chart"
+        },
+        scale: {
+          ticks: {
+            beginAtZero: true,
+            fontColor: "#1b223c",
+            fontSize: 12,
+            stepSize: 10,
+            max: 60
+          },
+          reverse: false
+        },
+        animation: {
+          animateRotate: false,
+          animateScale: true
+        },
+        tooltips: {
+          titleFontColor: "#888",
+          bodyFontColor: "#555",
+          titleFontSize: 12,
+          bodyFontSize: 14,
+          backgroundColor: "rgba(256,256,256,0.95)",
+          displayColors: true,
+          borderColor: "rgba(220, 220, 220, 0.9)",
+          borderWidth: 2
         }
-      };
-      window.myPolarArea = Chart.PolarArea(polar, configPolar);
-    }
+      }
+    };
+    window.myPolarArea = Chart.PolarArea(polar, configPolar);
+  }
 
   /*======== 13. RADAR CHART ========*/
   var radar = document.getElementById("radar");
@@ -1037,7 +1037,7 @@ $(document).ready(function() {
       }
     });
   }
-  /*======== 14. CURRENT USER BAR CHART ========*/
+  /*/!*======== 14. CURRENT USER BAR CHART ========*!/
   var cUser = document.getElementById("currentUser");
   if (cUser !== null) {
     var myUChart = new Chart(cUser, {
@@ -1126,7 +1126,7 @@ $(document).ready(function() {
         }
       }
     });
-  }
+  }*/
   /*======== 15. ANALYTICS - USER ACQUISITION ========*/
   var acquisition = document.getElementById("acquisition");
   if (acquisition !== null) {
@@ -1259,7 +1259,7 @@ $(document).ready(function() {
     document.getElementById("acqLegend").innerHTML = lineAcq.generateLegend();
 
     var items = document.querySelectorAll(
-      "#user-acquisition .nav-tabs .nav-item"
+        "#user-acquisition .nav-tabs .nav-item"
     );
     items.forEach(function (item, index) {
       item.addEventListener("click", function() {
@@ -1271,7 +1271,7 @@ $(document).ready(function() {
     });
   }
 
-  /*======== 16. ANALYTICS - ACTIVITY CHART ========*/
+  /*/!*======== 16. ANALYTICS - ACTIVITY CHART ========*!/
   var activity = document.getElementById("activity");
   if (activity !== null) {
     var activityData = [
@@ -1406,7 +1406,7 @@ $(document).ready(function() {
         myLine.update();
       });
     });
-  }
+  }*/
 
   /*======== 17. HORIZONTAL BAR CHART1 ========*/
   var hbar1 = document.getElementById("hbar1");
@@ -1600,7 +1600,7 @@ $(document).ready(function() {
             },
             label: function(tooltipItem, data) {
               return (
-                data["datasets"][0]["data"][tooltipItem["index"]] + " Sessions"
+                  data["datasets"][0]["data"][tooltipItem["index"]] + " Sessions"
               );
             }
           },
@@ -1646,7 +1646,6 @@ if (barX !== null) {
         {
           label: "Subscribe",
           data: [6, 3, 4, 3, 6, 9, 4, 8, 9, 5, 8, 3, 4],
-          // data: [6, 3, 4, 3, 6, 9, 4, 8, 9, 5, 8, 3, 4],
           backgroundColor: "#ed2a26"
         }
       ]
@@ -2235,7 +2234,7 @@ if (mstat !== null) {
                   for (var i = 0; i < ranges.length; i++) {
                     if (n >= ranges[i].divider) {
                       return (
-                        (n / ranges[i].divider).toString() + ranges[i].suffix
+                          (n / ranges[i].divider).toString() + ranges[i].suffix
                       );
                     }
                   }

@@ -1,0 +1,240 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RightJob{% endblock %}
+
+
+{% block body %}
+
+
+	<div class="wrapper">
+		<div class="sa4d25">
+			<div class="container-fluid">
+				<div class="row" id="t">
+					<div class="col-xl-12 col-lg-8">
+						<div class="section3125">
+							<div class="explore_search">
+								<div class="ui search focus">
+									<div class="ui left icon input swdh11" >
+										<input id="search" class="prompt srch_explore" type="text" placeholder="Search un emploi..."><br>
+										<i class="uil uil-search-alt icon icon2"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div><br>
+					<select class="form-control" id="filtre" style="margin:2%">
+                    <option value="choix">-- Choisir un domaine --</option>
+                    <option value="Informatique" >Informatique</option>
+					<option value="Marketing" >Marketing</option>
+					<option value="Artisanat" >Artisanat</option>
+
+                    <option value="Design">Design</option>.
+                </select>
+
+					<div id ="all" class="col-md-12">
+						<div class="_14d25">
+
+
+						{% for i in l %}
+
+							<div class="row" style="margin-left:20%;margin-right:20%">
+
+									<div class="fcrse_1 mt-30">
+
+										<div class="tutor_content_dt">
+											<div class="tutor_img">
+                                                    <a href="{{ path('ViewSocieteProfileF', {'id': i.societe.id}) }}"><img src="{{ asset('picture/' ~ i.societe.PhotoDeProfile) }}" alt=""></a>
+                                                </div>
+											<div class="tut1250">
+												<a href="{{ path('ViewSocieteProfileF', {'id': i.societe.id}) }}" class="tutor_name">Societe : {{ i.societe.nom }}</a>
+
+											</div>
+
+											<div class="tut1250">
+												<a class="tutor_name">Titre d'emploi : {{ i.nomProjet }}</a>
+
+											</div>
+											<div class="tut1250">
+
+												<u><span class="vdt15">Domaine : {{ i.domaine }}</span></u><br>
+												<span class="vdt15">Compétences : {{ i.competences }}</span><br>
+												<span class="vdt15">Description : {{ i.description }}</span>
+											</div>
+												<div class="tutor_cate">Salaire : {{ i.salaire }}</div>
+												<div class="tutor_cate"> date de création :{{ i.dateCreation ? i.dateCreation|date('Y-m-d') }}</div>
+<div>
+												{% for j in listequiz %}
+													{% if j.OffreEmploi==i %}
+														<a class="btn btn-success" href="{{ path('quiz_take',{'id':j.id}) }}">Envoyer une demande</a>
+													{% endif %}
+												{% endfor %}
+											</div>
+										</div>
+									</div>
+
+
+		</div>
+		{% endfor %}
+		</div><br>
+		</div><br>
+		<div id ="search" class="col-md-12"></div><br>
+
+		<div class="navigation" style="margin-left:40%">
+           {{ knp_pagination_render(
+                    l,
+                    '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig',
+                    {
+                        'queryParam1': 'param1 value',
+                        'queryParam2': 'param2 value'
+                    },
+                    {
+                        'viewParam1': 'param1 value',
+                        'viewParam2': 'param2 value'
+                    },
+                ) }}
+        </div>
+
+
+{% endblock %}
+{% block js %}
+	<script src="js/vertical-responsive-menu.min.js"></script>
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="vendor/OwlCarousel/owl.carousel.js"></script>
+	<script src="vendor/semantic/semantic.min.js"></script>
+	<script src="js/custom.js"></script>
+	<script src="js/night-mode.js"></script>
+
+
+	<script>
+$( document ).ready(function() {
+        $("#search").keyup(function(e){
+/* La variable value va prendre la valeur insérer dans le champ de texte afin d’effectuer la recherche */
+          var value = $(this).val();
+/* Ajax est lancé lors du remplissage du champ texte dont l’id est « search » pour faire la recherche */
+             $.ajax({
+/* l’url est une chaine de caractères contenant l’adresse où la requête est envoyée */
+                url : "{{ path('searchEmploi') }}",
+/* La méthode utilisée pour transférer les données est GET */
+                type : 'GET',
+/*Ici search value va prendre la chaine entrée par un utilisateur dans la zone de recherche et sera placée après l’url */
+                data: {
+                        'searchValue' : value
+                    },
+/*Cette fonction permet de vider le contenu du tableau pour recevoir le nouveau contenu*/
+                success : function(retour){
+                  if(retour){
+  			$('#t div#search').empty();
+  			$.each(JSON.parse(retour), function(i, obj) {
+  			$('#t div#all').hide();
+  			$('#t div#search').append('<div class="row" style="margin-left:20%;margin-right:20%">'+
+
+									'<div class="fcrse_1 mt-30">'+
+										'<div class="tutor_img">'+
+											'<a href="instructor_profile_view.html"><img src="images/left-imgs/img-1.jpg" alt=""></a>'+
+										'</div>'+
+										'<div class="tutor_content_dt">'+
+											'<div class="tutor150">'+
+												'<a href="instructor_profile_view.html" class="tutor_name"> '+obj.nomProjet+' </a>'+
+												'<div class="mef78" title="Verify">'+
+													'<i class="uil uil-check-circle"></i>'+
+												'</div>'+
+											'</div>'+
+
+
+
+
+
+											'<div class="tut1250">'+
+											'<span class="vdt15">domaine : '+obj.domaine+'</span>'+
+												'<span class="vdt15">Compétences : '+obj.competences+'</span><br>'+
+												'<span class="vdt15">Description : '+obj.description+'</span>'+
+											'</div>'+
+												'<div class="tutor_cate">Salaire : '+obj.salaire+'</div>'+
+												'<a href="#"> '+obj.fichier+'</a>'+
+										'</div>'+
+									'</div>'+
+
+
+		'</div>');
+});
+                  }
+                  else
+                  {
+   $('#t div#all').show();
+   $('#t div#search').empty();
+   $('#t div#search').fadeIn('fast');
+                     }
+ },
+        });
+        return false;
+        });
+    });
+        </script>
+
+
+
+
+		<script>
+$( document ).ready(function() {
+        $("#filtre").change(function(e){
+/* La variable value va prendre la valeur insérer dans le champ de texte afin d’effectuer la recherche */
+          var value = $(this).val();
+/* Ajax est lancé lors du remplissage du champ texte dont l’id est « search » pour faire la recherche */
+             $.ajax({
+/* l’url est une chaine de caractères contenant l’adresse où la requête est envoyée */
+                url : "{{ path('filtreEmploi',{'domaine':'val'}) }}".replace("val",value),
+/* La méthode utilisée pour transférer les données est GET */
+                type : 'GET',
+
+/*Cette fonction permet de vider le contenu du tableau pour recevoir le nouveau contenu*/
+                success : function(retour){
+                  if(retour){
+  			$('#t div#search').empty();
+  			$.each(JSON.parse(retour), function(i, obj) {
+  			$('#t div#all').hide();
+  			$('#t div#search').append('<div class="row" style="margin-left:20%;margin-right:20%">'+
+
+									'<div class="fcrse_1 mt-30">'+
+										'<div class="tutor_img">'+
+											'<a href="instructor_profile_view.html"><img src="images/left-imgs/img-1.jpg" alt=""></a>'+
+										'</div>'+
+										'<div class="tutor_content_dt">'+
+											'<div class="tutor150">'+
+												'<a href="instructor_profile_view.html" class="tutor_name"> '+obj.nomProjet+' </a>'+
+												'<div class="mef78" title="Verify">'+
+													'<i class="uil uil-check-circle"></i>'+
+												'</div>'+
+											'</div>'+
+
+
+
+
+
+											'<div class="tut1250">'+
+											'<span class="vdt15">domaine : '+obj.domaine+'</span>'+
+												'<span class="vdt15">Compétences : '+obj.competences+'</span><br>'+
+												'<span class="vdt15">Description : '+obj.description+'</span>'+
+											'</div>'+
+												'<div class="tutor_cate">Salaire : '+obj.salaire+'</div>'+
+												'<a href="#"> '+obj.fichier+'</a>'+
+										'</div>'+
+									'</div>'+
+
+
+		'</div>');
+});
+                  }
+                  else
+                  {
+   $('#t div#all').show();
+   $('#t div#search').empty();
+   $('#t div#search').fadeIn('fast');
+                     }
+ },
+        });
+        return false;
+        });
+    });
+        </script>
+{% endblock %}
