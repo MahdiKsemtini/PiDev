@@ -1,0 +1,365 @@
+{% extends 'base_back.html.twig' %}
+
+{% block title %}RightJob{% endblock %}
+
+{% block body %}
+
+   <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, shrink-to-fit=9">
+        <meta name="description" content="Gambolthemes">
+        <meta name="author" content="Gambolthemes">
+        <title>Cursus - Instructor Profile View</title>
+
+        <!-- Favicon Icon -->
+        <link rel="icon" type="image/png" href={{ asset('images/fav.png') }}>
+
+        <!-- Stylesheets -->
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet'>
+        <link href={{ asset('vendor/unicons-2.0.1/css/unicons.css') }} rel='stylesheet'>
+        <link href={{ asset('css/vertical-responsive-menu.min.css') }} rel="stylesheet">
+        <link href={{ asset('css/style.css') }} rel="stylesheet">
+        <link href={{ asset('css/responsive.css') }} rel="stylesheet">
+        <link href={{ asset('css/night-mode.css') }} rel="stylesheet">
+
+        <!-- Vendor Stylesheets -->
+        <link href={{ asset('vendor/fontawesome-free/css/all.min.css') }} rel="stylesheet">
+        <link href={{ asset('vendor/OwlCarousel/assets/owl.carousel.css') }} rel="stylesheet">
+        <link href={{ asset('vendor/OwlCarousel/assets/owl.theme.default.min.css') }} rel="stylesheet">
+        <link href={{ asset('vendor/bootstrap/css/bootstrap.min.css') }} rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href={{ asset('vendor/semantic/semantic.min.css') }}>
+
+    </head>
+    <!-- Left Sidebar Start -->
+    <!-- Body Start -->
+    <div class="wrapper _bg4586">
+
+        <div class="_215b15">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="course_tabs">
+                            <nav>
+                                <div class="nav nav-tabs tab_crse" id="nav-tab" role="tablist">
+                                    <a class="nav-item nav-link active" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-selected="true">Formations</a>
+                                    <a class="nav-item nav-link" id="nav-courses-tab" data-toggle="tab" href="#nav-courses" role="tab" aria-selected="false">Evenements</a>
+
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="_215b17">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="course_tab_content">
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-about" role="tabpanel">
+
+                                    <div class="_htg451">
+                                        <div class="_htg452">
+                                            <div class="col-lg-12 col-md-12">
+
+                                                <input type="text" id="search" class="form-control" placeholder="Search"style="width: 30%">
+
+                                                {#  <form class="navbar-form" method="post" action="{{ path('Afficherallformationback') }}">
+                                                    {{ form_start(searchForm) }}
+                                                    <div class="input-group no-border">
+                                                        {{ form_widget(searchForm.Labelle)}}
+                                                        <button class="btn btn-default btn-round btn-just-icon">
+                                                            {{ button_label|default('search') }}
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                                {{ form_end(searchForm) }}#}
+
+                                                <div class="table-responsive mt-50 mb-0">
+                                                    <table class="table ucp-table" id="t">
+                                                        <thead class="thead-s">
+                                                        <tr>
+                                                            <th class="text-center" scope="col">Labelle</th>
+                                                            <th class="text-center" scope="col">Description</th>
+                                                            <th class="text-center" scope="col">Domaine</th>
+                                                            <th class="text-center">Lieu</th>
+                                                            <th class="text-center" scope="col">Date Debut</th>
+                                                            <th class="text-center" scope="col">Date Fin</th>
+                                                            <th class="text-center" scope="col">Montant</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody id="all">
+                                                        {% for f in forms %}
+                                                            <tr>
+
+                                                                <td class="text-center">{{ f.Labelle }}</td>
+                                                                <td class="cell-ta">{{ f.Description }}</td>
+                                                                <td class="text-center">{{ f.Domaine }}</td>
+                                                                <td class="text-center">{{ f.Lieu }}</td>
+                                                                <td class="text-center">{{ f.DateDebut|date('Y-m-d H:i') }}</td>
+                                                                <td class="text-center">{{ f.DateFin|date('Y-m-d H:i') }}</td>
+                                                                <td class="text-center">{{ f.Montant }}</td>
+
+                                                                <td class="text-center">
+                                                                    <a href="{{ path('ModifierFormationBack', {'id': f.id}) }}" title="Edit" class="gray-s"><i class="uil uil-edit-alt"></i></a>
+                                                                    <a href="{{ path('deleteFormationBack', {'id': f.id}) }}" title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a>
+                                                                </td>
+                                                                <td class="text-center"><a class="btn btn-success" href="{{ path('participantsPDF',{'id':f.id}) }}">Create pdf</a></td>
+
+                                                            </tr>
+                                                        {% endfor %}
+
+                                                        </tbody>
+                                                        <tbody id="search">
+                                                        </tbody>
+
+                                                    </table>
+                                                </div>
+                                                <div style="margin-top: 20px"><h5> {{ knp_pagination_render(forms) }}</h5></div>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="nav-courses" role="tabpanel">
+                                    <div class="_htg451">
+                                        <div class="_htg452">
+                                            <div class="col-lg-12 col-md-12">
+                                                <input type="text" id="searchE" class="form-control" placeholder="Search"style="width: 30%">
+
+                                                <div class="table-responsive mt-50 mb-0">
+                                                    <table class="table ucp-table" id="te">
+                                                        <thead class="thead-s">
+                                                        <tr>
+                                                            <th class="text-center" scope="col">Labelle</th>
+                                                            <th class="text-center" scope="col">Description</th>
+                                                            <th class="text-center" scope="col">Domaine</th>
+                                                            <th class="text-center">Lieu</th>
+                                                            <th class="text-center" scope="col">Date Debut</th>
+                                                            <th class="text-center" scope="col">Date Fin</th>
+                                                            <th class="text-center" scope="col">nb participants</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody id="allE">
+                                                        {% for e in events %}
+                                                            <tr>
+
+                                                                <td class="text-center">{{ e.Labelle  }}</td>
+                                                                <td class="text-center">{{ e.Description }}</td>
+                                                                <td class="text-center">{{ e.Domaine }}</td>
+                                                                <td class="text-center">{{ e.Lieu }}</td>
+                                                                <td class="text-center">{{ e.DateDebut|date('Y-m-d H:i') }}</td>
+                                                                <td class="text-center">{{  e.DateFin|date('Y-m-d H:i') }}</td>
+                                                                <td class="text-center">{{ e.NbParticipant }}</td>
+
+                                                                <td class="text-center">
+                                                                    <a href="{{ path('ModifierEventBack', {'id': e.id}) }}" title="Edit" class="gray-s"><i class="uil uil-edit-alt"></i></a>
+                                                                    <a href="{{ path('deleteEventBack', {'id': e.id}) }}" title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a>
+                                                                </td>
+                                                                <td class="text-center"><a class="btn btn-success" href="{{ path('participantsPDF',{'id':e.id}) }}">Create pdf</a></td>
+
+                                                            </tr>
+                                                        {% endfor %}
+
+                                                        </tbody>
+                                                        <tbody id="searchE">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div style="margin-top: 20px"><h5> {{ knp_pagination_render(events) }}</h5></div>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="nav-reviews" role="tabpanel">
+                                    <div class="student_reviews">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="review_right">
+                                                    <div class="review_right_heading">
+                                                        <h3>Discussions</h3>
+                                                    </div>
+                                                </div>
+                                                <div class="cmmnt_1526">
+                                                    <div class="cmnt_group">
+                                                        <div class="img160">
+                                                            <img src="images/left-imgs/img-1.jpg" alt="">
+                                                        </div>
+                                                        <textarea class="_cmnt001" placeholder="Add a public comment"></textarea>
+                                                    </div>
+                                                    <button class="cmnt-btn" type="submit">Comment</button>
+                                                </div>
+                                                <div class="review_all120">
+                                                    <div class="review_item">
+                                                        <div class="review_usr_dt">
+                                                            <img src="images/left-imgs/img-1.jpg" alt="">
+                                                            <div class="rv1458">
+                                                                <h4 class="tutor_name1">John Doe</h4>
+                                                                <span class="time_145">2 hour ago</span>
+                                                            </div>
+                                                            <div class="eps_dots more_dropdown">
+                                                                <a href="#"><i class="uil uil-ellipsis-v"></i></a>
+                                                                <div class="dropdown-content">
+                                                                    <span><i class='uil uil-comment-alt-edit'></i>Edit</span>
+                                                                    <span><i class='uil uil-trash-alt'></i>Delete</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <p class="rvds10">Nam gravida elit a velit rutrum, eget dapibus ex elementum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce lacinia, nunc sit amet tincidunt venenatis.</p>
+                                                        <div class="rpt101">
+                                                            <a href="#" class="report155"><i class='uil uil-thumbs-up'></i> 10</a>
+                                                            <a href="#" class="report155"><i class='uil uil-thumbs-down'></i> 1</a>
+                                                            <a href="#" class="report155"><i class='uil uil-heart'></i></a>
+                                                            <a href="#" class="report155 ml-3">Reply</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="review_reply">
+                                                        <div class="review_item">
+                                                            <div class="review_usr_dt">
+                                                                <img src="images/left-imgs/img-3.jpg" alt="">
+                                                                <div class="rv1458">
+                                                                    <h4 class="tutor_name1">Rock Doe</h4>
+                                                                    <span class="time_145">1 hour ago</span>
+                                                                </div>
+                                                                <div class="eps_dots more_dropdown">
+                                                                    <a href="#"><i class="uil uil-ellipsis-v"></i></a>
+                                                                    <div class="dropdown-content">
+                                                                        <span><i class='uil uil-trash-alt'></i>Delete</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <p class="rvds10">Fusce lacinia, nunc sit amet tincidunt venenatis.</p>
+                                                            <div class="rpt101">
+                                                                <a href="#" class="report155"><i class='uil uil-thumbs-up'></i> 4</a>
+                                                                <a href="#" class="report155"><i class='uil uil-thumbs-down'></i> 2</a>
+                                                                <a href="#" class="report155"><i class='uil uil-heart'></i></a>
+                                                                <a href="#" class="report155 ml-3">Reply</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- Body End -->
+
+
+{% endblock %}
+
+{% block js %}
+    <script src={{ asset('js/vertical-responsive-menu.min.js') }}></script>
+    <script src={{ asset('js/jquery-3.3.1.min.js') }}></script>
+    <script src={{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}></script>
+    <script src={{ asset('vendor/OwlCarousel/owl.carousel.js') }}></script>
+    <script src={{ asset('vendor/semantic/semantic.min.js') }}></script>
+    <script src={{ asset('js/custom.js') }}></script>
+    <script src={{ asset('js/night-mode.js') }}></script>
+    <script src={{ asset('js/jquery-steps.min.js') }}></script>
+    <script>
+        $('#add-course-tab').steps({
+            onFinish: function () {
+                alert('Wizard Completed');
+            }
+        });
+    </script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+    <script>
+        $( document ).ready(function() {
+            $("#search").keyup(function(e){
+                /* La variable value va prendre la valeur insérer dans le champ de texte afin d’effectuer la recherche */
+                var value = $(this).val();
+                /* Ajax est lancé lors du remplissage du champ texte dont l’id est « search » pour faire la recherche */
+                $.ajax({
+                    /* l’url est une chaine de caractères contenant l’adresse où la requête est envoyée */
+                    url : "{{ path('searchFormation') }}",
+                    /* La méthode utilisée pour transférer les données est GET */
+                    type : 'GET',
+                    /*Ici search value va prendre la chaine entrée par un utilisateur dans la zone de recherche et sera placée après l’url */
+                    data: {
+                        'searchValue' : value
+                    },
+                    /*Cette fonction permet de vider le contenu du tableau pour recevoir le nouveau contenu*/
+                    success : function(retour){
+                        if(retour){
+                            $('#t tbody#search').empty();
+                            $.each(JSON.parse(retour), function(i, obj) {
+                                $('#t tbody#all').hide();
+                                $('#t tbody#search').append('<tr><td> '+obj.Labelle+'  </td><td>    '+obj.Description+'  </td><td>'
+                                    +obj.Domaine+' </td><td>    '+obj.Lieu+'  </td><td>    '+new Date(obj.DateDebut).getFullYear()+'-'+new Date(obj.DateDebut).getMonth()+'-'+new Date(obj.DateDebut).getDate()' '+new Date(obj.DateDebut).getUTCHours()+':'+new Date(obj.DateDebut).getMinutes()+'</td><td>    '
+                                    +new Date(obj.DateFin).getFullYear()+'-'+new Date(obj.DateFin).getMonth()+'-'+new Date(obj.DateFin).getDate()+" "+new Date(obj.DateFin).getUTCHours()+":"+new Date(obj.DateFin).getMinutes()+'  </td><td> '+obj.Montant+'  </td><td><a href="ModifierFormationBack/'+obj.id+' "title="Edit" class="gray-s"><i class="uil uil-edit-alt"></i></a><a href="deleteFormationBack/'+obj.id+' "title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a></td><td class="text-center"><a class="btn btn-success" href="participantsPDF/'+obj.id+'">Create pdf</a></td></tr>');
+                            });
+                        }
+                        else
+                        {
+                            $('#t tbody#all').show();
+                            $('#t tbody#search').empty();
+                            $('#t tbody#search').fadeIn('fast');
+                        }
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
+
+    <script>
+        $( document ).ready(function() {
+            $("#searchE").keyup(function(e){
+                /* La variable value va prendre la valeur insérer dans le champ de texte afin d’effectuer la recherche */
+                var value = $(this).val();
+                /* Ajax est lancé lors du remplissage du champ texte dont l’id est « search » pour faire la recherche */
+                $.ajax({
+                    /* l’url est une chaine de caractères contenant l’adresse où la requête est envoyée */
+                    url : "{{ path('searchEvent') }}",
+                    /* La méthode utilisée pour transférer les données est GET */
+                    type : 'GET',
+                    /*Ici search value va prendre la chaine entrée par un utilisateur dans la zone de recherche et sera placée après l’url */
+                    data: {
+                        'searchValue' : value
+                    },
+                    /*Cette fonction permet de vider le contenu du tableau pour recevoir le nouveau contenu*/
+                    success : function(retour){
+                        if(retour){
+                            $('#te tbody#searchE').empty();
+                            $.each(JSON.parse(retour), function(i, objt) {
+                                $('#te tbody#allE').hide();
+                                $('#te tbody#searchE').append('<tr><td> '+objt.Labelle+'  </td><td>    '+objt.Description+'  </td><td>'
+                                    +objt.Domaine+' </td><td>    '+objt.Lieu+'  </td><td>    '+new Date(objt.DateDebut).getFullYear()+'-'+new Date(objt.DateDebut).getMonth()+'-'+new Date(objt.DateDebut).getDate()+' '+new Date(objt.DateDebut).getUTCHours()+':'+new Date(objt.DateDebut).getMinutes()+ '</td><td>    '
+                                    +new Date(objt.DateFin).getFullYear()+'-'+new Date(objt.DateFin).getMonth()+'-'+new Date(objt.DateFin).getDate()+' '+new Date(objt.DateFin).getUTCHours()+':'+new Date(objt.DateFin).getMinutes()+'  </td><td> '+objt.NbParticipant+'  </td><td><a href="ModifierFormationBack/'+objt.id+' "title="Edit" class="gray-s"><i class="uil uil-edit-alt"></i></a><a href="deleteFormationBack/'+objt.id+' "title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a></td><td class="text-center"><a class="btn btn-success" href="participantsPDF/'+objt.id+'">Create pdf</a></td></tr>');
+                            });
+                        }
+                        else
+                        {
+                            $('#te tbody#allE').show();
+                            $('#te tbody#searchE').empty();
+                            $('#te tbody#searchE').fadeIn('fast');
+                        }
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+{% endblock %}

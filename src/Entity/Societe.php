@@ -63,9 +63,50 @@ class Societe
      */
     private $viewsNb;
 
+    /**
+     * @ORM\OneToMany(targetEntity=EventLoisir::class, mappedBy="idSo")
+     */
+    private $eventLoisirs;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Participant::class, mappedBy="idS")
+     */
+    private $participants;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $date_Creation;
+
+    /**
+     * @ORM\OneToMany(targetEntity=OffreEmploi::class, mappedBy="societe")
+     */
+    private $offreEmplois;
+
+    /**
+     * @ORM\OneToMany(targetEntity=OffreStage::class, mappedBy="societe")
+     */
+    private $offreStages;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $etat;
+
+    /**
+     * @ORM\OneToMany(targetEntity=PostLike::class, mappedBy="societe")
+     */
+    private $likes;
+
     public function __construct()
     {
         $this->idfreelancers = new ArrayCollection();
+        $this->eventLoisirs = new ArrayCollection();
+        $this->participants = new ArrayCollection();
+        $this->offreEmplois = new ArrayCollection();
+        $this->offreStages = new ArrayCollection();
+        $this->likes = new ArrayCollection();
+
     }
 
     public function getId(): ?int
@@ -242,6 +283,192 @@ class Societe
     public function setViewsNb(int $viewsNb): self
     {
         $this->viewsNb = $viewsNb;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|EventLoisir[]
+     */
+    public function getEventLoisirs(): Collection
+    {
+        return $this->eventLoisirs;
+    }
+
+    public function addEventLoisir(EventLoisir $eventLoisir): self
+    {
+        if (!$this->eventLoisirs->contains($eventLoisir)) {
+            $this->eventLoisirs[] = $eventLoisir;
+            $eventLoisir->setIdSo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEventLoisir(EventLoisir $eventLoisir): self
+    {
+        if ($this->eventLoisirs->removeElement($eventLoisir)) {
+            // set the owning side to null (unless already changed)
+            if ($eventLoisir->getIdSo() === $this) {
+                $eventLoisir->setIdSo(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Participant[]
+     */
+    public function getParticipants(): Collection
+    {
+        return $this->participants;
+    }
+
+    public function addParticipant(Participant $participant): self
+    {
+        if (!$this->participants->contains($participant)) {
+            $this->participants[] = $participant;
+            $participant->setIdS($this);
+        }
+
+        return $this;
+    }
+
+    public function removeParticipant(Participant $participant): self
+    {
+        if ($this->participants->removeElement($participant)) {
+            // set the owning side to null (unless already changed)
+            if ($participant->getIdS() === $this) {
+                $participant->setIdS(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getDateCreation(): ?string
+    {
+        return $this->date_Creation;
+    }
+
+    public function setDateCreation(string $date_Creation): self
+    {
+        $this->date_Creation = $date_Creation;
+
+        return $this;
+    }
+
+    public function getDate_Creation(): ?string
+    {
+        return $this->date_Creation;
+    }
+
+    public function setDate_Creation(string $date_Creation): self
+    {
+        $this->date_Creation = $date_Creation;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|OffreEmploi[]
+     */
+    public function getOffreEmplois(): Collection
+    {
+        return $this->offreEmplois;
+    }
+
+    public function addOffreEmploi(OffreEmploi $offreEmploi): self
+    {
+        if (!$this->offreEmplois->contains($offreEmploi)) {
+            $this->offreEmplois[] = $offreEmploi;
+            $offreEmploi->setSociete($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOffreEmploi(OffreEmploi $offreEmploi): self
+    {
+        if ($this->offreEmplois->removeElement($offreEmploi)) {
+            // set the owning side to null (unless already changed)
+            if ($offreEmploi->getSociete() === $this) {
+                $offreEmploi->setSociete(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|OffreStage[]
+     */
+    public function getOffreStages(): Collection
+    {
+        return $this->offreStages;
+    }
+
+    public function addOffreStage(OffreStage $offreStage): self
+    {
+        if (!$this->offreStages->contains($offreStage)) {
+            $this->offreStages[] = $offreStage;
+            $offreStage->setSociete($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOffreStage(OffreStage $offreStage): self
+    {
+        if ($this->offreStages->removeElement($offreStage)) {
+            // set the owning side to null (unless already changed)
+            if ($offreStage->getSociete() === $this) {
+                $offreStage->setSociete(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getEtat(): ?int
+    {
+        return $this->etat;
+    }
+
+    public function setEtat(int $etat): self
+    {
+        $this->etat = $etat;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|PostLike[]
+     */
+    public function getLikes(): Collection
+    {
+        return $this->likes;
+    }
+
+    public function addLike(PostLike $like): self
+    {
+        if (!$this->likes->contains($like)) {
+            $this->likes[] = $like;
+            $like->setSociete($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLike(PostLike $like): self
+    {
+        if ($this->likes->removeElement($like)) {
+            // set the owning side to null (unless already changed)
+            if ($like->getSociete() === $this) {
+                $like->setSociete(null);
+            }
+        }
 
         return $this;
     }

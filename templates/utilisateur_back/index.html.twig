@@ -1,7 +1,6 @@
 {% extends 'base_back.html.twig' %}
 
- {% block title %}RightJob{% endblock %}
-
+{% block title %}RightJob{% endblock %}
 
 
 {% block body %}
@@ -101,15 +100,20 @@
 
 
                             </div>
-                            <div class="main-p-pagination">
-                                <nav aria-label="Page navigation example">
-                                    <ul class="pagination">
-                                        <li class="page-item">
-                                            {{ knp_pagination_render(list) }}
-                                        </li>
-
-                                    </ul>
-                                </nav>
+                            <br>
+                            <div class="navigation" style="margin-left:40%">
+                                {{ knp_pagination_render(
+                                    list,
+                                    '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig',
+                                    {
+                                        'queryParam1': 'param1 value',
+                                        'queryParam2': 'param2 value'
+                                    },
+                                    {
+                                        'viewParam1': 'param1 value',
+                                        'viewParam2': 'param2 value'
+                                    },
+                                ) }}
                             </div>
 
                         </div>
@@ -117,66 +121,5 @@
                 </div>
             </div>
         </div>
-        <footer class="footer mt-30">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-6">
-                        <div class="item_f1">
-                            <a href="about_us.html">About</a>
-                            <a href="our_blog.html">Blog</a>
-                            <a href="career.html">Careers</a>
-
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6">
-                        <div class="item_f1">
-                            <a href="coming_soon.html">Advertise</a>
-                            <a href="coming_soon.html">Developers</a>
-                            <a href="contact_us.html">Contact Us</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6">
-                        <div class="item_f1">
-                            <a href="terms_of_use.html">Copyright Policy</a>
-                            <a href="terms_of_use.html">Terms</a>
-                            <a href="terms_of_use.html">Privacy Policy</a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-12">
-                        <div class="footer_bottm">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <ul class="fotb_left">
-                                        <li>
-                                            <a href="index.html">
-                                                <div class="footer_logo">
-                                                    <img src="images/logo1.svg" alt="">
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <p>© 2020 <strong>Cursus</strong>. All Rights Reserved.</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="edu_social_links">
-                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="#"><i class="fab fa-google-plus-g"></i></a>
-                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                        <a href="#"><i class="fab fa-instagram"></i></a>
-                                        <a href="#"><i class="fab fa-youtube"></i></a>
-                                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
     <!-- Body End -->
 {% endblock %}

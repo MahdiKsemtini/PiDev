@@ -37,15 +37,15 @@
             <div class="row justify-content-lg-center justify-content-md-center">
                 <div class="col-lg-12">
                     <div class="main_logo25" id="logo">
-                        <a href="{{ path('index') }}"><img src="{{ asset('images/Logo_complet.png') }}" alt="" width="140" height="70"></a>
+                        <a href="{{ path('index') }}"><img src="{{ asset('images/Logo_complet.png') }}" alt="" width="160" height="70"></a>
                         <a href="{{ path('index') }}"><img class="logo-inverse" src="{{ asset('images/Logo_complet.png') }}" alt="" width="140" height="70"></a>
                     </div>
                 </div>
 
                 <div class="col-lg-6 col-md-8">
                     <div class="sign_form">
-                        <h2>Welcome Back</h2>
-                        <p>Log In to Your Account!</p>
+                        <h2>Content de te revoir</h2>
+                        <p>Connectez-vous à votre compte!</p>
 {#                        <button class="social_lnk_btn color_btn_fb" ><i class="uil uil-facebook-f"></i><a href="{{ path('connect_facebook_start') }}">Continue with Facebook</a></button>#}
 {#                        <button class="social_lnk_btn mt-15 color_btn_tw"><i class="uil uil-twitter"></i>Continue with Twitter</button>#}
 {#                        <button class="social_lnk_btn mt-15 color_btn_go"><i class="uil uil-google"></i>Continue with Google</button>#}
@@ -75,9 +75,22 @@
                                 </div>
                             </div>
 
+                            <div class="ui search focus mt-15">
+                                <div class="ui left icon input swdh95">
+                                    {{ form_widget(form.captchaCode) }}
+                                </div>
+                            </div>
+                        <br>
+                        <br>
+                            <div class="ui search focus mt-15">
+                                <div class="ui left icon input swdh95">
+                                    {{ form_errors(form.captchaCode) }}
+                                </div>
+                            </div>
+
                             {{ form_widget(form.SignIn) }}
                         </form>
-                        <p class="sgntrm145">Or <a href="{{ path('ForgetPassword') }}">Forgot Password</a>.</p>
+                        <p class="sgntrm145">Ou <a href="{{ path('ForgetPassword') }}">mot de passe oublié</a>?</p>
                         <p class="mb-0 mt-30 hvsng145">vous n'avez pas de compte Freelancer? <a href="{{ path('SignUp',{'type':'Freelancer'}) }}">Sign Up</a></p>
                         <p class="mb-0 mt-30 hvsng145">vous n'avez pas de compte de Societe? <a href="{{ path('SignUp',{'type':'Societe'}) }}">Sign Up</a></p>
                     </div>

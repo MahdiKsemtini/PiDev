@@ -119,49 +119,7 @@ class UtilisateurBackController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/ratingFreelancer/{numb}?{idTaker}?{id}", name="ratingFreelancer")
-     */
-    public function Rating(ReviewsRepository $repository,$numb,$idTaker,$id)
-    {
-        $review=$repository->findOneBy(['idTaker'=>$idTaker,'idGiver'=>7]);
-        if($review!=null){
-            $review->setNumberReviews($numb);
-            $em=$this->getDoctrine()->getManager();
-            $em->flush();
-        }else{
-            $reviewInstance=new Reviews();
-            $reviewInstance->setIdGiver(7);
-            $reviewInstance->setIdTaker($idTaker);
-            $reviewInstance->setNumberReviews($numb);
-            $em=$this->getDoctrine()->getManager();
-            $em->persist($reviewInstance);
-            $em->flush();
-        }
-        return $this->redirectToRoute('ViewFreelancerProfile', array('id'=>$id));
-    }
 
-    /**
-     * @Route("/ratingSocite/{numb}?{idTaker}?{id}", name="ratingSocite")
-     */
-    public function RatingSos(ReviewsRepository $repository,$numb,$idTaker,$id)
-    {
-        $review=$repository->findOneBy(['idTaker'=>$idTaker,'idGiver'=>7]);
-        if($review!=null){
-            $review->setNumberReviews($numb);
-            $em=$this->getDoctrine()->getManager();
-            $em->flush();
-        }else{
-            $reviewInstance=new Reviews();
-            $reviewInstance->setIdGiver(7);
-            $reviewInstance->setIdTaker($idTaker);
-            $reviewInstance->setNumberReviews($numb);
-            $em=$this->getDoctrine()->getManager();
-            $em->persist($reviewInstance);
-            $em->flush();
-        }
-        return $this->redirectToRoute('ViewSocieteProfile', array('id'=>$id));
-    }
 
     /**
      * @param Request $request

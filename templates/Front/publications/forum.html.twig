@@ -1,0 +1,273 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RightJob{% endblock %}
+
+{% block body %}
+
+
+    <div class="wrapper">
+        <div class="sa4d25">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-8 col-lg-8">
+                        <div class="fcrse_1"  style="margin-bottom: 20px;"  >
+                            <div class="col-lg-12 col-md-12">
+                                <div class="course_des_textarea mt-30 lbel25">
+                                    <h4>Créer une publication</h4>
+                                    {{ form_start(f) }}
+                                    <div class="form-group">
+                                        <label for="exampleInputName1">{{ form_label(f.description) }}</label>
+                                        {{ form_widget(f.description,{'attr':{'class':'form-control'}}) }}
+
+                                    </div>
+
+                                    {{ form_widget(f.image) }}
+
+                                    <div style="margin-top: 10px; float:right">
+
+                                        <a class="btn btn-light"  onclick="document.location='forum'" >Cancel</a>
+                                        {{ form_widget(f.Publier, {'attr':{'class':'Get_btn'}} ) }}
+
+                                    </div>
+                                    {{ form_end(f) }}
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        {% for i in publications|reverse %}
+                        {% if  i.freelancer != null%}
+                            <div class="fcrse_1" style="margin-bottom: 20px;" >
+                                <div class="user_dt5" style="margin-top: 10px; margin-left: 10px" >
+                                    <div class="user_dt_left">
+                                        <div class="live_user_dt">
+                                            <div class="user_img5">
+                                                    {% if i.freelancer.id!= app.session.get('id')%}
+                                                        <a href="{{ path('ViewFreelancerProfileF', {'id': i.freelancer.id}) }}"><img src="{{ asset('picture/' ~ i.freelancer.PhotoDeProfile) }}" alt=""></a>
+
+                                                    {% elseif i.freelancer.id== app.session.get('id') and  app.session.get('compte_facebook')==null %}
+                                                        <a href="{{ path('ViewFreelancerProfileF', {'id': i.freelancer.id}) }}"><img src="{{ asset('picture/' ~ i.freelancer.PhotoDeProfile) }}" alt=""></a>
+                                                    {% else %}
+                                                        <a href="#"><img src="{{ asset('picture/' ~ i.freelancer.PhotoDeProfile) }}" alt=""></a>
+                                                    {% endif %}
+                                            </div>
+
+                                            <div class="user_cntnt">
+                                                <br>
+                                                    {% if i.freelancer.id!= app.session.get('id')%}
+                                                        <a href="{{ path('ViewFreelancerProfileF', {'id': i.freelancer.id}) }}"><h4>{{ i.freelancer.nom }} {{ i.freelancer.prenom }}</h4></a>
+
+                                                    {% elseif i.freelancer.id== app.session.get('id') and  app.session.get('compte_facebook')==null %}
+                                                        <a href="{{ path('ViewFreelancerProfileF', {'id': i.freelancer.id}) }}"><h4>{{ i.freelancer.nom }} {{ i.freelancer.prenom }}</h4></a>
+                                                    {% else %}
+                                                        <a href="#"><h4>{{ i.freelancer.nom }} {{ i.freelancer.prenom }}</h4></a>
+                                                    {% endif %}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% if i.freelancer.id== app.session.get('id') and  app.session.get('compte_facebook')!=null %}
+                                    <div class="eps_dots more_dropdown" style="margin-right: 30px; margin-top: 10px" >
+                                        <a href="#"><i class='uil uil-ellipsis-v'></i></a>
+                                        <div class="dropdown-content">
+                                                <a href={{ path('modifierpublication',{'id': i.id }) }}> <span   ><i class='uil-edit' ></i>Modifier</span> </a>
+                                                <a href={{ path('supprimerPublication',{'id': i.id }) }}> <span><i class='uil uil-trash-alt'></i>Supprimer</span> </a>
+
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                <div class="live1452">
+
+                                    <h4>{{ i.description }}</h4>
+                                    <div align="center">
+                                        <img src="picture/{{ i.image }}" class="fcrse_img"  alt="">
+                                    </div>
+                                    <div class="fcrse_content">
+                                        {{ i.datePublication |date}}
+                                    </div>
+                                </div>
+                                <a href="{{ path('post_like',{'id': i.id }) }}" class="btn-btn-link js-like" >
+                                    <span class="js-likes">{{ i.likes | length }}</span>
+                                    {% set x = 1 %}
+                                    {% for j in likes %}
+                                        {% if j.post.id==i.id and j.user.id== app.session.get('id') %}
+                                            <i class="fas fa-thumbs-up"></i>
+                                            {% set x = 0 %}
+                                        {% elseif x   %}
+                                            <i class="far fa-thumbs-up"></i>
+                                            {% set x = 0 %}
+                                        {% endif %}
+
+                                    {% endfor %}
+                                    <span class="js-label">J'aime</span>
+                                </a>
+                                <div class="fcrse_3">
+                                    <div class="cater_ttle">
+                                        <h4>Commentaires</h4>
+                                        <div align="center" >
+                                            <a href={{ path('commentaires',{'id_pub': i.id }) }} class="upload_btn">Afficher commentaire</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="fcrse_1" style="margin-bottom: 20px;" >
+                                <div class="user_dt5" style="margin-top: 10px; margin-left: 10px" >
+                                    <div class="user_dt_left">
+                                        <div class="live_user_dt">
+                                            <div class="user_img5">
+                                                    {% if i.societe.id!= app.session.get('id')%}
+                                                        <a href="{{ path('ViewSocieteProfileF', {'id': i.societe.id}) }}"><img src="{{ asset('picture/' ~ i.societe.PhotoDeProfile) }}" alt=""></a>
+
+                                                    {% elseif i.societe.id== app.session.get('id') and  app.session.get('compte_facebook')!=null %}
+                                                        <a href="{{ path('ViewSocieteProfileF', {'id': i.societe.id}) }}"><img src="{{ asset('picture/' ~ i.societe.PhotoDeProfile) }}" alt=""></a>
+                                                    {% else %}
+                                                        <a href="#"><img src="{{ asset('picture/' ~ i.societe.PhotoDeProfile) }}" alt=""></a>
+                                                    {% endif %}
+
+                                            </div>
+                                            <br>
+                                            <div class="user_cntnt">
+                                                <br>
+                                                    {% if i.societe.id!= app.session.get('id')%}
+                                                        <a href="{{ path('ViewSocieteProfileF', {'id': i.societe.id}) }}"><h4>{{ i.societe.nom }}</h4></a>
+
+                                                    {% elseif i.societe.id== app.session.get('id') and  app.session.get('compte_facebook')!=null %}
+                                                        <a href="{{ path('ViewSocieteProfileF', {'id': i.societe.id}) }}"><h4>{{ i.societe.nom }}</h4></a>
+                                                    {% else %}
+                                                        <a href="#"><h4>{{ i.societe.nom }}</h4></a>
+                                                    {% endif %}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% if i.societe.id== app.session.get('id') and  app.session.get('compte_facebook')==null %}
+                                    <div class="eps_dots more_dropdown" style="margin-right: 30px; margin-top: 10px" >
+                                        <a href="#"><i class='uil uil-ellipsis-v'></i></a>
+                                        <div class="dropdown-content">
+                                            <a href={{ path('modifierpublication',{'id': i.id }) }}> <span   ><i class='uil-edit' ></i>Modifier</span> </a>
+                                            <a href={{ path('supprimerPublication',{'id': i.id }) }}> <span><i class='uil uil-trash-alt'></i>Supprimer</span> </a>
+
+
+                                        </div>
+                                    </div>
+                                {% endif %}
+                                <div class="live1452">
+
+                                    <h4>{{ i.description }}</h4>
+                                    <div align="center">
+                                        <img src="picture/{{ i.image }}" class="fcrse_img"  alt="">
+                                    </div>
+                                    <div class="fcrse_content">
+                                        {{ i.datePublication |date}}
+                                    </div>
+                                </div>
+                                <a href="{{ path('post_like',{'id': i.id }) }}" class="btn-btn-link js-like" >
+                                    <span class="js-likes">{{ i.likes | length }}</span>
+                                    {% set x = 1 %}
+                                    {% for j in likes %}
+                                        {% if j.post.id==i.id and j.user.id== app.session.get('id') %}
+                                            <i class="fas fa-thumbs-up"></i>
+                                            {% set x = 0 %}
+                                        {% elseif x  %}
+                                            <i class="far fa-thumbs-up"></i>
+                                            {% set x = 0 %}
+                                        {% endif %}
+
+                                    {% endfor %}
+                                    <span class="js-label">J'aime</span>
+                                </a>
+                                <div class="fcrse_3">
+                                    <div class="cater_ttle">
+                                        <h4>Commentaires</h4>
+                                        <div align="center" >
+                                            <a href={{ path('commentaires',{'id_pub': i.id }) }} class="upload_btn">Afficher commentaire</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% endfor %}
+
+                        <div class="navigation" style="margin-left:40%">
+                                {{ knp_pagination_render(
+                                    publications,
+                                    '@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig',
+                                    {
+                                        'queryParam1': 'param1 value',
+                                        'queryParam2': 'param2 value'
+                                    },
+                                    {
+                                        'viewParam1': 'param1 value',
+                                        'viewParam2': 'param2 value'
+                                    },
+                                ) }}
+                            </div>
+
+
+                    </div>
+
+
+                    <div class="col-xl-3 col-lg-4">
+                        <div class="right_side">
+                            <form method="POST">
+                                <input class="rv_srch" type="text" name="keyword" placeholder="Search ...">
+                                <button type="submit" name="recherche" class="rvsrch_btn"><i class="uil uil-search"></i></button>
+                            </form>
+
+                            <div class="fcrse_3">
+                                <div class="cater_ttle">
+                                    <h4>Trier par :</h4>
+                                </div>
+                                <ul class="allcate15"  >
+                                    <li><a href="#" class="ct_item"><i class='uil-comment-upload'></i>Most comments</a></li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+{% endblock %}
+
+{% block js %}
+    <script src="{{ asset('js/vertical-responsive-menu.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('vendor/OwlCarousel/owl.carousel.js') }}"></script>
+    <script src="{{ asset('vendor/semantic/semantic.min.js') }}"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
+    <script src="{{ asset('js/night-mode.js') }}"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        function onClickBtnLike(event){
+            event.preventDefault();
+            const url = this.href;
+            const spanCount = this.querySelector('span.js-likes');
+            const icone = this.querySelector('i');
+            axios.get(url).then(function (response){
+                spanCount.textContent = response.data.likes;
+                if (icone.classList.contains('fas')){
+                        icone.classList.replace('fas','far');
+                }
+                else {
+                    icone.classList.replace('far','fas');
+                }
+            });
+        }
+        document.querySelectorAll('a.js-like').forEach(function (link){
+            link.addEventListener('click', onClickBtnLike);
+        })
+    </script>
+
+{% endblock %}

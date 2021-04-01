@@ -1,0 +1,133 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RightJob{% endblock %}
+
+{% block css %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=9">
+    <meta name="description" content="Gambolthemes">
+    <meta name="author" content="Gambolthemes">
+
+
+    <!-- Favicon Icon -->
+    <link rel="icon" type="image/png" href={{ asset('images/fav.png') }}>
+
+    <!-- Stylesheets -->
+    <link href={{asset('http://fonts.googleapis.com/css?family=Roboto:400,700,500')}} rel='stylesheet'>
+    <link href={{asset('vendor/unicons-2.0.1/css/unicons.css')}} rel='stylesheet'>
+    <link href={{asset("css/vertical-responsive-menu1.min.css")}} rel="stylesheet">
+    <link href={{asset("css/instructor-dashboard.css")}} rel="stylesheet">
+    <link href={{asset("css/instructor-responsive.css")}} rel="stylesheet">
+    <link href={{asset("css/night-mode.css")}} rel="stylesheet">
+    <link href={{asset("css/jquery-steps.css")}} rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.min.css"
+          integrity="sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=" crossorigin="anonymous">
+
+    <!-- Vendor Stylesheets -->
+    <link href={{asset("vendor/fontawesome-free/css/all.min.css")}} rel="stylesheet">
+    <link href={{asset("vendor/OwlCarousel/assets/owl.carousel.css")}} rel="stylesheet">
+    <link href={{asset("vendor/OwlCarousel/assets/owl.theme.default.min.css")}} rel="stylesheet">
+    <link href={{asset("vendor/bootstrap/css/bootstrap.min.css")}} rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href={{asset("vendor/semantic/semantic.min.css")}}>
+
+    <style>
+        #calendrier{
+            width: 80%;
+            margin:auto;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+
+    <!-- Header Start -->
+
+    <!-- Header End -->
+    <!-- Left Sidebar Start -->
+
+    <!-- Left Sidebar End -->
+    <!-- Body Start -->
+    <div class="wrapper _bg4586">
+
+
+        <div class="_215b17">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="course_tab_content">
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-about" role="tabpanel">
+
+                                    <div id="calendrier">
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}
+
+{% block js %}
+    <script src={{ asset('js/vertical-responsive-menu.min.js') }}></script>
+    <script src={{ asset('js/jquery-3.3.1.min.js') }}></script>
+    <script src={{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}></script>
+    <script src={{ asset('vendor/OwlCarousel/owl.carousel.js') }}></script>
+    <script src={{ asset('vendor/semantic/semantic.min.js') }}></script>
+    <script src={{ asset('js/custom.js') }}></script>
+    <script src={{ asset('js/night-mode.js') }}></script>
+    <script src={{ asset('js/jquery-steps.min.js') }}></script>
+    <script>
+        $('#add-course-tab').steps({
+            onFinish: function () {
+                alert('Wizard Completed');
+            }
+        });
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.min.js"
+            integrity="sha256-rPPF6R+AH/Gilj2aC00ZAuB2EKmnEjXlEWx5MkAp7bw=" crossorigin="anonymous"></script>
+    <script>
+        window.onload=()=>{
+            let calendarElt=document.querySelector("#calendrier")
+
+            let calendar=new FullCalendar.Calendar(calendarElt,{
+                initialView:'timeGridWeek',
+                locale:'fr',
+                timeZone:'Europe/Paris',
+                headerToolbar:{
+                    start:'prev,next today',
+                    center:'title',
+                    end:'dayGridMonth timeGridWeek'
+                },
+                events:{{ data|raw }} ,
+                eventResizableFromStart:true
+            })
+
+            calendar.on('eventChange',(e)=>{
+                let url=`/api/${e.event.id}/edit`
+                let donnees={
+                    "id":e.event.id,
+                    "start":e.event.start,
+                    "end":e.event.end,
+                    "allDay":e.event.allDay,
+                    "backgroundColor":e.event.backgroundColor
+                }
+
+                let xhr=new XMLHttpRequest
+                xhr.open("PUT",url)
+                xhr.send(JSON.stringify(donnees))
+            })
+            calendar.render();
+        }
+
+    </script>
+
+{% endblock %}

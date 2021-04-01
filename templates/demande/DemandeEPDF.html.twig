@@ -1,0 +1,45 @@
+{% block body %}
+
+    <div class="content">
+    <div class="container-fluid">
+    <div class="row">
+    <div class="col-md-12">
+    <div class="card">
+    <div class="card-header card-header-primary">
+
+<h1> LES DEMANDES D'EMPLOI</h1>
+
+    </div>
+    <div class="card-body">
+    <div class="table-responsive">
+    <table align="center"class="table" border="3">
+        <thead class=" text-primary">
+        <tr>
+            <th>Description </th>
+            <th>Domaine</th>
+            <th>Nom de societe</th>
+            <th> Salaire demandée </th>
+            <th> Diplome </th>
+            <th> CV </th>
+            <th> Date de Creation </th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for d in demandes %}
+            <tr>
+                <td>{{ d.description }}</td>
+                <td>{{ d.domaine }}</td>
+                <td>{{ d.nomsociete }}</td>
+                <td>{{ d.salaire }}</td>
+                <td>{{ d.diplome }}</td>
+                <td>{{ d.cv }}</td>
+                <td>{{ d.dateCreation }}</td>
+
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+{% endblock %}

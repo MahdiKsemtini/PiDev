@@ -35,8 +35,14 @@
 {% endblock %}
 
 {% block body %}
+
+<head>
+
+
+</head>
     <!-- Body Start -->
     <div class="wrapper _bg4586">
+
         <div class="_216b01">
             <div class="container-fluid">
                 <div class="row justify-content-md-center">
@@ -66,13 +72,59 @@
                                         <li>
                                             <div class="_ttl121">
                                                 <div class="_ttl122">Status Juridique</div>
-                                                <div class="_ttl123">{{ app.session.get('status_juridique') }}</div>
+                                                <div class="_ttl123">{{ app.session.get('status_juridique') }} </div>
                                             </div>
                                         </li>
+                                        <li>
+                                            <div class="_ttl121">
+                                                <div class="_ttl122">Views</div>
+                                                <div class="_ttl123">{{ app.session.get('viewNb') }} </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="_ttl121">
+                                                <div class="_ttl122">Rating</div>
+
+                                            </div>
+                                            <div class="rating rating2" >
+                                                            {% if app.session.get('NumbReviews')!=0 %}
+                                                                {% if app.session.get('NumbReviews')!=5 %}
+                                                                    {% for i in range(1,5- app.session.get('NumbReviews')) %}
+                                                                        <a style="color: gray" >★</a>
+                                                                    {% endfor %}
+                                                                {% endif %}
+                                                                {% for i in range(1, app.session.get('NumbReviews')) %}
+                                                                <a style="color: orange" >★</a>
+                                                                {% endfor %}
+                                                            {% else %}
+                                                                {% for i in range(1,5) %}
+                                                                        <a style="color: gray" >★</a>
+                                                                {% endfor %}
+                                                            {% endif %}
+                                            </div>
+                                        </li>
+
                                     </ul>
                                 </div>
 
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="_215b15">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="course_tabs">
+                            <nav>
+                                <div class="nav nav-tabs tab_crse" id="nav-tab" role="tablist">
+                                    <a class="nav-item nav-link active" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-selected="true">Editer le profil</a>
+                                    <a class="nav-item nav-link" id="nav-courses-tab" data-toggle="tab" href="#nav-courses" role="tab" aria-selected="false">Mes Reviews</a>
+                                    <a class="nav-item nav-link" id="nav-reclamation-tab" data-toggle="tab" href="#nav-reclamation" role="tab" aria-selected="false">Mes Reclamations</a>
+                                </div>
+                            </nav>
                         </div>
                     </div>
                 </div>
@@ -87,7 +139,7 @@
                                 <div class="tab-pane fade show active" id="nav-about" role="tabpanel">
                                     <div class="_htg451">
                                         <div class="_htg452">
-                                            <form {{ form_start(form) }}>
+                                            <form {{ form_start(form) }}
                                                 <div class="basic_ptitle">
                                                     <h4>Nom de Societe</h4>
                                                     <p>Changer le Nom de votre societe</p>
@@ -143,6 +195,75 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="tab-pane fade" id="nav-courses" role="tabpanel">
+                                        <div class="_htg452">
+                                            {% for l in reviews%}
+                                                    <div class="fcrse_1 mt-30">
+                                                        <div class="tutor_img">
+                                                            <a href="{{ path('ViewFreelancerProfileF', {'id': l.freelancer.id}) }}"><img src="{{ asset('picture/' ~ l.freelancer.PhotoDeProfile) }}" alt=""></a>
+                                                        </div>
+                                                        <div class="tutor_content_dt">
+                                                            <div class="tutor150">
+                                                                <a href="{{ path ('ViewFreelancerProfileF', {'id': l.freelancer.id}) }}" class="tutor_name">{{ l.freelancer.nom }} {{ l.freelancer.prenom }}</a>
+                                                                <div class="mef78" title="Verify">
+                                                                    <i class="uil uil-check-circle"></i>
+                                                                </div>
+                                                            </div>
+                                                            <div class="tutor_cate">{{l.freelancer.email}}</div>
+                                                            <div class="tutor_cate">Review: {{l.Description}}</div>
+                                                        </div>
+                                                    </div>
+                                            {% endfor %}
+                                        </div>
+
+                                </div>
+                                <div class="tab-pane fade" id="nav-reclamation" role="tabpanel">
+                                        <div class="_htg452">
+                                           <table class="table ucp-table">
+                                                        <thead class="thead-s">
+                                                        <tr>
+                                                            <th class="text-center" scope="col">Type</th>
+                                                            <th class="text-center" scope="col">Texte de reclamation</th>
+                                                            <th class="text-center" scope="col">Date de reclamation</th>
+                                                            <th class="text-center" scope="col">Afficher</th>
+                                                            <th class="text-center" scope="col">Modifier</th>
+                                                            <th class="text-center" scope="col">Supprimer</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+
+
+
+                                                        </tr>
+                                                        {% for i in list %}
+                                                            <tr>
+                                                                <td class="text-center">{{ i.type }}</td>
+                                                                <td class="cell-ta">{{ i.texteReclamation }}</td>
+                                                                <td class="text-center">{{ i.dateReclamation }}</td>
+
+                                                                <td class="text-center">
+                                                                    <a href="#" title="View" class="gray-s"><i class="uil uil-eye"></i></a>
+
+                                                                <td class="text-center">
+                                                                    <a href="{{ path('updateReclamation', {'id': i.id}) }}" title="Edit" class="gray-s"><i class="uil uil-edit-alt"></i></a>
+                                                                <td class="text-center">
+                                                                    <a href="{{ path('deleteReclamation', {'id': i.id}) }}" title="Delete" class="gray-s"><i class="uil uil-trash-alt"></i></a>
+                                                                </td>
+                                                                </td>
+
+                                                                <td class="text-center">
+
+                                                                </td>
+
+                                                            </tr>
+                                                        {% endfor %}
+
+                                                        </tbody>
+                                                    </table>
+                                        </div>
+
+                                </div>
 
                             </div>
                         </div>
@@ -150,69 +271,7 @@
                 </div>
             </div>
         </div>
-        <footer class="footer mt-30">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-6">
-                        <div class="item_f1">
-                            <a href="about_us.html">About</a>
-                            <a href="our_blog.html">Blog</a>
-                            <a href="career.html">Careers</a>
-                            <a href="press.html">Press</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6">
-                        <div class="item_f1">
-                            <a href="help.html">Help</a>
-                            <a href="coming_soon.html">Advertise</a>
-                            <a href="coming_soon.html">Developers</a>
-                            <a href="contact_us.html">Contact Us</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-3 col-sm-6">
-                        <div class="item_f1">
-                            <a href="terms_of_use.html">Copyright Policy</a>
-                            <a href="terms_of_use.html">Terms</a>
-                            <a href="terms_of_use.html">Privacy Policy</a>
-                            <a href="#">Sitemap</a>
-                        </div>
-                    </div>
 
-                    <div class="col-lg-12">
-                        <div class="footer_bottm">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <ul class="fotb_left">
-                                        <li>
-                                            <a href="index.html">
-                                                <div class="footer_logo">
-                                                    <img src="{{ asset('images/fav.png') }}" alt="">
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <p>© 2021 <strong>PowerDev</strong>. All Rights Reserved.</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="edu_social_links">
-                                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
-                                        <a href="#"><i class="fab fa-google-plus-g"></i></a>
-                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                                        <a href="#"><i class="fab fa-instagram"></i></a>
-                                        <a href="#"><i class="fab fa-youtube"></i></a>
-                                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </div>
     <!-- Body End -->
 {% endblock %}
 

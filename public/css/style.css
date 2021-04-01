@@ -1851,7 +1851,16 @@ i.icon1 {
 	padding: 0;
 	float: left;
 }
-
+.AdminDelete_btn {
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    background: Black;
+    padding: 9px 15px;
+    border-radius: 25px;
+    margin-right: 10px;
+}
 .item_f1 {
 	padding-top: 50px;
 }
@@ -4962,7 +4971,7 @@ a.rmv-btn i {
     line-height: 26px;
     padding-top: 27px;
 }
-}
+
 
 .story125 {
     text-align: center;

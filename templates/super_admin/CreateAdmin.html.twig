@@ -1,0 +1,120 @@
+{% extends 'base_back.html.twig' %}
+
+ {% block title %}RightJob{% endblock %}
+
+
+{% block body %}
+<!-- Body Start -->
+<div class="wrapper">
+    <div class="sa4d25">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="st_title"><i class="uil uil-analysis" style="text-align: center"></i> Create New Admin</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="course_tabs_1">
+                        <div id="add-course-tab" class="step-app">
+
+                            <div class="step-content">
+                                <div class="step-tab-panel step-tab-info active" id="tab_step1">
+                                    <div class="tab-from-content">
+                                        {{ form_start(form,{'attr':{novalidate:'novalidate'}}) }}
+                                        <div class="title-icon">
+                                            <h3 class="title"><i class="uil uil-info-circle"></i>General Information</h3>
+                                        </div>
+                                        <div class="course__form">
+                                            <div class="general_info10">
+                                                <div class="row">
+
+                                                    <div class="col-lg-6 col-md-6">
+                                                        <div class="ui search focus mt-30 lbel25">
+                                                            <label>First Name*</label>
+                                                            <div class="ui left icon input swdh19">
+                                                                {{ form_widget(form.nom) }}
+                                                            </div>
+                                                            <div class="ui left icon input swdh19">
+                                                                {{ form_errors(form.nom) }}
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6">
+                                                        <div class="ui search focus mt-30 lbel25">
+                                                            <label>Last Name*</label>
+                                                            <div class="ui left icon input swdh19">
+                                                                {{ form_widget(form.prenom) }}
+                                                            </div>
+                                                            <div class="ui left icon input swdh19">
+                                                                {{ form_errors(form.prenom) }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6">
+                                                        <div class="ui search focus mt-30 lbel25">
+                                                            <label>Login*</label>
+                                                            <div class="ui left icon input swdh19">
+                                                                {{ form_widget(form.login)}}
+                                                            </div>
+                                                            <div class="ui left icon input swdh19">
+                                                                {{ form_errors(form.login) }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6">
+                                                        <div class="ui search focus mt-30 lbel25">
+                                                            <label>Password*</label>
+                                                            <div class="ui left icon input swdh19">
+                                                                {{ form_widget(form.password)}}
+                                                            </div>
+                                                            <div class="ui left icon input swdh19">
+                                                                {{ form_errors(form.password) }}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-lg-4 col-md-6">
+                                                        <div class="mt-30 lbel25">
+                                                            <label>Account type*</label>
+                                                        </div>
+                                                        {{ form_widget(form.type) }}
+                                                    </div>
+                                                    <div class="ui left icon input swdh19">
+                                                        {{ form_errors(form.type) }}
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-6">
+                                                        <div class="mt-30 lbel25">
+                                                            <label>Account  validation*</label>
+                                                        </div>
+                                                        {{ form_widget(form.etat) }}
+                                                    </div>
+                                                    <div class="ui left icon input swdh19">
+                                                        {{ form_errors(form.etat) }}
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="step-footer step-tab-pager">
+                                            <input type="submit" value="Submit" name="submit" class ='upload_btn'>
+                                        </div>
+                                        {{ form_end(form) }}
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Body End -->
+{% endblock %}

@@ -55,4 +55,19 @@ class SocieteRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function societeParMois()
+    {
+        $query = $this->createQueryBuilder('r')
+            ->select(' MONTH(r.date_Creation) AS mois , count(r) as count')
+            ->groupBy('mois');
+        return $query->getQuery()->getResult();
+    }
+
+    public function countsociete()
+    {
+        $query = $this->createQueryBuilder('r')
+            ->select('count(r) as count');
+        return $query->getQuery()->getResult();
+    }
 }

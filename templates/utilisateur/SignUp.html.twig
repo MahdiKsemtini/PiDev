@@ -44,8 +44,8 @@
 
                 <div class="col-lg-6 col-md-8">
                     <div class="sign_form">
-                        <h2>Welcome to RightJob</h2>
-                        <p>Sign Up and Start Learning!</p>
+                        <h2>Bienvenue chez RightJob</h2>
+                        <br>
                         {% if type =="Freelancer" %}
                             <form {{ form_start(form,{'attr':{novalidate:'novalidate'}}) }}
                                 <div class="ui search focus">
@@ -111,8 +111,7 @@
                                 {{ form_widget(form.SignUp) }}
                             </form>
                         {% endif %}
-                        <p class="sgntrm145">By signing up, you agree to our <a href="terms_of_use.html">Terms of Use</a> and <a href="terms_of_use.html">Privacy Policy</a>.</p>
-                        <p class="mb-0 mt-30">Already have an account? <a href="{{ path('SignIn') }}">Log In</a></p>
+                        <p class="mb-0 mt-30">Vous avez déjà un compte? <a href="{{ path('SignIn') }}">Log In</a></p>
                     </div>
                     <div class="sign_footer"><img src="{{ asset('images/sign_logo.png') }}" alt="">© 2021 <strong>PowerDev</strong>. All Rights Reserved.</div>
                 </div>

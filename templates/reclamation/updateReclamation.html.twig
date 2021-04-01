@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RightJob{% endblock %}
+
+
+{% block body %}
+
+
+    <!-- Mirrored from gambolthemes.net/html-items/cursus_demo_f12/feedback.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 20 Jun 2020 12:56:11 GMT -->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, shrink-to-fit=9">
+        <meta name="description" content="Gambolthemes">
+        <meta name="author" content="Gambolthemes">
+        <title>Cursus - Feedback</title>
+
+        <!-- Favicon Icon -->
+        <link rel="icon" type="image/png" href="images/fav.png">
+
+        <!-- Stylesheets -->
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet'>
+        <link href='vendor/unicons-2.0.1/css/unicons.css' rel='stylesheet'>
+        <link href="css/vertical-responsive-menu.min.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/responsive.css" rel="stylesheet">
+        <link href="css/night-mode.css" rel="stylesheet">
+
+        <!-- Vendor Stylesheets -->
+        <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+        <link href="vendor/OwlCarousel/assets/owl.carousel.css" rel="stylesheet">
+        <link href="vendor/OwlCarousel/assets/owl.theme.default.min.css" rel="stylesheet">
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="vendor/semantic/semantic.min.css">
+
+    </head>
+
+
+    <!-- Left Sidebar End -->
+    <!-- Body Start -->
+    <div class="wrapper">
+        <div class="sa4d25">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        {{ form_start(f) }}
+                        <h2 class="st_title"><i class="uil uil-comment-info-alt"></i> Modifier Reclamation</h2>
+
+                        <div class="row">
+                            <div class="col-lg-6 col-md-8">
+                                <div class="ui search focus">
+                                    <div class="ui left icon input swdh11 swdh19">
+                                        {{ form_widget(f.type) }}
+                                    </div>
+                                </div>
+                                <div class="ui search focus mt-30">
+                                    <div class="ui form swdh30">
+                                        <div class="field">
+                                            {{ form_widget(f.texteReclamation) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                {{ form_widget(f.Submit) }}
+                                {{ form_end(f) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}
+
+{% block js %}
+<script src="js/vertical-responsive-menu.min.js"></script>
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="vendor/OwlCarousel/owl.carousel.js"></script>
+<script src="vendor/semantic/semantic.min.js"></script>
+<script src="js/custom.js"></script>
+<script src="js/night-mode.js"></script>
+        $('#add-course-tab').steps({
+            onFinish: function () {
+                alert('Wizard Completed');
+            }
+        });
+    </script>
+{% endblock %}

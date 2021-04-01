@@ -97,10 +97,52 @@ class Freelancer
      */
     private $etat;
 
+    /**
+     * @ORM\OneToMany(targetEntity=EventLoisir::class, mappedBy="idFr")
+     */
+    private $eventLoisirs;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Formation::class, mappedBy="idFr")
+     */
+    private $formations;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Participant::class, mappedBy="idF")
+     */
+    private $participants;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $date_Creation;
+
+    protected $captchaCode;
+
+    /**
+     * @ORM\OneToMany(targetEntity=DemandeEmploi::class, mappedBy="Freelancer")
+     */
+    private $demandeEmplois;
+
+    /**
+     * @ORM\OneToMany(targetEntity=DemandeStage::class, mappedBy="Freelancer")
+     */
+    private $demandeStages;
+
+    /**
+     * @ORM\OneToMany(targetEntity=PostLike::class, mappedBy="user")
+     */
+    private $likes;
 
     public function __construct()
     {
         $this->societe = new ArrayCollection();
+        $this->eventLoisirs = new ArrayCollection();
+        $this->formations = new ArrayCollection();
+        $this->participants = new ArrayCollection();
+        $this->demandeEmplois = new ArrayCollection();
+        $this->demandeStages = new ArrayCollection();
+        $this->likes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -280,6 +322,243 @@ class Freelancer
         return $this;
     }
 
+    public function getViewsNb(): ?int
+    {
+        return $this->viewsNb;
+    }
+
+    public function setViewsNb(int $viewsNb): self
+    {
+        $this->viewsNb = $viewsNb;
+
+        return $this;
+    }
+
+    public function getEtat(): ?int
+    {
+        return $this->etat;
+    }
+
+    public function setEtat(int $etat): self
+    {
+        $this->etat = $etat;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|EventLoisir[]
+     */
+    public function getEventLoisirs(): Collection
+    {
+        return $this->eventLoisirs;
+    }
+
+    public function addEventLoisir(EventLoisir $eventLoisir): self
+    {
+        if (!$this->eventLoisirs->contains($eventLoisir)) {
+            $this->eventLoisirs[] = $eventLoisir;
+            $eventLoisir->setIdFr($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEventLoisir(EventLoisir $eventLoisir): self
+    {
+        if ($this->eventLoisirs->removeElement($eventLoisir)) {
+            // set the owning side to null (unless already changed)
+            if ($eventLoisir->getIdFr() === $this) {
+                $eventLoisir->setIdFr(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Formation[]
+     */
+    public function getFormations(): Collection
+    {
+        return $this->formations;
+    }
+
+    public function addFormation(Formation $formation): self
+    {
+        if (!$this->formations->contains($formation)) {
+            $this->formations[] = $formation;
+            $formation->setIdFr($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFormation(Formation $formation): self
+    {
+        if ($this->formations->removeElement($formation)) {
+            // set the owning side to null (unless already changed)
+            if ($formation->getIdFr() === $this) {
+                $formation->setIdFr(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Participant[]
+     */
+    public function getParticipants(): Collection
+    {
+        return $this->participants;
+    }
+
+    public function addParticipant(Participant $participant): self
+    {
+        if (!$this->participants->contains($participant)) {
+            $this->participants[] = $participant;
+            $participant->setIdF($this);
+        }
+
+        return $this;
+    }
+
+    public function removeParticipant(Participant $participant): self
+    {
+        if ($this->participants->removeElement($participant)) {
+            // set the owning side to null (unless already changed)
+            if ($participant->getIdF() === $this) {
+                $participant->setIdF(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getDateCreation(): ?string
+    {
+        return $this->date_Creation;
+    }
+
+    public function setDateCreation(string $date_Creation): self
+    {
+        $this->date_Creation = $date_Creation;
+
+        return $this;
+    }
+    public function getDate_Creation(): ?string
+    {
+        return $this->date_Creation;
+    }
+
+    public function setDate_Creation(string $date_Creation): self
+    {
+        $this->date_Creation = $date_Creation;
+
+        return $this;
+    }
+
+    public function getCaptchaCode()
+    {
+        return $this->captchaCode;
+    }
+
+    public function setCaptchaCode($captchaCode)
+    {
+        $this->captchaCode = $captchaCode;
+    }
+
+    /**
+     * @return Collection|DemandeEmploi[]
+     */
+    public function getDemandeEmplois(): Collection
+    {
+        return $this->demandeEmplois;
+    }
+
+    public function addDemandeEmploi(DemandeEmploi $demandeEmploi): self
+    {
+        if (!$this->demandeEmplois->contains($demandeEmploi)) {
+            $this->demandeEmplois[] = $demandeEmploi;
+            $demandeEmploi->setFreelancer($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDemandeEmploi(DemandeEmploi $demandeEmploi): self
+    {
+        if ($this->demandeEmplois->removeElement($demandeEmploi)) {
+            // set the owning side to null (unless already changed)
+            if ($demandeEmploi->getFreelancer() === $this) {
+                $demandeEmploi->setFreelancer(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|DemandeStage[]
+     */
+    public function getDemandeStages(): Collection
+    {
+        return $this->demandeStages;
+    }
+
+    public function addDemandeStage(DemandeStage $demandeStage): self
+    {
+        if (!$this->demandeStages->contains($demandeStage)) {
+            $this->demandeStages[] = $demandeStage;
+            $demandeStage->setFreelancer($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDemandeStage(DemandeStage $demandeStage): self
+    {
+        if ($this->demandeStages->removeElement($demandeStage)) {
+            // set the owning side to null (unless already changed)
+            if ($demandeStage->getFreelancer() === $this) {
+                $demandeStage->setFreelancer(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|PostLike[]
+     */
+    public function getLikes(): Collection
+    {
+        return $this->likes;
+    }
+
+    public function addLike(PostLike $like): self
+    {
+        if (!$this->likes->contains($like)) {
+            $this->likes[] = $like;
+            $like->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLike(PostLike $like): self
+    {
+        if ($this->likes->removeElement($like)) {
+            // set the owning side to null (unless already changed)
+            if ($like->getUser() === $this) {
+                $like->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
     public static function loadValidatorMetadata(ClassMetadata $metadata)
     {
         $metadata->addPropertyConstraint('nom', new Assert\NotBlank([
@@ -336,28 +615,7 @@ class Freelancer
 
     }
 
-    public function getViewsNb(): ?int
-    {
-        return $this->viewsNb;
-    }
 
-    public function setViewsNb(int $viewsNb): self
-    {
-        $this->viewsNb = $viewsNb;
 
-        return $this;
-    }
-
-    public function getEtat(): ?int
-    {
-        return $this->etat;
-    }
-
-    public function setEtat(int $etat): self
-    {
-        $this->etat = $etat;
-
-        return $this;
-    }
 
 }

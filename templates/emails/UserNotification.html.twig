@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenu {{ nomprenom }}</title>
+</head>
+<body>
+<center>
+    <img src="{{ imageurl }}" alt="RightJob" height="175" width="400" />
+    <br>
+<h1>Bienvenu dans notre site RightJob </h1>
+<p>Votre adhesion est effectuer avec succés , j'espère vous trouvez ce que vous chercher, nous vous souhaitons nos chèrs salutation</p>
+<p>Pour Activer votre compte clicker sur ce lien: <a href="{{ url('Activation', {'email': email}) }}">Activer</a></p>
+
+<p>Pour toute autre information veuillez nous contacter sur notre email RightJob.inc@gmail.com</p>
+</center>
+</body>
+</html>

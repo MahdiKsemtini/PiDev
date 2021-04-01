@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RightJob{% endblock %}
+
+{% block body %}
+
+
+    <div class="wrapper">
+        <div class="sa4d25">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-8 col-lg-8">
+                        <div class="fcrse_1"  style="margin-bottom: 20px;"  >
+                            <div class="col-lg-12 col-md-12">
+                                <div class="course_des_textarea mt-30 lbel25">
+                                    <h4>Créer une publication</h4>
+                                    {{ form_start(form) }}
+                                    <div class="form-group">
+                                        <label for="exampleInputName1">{{ form_label(form.id_util) }}</label>
+                                        {{ form_widget(form.id_util,{'attr':{'class':'form-control'}}) }}
+                                    </div>
+                                    {{ form_start(form) }}
+
+                                    <div class="form-group">
+                                        <label for="exampleInputName1">{{ form_label(form.description) }}</label>
+                                        {{ form_widget(form.description,{'attr':{'class':'form-control'}}) }}
+                                    </div>
+
+
+
+                                    <div style="margin-top: 10px; float:right">
+
+                                        <a class="btn btn-light"  onclick="document.location='forum'" >Cancel</a>
+                                        {{ form_widget(form.Publier, {'attr':{'class':'btn btn-primary mr-2'}} ) }}
+
+                                    </div>
+                                    {{ form_end(form) }}
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+{% endblock %}
+
+{% block js %}
+    <script src="{{ asset('js/vertical-responsive-menu.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('vendor/OwlCarousel/owl.carousel.js') }}"></script>
+    <script src="{{ asset('vendor/semantic/semantic.min.js') }}"></script>
+    <script src="{{ asset('js/custom.js') }}"></script>
+    <script src="{{ asset('js/night-mode.js') }}"></script>
+{% endblock %}
