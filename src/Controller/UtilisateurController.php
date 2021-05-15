@@ -29,6 +29,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 use Dompdf\Dompdf;
 use Dompdf\Options;
@@ -757,6 +758,211 @@ class UtilisateurController extends AbstractController
             $em->flush();
         }
         return $this->redirectToRoute('ViewSocieteProfileF', array('id'=>$id));
+    }
+
+    /**
+     * @param Request $request
+     * @Route("/SignUpJSON/new", name="SignUpJSON")
+     */
+    public function SignUpJSON(Request $request,FreelancerRepository $repository, EntityManagerInterface $em,NormalizerInterface $Normalizer)
+    {
+
+        if($request->get('type') == "Freelancer")
+        {
+            $freelancer=new Freelancer();
+            $newDate= new \DateTime('now');
+            $freelancer->setNom($request->get('nom'));
+            $freelancer->setPrenom($request->get('prenom'));
+            $freelancer->setEmail($request->get('email'));
+            $freelancer->setMotDePasse($request->get('pwd'));
+            $freelancer->setAdresse('Add Adresse');
+            $freelancer->setDateCreation($newDate->format('Y-m-d H:i:s'));
+            $freelancer->setCompetences('Add Competence');
+            $freelancer->setCompteFacebook('Add Compte Facebook');
+            $freelancer->setCompteLinkedin('Add Compte LinkedIn');
+            $freelancer->setCompteTwitter('Add Compte Twitter');
+            $freelancer->setLangues('Add Langues');
+            $freelancer->setViewsNb(0);
+            $freelancer->setEtat(1);
+            $freelancer->setSexe('Add sexe');
+            $freelancer->setPhotoDeProfile('img-1.jpg');
+
+            $free = $repository->findOneBy(['email' => $freelancer->getEmail()]);
+            if($free!=null){
+                $jsonContent =$Normalizer->normalize("exist",'json',['groups'=>'post:read']);
+                return new Response(json_encode($jsonContent));
+
+            }elseif ($free==null){
+                // tell Doctrine you want to (eventually) save the Product (no queries yet)
+                $em->persist($freelancer);
+                // actually executes the queries
+                $em->flush();
+                $this->notify_creation->notifyUser("rightjob.inc@gmail.com",$freelancer->getEmail(),$freelancer->getNom()." ".$freelancer->getPrenom());
+                $jsonContent =$Normalizer->normalize($freelancer,'json',['groups'=>'post:read']);
+
+                // return to the affiche
+                return new Response(json_encode($jsonContent));
+
+            }
+
+        }else
+        {
+            $societe=new Societe();
+            $societe->setNom($request->get('nom'));
+            $societe->setEmail($request->get('email'));
+            $societe->setMotDePass($request->get('pwd'));
+            $newDate= new \DateTime('now');
+            $societe->setAdresse('Add Adresse');
+            $societe->setDateCreation($newDate->format('Y-m-d H:i:s'));
+            $societe->setViewsNb(0);
+            $societe->setEtat(1);
+            $societe->setStatusJuridique('Add Status Juridique');
+            $societe->setPhotoDeProfile('img-1.jpg');
+
+            $soci = $repository->findOneBy(['email' => $societe->getEmail()]);
+            if($soci!=null){
+                $jsonContent =$Normalizer->normalize("exist",'json',['groups'=>'post:read']);
+                return new Response(json_encode($jsonContent));
+            }elseif ($soci==null){
+
+
+                //get the entity manager that exists in doctrine( entity manager and repository)
+                $em=$this->getDoctrine()->getManager();
+                // tell Doctrine you want to (eventually) save the Product (no queries yet)
+                $em->persist($societe);
+                // actually executes the queries
+                $em->flush();
+
+                $this->notify_creation->notifyUser("rightjob.inc@gmail.com",$societe->getEmail(),$societe->getNom());
+
+                // return to the affiche
+                $jsonContent =$Normalizer->normalize($societe,'json',['groups'=>'post:read']);
+
+                // return to the affiche
+                return new Response(json_encode($jsonContent));
+
+            }
+        }
+
+
+    }
+
+    /**
+     * @param Request $request
+     * @Route("/SignInJson/new", name="SignInJson")
+     */
+    public function SignInJson(Request $request,FreelancerRepository $repository,SocieteRepository $Sos_Repo,SuperAdminRepository $superAdminRepository,AdminRepository $adminRepository,NormalizerInterface $Normalizer): Response
+    {
+
+        $freelancer=new Freelancer();
+        $freelancer->setEmail($request->get('email'));
+        $freelancer->setMotDePasse($request->get('pwd'));
+
+        $freelancerCheck = $repository->findOneBy(['email' => $freelancer->getEmail()]);
+        $societeCheck = $Sos_Repo->findOneBy(['email' => $freelancer->getEmail()]);
+        $superAdminCheck = $superAdminRepository->findOneBy(['login' => $freelancer->getEmail()]);
+        $adminCheck=$adminRepository->findOneBy(['login' => $freelancer->getEmail()]);
+        if ($freelancerCheck != null) {
+            if($request->get('pwd')==$freelancerCheck->getMotDePasse()){
+                if($freelancerCheck->getEtat()==0){
+
+                    $jsonContent =$Normalizer->normalize($freelancerCheck,'json',['groups'=>'post:read']);
+
+                    // return to the affiche
+                    return new Response(json_encode($jsonContent));
+
+                }else{
+                    $jsonContent =$Normalizer->normalize("CompteDesactiver",'json',['groups'=>'post:read']);
+
+                    // return to the affiche
+                    return new Response(json_encode($jsonContent));
+                }
+
+            }else{
+                $jsonContent =$Normalizer->normalize("Mot de pass est Incorrect",'json',['groups'=>'post:read']);
+
+                // return to the affiche
+                return new Response(json_encode($jsonContent));
+
+
+            }
+
+
+        } elseif ($societeCheck != null){
+            if ($request->get('pwd')==$societeCheck->getMotDePass()){
+                if($societeCheck->getEtat()==0) {
+                    $jsonContent =$Normalizer->normalize($societeCheck,'json',['groups'=>'post:read']);
+
+                    // return to the affiche
+                    return new Response(json_encode($jsonContent));
+                }else{
+                    $jsonContent =$Normalizer->normalize("CompteDesactiver",'json',['groups'=>'post:read']);
+
+                    // return to the affiche
+                    return new Response(json_encode($jsonContent));
+                }
+            }
+            else{
+                $jsonContent =$Normalizer->normalize("Mot de pass est Incorrect",'json',['groups'=>'post:read']);
+
+                // return to the affiche
+                return new Response(json_encode($jsonContent));
+            }
+
+        }elseif ($superAdminCheck!=null){
+            if ($request->get('pwd')==$superAdminCheck->getPassword()){
+                $jsonContent =$Normalizer->normalize($superAdminCheck,'json',['groups'=>'post:read']);
+
+                // return to the affiche
+                return new Response(json_encode($jsonContent));
+            }
+            else{
+                $jsonContent =$Normalizer->normalize("Mot de pass est Incorrect",'json',['groups'=>'post:read']);
+
+                // return to the affiche
+                return new Response(json_encode($jsonContent));
+            }
+        }elseif ($adminCheck!=null){
+            if ($request->get('pwd')==$adminCheck->getPassword()){
+                if($adminCheck->getType()=='Admin des reclamations'){
+                    $jsonContent =$Normalizer->normalize($adminCheck,'json',['groups'=>'post:read']);
+
+                    // return to the affiche
+                    return new Response(json_encode($jsonContent));
+
+                }elseif ($adminCheck->getType()=='Admin des events'){
+                    $jsonContent =$Normalizer->normalize($adminCheck,'json',['groups'=>'post:read']);
+
+                    // return to the affiche
+                    return new Response(json_encode($jsonContent));
+                }else{
+                    $jsonContent =$Normalizer->normalize($adminCheck,'json',['groups'=>'post:read']);
+
+                    // return to the affiche
+                    return new Response(json_encode($jsonContent));
+                }
+
+            }
+            else{
+                $jsonContent =$Normalizer->normalize("Mot de pass est Incorrect",'json',['groups'=>'post:read']);
+
+                // return to the affiche
+                return new Response(json_encode($jsonContent));
+            }
+        }
+
+        elseif($societeCheck == null){
+            $jsonContent =$Normalizer->normalize("Email exist pas",'json',['groups'=>'post:read']);
+
+            // return to the affiche
+            return new Response(json_encode($jsonContent));
+        }
+        elseif($freelancerCheck == null){
+            $jsonContent =$Normalizer->normalize("Email exist pas",'json',['groups'=>'post:read']);
+
+            // return to the affiche
+            return new Response(json_encode($jsonContent));
+        }
     }
 
 }

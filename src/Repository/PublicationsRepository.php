@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Publications;
+use App\Entity\Freelancer;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\Query\Expr\Join;
 
 /**
  * @method Publications|null find($id, $lockMode = null, $lockVersion = null)
@@ -62,6 +64,18 @@ class PublicationsRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('p')
             ->select('COUNT(p.id) AS pub,DATE(p.date_publication) AS date')
             ->groupBy('date');
+
+
+        return $qb->getQuery()
+            ->getResult();
+    }
+
+    public function getPubs()
+    {
+
+        $qb = $this->createQueryBuilder('p')
+            ->select('p.id,p.description,p.image,p.date_publication,f.nom,f.prenom')
+            ->innerJoin('p.freelancer', 'f', Join::WITH, 'p.freelancer = f');
 
 
         return $qb->getQuery()

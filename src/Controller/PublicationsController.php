@@ -12,8 +12,11 @@ use App\Repository\FreelancerRepository;
 use App\Repository\SocieteRepository;
 use App\Repository\PostLikeRepository;
 use Doctrine\Persistence\ObjectManager;
+use phpDocumentor\Reflection\DocBlock\Description;
+use phpDocumentor\Reflection\DocBlock\Serializer;
 use phpDocumentor\Reflection\Type;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -23,7 +26,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Session\Session;
-
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
 
 class PublicationsController extends AbstractController
@@ -83,6 +87,8 @@ class PublicationsController extends AbstractController
         }
 
     }
+
+
 
     /**
      * @Route("/publicationsBack",name="publicationsBack")
@@ -204,6 +210,83 @@ class PublicationsController extends AbstractController
 
         ],200);
 
+
+    }
+
+    /**
+     * @Route("/list_publications",name="list_publications")
+     *
+     */
+    public function show_publications(NormalizerInterface $Normalizer)
+    {
+        $p=$this->getDoctrine()->getRepository(Publications::class);
+        $publications=$p->getPubs();
+
+        $jsonPublications = $Normalizer->normalize($publications);
+
+        return new JsonResponse($jsonPublications);
+    }
+
+    /**
+     * @Route("/AddPublication",name="AddPublication")
+     */
+    public function AddPublication(Request $request, NormalizerInterface $Normalizer){
+        $publications = new Publications();
+        $description = $request->query->get("description");
+        $image = $request->query->get("image");
+        $em = $this->getDoctrine()->getManager();
+        $date = new \DateTime('now');
+
+        $publications->setDescription($description);
+        $publications->setImage($image);
+        $publications->setDatePublication($date);
+
+
+        $em->persist($publications);
+        $em->flush();
+
+        $formatted = $Normalizer->normalize($publications);
+        return new JsonResponse($formatted);
+
+    }
+
+    /**
+     * @Route("/DelPublication",name="DelPublication")
+     */
+    public function DelPublication(Request $request, NormalizerInterface $Normalizer){
+        $id = $request->get("id");
+
+        $em=$this->getDoctrine()->getManager();
+        $publications=$em->getRepository(Publications::class)->find($id);
+
+
+        if($publications!=null) {
+            $em->remove($publications);
+            $em->flush();
+            $formatted = $Normalizer->normalize("publication supprimee");
+            return new JsonResponse($formatted);
+        }
+        else {
+            return new JsonResponse("id publication invalide");
+        }
+
+    }
+
+    /**
+     * @Route("/updatePublication",name="updatePublication")
+     */
+    public function upadtePublication(Request $request, NormalizerInterface $Normalizer)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $publications = $this->getDoctrine()->getRepository(Publications::class)->find($request->get("id"));
+
+        $publications->setDescription($request->get("description"));
+        $publications->setImage($request->get("image"));
+
+        $em->persist($publications);
+        $em->flush();
+        $formatted = $Normalizer->normalize("publication supprimee");
+        return new JsonResponse("Publication modifiee");
 
     }
 }
